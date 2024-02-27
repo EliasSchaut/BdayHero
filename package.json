@@ -1,0 +1,40 @@
+{
+  "name": "bday-hero",
+  "author": "EliasSchaut",
+  "description": "A hero page as teaser for my bday",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node .output/server/index.mjs",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.19",
+    "@heroicons/vue": "^2.1.1",
+    "pinia": "^2.1.7"
+  },
+  "devDependencies": {
+    "@nuxt/content": "^2.12.0",
+    "@nuxt/devtools": "^1.0.8",
+    "@nuxt/image": "^1.3.0",
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/i18n": "^8.1.1",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
+    "@pinia/nuxt": "^0.5.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.17",
+    "nuxt": "^3.10.3",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  }
+}
