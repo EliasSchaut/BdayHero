@@ -12,6 +12,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@vueuse/motion/nuxt',
+    'nuxt-particles',
   ],
 
   content: {

@@ -1,7 +1,5 @@
 import type { Config } from 'tailwindcss';
 
-import typography_styles from './typography';
-
 export default <Partial<Config>>{
   darkMode: 'class',
   content: [
@@ -18,6 +16,5 @@ export default <Partial<Config>>{
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-  typography: typography_styles,
+  plugins: [require('@tailwindcss/forms')],
 };
