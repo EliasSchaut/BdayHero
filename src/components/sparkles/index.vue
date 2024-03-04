@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-[40rem] w-full flex-col items-center justify-center overflow-hidden rounded-md bg-black"
+    class="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black"
   >
     <div class="absolute inset-0 h-screen w-full">
       <SparklesCore
