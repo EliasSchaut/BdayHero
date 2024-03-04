@@ -16,7 +16,8 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.19",
     "@heroicons/vue": "^2.1.1",
-    "pinia": "^2.1.7"
+    "pinia": "^2.1.7",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "@nuxt/content": "^2.12.0",

@@ -1,8 +1,9 @@
 <template>
   <Sparkles title="Kids Bday" />
+  <Typewriter />
   <Lamp>
     <video
-      class="relative top-10 w-[20rem] rounded-md shadow-2xl sm:top-36 sm:w-[30rem]"
+      class="relative w-[20rem] rounded-md shadow-2xl sm:top-16 sm:w-[30rem]"
       src="/bday.mp4"
       controls
     />
