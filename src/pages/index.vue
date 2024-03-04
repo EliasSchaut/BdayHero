@@ -1,7 +1,11 @@
 <template>
   <Sparkles title="Kids Bday" />
   <Lamp>
-    <video class="w-1/2" />
+    <video
+      class="relative top-36 w-1/2 rounded-md shadow-2xl"
+      src="/bday.mp4"
+      controls
+    />
   </Lamp>
   <NuxtLayout name="grid">
     <Tabs
