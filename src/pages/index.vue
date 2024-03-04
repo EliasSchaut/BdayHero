@@ -1,5 +1,8 @@
 <template>
   <Sparkles title="Kids Bday" />
+  <Lamp>
+    <video class="w-1/2" />
+  </Lamp>
   <NuxtLayout name="grid">
     <Tabs
       :tabs="[
