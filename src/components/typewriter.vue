@@ -1,6 +1,6 @@
 <template>
   <span class="mx-20 mt-20 flex justify-center text-2xl text-white"
-    >Ein Geburtstag voller&nbsp;
+    >{{ heading + (heading.length ? '&nbsp;' : '') }}
     <span id="typewriter" class="font-bold text-pink-400" />
   </span>
 </template>
@@ -11,10 +11,20 @@ import Typewriter from 'typewriter-effect/dist/core';
 export default defineComponent({
   mounted() {
     new Typewriter('#typewriter', {
-      strings: ['Spaß', 'Überraschung', 'Freude'],
+      strings: this.strings,
       loop: true,
       autoStart: true,
     });
+  },
+  props: {
+    heading: {
+      type: String,
+      default: '',
+    },
+    strings: {
+      type: Array<String>,
+      required: true,
+    },
   },
 });
 </script>

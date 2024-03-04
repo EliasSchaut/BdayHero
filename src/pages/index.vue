@@ -1,6 +1,9 @@
 <template>
   <Sparkles title="Kids Bday" />
-  <Typewriter />
+  <Typewriter
+    heading="Ein Geburtstag voller"
+    :strings="['Spaß', 'Freude', 'Überraschung']"
+  />
   <Lamp>
     <video
       class="relative w-[20rem] rounded-md shadow-2xl sm:top-16 sm:w-[30rem]"
