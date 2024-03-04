@@ -4,7 +4,7 @@
   >
     <h1
       v-if="heading !== ''"
-      class="relative -top-10 flex justify-center text-4xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight"
+      class="relative -top-10 flex justify-center text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight"
     >
       {{ heading }}
     </h1>
@@ -21,7 +21,7 @@
         <li
           v-for="card in cards"
           :key="card.title"
-          class="bg- relative w-[350px] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-700 bg-gradient-to-b from-gray-800 to-gray-900 px-8 py-6 md:w-[450px]"
+          class="bg- relative w-[250px] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-700 bg-gradient-to-b from-gray-800 to-gray-900 px-8 py-6 sm:w-[350px] md:w-[450px]"
         >
           <blockquote>
             <div

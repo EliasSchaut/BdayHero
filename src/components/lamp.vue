@@ -6,7 +6,7 @@
       class="relative isolate z-0 flex w-full flex-1 scale-y-125 items-center justify-center"
     >
       <div
-        class="bg-gradient-conic absolute inset-auto right-1/2 h-56 w-[30rem] overflow-visible from-cyan-500 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
+        class="bg-gradient-conic absolute inset-auto right-1/2 h-56 w-[20rem] overflow-visible from-cyan-500 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top] sm:w-[30rem]"
         :style="{
           backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
         }"
@@ -19,7 +19,7 @@
         />
       </div>
       <div
-        class="bg-gradient-conic absolute inset-auto left-1/2 h-56 w-[30rem] from-transparent via-transparent to-cyan-500 text-white [--conic-position:from_290deg_at_center_top]"
+        class="bg-gradient-conic absolute inset-auto left-1/2 h-56 w-[20rem] from-transparent via-transparent to-cyan-500 text-white [--conic-position:from_290deg_at_center_top] sm:w-[30rem]"
         :style="{
           backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
         }"
@@ -41,7 +41,7 @@
         class="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-cyan-400 blur-2xl"
       ></div>
       <div
-        class="absolute inset-auto z-50 h-0.5 w-[30rem] -translate-y-[7rem] bg-cyan-400"
+        class="absolute inset-auto z-50 h-0.5 w-[20rem] -translate-y-[7rem] bg-cyan-400 sm:w-[30rem]"
       ></div>
 
       <div

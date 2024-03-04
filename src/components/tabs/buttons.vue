@@ -1,5 +1,6 @@
 <template>
-  <button
+  <div
+    type="button"
     :key="title"
     @click="() => tabsState.moveSelectedTabToTop(title)"
     @mouseenter="() => tabsState.setHovering(true)"
@@ -14,7 +15,7 @@
     <span class="relative block text-black dark:text-white">
       {{ title }}
     </span>
-  </button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,10 +30,6 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true,
-    },
-    index: {
-      type: Number,
       required: true,
     },
   },

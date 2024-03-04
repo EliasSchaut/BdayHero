@@ -1,11 +1,16 @@
 <template>
   <div
-    class="b relative mx-auto my-40 flex h-[20rem] w-full max-w-5xl flex-col items-start justify-start [perspective:1000px] md:h-[40rem]"
+    class="relative mx-5 my-40 flex h-[40rem] w-full max-w-5xl flex-col items-start justify-start [perspective:1000px]"
   >
     <div
-      class="no-visible-scrollbar relative flex w-full max-w-full flex-row items-center justify-start overflow-auto [perspective:1000px] sm:overflow-visible"
+      class="no-visible-scrollbar relative flex w-full max-w-full flex-row items-center justify-start overflow-visible [perspective:1000px]"
     >
-      <TabsButtons v-for="(tab, idx) in tabs" :title="tab.title" :index="idx" />
+      <TabsButtons
+        class="hidden sm:block"
+        v-for="tab in tabs"
+        :title="tab.title"
+      />
+      <TabsSelect class="sm:hidden" :titles="tabs.map((tab) => tab.title)" />
     </div>
 
     <div class="relative mt-16 h-full w-full">

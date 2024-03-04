@@ -2,7 +2,7 @@
   <Sparkles title="Kids Bday" />
   <Lamp>
     <video
-      class="relative top-36 w-1/2 rounded-md shadow-2xl"
+      class="relative top-10 w-[20rem] rounded-md shadow-2xl sm:top-36 sm:w-[30rem]"
       src="/bday.mp4"
       controls
     />
