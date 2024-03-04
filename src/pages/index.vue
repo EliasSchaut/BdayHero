@@ -26,5 +26,18 @@
       ]"
     />
   </NuxtLayout>
+  <CardsMoving
+    :cards="[
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+    ]"
+    heading="Das sagen die Gäste"
+    pause_on_hover
+  />
 </template>
-<script setup lang="ts"></script>
