@@ -4,7 +4,7 @@
     @click="() => tabsState.moveSelectedTabToTop(title)"
     @mouseenter="() => tabsState.setHovering(true)"
     @mouseleave="() => tabsState.setHovering(false)"
-    class="relative rounded-full px-4 py-2"
+    class="relative rounded-full px-6 py-2"
   >
     <div
       v-if="tabsState.active?.title === title"
