@@ -13,11 +13,45 @@
       />
     </div>
     <h1
-      class="relative z-20 text-center text-3xl font-bold text-white md:text-7xl lg:text-6xl"
+      class="relative z-20 text-center text-5xl font-bold text-white md:text-7xl lg:text-6xl"
       v-motion-fade
     >
       {{ title }}
     </h1>
+    <h2
+      v-motion
+      v-if="subtitle.length !== 0"
+      class="mt-20 text-3xl font-bold text-white opacity-0 md:text-5xl"
+      :initial="{
+        opacity: 0,
+      }"
+      :enter="{
+        opacity: 1,
+        transition: {
+          delay: 1000,
+        },
+      }"
+    >
+      {{ subtitle }}
+    </h2>
+    <button
+      v-motion
+      type="button"
+      class="mt-20 rounded-full bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white opacity-0 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      :initial="{
+        opacity: 0,
+        y: 0,
+      }"
+      :enter="{
+        opacity: 1,
+        y: -10,
+        transition: {
+          delay: 2000,
+        },
+      }"
+    >
+      JOIN NOW!
+    </button>
   </div>
 </template>
 
@@ -26,6 +60,10 @@ defineProps({
   title: {
     type: String,
     required: true,
+  },
+  subtitle: {
+    type: String,
+    default: '',
   },
 });
 </script>

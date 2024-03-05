@@ -1,15 +1,11 @@
 <template>
-  <Sparkles title="Kids Bday" />
+  <Sparkles title="Kids Bday" subtitle="08. Juni 2024" />
   <Typewriter
     heading="Ein Geburtstag voller"
     :strings="['Spaß', 'Freude', 'Überraschung']"
   />
   <Lamp>
-    <video
-      class="relative w-[20rem] rounded-md shadow-2xl sm:top-16 sm:w-[30rem]"
-      src="/bday.mp4"
-      controls
-    />
+    <Media />
   </Lamp>
   <NuxtLayout name="grid">
     <Tabs
@@ -51,4 +47,28 @@
     heading="Das sagen die Gäste"
     pause_on_hover
   />
+  <NuxtLayout name="dots">
+    <Articles
+      :articles="[
+        {
+          title: 'Bday 23',
+          desc: 'Thinks and thoughts about my Bday 23.',
+          href: 'https://schaut.dev/articles/bday23',
+          date: '04. Juni 2023',
+        },
+        {
+          title: 'Bday 22',
+          desc: 'Thinks and thoughts about my Bday 22.',
+          href: 'https://schaut.dev/articles/bday22',
+          date: '04. Juni 2022',
+        },
+        {
+          title: 'Bday 21',
+          desc: 'Thinks and thoughts about my Bday 21.',
+          href: 'https://schaut.dev/articles/bday21',
+          date: '04. Juni 2021',
+        },
+      ]"
+    />
+  </NuxtLayout>
 </template>
