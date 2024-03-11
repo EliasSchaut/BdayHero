@@ -28,7 +28,7 @@
       :enter="{
         opacity: 1,
         transition: {
-          delay: 1000,
+          delay: 1500,
         },
       }"
     >
@@ -46,7 +46,7 @@
         opacity: 1,
         y: -10,
         transition: {
-          delay: 2000,
+          delay: 3000,
         },
       }"
     >
