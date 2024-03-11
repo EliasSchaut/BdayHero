@@ -19,8 +19,8 @@
           content: `Nerd`,
         },
         {
-          title: 'Family',
-          content: `Family`,
+          title: 'Game',
+          content: `Game`,
         },
         {
           title: 'Drinks',
