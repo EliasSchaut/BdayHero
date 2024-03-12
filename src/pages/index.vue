@@ -1,8 +1,22 @@
 <template>
   <Sparkles title="Kids Bday" subtitle="08. Juni 2024" />
   <Typewriter
-    heading="Ein Geburtstag voller"
-    :strings="['Spaß', 'Freude', 'Überraschung']"
+    heading="Ein Geburtstag"
+    :strings="[
+      'mit bester Laune',
+      'perfekt organisiert',
+      'mit maximalem Spaß',
+      'voller Überraschungen',
+      'mit all deinen Freunden',
+      'zum Erinnern & Erzählen',
+      'mit Elias\' Fliege',
+      'für jeden gemacht',
+      'mit cooler Location',
+      'zum Anfreunden & Verlieben',
+      'mit kreativer Unterhaltung',
+      'mit leckerem Essen & Trinken',
+      'für dich',
+    ]"
   />
   <Lamp>
     <Media />
@@ -35,14 +49,18 @@
   </NuxtLayout>
   <CardsMoving
     :cards="[
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
-      { title: 'Blubb', content: 'asidfh', name: 'alkdjhf' },
+      {
+        title: 'Lila Pause',
+        content: 'Ich hatte den Spaß meines Lebens und so',
+        name: 'Elias Schaut',
+      },
+      { title: 'Fraktion', content: 'Beschreibung', name: 'Name' },
+      {
+        title: 'Lila Pause',
+        content: 'Ich hatte den Spaß meines Lebens und so',
+        name: 'Elias Schaut',
+      },
+      { title: 'Fraktion', content: 'Beschreibung', name: 'Name' },
     ]"
     heading="Das sagen die Gäste"
     pause_on_hover
