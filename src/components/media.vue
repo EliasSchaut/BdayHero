@@ -1,23 +1,25 @@
 <template>
-  <div class="relative flex justify-center items-center">
-    <canvas ref="movie_canvas" class="absolute w-[110%] h-[110%] z-10 blur-3xl sm:top-16" />
+  <div class="relative flex items-center justify-center">
+    <canvas
+      ref="movie_canvas"
+      class="absolute z-10 h-[110%] w-[110%] blur-3xl sm:top-16"
+    />
     <video
       @play="add_ambient"
       ref="movie"
-      class="relative w-[20rem] shadow-md rounded-md sm:top-16 sm:w-[30rem] z-20 mt-[5%]"
-      src="https://prime.schaut.dev/Videos/71103/steam.mov"
+      class="relative z-20 mt-[5%] w-[20rem] rounded-md shadow-md sm:top-16 sm:w-[30rem]"
+      src="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_30mb.mp4"
       controls
       muted
       loop
     />
   </div>
-
 </template>
 
 <script lang="ts">
 export default defineComponent({
   mounted() {
-    (this.$refs.movie as HTMLVideoElement).play()
+    (this.$refs.movie as HTMLVideoElement).play();
   },
   methods: {
     add_ambient() {
@@ -26,7 +28,6 @@ export default defineComponent({
       const video = this.$refs.movie as HTMLVideoElement;
       const loop = setInterval(() => {
         if (!video.paused && !video.ended) {
-          console.log('draw');
           ctx.drawImage(
             video,
             0,
@@ -43,8 +44,6 @@ export default defineComponent({
         }
       }, 1000 / 30);
     },
-
   },
-})
-;
+});
 </script>

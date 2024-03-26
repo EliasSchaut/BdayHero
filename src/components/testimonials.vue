@@ -13,7 +13,7 @@
     >
       <ul
         :class="[
-          'animate-scroll flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4',
+          'flex w-max min-w-full shrink-0 animate-scroll flex-nowrap gap-4 py-4',
           pause_on_hover ? 'hover:[animation-play-state:paused]' : '',
         ]"
         :style="{ animationDirection: direction, animationDuration: speed }"
@@ -54,7 +54,7 @@
 export default defineComponent({
   props: {
     cards: {
-      type: Array<{ title: string; content: string; name?: string }>,
+      type: Array<{ title: string; content: any; name?: string }>,
       required: true,
     },
     speed: {

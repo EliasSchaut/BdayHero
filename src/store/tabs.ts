@@ -3,37 +3,48 @@ export const tabsStore = defineStore('tabs', {
     return {
       hovering: false,
       active: null,
-      tabs: [],
+      tab_names: [],
+      tab_names_static: [],
     };
   },
   actions: {
-    setActive(tab: TabType) {
-      this.active = tab;
+    setActive(tab_name: string) {
+      this.active = tab_name;
     },
-    isActive(tab: TabType) {
-      return this.active === tab;
+    isActive(tab_name: string) {
+      return this.active === tab_name;
     },
-    setTabs(tabs: TabType[]) {
-      this.tabs = tabs;
+    setTabs(tab_names: string[]) {
+      this.tab_names = tab_names;
+      this.active = tab_names[0];
+    },
+    addTab(tab_name: string) {
+      if (this.tab_names.includes(tab_name)) return;
+      this.tab_names.push(tab_name);
+      this.tab_names_static.push(tab_name);
+      if (this.active === null) {
+        this.active = tab_name;
+      }
+    },
+    getIndexOfTab(tab_name: string) {
+      return this.tab_names.indexOf(tab_name);
     },
     setHovering(is_hovering: boolean) {
       this.hovering = is_hovering;
     },
-    moveSelectedTabToTop(title: string) {
-      const new_tabs = [...this.tabs];
-      const idx = new_tabs.findIndex((tab) => tab.title === title);
+    moveSelectedTabToTop(tab_name: string) {
+      const new_tabs = [...this.tab_names];
+      const idx = this.getIndexOfTab(tab_name);
       const selected_tab = new_tabs.splice(idx, 1);
       new_tabs.unshift(selected_tab[0]);
       this.setTabs(new_tabs);
-      this.setActive(new_tabs[0]);
     },
   },
 });
 
-export type TabType = { title: string; content: any };
-
 export type TabsType = {
   hovering: boolean;
-  active: TabType | null;
-  tabs: Array<TabType>;
+  active: string | null;
+  tab_names: Array<string>;
+  tab_names_static: Array<string>;
 };
