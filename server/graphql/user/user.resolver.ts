@@ -7,10 +7,31 @@ import { UserID } from '@/common/decorators/user_id.decorator';
 import { UserUpdateInputModel } from '@/types/models/inputs/user_update.input';
 import { Role } from '@/common/decorators/role.decorator';
 import { RoleEnum } from '@/types/enums/role.enum';
+import { NewsletterInputModel } from '@/types/models/inputs/newsletter.input';
 
 @Resolver(() => UserModel)
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
+
+  @Query(() => Boolean, {
+    name: 'subscribe',
+  })
+  async subscribe(
+    @I18n() i18n: I18nContext<I18nTranslations>,
+    @Args('newsletter_input') newsletter_input: NewsletterInputModel,
+  ): Promise<boolean> {
+    return this.userService.subscribe(newsletter_input.email, { i18n });
+  }
+
+  @Query(() => Boolean, {
+    name: 'unsubscribe',
+  })
+  async unsubscribe(
+    @I18n() i18n: I18nContext<I18nTranslations>,
+    @Args('newsletter_input') newsletter_input: NewsletterInputModel,
+  ): Promise<boolean> {
+    return this.userService.unsubscribe(newsletter_input.email, { i18n });
+  }
 
   @Role(RoleEnum.USER)
   @Query(() => UserModel, {

@@ -4,6 +4,85 @@
 /* prettier-ignore */
 import { Path } from "nestjs-i18n";
 /* prettier-ignore */
-export type I18nTranslations = {};
+export type I18nTranslations = {
+    "auth": {
+        "exception": {
+            "conflict_username_exists": string;
+            "forbidden_invalid_registration": string;
+            "forbidden_login": string;
+            "forbidden_not_verified": string;
+            "invalid_password": string;
+            "not_found_password_reset": string;
+            "not_found_verify": string;
+        };
+        "success": {
+            "password_reset": string;
+            "password_reset_request": string;
+            "register": string;
+            "verified": string;
+        };
+    };
+    "common": {
+        "exception": {
+            "db": {
+                "duplication": string;
+                "internal": string;
+                "not_reached": string;
+                "record_not_found": string;
+            };
+            "internal": string;
+        };
+    };
+    "history": {
+        "exception": {
+            "duplication": string;
+            "not_found": string;
+        };
+    };
+    "movie": {
+        "exception": {
+            "create_api_not_found": string;
+            "duplication": string;
+            "no_metadata": string;
+            "not_found": string;
+            "not_found_or_proposed": string;
+        };
+    };
+    "server": {
+        "exception": {
+            "not_found": string;
+        };
+    };
+    "user": {
+        "exception": {
+            "conflict_username": string;
+            "create": string;
+            "forbidden_password": string;
+            "invalid_name": string;
+            "invalid_password": string;
+            "invalid_username": string;
+            "not_found": string;
+        };
+        "success": {
+            "delete": string;
+            "email_opt_in": string;
+            "password": string;
+            "profile": string;
+            "username": string;
+        };
+    };
+    "vote": {
+        "exception": {
+            "not_found": string;
+            "to_less_votes": string;
+        };
+    };
+    "watchlist": {
+        "exception": {
+            "item_not_found": string;
+            "movie_not_found": string;
+        };
+    };
+};
 /* prettier-ignore */
 export type I18nPath = Path<I18nTranslations>;

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-class NewsletterService {
+export class NewsletterService {
   async subscribe(email: string) {
     return await this.ionos_mail_server_request(email, 'subscribe');
   }

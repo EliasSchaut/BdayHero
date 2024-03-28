@@ -5,10 +5,14 @@ import { UserModel } from '@/types/models/user.model';
 import { UserUpdateInputModel } from '@/types/models/inputs/user_update.input';
 import { WarningException } from '@/common/exceptions/warning.exception';
 import cuid from 'cuid';
+import { NewsletterService } from '@/common/services/newsletter.service';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly newsletter_service: NewsletterService,
+  ) {}
 
   async find_by_id(ctx: CtxType): Promise<UserModel> {
     const user = await this.prisma.user.findUnique({
@@ -40,6 +44,14 @@ export class UserService {
         where: { id: ctx.user_id },
       }),
     );
+  }
+
+  async subscribe(email: string, ctx: CtxType): Promise<boolean> {
+    return await this.newsletter_service.subscribe(email);
+  }
+
+  async unsubscribe(email: string, ctx: CtxType): Promise<boolean> {
+    return await this.newsletter_service.unsubscribe(email);
   }
 
   private async update__email_if_present(
