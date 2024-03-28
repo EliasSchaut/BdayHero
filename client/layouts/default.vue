@@ -1,6 +1,6 @@
 <template>
   <Body class="bg-white dark:bg-gray-900" />
-  <div class="bg-white dark:bg-gray-900 dark:text-white">
+  <div class="mb-12 bg-white dark:bg-gray-900 dark:text-white">
     <div class="flex items-center justify-center">
       <div class="absolute top-5">
         <LayoutNav />
