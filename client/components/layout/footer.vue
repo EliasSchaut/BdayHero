@@ -26,6 +26,7 @@ const navigation = {
     { name: 'Impressum', href: '/imprint' },
     { name: 'Datenschutz', href: '/privacy' },
     { name: 'Resources', href: '/resources' },
+    { name: 'Source Code', href: 'https://github.com/EliasSchaut/BdayHero' },
   ],
 };
 </script>
