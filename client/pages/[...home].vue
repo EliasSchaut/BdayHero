@@ -238,55 +238,10 @@
   <div
     class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-black antialiased"
   >
-    <div class="mx-auto max-w-2xl p-4">
-      <LayoutHeading class="relative text-center text-2xl md:text-7xl">
-        Get notified
-      </LayoutHeading>
-      <p
-        class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-500"
-      >
-        Get notified when the next Bday24 Infos are coming up.
-      </p>
-      <form>
-        <input
-          type="email"
-          placeholder="max@mustermann"
-          class="relative z-10 mt-4 w-full rounded-lg border border-neutral-800 bg-neutral-950 text-white placeholder:text-neutral-700 focus:ring-2 focus:ring-teal-500"
-          required
-        />
-      </form>
-    </div>
+    <LayoutNewsletter />
     <SparklesBeams />
     <LayoutFooter class="relative top-32" />
   </div>
-  <!--<form
-    class="hidden text-white"
-    action="https://ml.kundenserver.de/cgi-bin/mailinglist.cgi"
-    method="POST"
-    target="_blank"
-  >
-    <input checked name="subscribe_r" type="radio" value="subscribe" />
-    Ja, ich möchte mich auf die Mailingliste bday@schaut.dev.
-    <br />
-    <input name="subscribe_r" type="radio" value="unsubscribe" />
-    Bitte streichen Sie mich wieder von der Mailingliste bday@schaut.dev.
-    <br />
-    Geben Sie Ihre E-Mail-Adresse ein:
-    <br />
-    <input maxlength="51" name="mailaccount_r" size="51" type="text" />
-    <br />
-    Wiederholen Sie die eingegebene E-Mail-Adresse:
-    <br />
-    <input maxlength="51" name="mailaccount2_r" size="51" type="text" />
-    <br />
-    <input type="SUBMIT" value="Absenden" />
-    <br />
-    <input type="RESET" value="Zurücksetzen" />
-    <hr />
-    <input name="FBMLNAME" type="hidden" value="bday@schaut.dev" />
-    <br />
-    <input name="FBLANG" type="hidden" value="de" />
-  </form>-->
 </template>
 
 <script setup lang="ts">

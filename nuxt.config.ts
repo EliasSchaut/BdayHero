@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@nuxtjs/i18n',
+    '@nuxtjs/apollo',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxt/image',
@@ -14,7 +15,32 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/motion/nuxt',
     'nuxt-particles',
+    'nuxt-security',
   ],
+  devServer: {
+    port: Number(process.env.PORT_FRONTEND),
+  },
+
+  security: {
+    corsHandler: {
+      origin: '*',
+      allowHeaders: '*',
+    },
+  },
+
+  apollo: {
+    autoImports: true,
+    proxyCookies: true,
+    clients: {
+      default: {
+        tokenName: 'token',
+        tokenStorage: 'cookie',
+        authType: 'Bearer',
+        authHeader: 'Authorization',
+        httpEndpoint: process.env.BACKEND_URL + '/graphql',
+      },
+    },
+  },
 
   content: {
     navigation: {
