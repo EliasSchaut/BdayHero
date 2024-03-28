@@ -27,7 +27,7 @@
             <div
               aria-hidden="true"
               class="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-            ></div>
+            />
             <span
               class="relative z-20 text-sm font-normal italic leading-[1.6] text-gray-100"
             >

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute left-0 h-full w-full transition-all duration-300 ease-in-out"
+    class="absolute left-0 h-[40rem] w-full transition-all duration-300 ease-in-out"
     :style="{
       scale: 1 - idx * 0.1,
       top: tabsState.hovering ? `${idx * -45}px` : `${idx * -22.5}px`,
