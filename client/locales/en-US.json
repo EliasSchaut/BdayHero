@@ -1,3 +1,23 @@
 {
-
+  "common": {
+    "and": "and",
+    "lang": {
+      "de": "German",
+      "en": "English"
+    },
+    "modal": {
+      "close": "Close",
+      "go_back": "Go back"
+    },
+    "sr": {
+      "dismiss": "Dismiss",
+      "open_main_menu": "Open main menu",
+      "open_user_menu": "Open user menu"
+    },
+    "theme": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
+    }
+  }
 }

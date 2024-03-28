@@ -18,8 +18,12 @@ Check out the suite of software tools and assets leveraged to enhance the brilli
 - [Nuxt/Image](https://image.nuxt.com/): For optimising images
 - [Pinia](https://pinia.vuejs.org/): For effective state management
 - [Tailwind](https://tailwindcss.com): For versatile css styling
+- [typewriterjs](https://github.com/tameemsafi/typewriterjs): For the animated typewriter effect
+- [tsParticles](https://particles.js.org/): For the dynamic particle effects
 
 ## Asset Inventory
 - [Tailwind UI](https://tailwindui.com): Modern styled UI components (holding a Personal Complete Package Restricted License)
+- [Aceternity UI](https://ui.aceternity.com/): Impressive animated UI components for a variety of use cases 
 - [Headless UI](https://headlessui.com/): Minimalistic unstyled UI components
 - [Heroicons](https://heroicons.com/): Used for a diverse range of generic icons
+- [Flagpedia](https://flagpedia.net/): Used for flag icons

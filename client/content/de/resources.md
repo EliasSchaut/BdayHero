@@ -18,8 +18,12 @@ Wirf einen Blick auf die Software-Tools, die zur Verbesserung dieser Website ein
 - [Nuxt/Image](https://image.nuxt.com/): Für die Optimierung von Bildern
 - [Pinia](https://pinia.vuejs.org/): Für eine effektive Zustandsverwaltung
 - [Tailwind](https://tailwindcss.com): Für vielseitiges Css-Styling
+- [typewriterjs](https://github.com/tameemsafi/typewriterjs): Für den animierten Schreibmaschineneffekt
+- [tsParticles](https://particles.js.org): Für die dynamischen Partikeleffekte
 
 ## Asset Inventar
 - [Tailwind UI](https://tailwindui.com): Moderne gestylte UI-Komponenten (mit einer Personal Complete Package Restricted License)
+- [Aceternity UI](https://ui.aceternity.com/): Beeindruckende animierte UI-Komponenten für eine Vielzahl von Anwendungsfällen
 - [Headless UI](https://headlessui.com/): Minimalistische, ungestylte UI-Komponenten
 - [Heroicons](https://heroicons.com/): Verwendet für eine Vielzahl von generischen Icons
+- [Flagpedia](https://flagpedia.net/): Verwendet für Flaggensymbole

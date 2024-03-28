@@ -288,4 +288,9 @@
     <input name="FBLANG" type="hidden" value="de" />
   </form>-->
 </template>
-<script setup lang="ts"></script>
+
+<script setup lang="ts">
+definePageMeta({
+  layout: 'slim',
+});
+</script>
