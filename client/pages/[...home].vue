@@ -29,11 +29,31 @@
           subtitle="Singe deine Lieblingssongs"
           image_src=""
         />
-        <Card title="DJ Floor" subtitle="Blubb" image_src="/img/dj_paul.jpg" />
-        <Card title="Mannschaftskampf" subtitle="Blubb" image_src="" />
-        <Card title="Secret Meta-Game" subtitle="" image_src="" />
-        <Card title="Speed-Friending" subtitle="" image_src="" />
-        <Card title="Kunst-Ecke" subtitle="" image_src="" />
+        <Card
+          title="DJ Floor"
+          subtitle="Tanze mit @paulstr die ganze Nacht"
+          image_src="/img/dj_paul.jpg"
+        />
+        <Card
+          title="Mannschaftskampf"
+          subtitle="Setze, Kämpfe und Gewinne"
+          image_src=""
+        />
+        <Card
+          title="Secret Meta-Game"
+          subtitle="Eine Schnitzeljagd für Rätzelliebende"
+          image_src=""
+        />
+        <Card
+          title="Speed-Friending"
+          subtitle="Schnell und einfach anfreunden"
+          image_src=""
+        />
+        <Card
+          title="Kunst-Ecke"
+          subtitle="Hinterlasse deine Persönlichkeit"
+          image_src=""
+        />
       </TabsItem>
       <TabsItem title="Events">
         <Card
@@ -60,7 +80,7 @@
       <TabsItem title="Game">
         <Card
           title="Gaming-Ecke"
-          subtitle="Mario Kart/Smash Bros/Unrailed!/etc."
+          subtitle="MarioKart/SmashBros/Unrailed!/etc."
           image_src=""
         />
         <Card
@@ -106,25 +126,92 @@
     </Tabs>
   </NuxtLayout>
   <Testimonials
+    speed="40s"
     :cards="[
       {
         title: 'Lila Pause',
-        content: 'Ich hatte den Spaß meines Lebens und so',
-        name: 'Elias Schaut',
+        content: 'Den Abend konnte man gut Blau und Lila genießen',
+        name: 'Anonym',
       },
-      { title: 'Fraktion', content: 'Beschreibung', name: 'Name' },
+      {
+        title: 'ThaiFreitagsTreff',
+        content:
+          'Wer Elias nicht kennt und seine Geburtstage, hat echt was im Leben verpasst!',
+        name: 'Sean',
+      },
       {
         title: 'Lila Pause',
-        content: 'Ich hatte den Spaß meines Lebens und so',
-        name: 'Elias Schaut',
+        content: 'Ich würde meinen eigenen Vater verkaufen für eine Einladung',
+        name: 'Kaan',
       },
-      { title: 'Fraktion', content: 'Beschreibung', name: 'Name' },
+      {
+        title: 'Lila Pause',
+        content:
+          'Wenn Elias so viel Aufwand in sein Studium stecken würde, wie er in seine Geburtstagsfeiern steckt, hätte er schon längst einen Doktor.',
+        name: 'Niklas',
+      },
+      {
+        title: 'Lila Pause',
+        content: 'Ooooooooh Elias du bist so geil',
+        name: 'Anonym',
+      },
+      {
+        title: 'Lila Pause',
+        content: 'Wichtig und richtig so.',
+        name: 'Anonym',
+      },
+      {
+        title: 'Youtube',
+        content:
+          'Elias Geburtstag ist das Event des Jahres. Wer weiß das? Wieder keiner.',
+        name: 'Axel Stoll',
+      },
+      {
+        title: 'Tinder',
+        content:
+          'Der Bierpongtisch, eine unendliche Bierquelle. Leute, das müsst ihr verinnerlichen!',
+        name: 'Axel Stramm',
+      },
+      {
+        title: 'Lila Pause',
+        content:
+          'Ich sehe JP sonst nie. Wobei neulich habe ich ihn getroffen aber wir haben nicht geredet',
+        name: 'Anna',
+      },
+      {
+        title: 'Lila Pause',
+        content: 'Toller Abend, jemanden abschleppen war aber schwer...',
+        name: 'Mitglied der DDR-Lesbengruppe \'Lila Pause\'',
+      },
+      {
+        title: 'Lila Pause',
+        content:
+          'Wer braucht Tinder, wenn man bei Elias Geburtstag heiße Singles aus der Umgebung von Mannheim kennenlernen kann?',
+        name: 'Anonym',
+      },
+      { title: 'Lila Pause', content: 'Für Fortnite', name: 'Anonym' },
+      {
+        title: 'HaDiKo',
+        content: 'Beste Party zu der ich nicht eingeladen war\n',
+        name: 'Anonym',
+      },
+      { title: 'Umwege', content: '10 von 10', name: 'Ein Medizinstudent' },
+      {
+        title: 'Lila Pause',
+        content: 'DAS (andere) Fest',
+        name: 'Anonym',
+      },
+      {
+        title: 'Lila Pause',
+        content: 'Wo Saufen eine Ehre ist, darf Kotzen keine Schande sein',
+        name: 'Der echte Thilo',
+      },
     ]"
     heading="Das sagen die Gäste"
     pause_on_hover
   />
   <NuxtLayout name="dots">
-    <Articles
+    <ArticleOverview
       :articles="[
         {
           title: 'Bday 23',
@@ -172,8 +259,9 @@
       </form>
     </div>
     <SparklesBeams />
+    <Footer class="relative top-32" />
   </div>
-  <form
+  <!--<form
     class="hidden text-white"
     action="https://ml.kundenserver.de/cgi-bin/mailinglist.cgi"
     method="POST"
@@ -200,6 +288,6 @@
     <input name="FBMLNAME" type="hidden" value="bday@schaut.dev" />
     <br />
     <input name="FBLANG" type="hidden" value="de" />
-  </form>
+  </form>-->
 </template>
 <script setup lang="ts"></script>

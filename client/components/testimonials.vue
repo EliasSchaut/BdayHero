@@ -33,7 +33,7 @@
             >
               {{ card.content }}
             </span>
-            <div class="relative z-20 mt-6 flex flex-row items-center">
+            <div class="relative z-20 mt-6 self-end">
               <span class="flex flex-col gap-1">
                 <span class="text-sm font-normal leading-[1.6] text-gray-400">
                   {{ card.name }}

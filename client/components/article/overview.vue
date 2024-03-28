@@ -9,7 +9,7 @@
         class="mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 dark:border-gray-500 sm:mt-16 sm:pt-16 md:mx-0 md:max-w-none md:grid-cols-3"
       >
         <li v-for="article of articles" :key="article.title">
-          <ArticlesPreview
+          <ArticlePreview
             :title="article.title"
             :href="article.href"
             :date="article.date"
