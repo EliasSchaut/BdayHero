@@ -22,6 +22,7 @@
     <Media />
   </Lamp>
   <NuxtLayout name="grid">
+    <LayoutHeading class="relative top-24">Das erwartet dich</LayoutHeading>
     <Tabs>
       <TabsItem title="Featured">
         <Card
@@ -238,12 +239,9 @@
     class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-black antialiased"
   >
     <div class="mx-auto max-w-2xl p-4">
-      <h1
-        class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-600 bg-clip-text text-center font-sans text-lg font-bold text-transparent md:text-7xl"
-      >
+      <LayoutHeading class="relative text-center text-2xl md:text-7xl">
         Get notified
-      </h1>
-      <p></p>
+      </LayoutHeading>
       <p
         class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-500"
       >
@@ -259,7 +257,7 @@
       </form>
     </div>
     <SparklesBeams />
-    <Footer class="relative top-32" />
+    <LayoutFooter class="relative top-32" />
   </div>
   <!--<form
     class="hidden text-white"

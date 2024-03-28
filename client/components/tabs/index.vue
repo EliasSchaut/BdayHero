@@ -1,9 +1,9 @@
 <template>
   <div
-    class="relative mx-5 my-40 flex h-[70rem] w-full max-w-5xl flex-col items-start justify-start [perspective:1000px]"
+    class="mx-10 my-40 flex h-[100rem] w-full max-w-5xl flex-col items-start justify-start [perspective:1000px] md:h-[46rem]"
   >
     <div
-      class="no-visible-scrollbar relative flex w-full max-w-full flex-row items-center justify-start overflow-visible [perspective:1000px]"
+      class="flex w-full max-w-full flex-row items-center justify-center overflow-visible [perspective:1000px]"
     >
       <TabsButtons
         class="hidden sm:block"

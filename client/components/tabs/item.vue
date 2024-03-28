@@ -3,13 +3,13 @@
     class="absolute left-0 h-full w-full transition-all duration-300 ease-in-out"
     :style="{
       scale: 1 - idx * 0.1,
-      top: tabsState.hovering ? `${idx * -80}px` : '0',
+      top: tabsState.hovering ? `${idx * -45}px` : `${idx * -22.5}px`,
       zIndex: -idx,
-      opacity: idx < 3 ? 1 - idx * 0.1 : 0,
+      opacity: idx === 0 ? 1 : tabsState.hovering ? 1 - idx * 0.1 : 0,
     }"
   >
     <div
-      class="flex flex-wrap place-content-center place-items-center gap-2 rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900 py-5 text-xl font-bold text-white md:text-4xl"
+      class="flex flex-col flex-wrap place-content-center gap-2 place-self-stretch rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900 py-5 text-xl font-bold text-white md:flex-row md:text-4xl"
     >
       <slot />
     </div>

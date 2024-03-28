@@ -1,8 +1,8 @@
 <template>
   <div class="mx-5 h-[30rem]">
-    <h1 class="flex justify-center text-4xl font-bold text-white">
+    <LayoutHeading class="flex justify-center">
       {{ title }}
-    </h1>
+    </LayoutHeading>
 
     <div class="flex justify-center">
       <ul

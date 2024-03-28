@@ -2,12 +2,12 @@
   <div
     class="dark:bg-grid-white/[0.05] relative flex h-[40rem] flex-col items-center justify-center overflow-hidden rounded-md bg-white antialiased dark:bg-black"
   >
-    <h1
+    <LayoutHeading
       v-if="heading !== ''"
-      class="relative -top-10 flex justify-center text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight"
+      class="relative -top-10 flex justify-center"
     >
       {{ heading }}
-    </h1>
+    </LayoutHeading>
     <div
       class="scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
     >

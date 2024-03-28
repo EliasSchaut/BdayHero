@@ -8,7 +8,6 @@
       {{ title }}
     </h1>
     <div class="relative h-40 w-[40rem]">
-      {/* Gradients */}
       <div
         class="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"
       />

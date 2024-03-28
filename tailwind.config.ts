@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default <Partial<Config>>{
   darkMode: 'class',
@@ -11,6 +12,10 @@ export default <Partial<Config>>{
     './app.vue',
   ],
   theme: {
+    screens: {
+      xs: '475px',
+      ...defaultTheme.screens,
+    },
     extend: {
       animation: {
         scroll:
