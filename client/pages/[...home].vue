@@ -27,7 +27,7 @@
         <Card
           title="Karaoke"
           subtitle="Singe deine Lieblingssongs"
-          image_src=""
+          image_src="/img/karaoke.jpg"
         />
         <Card
           title="DJ Floor"
@@ -37,22 +37,22 @@
         <Card
           title="Mannschaftskampf"
           subtitle="Setze, Kämpfe und Gewinne"
-          image_src=""
+          image_src="/img/fight.jpg"
         />
         <Card
           title="Secret Meta-Game"
           subtitle="Eine Schnitzeljagd für Rätzelliebende"
-          image_src=""
+          image_src="/img/meta.jpg"
         />
         <Card
           title="Speed-Friending"
           subtitle="Schnell und einfach anfreunden"
-          image_src=""
+          image_src="/img/speed_friending.jpg"
         />
         <Card
           title="Kunst-Ecke"
           subtitle="Hinterlasse deine Persönlichkeit"
-          image_src=""
+          image_src="/img/art.jpg"
         />
       </TabsItem>
       <TabsItem title="Events">
@@ -81,7 +81,7 @@
         <Card
           title="Gaming-Ecke"
           subtitle="MarioKart/SmashBros/Unrailed!/etc."
-          image_src=""
+          image_src="/img/gaming_ecke.jpg"
         />
         <Card
           title="Outdoor-Spiele"
