@@ -3,7 +3,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   workspaceDir: '.',
-  srcDir: './src',
+  srcDir: './client',
   modules: [
     '@nuxt/content',
     '@nuxtjs/i18n',

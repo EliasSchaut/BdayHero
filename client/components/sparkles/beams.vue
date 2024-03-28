@@ -19,7 +19,6 @@
 
       <path
         v-for="(path, index) in paths"
-        v-motion
         :key="`path-${index}`"
         :d="path"
         :stroke="`url(#linearGradient-${index})`"
@@ -31,31 +30,11 @@
           v-for="(path, index) in paths"
           :id="`linearGradient-${index}`"
           :key="`gradient-${index}`"
-          x1="100%"
-          x2="100%"
-          y1="100%"
-          y2="100%"
-          v-motion
-          :initial="{
-            x1: '0%',
-            x2: '0%',
-            y1: '0%',
-            y2: '0%',
-          }"
-          :visible="{
-            x1: '100%',
-            x2: '95%',
-            y1: '100%',
-            y2: `${93 + Math.random() * 8}%`,
-            transition: {
-              type: 'keyframes',
-              duration: `${Math.random() * 10 + 10}`,
-              ease: 'easeInOut',
-              repeat: 'Infinity',
-              repeatDelay: `${Math.random() * 10}`,
-              delay: `${Math.random() * 10}`,
-            },
-          }"
+          ref="gradients"
+          x1="0"
+          x2="0"
+          y1="0"
+          y2="0"
         >
           <stop stop-color="#18CCFC" stop-opacity="0" offset="0" />
           <stop stop-color="#18CCFC" offset="0" />
@@ -80,7 +59,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 const paths = [
   'M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875',
   'M-373 -197C-373 -197 -305 208 159 335C623 462 691 867 691 867',
@@ -133,4 +112,48 @@ const paths = [
   'M-44 -573C-44 -573 24 -168 488 -41C952 86 1020 491 1020 491',
   'M-37 -581C-37 -581 31 -176 495 -49C959 78 1027 483 1027 483',
 ];
+
+export default defineComponent({
+  setup() {
+    return { paths };
+  },
+  mounted() {
+    this.addGradientAnimation();
+  },
+  methods: {
+    addGradientAnimation() {
+      (this.$refs.gradients as SVGLinearGradientElement[]).forEach(
+        (gradient) => {
+          setTimeout(() => {
+            this.singleBeamAnimation(gradient);
+          }, Math.random() * 10000);
+        },
+      );
+    },
+    singleBeamAnimation(gradient: SVGLinearGradientElement) {
+      const duration = Math.random() * 10000 + 10000;
+      const delay = Math.random() * 10000;
+      const y2 = 93 + Math.random() * 8;
+      const step_delay = 10;
+      let start: number = 0;
+      let percentage: number = 0.0;
+
+      const intervall = setInterval(() => {
+        percentage = start / duration;
+
+        gradient.setAttribute('x1', `${percentage * 100}%`);
+        gradient.setAttribute('x2', `${percentage * 95}%`);
+        gradient.setAttribute('y1', `${percentage * 100}%`);
+        gradient.setAttribute('y2', `${percentage * y2}%`);
+        start += step_delay;
+        if (percentage >= 1) {
+          clearInterval(intervall);
+          setTimeout(() => {
+            this.singleBeamAnimation(gradient);
+          }, delay);
+        }
+      }, step_delay);
+    },
+  },
+});
 </script>

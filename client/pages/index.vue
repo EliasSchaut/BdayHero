@@ -23,57 +23,85 @@
   </Lamp>
   <NuxtLayout name="grid">
     <Tabs>
-      <TabsItem title="Party">
+      <TabsItem title="Featured">
         <Card
           title="Karaoke"
-          subtitle="Lass deine Stimmbänder vibrieren und singe deine Lieblingslieder mit fast 10.000 verfügbaren Songs"
+          subtitle="Singe deine Lieblingssongs"
           image_src=""
         />
-        <Card title="DJ Floor" subtitle="Blubb" image_src="" />
+        <Card title="DJ Floor" subtitle="Blubb" image_src="/img/dj_paul.jpg" />
         <Card title="Mannschaftskampf" subtitle="Blubb" image_src="" />
-        <Card title="Party Spiele" subtitle="Bierpong/Rage-Cage" image_src="" />
+        <Card title="Secret Meta-Game" subtitle="" image_src="" />
+        <Card title="Speed-Friending" subtitle="" image_src="" />
+        <Card title="Kunst-Ecke" subtitle="" image_src="" />
       </TabsItem>
-      <TabsItem title="Game">
+      <TabsItem title="Events">
         <Card
           title="Kahoot"
           subtitle="Wissenswertes und Lustiges über Elias"
-          image_src=""
+          image_src="/img/kahoot.jpg"
         />
         <Card
           title="O-Lympia"
-          subtitle="Bierkastenlauf, Pantomime,Eierlauf"
-          image_src=""
+          subtitle="Bierkastenlauf/Pantomime/Eierlauf"
+          image_src="/img/olympia.jpg"
         />
         <Card
           title="Billard-Turnier"
           subtitle="+ Freies Spiel die ganze Nacht"
-          image_src=""
+          image_src="/img/billard.jpg"
         />
         <Card
+          title="Stand-Up-Commedy"
+          subtitle="Vllt lol"
+          image_src="/img/stand_up.jpg"
+        />
+      </TabsItem>
+      <TabsItem title="Game">
+        <Card
           title="Gaming-Ecke"
-          subtitle="Switch, Steamdeck,Brettspiele"
+          subtitle="Mario Kart/Smash Bros/Unrailed!/etc."
           image_src=""
         />
         <Card
           title="Outdoor-Spiele"
-          subtitle="Slackline, Wikingerschach, Frisbee, Pompfen"
-          image_src=""
+          subtitle="Slackline/Wikingerschach/Frisbee/usw."
+          image_src="/img/outdoor_games.jpg"
+        />
+        <Card
+          title="Indoor-Spiele"
+          subtitle="Brettspiele/Karten/Rollenspiele/usw."
+          image_src="/img/indoor_games.jpg"
         />
       </TabsItem>
-      <TabsItem title="Nerd">
-        <Card title="Secret Meta-Game" subtitle="" image_src="" />
-        <Card title="Speed-Friending" subtitle="" image_src="" />
-        <Card title="Kunst-Ecke" subtitle="" image_src="" />
-        <Card title="Stand-Up-Commedy" subtitle="Vllt lol" image_src="" />
-      </TabsItem>
       <TabsItem title="Drinks">
-        <Card title="Cocktails" subtitle="auch alkoholfrei" image_src="" />
-        <Card title="Gezapftes Bier" subtitle="" image_src="" />
+        <Card
+          title="Cocktails"
+          subtitle="Auch alkoholfrei"
+          image_src="/img/cocktails.jpg"
+        />
+        <Card
+          title="Gezapftes Bier"
+          subtitle="Frisch vom Fass"
+          image_src="/img/zapfe.jpg"
+        />
       </TabsItem>
       <TabsItem title="Food">
-        <Card title="Grill" subtitle="" image_src="" />
-        <Card title="Fingerfood" subtitle="Salat/Kuchen/Snacks" image_src="" />
-        <Card title="Eis" subtitle="" image_src="" />
+        <Card
+          title="Grill"
+          subtitle="Frisches vom Grill"
+          image_src="/img/grill.jpg"
+        />
+        <Card
+          title="Fingerfood"
+          subtitle="Salat/Kuchen/Snacks"
+          image_src="/img/fingerfood.jpg"
+        />
+        <Card
+          title="Eis"
+          subtitle="Für den süßen Abgang"
+          image_src="/img/eis.jpg"
+        />
       </TabsItem>
     </Tabs>
   </NuxtLayout>

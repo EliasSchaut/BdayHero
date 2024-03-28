@@ -43,7 +43,7 @@
           <img
             :src="image_src"
             :alt="image_alt.length ? image_alt : title"
-            class="w-full rounded-xl object-cover group-hover/card:shadow-xl"
+            class="h-[120px] w-full rounded-xl object-cover object-center group-hover/card:shadow-xl"
           />
         </div>
       </div>
