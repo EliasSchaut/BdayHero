@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { DangerException } from '@/common/exceptions/danger.exception';
 
 @Injectable()
 export class NewsletterService {
@@ -28,7 +29,12 @@ export class NewsletterService {
           mailaccount2_r: email,
         }),
       },
-    );
+    ).catch((e) => {
+      throw new DangerException(
+        'Internal error with newsletter. Please try again later!',
+        e,
+      );
+    });
     return res.status === 200;
   }
 }

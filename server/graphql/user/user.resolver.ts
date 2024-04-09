@@ -13,31 +13,11 @@ import { NewsletterInputModel } from '@/types/models/inputs/newsletter.input';
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
-  @Query(() => Boolean, {
-    name: 'subscribe',
-  })
-  async subscribe(
-    @I18n() i18n: I18nContext<I18nTranslations>,
-    @Args('newsletter_input') newsletter_input: NewsletterInputModel,
-  ): Promise<boolean> {
-    return this.userService.subscribe(newsletter_input.email, { i18n });
-  }
-
-  @Query(() => Boolean, {
-    name: 'unsubscribe',
-  })
-  async unsubscribe(
-    @I18n() i18n: I18nContext<I18nTranslations>,
-    @Args('newsletter_input') newsletter_input: NewsletterInputModel,
-  ): Promise<boolean> {
-    return this.userService.unsubscribe(newsletter_input.email, { i18n });
-  }
-
   @Role(RoleEnum.USER)
   @Query(() => UserModel, {
     name: 'user',
   })
-  async user(
+  async find(
     @I18n() i18n: I18nContext<I18nTranslations>,
     @UserID() user_id: string,
   ): Promise<UserModel | null> {
@@ -46,7 +26,7 @@ export class UserResolver {
 
   @Role(RoleEnum.USER)
   @Mutation(() => UserModel, { name: 'user_update' })
-  async user_update(
+  async update(
     @I18n() i18n: I18nContext<I18nTranslations>,
     @UserID() user_id: string,
     @Args({
@@ -63,10 +43,30 @@ export class UserResolver {
 
   @Role(RoleEnum.USER)
   @Mutation(() => UserModel, { name: 'user_delete' })
-  async user_delete(
+  async delete(
     @I18n() i18n: I18nContext<I18nTranslations>,
     @UserID() user_id: string,
   ): Promise<UserModel | null> {
     return this.userService.delete({ i18n, user_id });
+  }
+
+  @Mutation(() => Boolean, {
+    name: 'newsletter_subscribe',
+  })
+  async subscribe(
+    @I18n() i18n: I18nContext<I18nTranslations>,
+    @Args('newsletter_input') newsletter_input: NewsletterInputModel,
+  ): Promise<boolean> {
+    return this.userService.subscribe(newsletter_input.email, { i18n });
+  }
+
+  @Mutation(() => Boolean, {
+    name: 'newsletter_unsubscribe',
+  })
+  async unsubscribe(
+    @I18n() i18n: I18nContext<I18nTranslations>,
+    @Args('newsletter_input') newsletter_input: NewsletterInputModel,
+  ): Promise<boolean> {
+    return this.userService.unsubscribe(newsletter_input.email, { i18n });
   }
 }
