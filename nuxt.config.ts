@@ -37,7 +37,7 @@ export default defineNuxtConfig({
         tokenStorage: 'cookie',
         authType: 'Bearer',
         authHeader: 'Authorization',
-        httpEndpoint: process.env.BACKEND_URL + '/graphql',
+        httpEndpoint: 'http://localhost:3001/graphql',
       },
     },
   },

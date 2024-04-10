@@ -238,7 +238,7 @@
   <div
     class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-black antialiased"
   >
-    <LayoutNewsletter class="z-10" />
+    <LayoutNewsletter id="newsletter" class="z-10" />
     <SparklesBeams />
     <LayoutFooter class="relative top-32" />
   </div>
