@@ -8,7 +8,7 @@
       @play="add_ambient"
       ref="movie"
       class="relative z-20 mt-[5%] w-[20rem] rounded-md shadow-md sm:top-16 sm:w-[30rem]"
-      src="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_30mb.mp4"
+      :src="src"
       controls
       muted
       loop
@@ -18,6 +18,12 @@
 
 <script lang="ts">
 export default defineComponent({
+  props: {
+    src: {
+      type: String,
+      required: true,
+    },
+  },
   mounted() {
     (this.$refs.movie as HTMLVideoElement).play();
   },

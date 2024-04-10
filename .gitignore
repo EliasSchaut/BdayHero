@@ -1,4 +1,4 @@
-
+!.gitkeep
 
 # Node dependencies
 node_modules
@@ -69,3 +69,8 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Video
+*.mp4
+*.ogg
+*.webm

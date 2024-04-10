@@ -19,7 +19,7 @@
     ]"
   />
   <Lamp>
-    <Media />
+    <Media src="/vid/Bday24.mp4" />
   </Lamp>
   <NuxtLayout name="grid">
     <LayoutHeading class="relative top-24">Das erwartet dich</LayoutHeading>
@@ -72,11 +72,11 @@
           subtitle="+ Freies Spiel die ganze Nacht"
           image_src="/img/billard.jpg"
         />
-        <Card
+        <!--<Card
           title="Stand-Up-Commedy"
           subtitle="Vllt lol"
           image_src="/img/stand_up.jpg"
-        />
+        />-->
       </TabsItem>
       <TabsItem title="Game">
         <Card
