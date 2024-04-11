@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-60 flex-col items-start justify-between rounded-2xl bg-gray-900 p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
+    class="flex w-60 flex-col items-start justify-between rounded-2xl bg-white p-5 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800"
   >
     <div class="flex items-center gap-x-4 text-xs">
       <time class="text-gray-500 dark:text-gray-400">{{ date }}</time>

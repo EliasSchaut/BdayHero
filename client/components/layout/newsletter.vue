@@ -12,7 +12,7 @@
       <FormInputEmail
         id="email"
         placeholder="max@mustermann"
-        class="relative z-10 w-full rounded-lg border border-neutral-800 bg-neutral-950 text-white placeholder:text-neutral-700 focus:ring-2 focus:ring-teal-500"
+        class="w-full rounded-lg border border-zinc-200 text-gray-700 placeholder:text-neutral-400 focus:ring-2 focus:ring-zinc-500 dark:border-zinc-800 dark:text-white dark:placeholder:text-neutral-700"
         required
       />
       <FormSubmit
@@ -20,8 +20,8 @@
         :class="[
           feedback_done
             ? 'bg-green-600 hover:bg-green-500 focus-visible:outline-green-600'
-            : '',
-          'mt-4 transform ease-in-out',
+            : 'bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600',
+          'mt-4 transition duration-200 ease-in-out',
         ]"
         :label="
           feedback_done
@@ -71,9 +71,9 @@ export default defineComponent({
   methods: {
     async submit(e: Event, form_data: FormData) {
       if (this.action === 'subscribe') {
-        this.subscribe(e, form_data);
+        await this.subscribe(e, form_data);
       } else {
-        this.unsubscribe(e, form_data);
+        await this.unsubscribe(e, form_data);
       }
     },
     async subscribe(e: Event, form_data: FormData) {

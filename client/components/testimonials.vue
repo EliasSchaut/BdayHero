@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dark:bg-grid-white/[0.05] relative flex h-[40rem] flex-col items-center justify-center overflow-hidden rounded-md bg-white antialiased dark:bg-black"
+    class="relative flex h-[40rem] flex-col items-center justify-center overflow-hidden rounded-md bg-white antialiased dark:bg-black"
   >
     <LayoutHeading
       v-if="heading !== ''"
@@ -21,7 +21,7 @@
         <li
           v-for="card in cards"
           :key="card.title"
-          class="bg- relative w-[250px] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-700 bg-gradient-to-b from-gray-800 to-gray-900 px-8 py-6 sm:w-[350px] md:w-[450px]"
+          class="bg- relative w-[250px] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-700 bg-gradient-to-b from-gray-700 to-gray-800 px-8 py-6 dark:from-gray-800 dark:to-gray-900 sm:w-[350px] md:w-[450px]"
         >
           <blockquote>
             <div

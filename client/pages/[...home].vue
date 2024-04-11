@@ -277,7 +277,7 @@
   </NuxtLayout>
 
   <div
-    class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-black antialiased"
+    class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-white antialiased dark:bg-black"
   >
     <LayoutNewsletter id="newsletter" class="z-10" />
     <SparklesBeams />

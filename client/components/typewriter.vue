@@ -1,8 +1,8 @@
 <template>
   <span
-    class="mt-20 flex flex-col justify-center text-center text-2xl text-white sm:flex-row"
+    class="mt-20 flex flex-col justify-center text-center text-2xl text-zinc-900 dark:text-white sm:flex-row"
     >{{ heading + (heading.length ? '&nbsp;' : '') }}
-    <span id="typewriter" class="font-bold text-pink-400" />
+    <span id="typewriter" class="font-bold text-pink-500 dark:text-pink-400" />
   </span>
 </template>
 

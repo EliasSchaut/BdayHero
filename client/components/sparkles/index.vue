@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black"
+    class="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-black"
   >
     <div class="absolute inset-0 h-screen w-full">
       <SparklesCore
@@ -9,11 +9,11 @@
         :maxSize="1.4"
         :particleDensity="100"
         class="h-full w-full"
-        particleColor="#FFFFFF"
+        particleColor="#999999"
       />
     </div>
     <h1
-      class="relative z-20 text-center text-5xl font-bold text-white md:text-7xl lg:text-6xl"
+      class="relative z-20 text-center text-5xl font-bold text-zinc-900 dark:text-white md:text-7xl lg:text-6xl"
       v-motion-fade
     >
       {{ title }}
@@ -21,7 +21,7 @@
     <h2
       v-motion
       v-if="subtitle.length !== 0"
-      class="mt-20 text-3xl font-bold text-white opacity-0 md:text-5xl"
+      class="mt-20 text-3xl font-bold text-zinc-900 opacity-0 dark:text-white md:text-5xl"
       :initial="{
         opacity: 0,
       }"

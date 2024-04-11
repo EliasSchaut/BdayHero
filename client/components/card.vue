@@ -16,7 +16,7 @@
       }"
     >
       <div
-        class="group/card xs:w-[20rem] w-[16rem] rounded-xl border border-black/[0.1] bg-gray-50 p-6 [transform-style:preserve-3d] dark:border-white/[0.2] dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] [&>*]:[transform-style:preserve-3d]"
+        class="group/card w-[16rem] rounded-xl border border-black/[0.1] bg-gray-50 p-6 [transform-style:preserve-3d] dark:border-white/[0.2] dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] xs:w-[20rem] [&>*]:[transform-style:preserve-3d]"
       >
         <p
           class="w-fit text-xl font-bold text-neutral-600 transition duration-200 ease-linear dark:text-white"
