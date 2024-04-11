@@ -34,7 +34,8 @@
     >
       {{ subtitle }}
     </h2>
-    <button
+    <nuxt-link
+      :href="button_link"
       v-motion
       type="button"
       class="mt-20 rounded-full bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white opacity-0 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -50,8 +51,8 @@
         },
       }"
     >
-      JOIN NOW!
-    </button>
+      {{ button_label }}
+    </nuxt-link>
   </div>
 </template>
 
@@ -64,6 +65,14 @@ defineProps({
   subtitle: {
     type: String,
     default: '',
+  },
+  button_label: {
+    type: String,
+    default: 'JOIN NOW!',
+  },
+  button_link: {
+    type: String,
+    default: '/',
   },
 });
 </script>

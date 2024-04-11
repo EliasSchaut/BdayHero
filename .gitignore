@@ -71,6 +71,6 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Video
-*.mp4
-*.ogg
-*.webm
+*/**/*.mp4
+*/**/*.ogg
+*/**/*.webm

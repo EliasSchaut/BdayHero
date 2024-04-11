@@ -1,5 +1,29 @@
 <template>
-  <Sparkles title="Kids Bday" subtitle="08. Juni 2024" />
+  <div id="nav-hero" class="flex items-center justify-center">
+    <div
+      class="absolute top-5 z-10 opacity-0"
+      v-motion
+      :initial="{
+        opacity: 0,
+        y: -10,
+      }"
+      :enter="{
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: 3500,
+        },
+      }"
+    >
+      <LayoutNav mobile_only />
+    </div>
+  </div>
+  <Sparkles
+    title="Kids Bday"
+    subtitle="08. Juni 2024"
+    button_label="GET NOTIFIED!!"
+    button_link="#newsletter"
+  />
   <Typewriter
     heading="Ein Geburtstag"
     :strings="[
@@ -235,6 +259,7 @@
       ]"
     />
   </NuxtLayout>
+
   <div
     class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-black antialiased"
   >

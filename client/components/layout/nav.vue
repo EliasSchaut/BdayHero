@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="hidden md:inline">
+    <nav v-if="!mobile_only" class="hidden md:inline">
       <ul
         class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-gray-800 shadow-lg shadow-gray-800/5 ring-1 ring-gray-900/5 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/10"
       >
@@ -21,7 +21,10 @@
     </nav>
     <button
       type="button"
-      class="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-lg shadow-gray-800/5 ring-1 ring-gray-900/5 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/10 dark:hover:ring-white/20 md:hidden"
+      :class="[
+        mobile_only ? '' : 'md:hidden',
+        'group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-lg shadow-gray-800/5 ring-1 ring-gray-900/5 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/10 dark:hover:ring-white/20',
+      ]"
       @click="$refs.mobile_nav.show()"
     >
       Menu
@@ -57,7 +60,12 @@
           </nuxt-link>
         </li>
       </ul>
-      <div class="mt-5 flex flex-row justify-stretch space-x-4 sm:hidden">
+      <div
+        :class="[
+          mobile_only ? '' : 'md:hidden',
+          'mt-5 flex flex-row justify-stretch space-x-4',
+        ]"
+      >
         <SettingLang class="w-full" />
         <SettingTheme class="w-full" />
       </div>
@@ -71,6 +79,9 @@ import { ChevronDownIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
 export default defineComponent({
   components: { ChevronDownIcon, XMarkIcon },
+  props: {
+    mobile_only: { type: Boolean, default: false },
+  },
   setup() {
     return {
       pages: [
