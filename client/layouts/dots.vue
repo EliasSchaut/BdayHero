@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-[50rem] w-full items-center justify-center bg-white dark:bg-black"
+    class="relative flex h-[70rem] w-full items-center justify-center bg-white dark:bg-black md:h-[50rem]"
     style="background: url('/svg/bg-dot.svg') repeat"
   >
     <div

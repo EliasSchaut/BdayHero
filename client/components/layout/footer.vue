@@ -21,12 +21,16 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
 const navigation = {
   main: [
-    { name: 'Impressum', href: '/imprint' },
-    { name: 'Datenschutz', href: '/privacy' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Source Code', href: 'https://github.com/EliasSchaut/BdayHero' },
+    { name: t('pages.imprint'), href: '/imprint' },
+    { name: t('pages.privacy'), href: '/privacy' },
+    { name: t('pages.resources'), href: '/resources' },
+    {
+      name: t('pages.source'),
+      href: 'https://github.com/EliasSchaut/BdayHero',
+    },
   ],
 };
 </script>

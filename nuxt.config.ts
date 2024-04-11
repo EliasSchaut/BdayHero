@@ -21,10 +21,9 @@ export default defineNuxtConfig({
     port: Number(process.env.PORT_FRONTEND),
   },
 
-  security: {
-    corsHandler: {
-      origin: '*',
-      allowHeaders: '*',
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth',
     },
   },
 

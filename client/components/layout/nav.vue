@@ -20,14 +20,13 @@
       </ul>
     </nav>
     <button
-      type="button"
       :class="[
         mobile_only ? '' : 'md:hidden',
         'group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-lg shadow-gray-800/5 ring-1 ring-gray-900/5 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/10 dark:hover:ring-white/20',
       ]"
       @click="$refs.mobile_nav.show()"
     >
-      Menu
+      {{ $t('common.menu') }}
       <ChevronDownIcon
         class="ml-3 h-auto w-2 stroke-gray-500 group-hover:stroke-gray-700 dark:group-hover:stroke-gray-400"
       />
@@ -43,7 +42,7 @@
         <XMarkIcon class="h-6 w-6 text-gray-500 dark:text-gray-400" />
       </button>
       <h2 class="text-sm font-medium text-gray-600 dark:text-gray-400">
-        Navigation
+        {{ $t('common.nav_title') }}
       </h2>
     </div>
     <nav class="mt-6">
@@ -83,10 +82,11 @@ export default defineComponent({
     mobile_only: { type: Boolean, default: false },
   },
   setup() {
+    const { t } = useI18n();
     return {
       pages: [
         {
-          title: 'Home',
+          title: t('pages.home'),
           href: '/',
           matches: /^\/$/,
         },

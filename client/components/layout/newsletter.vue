@@ -1,12 +1,12 @@
 <template>
   <div class="mx-auto max-w-2xl p-4">
     <LayoutHeading class="relative text-center text-2xl md:text-7xl">
-      Get notified
+      {{ $t('home.newsletter.title') }}
     </LayoutHeading>
     <p
       class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-500"
     >
-      Get notified when the next Bday24 Infos are coming up.
+      {{ $t('home.newsletter.subtitle') }}
     </p>
     <FormVal class="flex flex-col justify-center" :submit="submit">
       <FormInputEmail
@@ -23,14 +23,18 @@
             : '',
           'mt-4 transform ease-in-out',
         ]"
-        :label="feedback_done ? 'Done. Confirm Mail!' : 'Subscribe'"
+        :label="
+          feedback_done
+            ? $t('home.newsletter.done')
+            : $t('home.newsletter.subscribe')
+        "
       />
       <button
         @click="action = 'unsubscribe'"
         type="submit"
         class="mt-4 font-bold text-zinc-600 underline hover:text-zinc-500"
       >
-        Unsubscribe
+        {{ $t('home.newsletter.unsubscribe') }}
       </button>
     </FormVal>
   </div>

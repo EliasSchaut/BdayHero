@@ -20,137 +20,135 @@
   </div>
   <Sparkles
     title="Kids Bday"
-    subtitle="08. Juni 2024"
-    button_label="GET NOTIFIED!!"
+    :subtitle="$t('common.bday.date')"
+    :button_label="$t('common.notified')"
     button_link="#newsletter"
   />
   <Typewriter
-    heading="Ein Geburtstag"
+    :heading="$t('home.typewriter.prefix')"
     :strings="[
-      'mit bester Laune',
-      'perfekt organisiert',
-      'mit maximalem Spaß',
-      'voller Überraschungen',
-      'mit all deinen Freunden',
-      'zum Erinnern & Erzählen',
-      'mit Elias\' Fliege',
-      'für jeden gemacht',
-      'mit cooler Location',
-      'zum Anfreunden & Verlieben',
-      'mit kreativer Unterhaltung',
-      'mit leckerem Essen & Trinken',
-      'für dich',
+      $t('home.typewriter.suffix.0'),
+      $t('home.typewriter.suffix.1'),
+      $t('home.typewriter.suffix.2'),
+      $t('home.typewriter.suffix.3'),
+      $t('home.typewriter.suffix.4'),
+      $t('home.typewriter.suffix.5'),
+      $t('home.typewriter.suffix.6'),
+      $t('home.typewriter.suffix.7'),
+      $t('home.typewriter.suffix.8'),
+      $t('home.typewriter.suffix.9'),
+      $t('home.typewriter.suffix.10'),
+      $t('home.typewriter.suffix.11'),
+      $t('home.typewriter.suffix.12'),
     ]"
   />
   <Lamp>
     <Media src="/vid/Bday24.mp4" />
   </Lamp>
   <NuxtLayout name="grid">
-    <LayoutHeading class="relative top-24">Das erwartet dich</LayoutHeading>
+    <LayoutHeading class="relative top-32"
+      >{{ $t('home.tabs.title') }}
+    </LayoutHeading>
     <Tabs>
-      <TabsItem title="Featured">
+      <TabsItem :title="$t('home.tabs.featured.title')">
         <Card
-          title="Karaoke"
-          subtitle="Singe deine Lieblingssongs"
+          :title="$t('home.tabs.featured.karaoke.title')"
+          :subtitle="$t('home.tabs.featured.karaoke.subtitle')"
           image_src="/img/karaoke.jpg"
         />
         <Card
-          title="DJ Floor"
-          subtitle="Tanze mit @paulstr die ganze Nacht"
+          :title="$t('home.tabs.featured.dj.title')"
+          :subtitle="$t('home.tabs.featured.dj.subtitle')"
           image_src="/img/dj_paul.jpg"
         />
         <Card
-          title="Mannschaftskampf"
-          subtitle="Setze, Kämpfe und Gewinne"
+          :title="$t('home.tabs.featured.team.title')"
+          :subtitle="$t('home.tabs.featured.team.subtitle')"
           image_src="/img/fight.jpg"
         />
         <Card
-          title="Secret Meta-Game"
-          subtitle="Eine Schnitzeljagd für Rätzelliebende"
+          :title="$t('home.tabs.featured.meta.title')"
+          :subtitle="$t('home.tabs.featured.meta.subtitle')"
           image_src="/img/meta.jpg"
         />
         <Card
-          title="Speed-Friending"
-          subtitle="Schnell und einfach anfreunden"
+          :title="$t('home.tabs.featured.speed_friending.title')"
+          :subtitle="$t('home.tabs.featured.speed_friending.subtitle')"
           image_src="/img/speed_friending.jpg"
         />
         <Card
-          title="Kunst-Ecke"
-          subtitle="Hinterlasse deine Persönlichkeit"
+          :title="$t('home.tabs.featured.art.title')"
+          :subtitle="$t('home.tabs.featured.art.subtitle')"
           image_src="/img/art.jpg"
         />
       </TabsItem>
-      <TabsItem title="Events">
+      <TabsItem :title="$t('home.tabs.events.title')">
         <Card
-          title="Kahoot"
-          subtitle="Wissenswertes und Lustiges über Elias"
+          :title="$t('home.tabs.events.kahoot.title')"
+          :subtitle="$t('home.tabs.events.kahoot.subtitle')"
           image_src="/img/kahoot.jpg"
         />
         <Card
-          title="O-Lympia"
-          subtitle="Bierkastenlauf/Pantomime/Eierlauf"
+          :title="$t('home.tabs.events.olympia.title')"
+          :subtitle="$t('home.tabs.events.olympia.subtitle')"
           image_src="/img/olympia.jpg"
         />
         <Card
-          title="Billard-Turnier"
-          subtitle="+ Freies Spiel die ganze Nacht"
+          :title="$t('home.tabs.events.pool.title')"
+          :subtitle="$t('home.tabs.events.pool.subtitle')"
           image_src="/img/billard.jpg"
         />
-        <!--<Card
-          title="Stand-Up-Commedy"
-          subtitle="Vllt lol"
-          image_src="/img/stand_up.jpg"
-        />-->
       </TabsItem>
-      <TabsItem title="Game">
+      <TabsItem :title="$t('home.tabs.game.title')">
         <Card
-          title="Gaming-Ecke"
-          subtitle="MarioKart/SmashBros/Unrailed!/etc."
+          :title="$t('home.tabs.game.corner.title')"
+          :subtitle="$t('home.tabs.game.corner.subtitle')"
           image_src="/img/gaming_ecke.jpg"
         />
         <Card
-          title="Outdoor-Spiele"
-          subtitle="Slackline/Wikingerschach/Frisbee/usw."
+          :title="$t('home.tabs.game.outdoor.title')"
+          :subtitle="$t('home.tabs.game.outdoor.subtitle')"
           image_src="/img/outdoor_games.jpg"
         />
         <Card
-          title="Indoor-Spiele"
-          subtitle="Brettspiele/Karten/Rollenspiele/usw."
+          :title="$t('home.tabs.game.indoor.title')"
+          :subtitle="$t('home.tabs.game.indoor.subtitle')"
           image_src="/img/indoor_games.jpg"
         />
       </TabsItem>
-      <TabsItem title="Drinks">
+      <TabsItem :title="$t('home.tabs.drinks.title')">
         <Card
-          title="Cocktails"
-          subtitle="Auch alkoholfrei"
+          :title="$t('home.tabs.drinks.cocktails.title')"
+          :subtitle="$t('home.tabs.drinks.cocktails.subtitle')"
           image_src="/img/cocktails.jpg"
         />
         <Card
-          title="Gezapftes Bier"
-          subtitle="Frisch vom Fass"
+          :title="$t('home.tabs.drinks.beer.title')"
+          :subtitle="$t('home.tabs.drinks.beer.subtitle')"
           image_src="/img/zapfe.jpg"
         />
       </TabsItem>
-      <TabsItem title="Food">
+      <TabsItem :title="$t('home.tabs.food.title')">
         <Card
-          title="Grill"
-          subtitle="Frisches vom Grill"
+          :title="$t('home.tabs.food.grill.title')"
+          :subtitle="$t('home.tabs.food.grill.subtitle')"
           image_src="/img/grill.jpg"
         />
         <Card
-          title="Fingerfood"
-          subtitle="Salat/Kuchen/Snacks"
+          :title="$t('home.tabs.food.finger_food.title')"
+          :subtitle="$t('home.tabs.food.finger_food.subtitle')"
           image_src="/img/fingerfood.jpg"
         />
         <Card
-          title="Eis"
-          subtitle="Für den süßen Abgang"
+          :title="$t('home.tabs.food.ice.title')"
+          :subtitle="$t('home.tabs.food.ice.subtitle')"
           image_src="/img/eis.jpg"
         />
       </TabsItem>
     </Tabs>
   </NuxtLayout>
   <Testimonials
+    :heading="$t('home.testimonials.title')"
     speed="40s"
     :cards="[
       {
@@ -232,29 +230,29 @@
         name: 'Der echte Thilo',
       },
     ]"
-    heading="Das sagen die Gäste"
     pause_on_hover
   />
   <NuxtLayout name="dots">
     <ArticleOverview
+      :title="$t('home.blog.title')"
       :articles="[
         {
           title: 'Bday 23',
-          desc: 'Thinks and thoughts about my Bday 23.',
+          desc: $t('home.blog.bday23.desc'),
           href: 'https://schaut.dev/articles/bday23',
-          date: '04. Juni 2023',
+          date: `${$t('home.blog.date')} 2023`,
         },
         {
           title: 'Bday 22',
-          desc: 'Thinks and thoughts about my Bday 22.',
+          desc: $t('home.blog.bday22.desc'),
           href: 'https://schaut.dev/articles/bday22',
-          date: '04. Juni 2022',
+          date: `${$t('home.blog.date')} 2022`,
         },
         {
           title: 'Bday 21',
-          desc: 'Thinks and thoughts about my Bday 21.',
+          desc: $t('home.blog.bday21.desc'),
           href: 'https://schaut.dev/articles/bday21',
-          date: '04. Juni 2021',
+          date: `${$t('home.blog.date')} 2021`,
         },
       ]"
     />

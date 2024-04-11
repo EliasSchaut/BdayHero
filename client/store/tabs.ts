@@ -20,6 +20,7 @@ export const tabsStore = defineStore('tabs', {
     },
     addTab(tab_name: string) {
       if (this.tab_names.includes(tab_name)) return;
+      if (tab_name.includes('.')) return;
       this.tab_names.push(tab_name);
       this.tab_names_static.push(tab_name);
       if (this.active === null) {

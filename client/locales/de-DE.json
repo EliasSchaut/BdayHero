@@ -1,14 +1,20 @@
 {
   "common": {
     "and": "und",
+    "bday": {
+      "date": "08. Juni 2024"
+    },
     "lang": {
       "de": "Deutsch",
       "en": "Englisch"
     },
+    "menu": "Menü",
     "modal": {
       "close": "Schließen",
       "go_back": "Gehe zurück"
     },
+    "nav_title": "Navigation",
+    "notified": "BEKOMME INFOS!!",
     "sr": {
       "dismiss": "Schließen",
       "open_main_menu": "Hauptmenü öffnen",
@@ -19,5 +25,141 @@
       "light": "Hell",
       "system": "System"
     }
+  },
+  "home": {
+    "blog": {
+      "bday21": {
+        "desc": "Über meinem 21. Geburtstag"
+      },
+      "bday22": {
+        "desc": "Über meinen 22. Geburtstag"
+      },
+      "bday23": {
+        "desc": "Über meinen 23. Geburtstag"
+      },
+      "date": "04. Juni",
+      "title": "Aus dem Blog"
+    },
+    "newsletter": {
+      "done": "Fertig. Mail bestätigen!",
+      "subscribe": "Abonnieren",
+      "subtitle": "Werde benachrichtigt, wenn die nächsten Bday24 Infos anstehen.",
+      "title": "Bleib informiert",
+      "unsubscribe": "Abbestellen"
+    },
+    "tabs": {
+      "drinks": {
+        "beer": {
+          "subtitle": "Frisch vom Fass",
+          "title": "Gezapftes Bier"
+        },
+        "cocktails": {
+          "subtitle": "Auch alkoholfrei",
+          "title": "Cocktails"
+        },
+        "title": "Getränke"
+      },
+      "events": {
+        "kahoot": {
+          "subtitle": "Wissenswertes und Lustiges über Elias",
+          "title": "Kahoot"
+        },
+        "olympia": {
+          "subtitle": "Bierkastenlauf/Pantomime/Eierlauf",
+          "title": "O-Lympia"
+        },
+        "pool": {
+          "subtitle": "+ Freies Spiel die ganze Nacht",
+          "title": "Billard-Turnier"
+        },
+        "title": "Events"
+      },
+      "featured": {
+        "art": {
+          "subtitle": "Hinterlasse deine Persönlichkeit",
+          "title": "Kunstecke"
+        },
+        "dj": {
+          "subtitle": "Tanze mit paulstr die ganze Nacht",
+          "title": "DJ-Floor"
+        },
+        "karaoke": {
+          "subtitle": "Singe deine Lieblingssongs",
+          "title": "Karaoke"
+        },
+        "meta": {
+          "subtitle": "Eine Schnitzeljagd für Rätzelliebende",
+          "title": "Geheimes Meta-Spiel"
+        },
+        "speed_friending": {
+          "subtitle": "Schnell und einfach anfreunden",
+          "title": "Speed-Friending"
+        },
+        "team": {
+          "subtitle": "Setze, Kämpfe und Gewinne",
+          "title": "Mannschaftskampf"
+        },
+        "title": "Vorgestellt"
+      },
+      "food": {
+        "finger_food": {
+          "subtitle": "Kuchen/Gebäck/Snacks",
+          "title": "Fingerfood"
+        },
+        "grill": {
+          "subtitle": "Salate & Grillgut (auch Veggie/Vegan)",
+          "title": "Grill"
+        },
+        "ice": {
+          "subtitle": "Für den süßen Abgang",
+          "title": "Eis"
+        },
+        "title": "Essen"
+      },
+      "game": {
+        "corner": {
+          "subtitle": "MarioKart/SmashBros/Unrailed!/etc.",
+          "title": "Gaming-Ecke"
+        },
+        "indoor": {
+          "subtitle": "Brettspiele/Karten/Schach/Go/usw.",
+          "title": "Indoor-Spiele"
+        },
+        "outdoor": {
+          "subtitle": "Slackline/Wikingerschach/Frisbee/usw.",
+          "title": "Outdoor-Spiele"
+        },
+        "title": "Spiel"
+      },
+      "title": "Das erwartet dich"
+    },
+    "testimonials": {
+      "title": "Das sagen die Gäste"
+    },
+    "typewriter": {
+      "prefix": "Ein Geburtstag",
+      "suffix": [
+        "mit bester Laune",
+        "perfekt organisiert",
+        "mit maximalem Spaß",
+        "voller Überraschungen",
+        "mit all deinen Freunden",
+        "zum Erinnern & Erzählen",
+        "mit Elias' Fliege",
+        "für jeden gemacht",
+        "mit cooler Location",
+        "zum Anfreunden & Verlieben",
+        "mit kreativer Unterhaltung",
+        "mit leckerem Essen & Trinken",
+        "für dich"
+      ]
+    }
+  },
+  "pages": {
+    "home": "Startseite",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "resources": "Ressourcen",
+    "source": "Quellcode"
   }
 }
