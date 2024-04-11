@@ -170,6 +170,24 @@
       {
         title: 'Lila Pause',
         content:
+          'Jedes Jahr wird mir erzählt wie geil Elias Geburtstag war und was ich alles verpasst habe. Dieses Jahr habe ich mir sicherheitshalber direkt am Anfang des Jahres diesen besonderen Tag geblockt, dass ja nichts dazwischen kommt.',
+        name: 'Laura',
+      },
+      {
+        title: 'Gegen-Party wo anders',
+        content:
+          'Von so einem durchorganisierten Fest kann jeder Veranstaltungsplaner nur träumen. Ihr fragt euch, ob hier all eure Träume erfüllt werden? Ja, das werden sie!',
+        name: 'Anderer Veranstalter',
+      },
+      {
+        title: 'Lila Pause',
+        content:
+          'Ein ausgewogener Mix an Menschen, Events und Drinks. Hier ist für jeden was dabei.',
+        name: 'Anonym',
+      },
+      {
+        title: 'Lila Pause',
+        content:
           'Wenn Elias so viel Aufwand in sein Studium stecken würde, wie er in seine Geburtstagsfeiern steckt, hätte er schon längst einen Doktor.',
         name: 'Niklas',
       },
