@@ -13,7 +13,7 @@
       />
     </div>
     <h1
-      class="relative z-20 text-center text-5xl font-bold text-zinc-900 dark:text-white md:text-7xl lg:text-6xl"
+      class="relative text-center text-5xl font-bold text-zinc-900 dark:text-white md:text-7xl lg:text-6xl"
       v-motion-fade
     >
       {{ title }}
