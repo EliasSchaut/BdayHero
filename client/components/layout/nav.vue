@@ -51,7 +51,12 @@
       >
         <li v-for="page in pages" :key="page.title">
           <nuxt-link
-            class="block px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
+            :class="[
+              'block px-3 py-2 font-medium hover:bg-gray-200 dark:hover:bg-gray-800',
+              page.matches.test($route.href)
+                ? 'border-l-4 border-indigo-500 text-indigo-500 dark:border-indigo-600 dark:text-indigo-400'
+                : 'hover:text-indigo-500 dark:hover:text-indigo-400',
+            ]"
             :href="page.href"
             @click="$refs.mobile_nav.hide()"
           >
