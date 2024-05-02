@@ -17,6 +17,7 @@
     "form": {
       "forgot_password": "Passwort vergessen?",
       "mail": "E-Mail Adresse",
+      "optional": "Optional",
       "password": "Passwort"
     },
     "lang": {
@@ -188,5 +189,29 @@
     "shifts": "Schichten",
     "sign_up": "Registrieren",
     "source": "Quellcode"
+  },
+  "sign_up": {
+    "already_signed_up": {
+      "1": "Bereits angemeldet?",
+      "2": "Melde dich an"
+    },
+    "form": {
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "newsletter": {
+        "desc": "Damit stimmst du zu, eine Einladung zum Bday-Newsletter per Mail zu erhalten",
+        "label": "Newsletter"
+      },
+      "public": {
+        "desc": "Damit erklärst du dich einverstanden, in der Gästeliste öffentlich sichtbar zu sein",
+        "label": "Sichtbar in der Gästeliste"
+      },
+      "submit": "Bestätigen",
+      "tos": {
+        "desc": "Du hast die Datenschutzbestimmungen (siehe unten) gelesen und akzeptierst diese",
+        "label": "Terms of Service"
+      }
+    },
+    "title": "Joine dem Bday"
   }
 }

@@ -76,9 +76,9 @@
 import { defineComponent } from 'vue';
 import { EnvelopeIcon } from '@heroicons/vue/20/solid';
 
-type SideLabel = {
+export type SideLabel = {
   label: string;
-  href: string | null;
+  href?: string | null;
 };
 
 export default defineComponent({

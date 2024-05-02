@@ -17,6 +17,7 @@
     "form": {
       "forgot_password": "Forgot password?",
       "mail": "E-Mail address",
+      "optional": "Optional",
       "password": "Password"
     },
     "lang": {
@@ -188,5 +189,29 @@
     "shifts": "Shifts",
     "sign_up": "Sign Up",
     "source": "Source Code"
+  },
+  "sign_up": {
+    "already_signed_up": {
+      "1": "Already registered?",
+      "2": "Log in"
+    },
+    "form": {
+      "first_name": "First name",
+      "last_name": "Last name",
+      "newsletter": {
+        "desc": "By selecting this, you agree to receive an email invitation to the bday newsletter",
+        "label": "Newsletter"
+      },
+      "public": {
+        "desc": "By selecting this, you agree to be publicly visible in the guestlist",
+        "label": "Visible in guestlist"
+      },
+      "submit": "Confirm",
+      "tos": {
+        "desc": "You read and accept the data privacy (see bottom)",
+        "label": "Terms of Service"
+      }
+    },
+    "title": "Join the bday"
   }
 }
