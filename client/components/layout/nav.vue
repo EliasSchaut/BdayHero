@@ -51,7 +51,7 @@
       >
         <li v-for="page in pages" :key="page.title">
           <nuxt-link
-            class="block py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
+            class="block px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
             :href="page.href"
             @click="$refs.mobile_nav.hide()"
           >
