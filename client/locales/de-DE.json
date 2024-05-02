@@ -4,6 +4,21 @@
     "bday": {
       "date": "08. Juni 2024"
     },
+    "err": {
+      "404": {
+        "desc": "Die von Ihnen gesuchte Seite ist nicht vorhanden.",
+        "title": "Seite nicht gefunden"
+      },
+      "501": {
+        "desc": "Entschuldigung, diese Funktion ist noch nicht implementiert.",
+        "title": "Nicht implementiert"
+      }
+    },
+    "form": {
+      "forgot_password": "Passwort vergessen?",
+      "mail": "E-Mail Adresse",
+      "password": "Passwort"
+    },
     "lang": {
       "de": "Deutsch",
       "en": "Englisch"
@@ -155,11 +170,23 @@
       ]
     }
   },
+  "login": {
+    "no_account": "Kein Konto?",
+    "oauth": "Oder weiter mit",
+    "submit": "Anmelden",
+    "title": "Melden Sie sich bei Ihrem Konto an"
+  },
   "pages": {
+    "details": "Details",
+    "go_home": "Zurück zur Startseite",
+    "guest_list": "Gästeliste",
     "home": "Startseite",
     "imprint": "Impressum",
+    "login": "Anmelden",
     "privacy": "Datenschutz",
     "resources": "Ressourcen",
+    "shifts": "Schichten",
+    "sign_up": "Registrieren",
     "source": "Quellcode"
   }
 }

@@ -90,6 +90,31 @@ export default defineComponent({
           href: '/',
           matches: /^\/$/,
         },
+        {
+          title: t('pages.details'),
+          href: '/details',
+          matches: /^\/details$/,
+        },
+        {
+          title: t('pages.guest_list'),
+          href: '/guest_list',
+          matches: /^\/guest_list$/,
+        },
+        {
+          title: t('pages.shifts'),
+          href: '/shifts',
+          matches: /^\/shifts$/,
+        },
+        {
+          title: t('pages.login'),
+          href: '/login',
+          matches: /^\/login$/,
+        },
+        {
+          title: t('pages.sign_up'),
+          href: '/sign_up',
+          matches: /^\/sign_up$/,
+        },
       ] as Array<{ title: string; href: string; matches: RegExp }>,
     };
   },
