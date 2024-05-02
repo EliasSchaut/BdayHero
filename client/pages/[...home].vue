@@ -21,8 +21,8 @@
   <Sparkles
     title="Kids Bday"
     :subtitle="$t('common.bday.date')"
-    :button_label="$t('common.notified')"
-    button_link="#newsletter"
+    :button_label="$t('common.join_now')"
+    button_link="/sign_up"
   />
   <Typewriter
     :heading="$t('home.typewriter.prefix')"
