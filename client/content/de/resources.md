@@ -24,6 +24,7 @@ Wirf einen Blick auf die Software-Tools, die zur Verbesserung dieser Website ein
 ## Asset Inventar
 - [Tailwind UI](https://tailwindui.com): Moderne gestylte UI-Komponenten (mit einer Personal Complete Package Restricted License)
 - [Aceternity UI](https://ui.aceternity.com/): Beeindruckende animierte UI-Komponenten für eine Vielzahl von Anwendungsfällen
+- [shadcn-vue](https://www.shadcn-vue.com/): Für die UI-Komponenten der Tabellen  
 - [Headless UI](https://headlessui.com/): Minimalistische, ungestylte UI-Komponenten
 - [Heroicons](https://heroicons.com/): Verwendet für eine Vielzahl von generischen Icons
 - [Flagpedia](https://flagpedia.net/): Verwendet für Flaggensymbole

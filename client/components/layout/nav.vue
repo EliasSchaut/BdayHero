@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav v-if="!mobile_only" class="hidden md:inline">
+    <nav v-if="!mobile_only" class="hidden lg:inline">
       <ul
         class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-gray-800 shadow-lg shadow-gray-800/5 ring-1 ring-gray-900/5 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/10"
       >
@@ -21,7 +21,7 @@
     </nav>
     <button
       :class="[
-        mobile_only ? '' : 'md:hidden',
+        mobile_only ? '' : 'lg:hidden',
         'group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-lg shadow-gray-800/5 ring-1 ring-gray-900/5 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/10 dark:hover:ring-white/20',
       ]"
       @click="$refs.mobile_nav.show()"

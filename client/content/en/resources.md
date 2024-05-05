@@ -23,7 +23,8 @@ Check out the suite of software tools and assets leveraged to enhance the brilli
 
 ## Asset Inventory
 - [Tailwind UI](https://tailwindui.com): Modern styled UI components (holding a Personal Complete Package Restricted License)
-- [Aceternity UI](https://ui.aceternity.com/): Impressive animated UI components for a variety of use cases 
+- [Aceternity UI](https://ui.aceternity.com/): Impressive animated UI components for a variety of use cases
+- [shadcn-vue](https://www.shadcn-vue.com/): For the UI components of the tables
 - [Headless UI](https://headlessui.com/): Minimalistic unstyled UI components
 - [Heroicons](https://heroicons.com/): Used for a diverse range of generic icons
 - [Flagpedia](https://flagpedia.net/): Used for flag icons
