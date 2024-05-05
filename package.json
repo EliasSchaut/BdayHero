@@ -42,7 +42,7 @@
     "class-variance-authority": "^0.7.0",
     "cuid": "^3.0.0",
     "graphql": "^16.8.1",
-    "joi": "^17.12.2",
+    "joi": "^17.13.1",
     "nestjs-i18n": "^10.4.5",
     "nodemailer": "^6.9.13",
     "pinia": "^2.1.7",
