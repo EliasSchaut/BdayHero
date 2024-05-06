@@ -17,6 +17,23 @@ export class UserInputModel {
   @Field(() => String, { nullable: true, defaultValue: null })
   email?: string;
 
+  @IsOptional()
   @Field(() => Boolean, { nullable: true, defaultValue: false })
   public?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  has_bed?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  need_bed?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  nerd?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  vegan?: boolean;
 }

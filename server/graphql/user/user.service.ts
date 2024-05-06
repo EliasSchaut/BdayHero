@@ -73,8 +73,8 @@ export class UserService {
         id: ctx.user_id,
       },
       data: {
-        verified: false,
-        challenge: cuid(),
+        mail_verified: false,
+        mail_challenge: cuid(),
       },
     });
   }

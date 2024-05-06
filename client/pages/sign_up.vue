@@ -14,7 +14,7 @@
       <div
         class="bg-white px-6 py-12 shadow dark:bg-gray-800 sm:rounded-lg sm:px-12"
       >
-        <Form
+        <FormVal
           class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
           :submit="submit_set_up"
         >
@@ -40,14 +40,29 @@
           />
           <div class="space-y-5 sm:col-span-6">
             <FormCheckbox
-              id="profile_public"
+              id="public"
               :label="$t('sign_up.form.public.label')"
               :desc="$t('sign_up.form.public.desc')"
             />
             <FormCheckbox
-              id="email_opt_in"
-              :label="$t('sign_up.form.newsletter.label')"
-              :desc="$t('sign_up.form.newsletter.desc')"
+              id="has_bed"
+              :label="$t('sign_up.form.has_bed.label')"
+              :desc="$t('sign_up.form.has_bed.desc')"
+            />
+            <FormCheckbox
+              id="need_bed"
+              :label="$t('sign_up.form.need_bed.label')"
+              :desc="$t('sign_up.form.need_bed.desc')"
+            />
+            <FormCheckbox
+              id="nerd"
+              :label="$t('sign_up.form.nerd.label')"
+              :desc="$t('sign_up.form.nerd.desc')"
+            />
+            <FormCheckbox
+              id="vegan"
+              :label="$t('sign_up.form.vegan.label')"
+              :desc="$t('sign_up.form.vegan.desc')"
             />
             <FormCheckbox
               id="terms"
@@ -60,7 +75,7 @@
             class="bg-indigo-500 dark:bg-indigo-600 sm:col-span-6"
             :label="$t('sign_up.form.submit')"
           />
-        </Form>
+        </FormVal>
 
         <div>
           <div class="relative mt-10">
@@ -126,7 +141,8 @@ export default defineComponent({
     const query_mutate_user = gql`
       mutation register($user_input_data: UserInputModel!) {
         auth_register(user_input_data: $user_input_data) {
-          id
+          barrier_token
+          is_admin
         }
       }
     `;
@@ -148,23 +164,27 @@ export default defineComponent({
     submit_set_up(e: Event, form_data: FormData) {
       const variables = {
         user_input_data: {
-          username: form_data.get('username'),
           email: form_data.get('email'),
-          password: form_data.get('password'),
           first_name: form_data.get('first_name'),
           last_name: form_data.get('last_name'),
-          bio: form_data.get('bio') !== '' ? form_data.get('bio') : null,
-          avatar: null,
-          profile_public: form_data.get('profile_public') === 'on',
-          email_opt_in: form_data.get('email_opt_in') === 'on',
+          public: form_data.get('public') === 'on',
+          has_bed: form_data.get('has_bed') === 'on',
+          need_bed: form_data.get('need_bed') === 'on',
+          nerd: form_data.get('nerd') === 'on',
+          vegan: form_data.get('vegan') === 'on',
         },
       };
 
       this.mutate_user({ ...variables })
         .then((result) => {
           console.log(result);
-          if (result?.data.success) {
-            this.$router.push({ name: 'login' });
+          if (result?.data) {
+            this.alert.show('Account created', 'success');
+            this.auth.login(
+              result.data.auth_register.barrier_token,
+              result.data.auth_register.is_admin,
+            );
+            this.$router.push({ name: 'profile' });
           } else {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;

@@ -1,6 +1,9 @@
 <template>
   <footer>
     <div class="mx-auto max-w-7xl overflow-hidden px-6 lg:px-8">
+      <button @click="auth.logged_in = !auth.logged_in">
+        Logged In: {{ auth.logged_in }}
+      </button>
       <nav
         class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
         aria-label="Footer"
@@ -21,7 +24,11 @@
 </template>
 
 <script setup>
+import { authStore } from '~/store/auth';
+
 const { t } = useI18n();
+const auth = authStore();
+
 const navigation = {
   main: [
     { name: t('pages.imprint'), href: '/imprint' },

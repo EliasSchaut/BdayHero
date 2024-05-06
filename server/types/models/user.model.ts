@@ -9,9 +9,14 @@ export class UserModel {
     this.first_name = user.first_name;
     this.last_name = user.last_name;
     this.public = user.public;
+    this.has_bed = user.has_bed;
+    this.need_bed = user.need_bed;
+    this.nerd = user.nerd;
+    this.vegan = user.vegan;
     this.is_admin = user.is_admin;
-    this.challenge = user.challenge;
-    this.verified = user.verified;
+    this.mail_verified = user.mail_verified;
+    this.login_challenge = user.login_challenge;
+    this.mail_challenge = user.mail_challenge;
   }
 
   @Field(() => ID, {
@@ -46,23 +51,54 @@ export class UserModel {
   public?: boolean;
 
   @Field(() => Boolean, {
+    description:
+      'Indicates whether the user has a bed to offer for other guests',
+    nullable: true,
+  })
+  has_bed?: boolean;
+
+  @Field(() => Boolean, {
+    description: 'Indicates whether the user needs a bed for their stay',
+    nullable: true,
+  })
+  need_bed?: boolean;
+
+  @Field(() => Boolean, {
+    description:
+      'Indicates whether the user is a nerd who likes to play the nerd game',
+    nullable: true,
+  })
+  nerd?: boolean;
+
+  @Field(() => Boolean, {
+    description: 'Indicates whether the user eats vegan food only',
+    nullable: true,
+  })
+  vegan?: boolean;
+
+  @Field(() => Boolean, {
     description: 'Indicates whether the user is an admin',
     nullable: true,
   })
   is_admin?: boolean;
 
   @Field(() => String, {
-    description:
-      'Challenge string used for password reset and account verification',
+    description: 'Challenge string used for email verification',
     nullable: true,
   })
-  challenge?: string;
+  mail_challenge?: string;
+
+  @Field(() => String, {
+    description: 'Challenge string used authentication',
+    nullable: true,
+  })
+  login_challenge?: string;
 
   @Field(() => Boolean, {
-    description: 'Indicates whether the user account is verified',
+    description: 'Indicates whether the user email is verified',
     nullable: true,
   })
-  verified?: boolean;
+  mail_verified?: boolean;
 
   // clears all user fields that are not meant to be seen by public
   public convert_to_public(): this {
@@ -81,7 +117,12 @@ export class UserModel {
   private clear_system_info() {
     this.email = undefined;
     this.is_admin = undefined;
-    this.challenge = undefined;
-    this.verified = undefined;
+    this.mail_challenge = undefined;
+    this.login_challenge = undefined;
+    this.mail_verified = undefined;
+    this.has_bed = undefined;
+    this.need_bed = undefined;
+    this.nerd = undefined;
+    this.vegan = undefined;
   }
 }

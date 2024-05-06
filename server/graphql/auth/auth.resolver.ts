@@ -16,20 +16,19 @@ export class AuthResolver {
 
   @Query(() => AuthModel, { name: 'auth_sign_in' })
   async sign_in(
-    @Args('email') email: string,
-    @Args('password') password: string,
+    @Args('challenge') challenge: string,
     @I18n() i18n: I18nContext<I18nTranslations>,
   ): Promise<AuthModel> {
-    return await this.authService.sign_in(email, password, {
+    return await this.authService.sign_in(challenge, {
       i18n,
     });
   }
 
-  @Mutation(() => UserModel, { name: 'auth_register' })
+  @Mutation(() => AuthModel, { name: 'auth_register' })
   async register(
     @Args('user_input_data') user_input_data: UserInputModel,
     @I18n() i18n: I18nContext<I18nTranslations>,
-  ): Promise<UserModel | null> {
+  ): Promise<AuthModel | null> {
     return await this.authService.register(user_input_data, {
       i18n,
     });

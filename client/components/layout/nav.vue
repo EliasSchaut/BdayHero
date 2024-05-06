@@ -6,6 +6,7 @@
       >
         <li v-for="page in pages" :key="page.title">
           <nuxt-link
+            v-if="!page.hide"
             :href="page.href"
             :class="[
               'relative block px-3 py-2 transition',
@@ -51,6 +52,7 @@
       >
         <li v-for="page in pages" :key="page.title">
           <nuxt-link
+            v-if="!page.hide"
             :class="[
               'block px-3 py-2 font-medium hover:bg-gray-200 dark:hover:bg-gray-800',
               page.matches.test($route.href)
@@ -80,6 +82,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ChevronDownIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { authStore } from '~/store/auth';
 
 export default defineComponent({
   components: { ChevronDownIcon, XMarkIcon },
@@ -88,39 +91,57 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n();
+    const auth = reactive(authStore());
+
     return {
-      pages: [
-        {
-          title: t('pages.home'),
-          href: '/',
-          matches: /^\/$/,
-        },
-        {
-          title: t('pages.details'),
-          href: '/details',
-          matches: /^\/details$/,
-        },
-        {
-          title: t('pages.guest_list'),
-          href: '/guest_list',
-          matches: /^\/guest_list$/,
-        },
-        {
-          title: t('pages.shifts'),
-          href: '/shifts',
-          matches: /^\/shifts$/,
-        },
-        {
-          title: t('pages.login'),
-          href: '/login',
-          matches: /^\/login$/,
-        },
-        {
-          title: t('pages.sign_up'),
-          href: '/sign_up',
-          matches: /^\/sign_up$/,
-        },
-      ] as Array<{ title: string; href: string; matches: RegExp }>,
+      pages: computed(
+        () =>
+          [
+            {
+              title: t('pages.home'),
+              href: '/',
+              matches: /^\/$/,
+            },
+            {
+              title: t('pages.details'),
+              href: '/details',
+              matches: /^\/details$/,
+            },
+            {
+              title: t('pages.guest_list'),
+              href: '/guest_list',
+              matches: /^\/guest_list$/,
+            },
+            {
+              title: t('pages.shifts'),
+              href: '/shifts',
+              matches: /^\/shifts$/,
+            },
+            {
+              title: t('pages.login'),
+              href: '/login',
+              matches: /^\/login$/,
+              hide: auth.logged_in,
+            },
+            {
+              title: t('pages.sign_up'),
+              href: '/sign_up',
+              matches: /^\/sign_up$/,
+              hide: auth.logged_in,
+            },
+            {
+              title: t('pages.profile'),
+              href: '/profile',
+              matches: /^\/profile$/,
+              hide: !auth.logged_in,
+            },
+          ] as Array<{
+            title: string;
+            href: string;
+            matches: RegExp;
+            hide?: boolean;
+          }>,
+      ),
     };
   },
 });

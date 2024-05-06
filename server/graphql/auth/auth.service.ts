@@ -18,35 +18,21 @@ export class AuthService {
     private readonly emailService: EmailService,
   ) {}
 
-  async sign_in(
-    email: string,
-    password: string,
-    ctx: CtxType,
-  ): Promise<AuthModel> {
+  async sign_in(challenge: string, ctx: CtxType): Promise<AuthModel> {
     const user = await this.prisma.user.findUnique({
-      select: { id: true, verified: true, is_admin: true },
-      where: { email: email },
+      select: { id: true, is_admin: true },
+      where: { login_challenge: challenge },
     });
 
     if (user === null)
       throw new WarningException(ctx.i18n.t('auth.exception.forbidden_login'));
-
-    if (!user.verified)
-      throw new WarningException(
-        ctx.i18n.t('auth.exception.forbidden_not_verified'),
-      );
-
-    const payload = { username: user.id, sub: { is_admin: user.is_admin } };
-    return {
-      barrier_token: await this.jwtService.signAsync(payload),
-      is_admin: user.is_admin,
-    } as AuthModel;
+    return this.gen_auth_model(user.id, user.is_admin);
   }
 
   async register(
     user_input_data: UserInputModel,
     ctx: CtxType,
-  ): Promise<UserModel | null> {
+  ): Promise<AuthModel | null> {
     return this.prisma.user
       .create({
         data: {
@@ -59,17 +45,17 @@ export class AuthService {
             user.email,
             user.first_name,
             this.emailService.generate_verify_url(
-              user.challenge as string,
+              user.mail_challenge as string,
               process.env.URL_FRONTEND as string,
             ),
           );
         }
-        return new UserModel(user).convert_to_public();
+        return this.gen_auth_model(user.id, user.is_admin);
       })
       .catch((e: Prisma.PrismaClientKnownRequestError) => {
         if (e.code === 'P2002') {
           throw new WarningException(
-            ctx.i18n.t('user.exception.conflict_username'),
+            ctx.i18n.t('auth.exception.conflict_user'),
           );
         } else {
           throw new WarningException(ctx.i18n.t('user.exception.create'));
@@ -79,9 +65,9 @@ export class AuthService {
 
   async verify(challenge: string, ctx: CtxType): Promise<UserModel | null> {
     const user = await this.prisma.user.findUnique({
-      where: { challenge: challenge },
+      where: { mail_challenge: challenge },
     });
-    if (!user || user.verified) {
+    if (!user || user.mail_verified) {
       throw new WarningException(ctx.i18n.t('auth.exception.not_found_verify'));
     }
 
@@ -89,9 +75,20 @@ export class AuthService {
       await this.prisma.user.update({
         where: { id: user.id },
         data: {
-          verified: true,
+          mail_verified: true,
         },
       }),
     );
+  }
+
+  private async gen_auth_model(
+    user_id: string,
+    is_admin: boolean,
+  ): Promise<AuthModel> {
+    const payload = { username: user_id, sub: { is_admin } };
+    return {
+      barrier_token: await this.jwtService.signAsync(payload),
+      is_admin,
+    };
   }
 }
