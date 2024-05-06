@@ -13,7 +13,7 @@
     >
     <Countup
       class="m-auto w-min text-4xl font-bold opacity-0"
-      :end_val="63"
+      :end_val="result_guests_count.users_count"
       v-motion
       :initial="{ opacity: 0, scale: 0 }"
       :enter="{ opacity: 1, scale: 3 }"
@@ -35,3 +35,12 @@
   <h1 class="mt-10 text-center text-xl italic underline">Gästeliste</h1>
   <TableGuestlist class="text-md m-auto mt-2 xs:w-[20em]" />
 </template>
+
+<script setup lang="ts">
+const query_guests_count = gql`
+  query {
+    users_count
+  }
+`;
+const { result: result_guests_count } = useQuery(query_guests_count);
+</script>

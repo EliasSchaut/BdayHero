@@ -57,14 +57,19 @@ type Guest = {
   last_name: string;
 };
 
+const query_guests = gql`
+  query {
+    users_public {
+      first_name
+      last_name
+    }
+  }
+`;
+const { result: result_guests } = useQuery(query_guests, null, {
+  prefetch: true,
+});
+
 const columnHelper = createColumnHelper<Guest>();
-const default_data: Guest[] = [
-  { first_name: 'John', last_name: 'Dae' },
-  { first_name: 'Jane', last_name: 'Doe' },
-  { first_name: 'Jine', last_name: 'Dee' },
-  { first_name: 'June', last_name: 'Dre' },
-];
-const data = ref<Guest[]>(default_data);
 const sorting = ref<SortingState>([
   {
     id: 'first_name',
@@ -103,7 +108,7 @@ const columns = [
 
 const table = useVueTable({
   get data() {
-    return data.value;
+    return result_guests?.value?.users_public ?? [];
   },
   get columns() {
     return columns;

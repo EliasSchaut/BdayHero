@@ -60,7 +60,7 @@
     "@nuxt/content": "^2.12.1",
     "@nuxt/devtools": "^1.1.5",
     "@nuxt/image": "^1.5.0",
-    "@nuxtjs/apollo": "^5.0.0-alpha.13",
+    "@nuxtjs/apollo": "^5.0.0-alpha.14",
     "@nuxtjs/color-mode": "^3.3.3",
     "@nuxtjs/i18n": "^8.2.0",
     "@nuxtjs/tailwindcss": "^6.12.0",
