@@ -24,6 +24,18 @@ export class UserService {
     return new UserModel(user);
   }
 
+  async find_many_public(ctx: CtxType): Promise<UserModel[]> {
+    return (
+      await this.prisma.user.findMany({
+        where: { public: true },
+      })
+    ).map((user) => new UserModel(user).convert_to_public());
+  }
+
+  async get_user_count(ctx: CtxType): Promise<number> {
+    return this.prisma.user.count();
+  }
+
   async update(
     user_update_input_data: UserUpdateInputModel,
     ctx: CtxType,

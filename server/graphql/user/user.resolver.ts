@@ -24,6 +24,24 @@ export class UserResolver {
     return this.userService.find_by_id({ i18n, user_id });
   }
 
+  @Query(() => Number, {
+    name: 'users_count',
+  })
+  async get_user_count(
+    @I18n() i18n: I18nContext<I18nTranslations>,
+  ): Promise<number> {
+    return this.userService.get_user_count({ i18n });
+  }
+
+  @Query(() => [UserModel], {
+    name: 'users_public',
+  })
+  async find_many_public(
+    @I18n() i18n: I18nContext<I18nTranslations>,
+  ): Promise<UserModel[]> {
+    return this.userService.find_many_public({ i18n });
+  }
+
   @Role(RoleEnum.USER)
   @Mutation(() => UserModel, { name: 'user_update' })
   async update(
