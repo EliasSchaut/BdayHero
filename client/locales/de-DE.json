@@ -175,6 +175,7 @@
   "login": {
     "no_account": "Kein Konto?",
     "oauth": "Oder weiter mit",
+    "sign_up": "Registriere dich!",
     "submit": "Anmelden",
     "title": "Melden Sie sich bei Ihrem Konto an"
   },
@@ -193,7 +194,7 @@
   },
   "sign_up": {
     "already_signed_up": {
-      "1": "Bereits angemeldet?",
+      "1": "Bereits registriert?",
       "2": "Melde dich an"
     },
     "form": {

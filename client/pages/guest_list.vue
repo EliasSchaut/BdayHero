@@ -33,5 +33,5 @@
   </div>
 
   <h1 class="mt-10 text-center text-xl italic underline">Gästeliste</h1>
-  <TableGuestList class="text-md xs:w-[20em] m-auto mt-2" />
+  <TableGuestlist class="text-md m-auto mt-2 xs:w-[20em]" />
 </template>

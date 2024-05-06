@@ -175,6 +175,7 @@
   "login": {
     "no_account": "No account?",
     "oauth": "Or continue with",
+    "sign_up": "Register now!",
     "submit": "Sign in",
     "title": "Sign in to your account"
   },
