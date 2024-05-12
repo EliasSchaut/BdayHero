@@ -199,7 +199,19 @@
     },
     "form": {
       "first_name": "First name",
+      "has_bed": {
+        "desc": "You can offer a guest a bed near the bday location",
+        "label": "I have a bed"
+      },
       "last_name": "Last name",
+      "need_bed": {
+        "desc": "You need a bed and don't live in Karlsruhe",
+        "label": "I need a bed"
+      },
+      "nerd": {
+        "desc": "Are you interested in a nerdy scavenger hunt during the Bday",
+        "label": "Participation scavenger hunt"
+      },
       "newsletter": {
         "desc": "By selecting this, you agree to receive an email invitation to the bday newsletter",
         "label": "Newsletter"
@@ -212,6 +224,10 @@
       "tos": {
         "desc": "You read and accept the data privacy (see bottom)",
         "label": "Terms of Service"
+      },
+      "vegan": {
+        "desc": "You only eat vegan",
+        "label": "Vegan"
       }
     },
     "title": "Join the bday"

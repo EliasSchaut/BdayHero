@@ -94,16 +94,18 @@
 
           <div class="mt-6 grid grid-cols-2 gap-4">
             <a
-              href="#"
+              href="/sign_up/google"
               class="flex w-full items-center justify-center gap-3 rounded-md bg-[#4285F4] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
+              target="_blank"
             >
               <IconGoogle class="h-5 w-5" />
               <span class="text-sm font-semibold leading-6">Google</span>
             </a>
 
             <a
-              href="https://github.com/login/oauth/authorize?client_id=d6019ebc37fef6b8ed85&"
+              href="/sign_up/github"
               class="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
+              target="_blank"
             >
               <IconGithub class="h-5 w-5" />
               <span class="text-sm font-semibold leading-6">GitHub</span>

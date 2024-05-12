@@ -199,7 +199,19 @@
     },
     "form": {
       "first_name": "Vorname",
+      "has_bed": {
+        "desc": "Du kannst einem Gast ein Bett in der Nähe des Bdays anbieten",
+        "label": "Ich habe ein Bett"
+      },
       "last_name": "Nachname",
+      "need_bed": {
+        "desc": "Du brauchst ein Bett und wohnst nicht in Karlsruhe",
+        "label": "Ich brauche ein Bett"
+      },
+      "nerd": {
+        "desc": "Du hast Interesse an einer nerdigen Schnitzeljagt während des Bdays",
+        "label": "Teilnahme Schnitzeljagt"
+      },
       "newsletter": {
         "desc": "Damit stimmst du zu, eine Einladung zum Bday-Newsletter per Mail zu erhalten",
         "label": "Newsletter"
@@ -212,6 +224,10 @@
       "tos": {
         "desc": "Du hast die Datenschutzbestimmungen (siehe unten) gelesen und akzeptierst diese",
         "label": "Terms of Service"
+      },
+      "vegan": {
+        "desc": "Du isst ausschließlich vegan",
+        "label": "Vegan"
       }
     },
     "title": "Joine dem Bday"
