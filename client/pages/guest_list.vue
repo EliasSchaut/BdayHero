@@ -32,7 +32,7 @@
     >
   </div>
 
-  <h1 class="mt-10 text-center text-xl italic underline">Gästeliste</h1>
+  <HeadingItalic class="mt-10" :title="$t('pages.guest_list')" />
   <TableGuestlist class="text-md m-auto mt-2 xs:w-[20em]" />
 </template>
 
