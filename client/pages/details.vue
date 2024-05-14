@@ -1,13 +1,13 @@
 <template>
   <ListDescription
-    title="Details"
-    subtitle="Alles Wissenswerte rund um den Bday"
+    :title="$t('detail.title')"
+    :subtitle="$t('detail.subtitle')"
   >
-    <ListDescriptionElement title="Beginn"
-      >Sa. 08.06.24 - 19 Uhr (18:30 Uhr Einlass)
+    <ListDescriptionElement :title="$t('detail.begin.title')"
+      >{{ $t('detail.begin.value') }}
     </ListDescriptionElement>
-    <ListDescriptionElement title="Ort"
-      ><span>Klosterweg 28, Haus K2 Keller (K2-Bar) - 76131 Karlsruhe</span>
+    <ListDescriptionElement :title="$t('detail.location.title')"
+      ><span>{{ $t('detail.location.value') }}</span>
       <LinkUnderlined
         value="GoogleMaps"
         href="https://maps.app.goo.gl/ARw5YZphkyWSiqEi8"
@@ -21,10 +21,10 @@
         href="https://www.openstreetmap.org/?mlat=49.02014&mlon=8.42261#map=19/49.02014/8.42261&layers=N"
       />
     </ListDescriptionElement>
-    <ListDescriptionElement title="Anreise">
+    <ListDescriptionElement :title="$t('detail.arrival.title')">
       <ul>
         <li>
-          Auto/Motorrad: Freies Parken auf dem ganzen Klosterweg
+          {{ $t('detail.arrival.value.car_sharing') }}
           <LinkUnderlined
             value="Fahrgemeinschaften Börse"
             href="https://chat.whatsapp.com/Ei50VQfokLnLWbKz1Ygi5a"
@@ -43,24 +43,15 @@
         </li>
       </ul>
     </ListDescriptionElement>
-    <ListDescriptionElement title="Programm">
+    <ListDescriptionElement :title="$t('detail.program.title')">
       <ul>
-        <li>18:30 - Einlass</li>
-        <li>19:00 - Offizieller Beginn</li>
-        <li>19:30 - Begrüßung</li>
-        <li>19:45 - Speed-Friending</li>
-        <li>20:30 - Olympia</li>
-        <li>21:30 - Billardturnier</li>
-        <li>23:00 - Kahoot!</li>
-        <li>01:00 - Auflösung Mannschaftskampf + Rede</li>
-        <li>02:00 - Eröffnung Diskothek</li>
-        <li>Danach - OpenEnd</li>
+        <li v-for="i in 10" :key="i">
+          {{ $t(`detail.program.value.${i - 1}`) }}
+        </li>
       </ul>
     </ListDescriptionElement>
-    <ListDescriptionElement title="Verpflegung">
-      Für Essen und Trinken ist gesorgt! Es gibt Grillgut
-      (vegan/vegetarisch/fleisch), Salate, Kuchen, alkoholische und alkoholfreie
-      Cocktails und Bier vom Fass.
+    <ListDescriptionElement :title="$t('detail.catering.title')">
+      {{ $t('detail.catering.value.value') }}
     </ListDescriptionElement>
   </ListDescription>
   <HeadingItalic class="my-10" title="FAQ" />
@@ -68,41 +59,12 @@
 </template>
 
 <script setup lang="ts">
-const faqs = [
-  {
-    question: 'Was kann ich mitbringen',
-    answer:
-      'Sehr gerne kannst du Essen mitbringen. Grillgut, Salate und Kuchen sind sehr gerne gesehen. Getränketechnisch ist alles vorhanden. Wenn du ein interessantes Spiel oder ähnliches hast, kannst du das auch gerne mitbringen!',
-  },
-  {
-    question: 'Was kann ich dir schenken?',
-    answer:
-      'Deine Anwesenheit ist das größte Geschenk! Wenn du trotzdem etwas schenken möchtest, freue ich mich über eine kleine <a class="underline" href="https://donate.schaut.dev">Spende</a> für die Getränke und das Essen. Ich freue natürlich trotzdem über kreative Geschenke :D',
-  },
-  {
-    question: 'Kann man übernachten?',
-    answer:
-      'Es gibt leider nur sehr begrenzt Schlafplätze und auch nur für Menschen außerhalb von Karlsruhe. Wenn du einen Schlafplatz benötigst, gibt dies bei der Anmeldung an und tritt der <a class="underline" href="https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1">Bettbörse</a> bei.',
-  },
-  {
-    question: 'Kann ich ein Bett zum Übernachten anbieten?',
-    answer:
-      'Solange du innerhalb von Karlsruhe wohnst, ist das gerne möglich. Gib dies bei der Anmeldung an und tritt der <a class="underline" href="https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1">Bettbörse</a> bei.',
-  },
-  {
-    question: 'Kann man irgendwo planen, zusammen mit einem Auto anzureisen?',
-    answer:
-      'Ja, es gibt eine Gruppe dafür, in der du dich austauschen kannst: <a class="underline" href="https://chat.whatsapp.com/Ei50VQfokLnLWbKz1Ygi5a">Fahrgemeinschaften</a>',
-  },
-  {
-    question: 'Wie funktioniert der Mannschaftskampf?',
-    answer:
-      'Jeder Gast erhält bei der Anmeldung eine Teamzugehörigkeit (Rot/Blau) und 5 Tokens. Jene können für verschiedene Aktionen gesetzt oder gewonnen werden. Je mehr ein Team Tokens anteilig zum Gegnerteam bei der Auflösung besitzt, desto mehr gewinnt das Team vom Preis.',
-  },
-  {
-    question: 'Werde ich Spaß haben?',
-    answer:
-      'JA! Du wirst den besten Abend deines Lebens haben! Egal ob alt oder jung, groß oder klein, nerdy oder party, du wirst deinen Spaß haben!',
-  },
-];
+const { t } = useI18n();
+const faqs: Array<{ question: string; answer: string }> = [];
+for (let i = 0; i < 7; i++) {
+  faqs.push({
+    question: t(`detail.faq.${i}.title`),
+    answer: t(`detail.faq.${i}.value`),
+  });
+}
 </script>

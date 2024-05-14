@@ -74,6 +74,10 @@ export default defineNuxtConfig({
     },
     baseUrl: process.env.URL_FRONTEND,
     lazy: true,
+    compilation: {
+      strictMessage: false,
+      escapeHtml: false,
+    },
   },
 
   colorMode: {

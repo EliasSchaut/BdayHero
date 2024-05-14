@@ -8,7 +8,7 @@
       </h3>
       <p
         v-if="subtitle.length"
-        class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-400"
+        class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-300"
       >
         {{ subtitle }}
       </p>
