@@ -153,9 +153,6 @@ export default defineComponent({
     return {
       auth: authStore(),
       alert: alertStore(),
-      pw_value: ref<string>(''),
-      pw_confirm_value: ref<string>(''),
-      pw_confirmed: ref<boolean>(false),
       mutate_user,
     };
   },
