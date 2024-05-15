@@ -45,6 +45,7 @@
   },
   "detail": {
     "arrival": {
+      "title": "Ankunft",
       "value": {
         "car": "Auto/Motorrad: Freies Parken auf dem ganzen Klosterweg",
         "car_sharing": "Fahrgemeinschaften Börse",

@@ -45,6 +45,7 @@
   },
   "detail": {
     "arrival": {
+      "title": "Arrival",
       "value": {
         "car": "Car/motorbike: Free parking on the entire Klosterweg",
         "car_sharing": "Carsharing Exchange",

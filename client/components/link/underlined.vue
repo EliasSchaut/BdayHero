@@ -1,8 +1,14 @@
 <template>
-  [<router-link v-if="internal" class="underline" target="_blank" :to="href">{{
+  [<router-link
+    v-if="internal"
+    class="text-nowrap underline"
+    target="_blank"
+    :to="href"
+    >{{ value }}</router-link
+  >
+  <a v-else class="text-nowrap underline" target="_blank" :href="href">{{
     value
-  }}</router-link>
-  <a v-else class="underline" target="_blank" :href="href">{{ value }}</a
+  }}</a
   >]
 </template>
 
