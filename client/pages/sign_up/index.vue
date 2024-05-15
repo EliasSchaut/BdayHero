@@ -179,7 +179,6 @@ export default defineComponent({
 
       this.mutate_user({ ...variables })
         .then((result) => {
-          console.log(result);
           if (result?.data) {
             this.alert.show('Account created', 'success');
             this.auth.login(
@@ -194,6 +193,7 @@ export default defineComponent({
         })
         .catch((e: GraphQLError) => {
           console.error(e);
+          this.alert.show('something went wrong', 'warn');
         });
     },
   },
