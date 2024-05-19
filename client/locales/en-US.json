@@ -264,6 +264,15 @@
     "sign_up": "Sign Up",
     "source": "Source Code"
   },
+  "profile": {
+    "actions": {
+      "delete": "Delete Account",
+      "delete_sure": "Are you sure? Your account cannot be restored!",
+      "login_link": "Copy Login Link",
+      "title": "Actions",
+      "user_data": "All User Data"
+    }
+  },
   "sign_up": {
     "already_signed_up": {
       "1": "Already registered?",

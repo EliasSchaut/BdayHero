@@ -6,6 +6,7 @@ import { I18nTranslations } from '@/types/generated/i18n.generated';
 import { UserModel } from '@/types/models/user.model';
 import { UserInputModel } from '@/types/models/inputs/user.input';
 import { PrismaService } from 'nestjs-prisma';
+import { Logger } from '@nestjs/common';
 
 @Resolver(() => AuthModel)
 export class AuthResolver {

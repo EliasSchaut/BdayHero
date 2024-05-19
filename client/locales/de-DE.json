@@ -264,6 +264,15 @@
     "sign_up": "Registrieren",
     "source": "Quellcode"
   },
+  "profile": {
+    "actions": {
+      "delete": "Account löschen",
+      "delete_sure": "Bist du sicher? Dein Account kann nicht wiederhergestellt werden!",
+      "login_link": "Login-Link kopieren",
+      "title": "Aktionen",
+      "user_data": "Alle User Daten"
+    }
+  },
   "sign_up": {
     "already_signed_up": {
       "1": "Bereits registriert?",

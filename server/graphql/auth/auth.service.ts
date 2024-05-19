@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
 import { JwtService } from '@nestjs/jwt';
 import { AuthModel } from '@/types/models/auth.model';
@@ -23,7 +23,6 @@ export class AuthService {
       select: { id: true, is_admin: true },
       where: { login_challenge: challenge },
     });
-
     if (user === null)
       throw new WarningException(ctx.i18n.t('auth.exception.forbidden_login'));
     return this.gen_auth_model(user.id, user.is_admin);

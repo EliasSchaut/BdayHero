@@ -7,6 +7,7 @@
         :required="required"
         type="checkbox"
         class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 dark:border-gray-600 dark:bg-white/5 dark:ring-white/10"
+        :checked="checked"
       />
     </div>
     <div class="ml-3 text-sm leading-6">
@@ -37,6 +38,10 @@ export default defineComponent({
       required: true,
     },
     required: {
+      type: Boolean,
+      default: false,
+    },
+    checked: {
       type: Boolean,
       default: false,
     },

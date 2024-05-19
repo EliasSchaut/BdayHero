@@ -23,7 +23,7 @@
             id="first_name"
             :label="$t('sign_up.form.first_name')"
             placeholder="Max"
-            :value="user.first_name"
+            :value="user?.first_name"
             required
           />
           <FormInputName
@@ -31,14 +31,14 @@
             id="last_name"
             :label="$t('sign_up.form.last_name')"
             placeholder="Mustermann"
-            :value="user.last_name"
+            :value="user?.last_name"
             required
           />
           <FormInputEmail
             class="sm:col-span-6"
             id="email"
             :side_label="{ label: $t('common.form.optional') }"
-            :value="user.email"
+            :value="user?.email"
             show_label
           />
           <div class="space-y-5 sm:col-span-6">
@@ -46,31 +46,31 @@
               id="public"
               :label="$t('sign_up.form.public.label')"
               :desc="$t('sign_up.form.public.desc')"
-              :value="user.public ? 'on' : 'off'"
+              :checked="user?.public"
             />
             <FormCheckbox
               id="has_bed"
               :label="$t('sign_up.form.has_bed.label')"
               :desc="$t('sign_up.form.has_bed.desc')"
-              :value="user.has_bed ? 'on' : 'off'"
+              :checked="user?.has_bed"
             />
             <FormCheckbox
               id="need_bed"
               :label="$t('sign_up.form.need_bed.label')"
               :desc="$t('sign_up.form.need_bed.desc')"
-              :value="user.need_bed ? 'on' : 'off'"
+              :checked="user?.need_bed"
             />
             <FormCheckbox
               id="nerd"
               :label="$t('sign_up.form.nerd.label')"
               :desc="$t('sign_up.form.nerd.desc')"
-              :value="user.nerd ? 'on' : 'off'"
+              :checked="user?.nerd"
             />
             <FormCheckbox
               id="vegan"
               :label="$t('sign_up.form.vegan.label')"
               :desc="$t('sign_up.form.vegan.desc')"
-              :value="user.vegan ? 'on' : 'off'"
+              :checked="user?.vegan"
             />
           </div>
           <FormSubmit
@@ -89,20 +89,48 @@
             >
               <span
                 class="bg-white px-6 text-gray-900 dark:bg-gray-800 dark:text-white"
-                >Login Link</span
+                >{{ $t('profile.actions.title') }}</span
               >
             </div>
           </div>
-          <div class="mt-6 text-center">
-            <LinkUnderlined
-              :href="`https://bday.schaut.dev/login/${user.login_challenge}`"
-              :value="`https://bday.schaut.dev/login/${user.login_challenge}`"
-            />
+          <div class="mt-6 flex justify-center space-x-6 text-center">
+            <Button
+              class="dark:hover:gb-gray-700 bg-gray-400 text-white hover:bg-gray-300 dark:bg-gray-600"
+              ref="btn_copy_login"
+              @click="copy_login_to_clipboard"
+              >{{ $t('profile.actions.login_link') }}
+            </Button>
+            <Button
+              class="dark:hover:gb-gray-700 bg-gray-400 text-white hover:bg-gray-300 dark:bg-gray-600"
+              ref="btn_get_user_data"
+              @click="get_user_data"
+              >{{ $t('profile.actions.user_data') }}
+            </Button>
+            <Button
+              class="bg-gray-400 text-white hover:bg-red-400 dark:bg-gray-600 dark:hover:bg-red-600"
+              ref="btn_delete_account"
+              @click.prevent="$refs.modal_delete_account.show()"
+              >{{ $t('profile.actions.delete') }}
+            </Button>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <Modal ref="modal_delete_account">
+    <p class="mb-6 text-center text-red-400">
+      {{ $t('profile.actions.delete_sure') }}
+    </p>
+    <FormVal
+      :submit="user_delete"
+      class="flex-column mb--2 flex justify-center"
+    >
+      <FormSubmit
+        label="Delete"
+        class="bg-red-600 hover:bg-red-700 focus-visible:outline-red-500"
+      />
+    </FormVal>
+  </Modal>
 </template>
 
 <script lang="ts">
@@ -131,15 +159,51 @@ export default defineComponent({
       }
     `;
 
-    const { result: user } = useQuery(user_query);
+    const user_delete_query = gql`
+      mutation {
+        user_delete {
+          id
+        }
+      }
+    `;
+
+    const { result: user_data } = useQuery(user_query);
+    const { mutate: user_delete } = useMutation(user_delete_query);
     return {
       alert: alertStore(),
       auth: authStore(),
-      user,
+      user: ref(user_data?.value?.user),
+      user_delete,
     };
   },
   methods: {
     submit(e: Event, form_data: FormData) {},
+    get_user_data() {
+      const json = JSON.stringify(this.user);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'user_data.json';
+      link.click();
+      URL.revokeObjectURL(url);
+      link.remove();
+      this.$refs.btn_get_user_data.set_success_then_default();
+    },
+    copy_login_to_clipboard() {
+      navigator.clipboard.writeText(
+        `${window.location.origin}/sign_in/${this.user.login_challenge}`,
+      );
+      this.$refs.btn_copy_login!.set_success_then_default();
+    },
+    delete_user() {
+      this.$refs.btn_delete_account.set_loading();
+      this.user_delete().then(() => {
+        this.$refs.btn_delete_account.set_success_then_default();
+        this.auth.logout();
+        this.$router.push('/');
+      });
+    },
   },
 });
 </script>
