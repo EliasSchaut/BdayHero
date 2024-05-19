@@ -87,7 +87,8 @@ export default defineComponent({
       alert: alertStore(),
     };
   },
-  created() {
+  mounted() {
+    if (!this.$route.params.login_challenge) return;
     const query_login = gql`
       query sign_in($login_challenge: String!) {
         auth_sign_in(challenge: $login_challenge) {

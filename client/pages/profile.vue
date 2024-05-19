@@ -176,6 +176,36 @@ export default defineComponent({
       user_delete,
     };
   },
+  mounted() {
+    const user_query = gql`
+      query {
+        user {
+          id
+          email
+          first_name
+          last_name
+          public
+          has_bed
+          need_bed
+          nerd
+          vegan
+          is_admin
+          mail_verified
+          login_challenge
+          mail_challenge
+        }
+      }
+    `;
+    useAsyncQuery(user_query).then((data) => {
+      if (data.data && data.data.value) {
+        this.user = data.data.value.user;
+      } else {
+        this.auth.logout();
+        this.alert.show('You have been logged out', 'warn');
+        this.$router.push('/login');
+      }
+    });
+  },
   methods: {
     submit(e: Event, form_data: FormData) {},
     get_user_data() {
