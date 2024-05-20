@@ -22,4 +22,20 @@ export class UserUpdateInputModel {
   @IsOptional()
   @Field(() => Boolean, { nullable: true })
   public?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  has_bed?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  need_bed?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  nerd?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true, defaultValue: false })
+  vegan?: boolean;
 }

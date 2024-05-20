@@ -271,7 +271,8 @@
       "login_link": "Copy Login Link",
       "title": "Actions",
       "user_data": "All User Data"
-    }
+    },
+    "title": "Edit Profile"
   },
   "sign_up": {
     "already_signed_up": {

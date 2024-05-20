@@ -41,7 +41,7 @@
                   class="inline-flex w-full justify-center rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 dark:bg-gray-800"
                   @click="hide()"
                 >
-                  {{ t$('common.modal.close') }}
+                  {{ $t('common.modal.close') }}
                 </button>
               </div>
             </DialogPanel>
@@ -62,7 +62,6 @@ import {
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  name: 'ElementModal',
   components: {
     Dialog,
     DialogPanel,

@@ -87,29 +87,31 @@ export default defineComponent({
       alert: alertStore(),
     };
   },
-  mounted() {
+  created() {
     if (!this.$route.params.login_challenge) return;
     const query_login = gql`
-      query sign_in($login_challenge: String!) {
+      query auth_sign_in($login_challenge: String!) {
         auth_sign_in(challenge: $login_challenge) {
           barrier_token
           is_admin
         }
       }
     `;
-    const { result: result_user } = useQuery(query_login, {
+    useAsyncQuery(query_login, {
       login_challenge: this.$route.params.login_challenge,
+    }).then((data) => {
+      console.log(data);
+      if (data?.data && data?.data?.value?.auth_sign_in) {
+        this.alert.show('Successfully logged in', 'success');
+        this.auth.login(
+          data.data.value.auth_sign_in.barrier_token,
+          data.data.value.auth_sign_in.is_admin,
+        );
+        this.$router.push({ name: 'profile' });
+      } else {
+        this.alert.show('Login unsuccessful', 'warn');
+      }
     });
-    if (result_user.value && result_user.value.auth_sign_in) {
-      this.alert.show('Successfully logged in', 'success');
-      this.auth.login(
-        result_user.value.auth_sign_in.barrier_token,
-        result_user.value.auth_sign_in.is_admin,
-      );
-      this.$router.push({ name: 'profile' });
-    } else {
-      this.alert.show('Login unsuccessful', 'warn');
-    }
   },
   methods: {
     async submit_login(e: Event) {
@@ -143,5 +145,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped></style>

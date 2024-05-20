@@ -43,7 +43,7 @@ export default defineComponent({
       users_count: ref(0),
     };
   },
-  mounted() {
+  created() {
     const query_guests_count = gql`
       query {
         users_count

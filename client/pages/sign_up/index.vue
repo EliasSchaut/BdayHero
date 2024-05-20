@@ -157,9 +157,6 @@ export default defineComponent({
     };
   },
   methods: {
-    check_pw() {
-      this.pw_confirmed = this.pw_value === this.pw_confirm_value;
-    },
     submit_set_up(e: Event, form_data: FormData) {
       const variables = {
         user_input_data: {
@@ -173,8 +170,7 @@ export default defineComponent({
           vegan: form_data.get('vegan') === 'on',
         },
       };
-
-      this.mutate_user({ ...variables })
+      this.mutate_user(variables)
         .then((result) => {
           if (result?.data) {
             this.alert.show('Account created', 'success');

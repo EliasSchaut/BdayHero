@@ -271,7 +271,8 @@
       "login_link": "Login-Link kopieren",
       "title": "Aktionen",
       "user_data": "Alle User Daten"
-    }
+    },
+    "title": "Profil bearbeiten"
   },
   "sign_up": {
     "already_signed_up": {

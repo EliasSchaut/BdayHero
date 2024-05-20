@@ -6,7 +6,7 @@
       <h2
         class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white"
       >
-        Edit Profile
+        {{ $t('profile.title') }}
       </h2>
     </div>
 
@@ -16,7 +16,7 @@
       >
         <FormVal
           class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
-          :submit="submit"
+          :submit="submit_user_update"
         >
           <FormInputName
             class="sm:col-span-3"
@@ -108,8 +108,7 @@
             </Button>
             <Button
               class="bg-gray-400 text-white hover:bg-red-400 dark:bg-gray-600 dark:hover:bg-red-600"
-              ref="btn_delete_account"
-              @click.prevent="$refs.modal_delete_account.show()"
+              @click="$refs.modal_delete_account.show()"
               >{{ $t('profile.actions.delete') }}
             </Button>
           </div>
@@ -122,11 +121,12 @@
       {{ $t('profile.actions.delete_sure') }}
     </p>
     <FormVal
-      :submit="user_delete"
       class="flex-column mb--2 flex justify-center"
+      :submit="submit_delete_user"
     >
       <FormSubmit
         label="Delete"
+        ref="btn_delete_account"
         class="bg-red-600 hover:bg-red-700 focus-visible:outline-red-500"
       />
     </FormVal>
@@ -139,26 +139,13 @@ import { authStore } from '~/store/auth';
 
 export default defineComponent({
   setup() {
-    const user_query = gql`
-      query {
-        user {
+    const user_update_query = gql`
+      mutation user_update($update_user_input: UpdateUserInput!) {
+        user_update(update_user_input: $update_user_input) {
           id
-          email
-          first_name
-          last_name
-          public
-          has_bed
-          need_bed
-          nerd
-          vegan
-          is_admin
-          mail_verified
-          login_challenge
-          mail_challenge
         }
       }
     `;
-
     const user_delete_query = gql`
       mutation {
         user_delete {
@@ -167,16 +154,17 @@ export default defineComponent({
       }
     `;
 
-    const { result: user_data } = useQuery(user_query);
+    const { mutate: user_update } = useMutation(user_update_query);
     const { mutate: user_delete } = useMutation(user_delete_query);
     return {
       alert: alertStore(),
       auth: authStore(),
-      user: ref(user_data?.value?.user),
+      user: ref({}),
+      user_update,
       user_delete,
     };
   },
-  mounted() {
+  created() {
     const user_query = gql`
       query {
         user {
@@ -207,7 +195,29 @@ export default defineComponent({
     });
   },
   methods: {
-    submit(e: Event, form_data: FormData) {},
+    submit_user_update(e: Event, form_data: FormData) {
+      const btn = this.$refs.user_update_button;
+      const variables = {
+        user_update_input_data: {
+          email: form_data.get('email'),
+          first_name: form_data.get('first_name'),
+          last_name: form_data.get('last_name'),
+          public: form_data.get('public') === 'on',
+          has_bed: form_data.get('has_bed') === 'on',
+          need_bed: form_data.get('need_bed') === 'on',
+          nerd: form_data.get('nerd') === 'on',
+          vegan: form_data.get('vegan') === 'on',
+        },
+      };
+      this.user_update(variables).then((data) => {
+        if (data?.data && data?.data?.value) {
+          this.alert.show('User updated successfully', 'success');
+        } else {
+          this.alert.show('Something went wrong', 'warn');
+        }
+        btn.set_success_then_default();
+      });
+    },
     get_user_data() {
       const json = JSON.stringify(this.user);
       const blob = new Blob([json], { type: 'application/json' });
@@ -226,7 +236,7 @@ export default defineComponent({
       );
       this.$refs.btn_copy_login!.set_success_then_default();
     },
-    delete_user() {
+    submit_delete_user(e: Event, form_data: FormData) {
       this.$refs.btn_delete_account.set_loading();
       this.user_delete().then(() => {
         this.$refs.btn_delete_account.set_success_then_default();
