@@ -74,6 +74,7 @@
             />
           </div>
           <FormSubmit
+            ref="user_update_button"
             class="bg-indigo-500 dark:bg-indigo-600 sm:col-span-6"
             label="Update"
           />
@@ -140,8 +141,8 @@ import { authStore } from '~/store/auth';
 export default defineComponent({
   setup() {
     const user_update_query = gql`
-      mutation user_update($update_user_input: UpdateUserInput!) {
-        user_update(update_user_input: $update_user_input) {
+      mutation user_update($user_update_input_data: UserUpdateInputModel!) {
+        user_update(user_update_input_data: $user_update_input_data) {
           id
         }
       }
@@ -197,6 +198,7 @@ export default defineComponent({
   methods: {
     submit_user_update(e: Event, form_data: FormData) {
       const btn = this.$refs.user_update_button;
+      btn.set_loading();
       const variables = {
         user_update_input_data: {
           email: form_data.get('email'),
@@ -209,7 +211,7 @@ export default defineComponent({
           vegan: form_data.get('vegan') === 'on',
         },
       };
-      this.user_update(variables).then((data) => {
+      this.user_update({ ...variables }).then((data) => {
         if (data?.data && data?.data?.value) {
           this.alert.show('User updated successfully', 'success');
         } else {

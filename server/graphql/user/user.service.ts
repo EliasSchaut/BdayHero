@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
 import { CtxType } from '@/types/ctx.type';
 import { UserModel } from '@/types/models/user.model';
@@ -40,14 +40,14 @@ export class UserService {
     user_update_input_data: UserUpdateInputModel,
     ctx: CtxType,
   ): Promise<UserModel | null> {
-    await this.update__email_if_present(user_update_input_data, ctx);
+    const user = await this.prisma.user.update({
+      where: { id: ctx.user_id },
+      data: user_update_input_data,
+    });
+    Logger.log(user);
+    //if () await this.update__email_if_present(user_update_input_data, ctx);
 
-    return new UserModel(
-      await this.prisma.user.update({
-        where: { id: ctx.user_id },
-        data: user_update_input_data,
-      }),
-    );
+    return new UserModel(user);
   }
 
   async delete(ctx: CtxType): Promise<UserModel | null> {
