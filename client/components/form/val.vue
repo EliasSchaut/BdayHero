@@ -8,7 +8,6 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'FormVal',
   methods: {
     validate(e: Event) {
       const form_html = e.target as HTMLFormElement;

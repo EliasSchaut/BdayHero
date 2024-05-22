@@ -33,7 +33,7 @@
             required
           />
           <FormInputEmail
-            class="sm:col-span-6"
+            class="hidden sm:col-span-6"
             id="email"
             :side_label="{ label: $t('common.form.optional') }"
             show_label
@@ -77,7 +77,7 @@
           />
         </FormVal>
 
-        <div>
+        <div class="hidden">
           <div class="relative mt-10">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
               <div class="w-full border-t border-gray-200" />

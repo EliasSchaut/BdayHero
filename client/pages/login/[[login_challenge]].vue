@@ -12,15 +12,20 @@
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
       <div
-        class="bg-white px-6 py-12 shadow dark:bg-gray-800 sm:rounded-lg sm:px-12"
+        class="bg-white px-6 py-12 text-center leading-6 shadow dark:bg-gray-800 sm:rounded-lg sm:px-12"
       >
-        <form class="space-y-6" @submit.prevent="submit_login">
+        {{ $t('login.desc') }}
+      </div>
+      <div
+        class="hidden bg-white px-6 py-12 shadow dark:bg-gray-800 sm:rounded-lg sm:px-12"
+      >
+        <FormVal class="space-y-6" :submit="submit_login">
           <FormInputEmail id="email" required />
           <FormSubmit
             class="bg-indigo-500 dark:bg-indigo-600"
             :label="$t('login.submit')"
           />
-        </form>
+        </FormVal>
 
         <div>
           <div class="relative mt-10">
@@ -37,7 +42,7 @@
             </div>
           </div>
 
-          <div class="mt-6 grid grid-cols-2 gap-4">
+          <div class="mt-6 grid hidden grid-cols-2 gap-4">
             <a
               href="/sign_up/google"
               class="flex w-full items-center justify-center gap-3 rounded-md bg-[#4285F4] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"

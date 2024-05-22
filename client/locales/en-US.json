@@ -244,11 +244,12 @@
     }
   },
   "login": {
+    "desc": "By using the login link on your logged in device. You can also ask Elias, if you lost your login link.",
     "no_account": "No account?",
     "oauth": "Or continue with",
     "sign_up": "Register now!",
     "submit": "Sign in",
-    "title": "Sign in to your account"
+    "title": "Sign in"
   },
   "pages": {
     "details": "Details",
@@ -273,6 +274,12 @@
       "user_data": "All User Data"
     },
     "title": "Edit Profile"
+  },
+  "shifts": {
+    "desc": "Due to time constraints, the integrated shift plan could not be fully implemented. You are therefore welcome to take a shift via a Google Sheet.",
+    "plan": {
+      "goto": "To the shift plan (Google Sheet)"
+    }
   },
   "sign_up": {
     "already_signed_up": {

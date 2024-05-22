@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="mx-auto max-w-7xl overflow-hidden px-6 lg:px-8">
-      <button @click="auth.logged_in = !auth.logged_in">
+      <button class="hidden" @click="auth.logged_in = !auth.logged_in">
         Logged In: {{ auth.logged_in }}
       </button>
       <nav

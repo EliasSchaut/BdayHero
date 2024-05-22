@@ -244,11 +244,12 @@
     }
   },
   "login": {
+    "desc": "Indem du den Login-Link auf einem eingeloggten Gerät verwendest. Du kannst auch Elias fragen, wenn du deinen Login-Link verloren hast.",
     "no_account": "Kein Konto?",
     "oauth": "Oder weiter mit",
     "sign_up": "Registriere dich!",
     "submit": "Anmelden",
-    "title": "Melden Sie sich bei Ihrem Konto an"
+    "title": "Melde dich an"
   },
   "pages": {
     "details": "Details",
@@ -273,6 +274,12 @@
       "user_data": "Alle User Daten"
     },
     "title": "Profil bearbeiten"
+  },
+  "shifts": {
+    "desc": "Aus Zeitgründen konnte der integrierte Schichtplan nicht fertig implementiert werden. Tragt euch deshalb gerne in den Schichtplan über ein Google Sheet ein.",
+    "plan": {
+      "goto": "Zum Schichtplan (Google Sheet)"
+    }
   },
   "sign_up": {
     "already_signed_up": {

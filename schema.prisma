@@ -21,7 +21,7 @@ model User {
   vegan           Boolean @default(false)
   is_admin        Boolean @default(false)
   mail_verified   Boolean @default(false)
-  email           String? @unique
+  email           String?
   mail_challenge  String  @unique @default(cuid())
   login_challenge String  @unique @default(cuid())
 

@@ -35,7 +35,7 @@
             required
           />
           <FormInputEmail
-            class="sm:col-span-6"
+            class="hidden sm:col-span-6"
             id="email"
             :side_label="{ label: $t('common.form.optional') }"
             :value="user?.email"
@@ -148,7 +148,7 @@ export default defineComponent({
       }
     `;
     const user_delete_query = gql`
-      mutation {
+      mutation user_delete {
         user_delete {
           id
         }
@@ -158,11 +158,11 @@ export default defineComponent({
     const { mutate: user_update } = useMutation(user_update_query);
     const { mutate: user_delete } = useMutation(user_delete_query);
     return {
-      alert: alertStore(),
-      auth: authStore(),
-      user: ref({}),
       user_update,
       user_delete,
+      user: ref({}),
+      alert: alertStore(),
+      auth: authStore(),
     };
   },
   created() {
@@ -240,7 +240,7 @@ export default defineComponent({
     },
     submit_delete_user(e: Event, form_data: FormData) {
       this.$refs.btn_delete_account.set_loading();
-      this.user_delete().then(() => {
+      this.user_delete({}).then((data) => {
         this.$refs.btn_delete_account.set_success_then_default();
         this.auth.logout();
         this.$router.push('/');
