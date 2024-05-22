@@ -32,15 +32,16 @@ import { AuthGuard } from '@/graphql/auth/auth.guard';
       },
     }),
     I18nModule.forRoot({
-      fallbackLanguage: 'en',
+      fallbackLanguage: 'en-US',
       loaderOptions: {
         path: join(__dirname, 'locales'),
-        watch: true,
       },
       loader: I18nJsonLoader,
       resolvers: [I18nLangResolver],
       typesOutputPath: join(
         __dirname,
+        '..',
+        'server',
         'types',
         'generated',
         'i18n.generated.ts',

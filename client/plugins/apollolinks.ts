@@ -22,10 +22,18 @@ export default defineNuxtPlugin(({ hook }) => {
 
   const auth_link = new ApolloLink((operation, forward) => {
     const auth = authStore();
+    const i18n = useI18n();
     if (auth.logged_in) {
       operation.setContext({
         headers: {
           authorization: `Bearer ${auth.token}`,
+          'accept-language': i18n.locale.value,
+        },
+      });
+    } else {
+      operation.setContext({
+        headers: {
+          'accept-language': i18n.locale.value,
         },
       });
     }
