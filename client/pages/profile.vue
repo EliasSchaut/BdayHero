@@ -234,7 +234,7 @@ export default defineComponent({
     },
     copy_login_to_clipboard() {
       navigator.clipboard.writeText(
-        `${window.location.origin}/sign_in/${this.user.login_challenge}`,
+        `${window.location.origin}/login/${this.user.login_challenge}`,
       );
       this.$refs.btn_copy_login!.set_success_then_default();
     },

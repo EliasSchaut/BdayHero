@@ -24,7 +24,7 @@
     <ListDescriptionElement :title="$t('detail.arrival.title')">
       <ul>
         <li>
-          {{ $t('detail.arrival.value.car_sharing') }}
+          {{ $t('detail.arrival.value.car') }}
           <LinkUnderlined
             :value="$t('detail.arrival.value.car_sharing')"
             href="https://chat.whatsapp.com/Ei50VQfokLnLWbKz1Ygi5a"

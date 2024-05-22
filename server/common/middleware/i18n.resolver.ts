@@ -10,7 +10,7 @@ export class I18nLangResolver implements I18nResolver {
     const gql_ctx = GqlExecutionContext.create(ctx);
     const req = gql_ctx.getContext().req;
     const lang = req.headers['accept-language'];
-    if (lang === 'de') {
+    if (lang === 'de-DE') {
       return 'de-DE';
     } else {
       return 'en-US';

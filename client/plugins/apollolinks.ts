@@ -4,6 +4,8 @@ import { ApolloLink, from } from '@apollo/client/core';
 import { alertStore } from '@/store/alert';
 import { authStore } from '~/store/auth';
 
+let locale = 'en-US';
+
 export default defineNuxtPlugin(({ hook }) => {
   const { clients } = useApollo();
   const default_client: ApolloClient<any> = (clients as any).default;
@@ -22,18 +24,17 @@ export default defineNuxtPlugin(({ hook }) => {
 
   const auth_link = new ApolloLink((operation, forward) => {
     const auth = authStore();
-    const i18n = useI18n();
     if (auth.logged_in) {
       operation.setContext({
         headers: {
           authorization: `Bearer ${auth.token}`,
-          'accept-language': i18n.locale.value,
+          'accept-language': locale,
         },
       });
     } else {
       operation.setContext({
         headers: {
-          'accept-language': i18n.locale.value,
+          'accept-language': locale,
         },
       });
     }
@@ -46,5 +47,9 @@ export default defineNuxtPlugin(({ hook }) => {
 
   hook('apollo:error', (error) => {
     console.error('error: ', error);
+  });
+
+  hook('i18n:beforeLocaleSwitch', ({ newLocale }) => {
+    locale = newLocale;
   });
 });
