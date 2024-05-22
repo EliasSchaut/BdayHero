@@ -72,6 +72,7 @@
             />
           </div>
           <FormSubmit
+            ref="sign_up_submit_button"
             class="bg-indigo-500 dark:bg-indigo-600 sm:col-span-6"
             :label="$t('sign_up.form.submit')"
           />
@@ -158,9 +159,10 @@ export default defineComponent({
   },
   methods: {
     submit_set_up(e: Event, form_data: FormData) {
+      this.$refs.sign_up_submit_button.set_loading();
       const variables = {
         user_input_data: {
-          email: form_data.get('email'),
+          //email: form_data.get('email'),
           first_name: form_data.get('first_name'),
           last_name: form_data.get('last_name'),
           public: form_data.get('public') === 'on',
@@ -173,6 +175,7 @@ export default defineComponent({
       this.mutate_user(variables)
         .then((result) => {
           if (result?.data) {
+            this.$refs.sign_up_submit_button.set_success_then_default();
             this.alert.show('Account created', 'success');
             this.auth.login(
               result.data.auth_register.barrier_token,
@@ -184,9 +187,8 @@ export default defineComponent({
             document.documentElement.scrollTop = 0;
           }
         })
-        .catch((e: GraphQLError) => {
-          console.error(e);
-          this.alert.show('something went wrong', 'warn');
+        .catch((e) => {
+          this.$refs.sign_up_submit_button.set_default();
         });
     },
   },

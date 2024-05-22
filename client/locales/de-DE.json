@@ -114,6 +114,12 @@
     "subtitle": "Alles Wissenswerte rund um den Bday",
     "title": "Details"
   },
+  "guestlist": {
+    "countup": {
+      "head": "Schon",
+      "tail": "sind dabei"
+    }
+  },
   "home": {
     "blog": {
       "bday21": {

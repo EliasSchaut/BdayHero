@@ -114,6 +114,12 @@
     "subtitle": "Everything you need to know about the Bday",
     "title": "Details"
   },
+  "guestlist": {
+    "countup": {
+      "head": "Already",
+      "tail": "are in"
+    }
+  },
   "home": {
     "blog": {
       "bday21": {

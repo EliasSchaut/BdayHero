@@ -9,9 +9,10 @@
       :enter="{ opacity: 1, y: 0 }"
       :delay="600"
       :duration="1200"
-      >Schon</span
+      >{{ $t('guestlist.countup.head') }}</span
     >
     <Countup
+      id="guestlist_countup"
       class="m-auto w-min text-4xl font-bold opacity-0"
       v-motion
       :initial="{ opacity: 0, scale: 0 }"
@@ -28,7 +29,7 @@
       :enter="{ opacity: 1, y: 0 }"
       :delay="1200"
       :duration="1200"
-      >sind dabei!</span
+      >{{ $t('guestlist.countup.tail') }}!</span
     >
   </div>
 
@@ -38,22 +39,21 @@
 
 <script lang="ts">
 export default defineComponent({
-  setup() {
-    return {
-      users_count: ref(0),
-    };
-  },
   created() {
     const query_guests_count = gql`
       query {
         users_count
       }
     `;
-    useAsyncQuery(query_guests_count).then((data) => {
-      if (data.data && data.data.value) {
-        this.$refs.count_up.start(Number(data.data.value.users_count));
-      }
-    });
+    useAsyncQuery(query_guests_count)
+      .then((data) => {
+        if (data.data && data.data.value) {
+          this.$refs.count_up.start(data.data.value.users_count);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   },
 });
 </script>

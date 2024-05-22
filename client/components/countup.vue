@@ -4,7 +4,6 @@
 
 <script lang="ts">
 import { CountUp } from 'countup.js';
-import * as timers from 'node:timers';
 
 export default defineComponent({
   mounted() {
