@@ -6,7 +6,7 @@
 import { CountUp } from 'countup.js';
 
 export default defineComponent({
-  mounted() {
+  created() {
     if (this.autostart) this.start(this.end_val);
   },
   methods: {

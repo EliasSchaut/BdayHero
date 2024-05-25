@@ -316,6 +316,7 @@
         "label": "Visible in guestlist"
       },
       "submit": "Confirm",
+      "success": "Account created successfully",
       "tos": {
         "desc": "You read and accept the data privacy (see bottom)",
         "label": "Terms of Service"

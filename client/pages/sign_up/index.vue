@@ -141,6 +141,7 @@ export default defineComponent({
     KeyIcon,
   },
   setup() {
+    const { t } = useI18n();
     const query_mutate_user = gql`
       mutation register($user_input_data: UserInputModel!) {
         auth_register(user_input_data: $user_input_data) {
@@ -155,6 +156,7 @@ export default defineComponent({
       auth: authStore(),
       alert: alertStore(),
       mutate_user,
+      t,
     };
   },
   methods: {
@@ -176,7 +178,7 @@ export default defineComponent({
         .then((result) => {
           if (result?.data) {
             this.$refs.sign_up_submit_button.set_success_then_default();
-            this.alert.show('Account created', 'success');
+            this.alert.show(this.t('sign_up.form.success'), 'success');
             this.auth.login(
               result.data.auth_register.barrier_token,
               result.data.auth_register.is_admin,

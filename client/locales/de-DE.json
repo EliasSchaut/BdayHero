@@ -45,7 +45,7 @@
   },
   "detail": {
     "arrival": {
-      "title": "Ankunft",
+      "title": "Anfahrt",
       "value": {
         "car": "Auto/Motorrad: Freies Parken auf dem ganzen Klosterweg",
         "car_sharing": "Fahrgemeinschaften Börse",
@@ -69,11 +69,11 @@
       },
       "1": {
         "title": "Was kann ich dir schenken?",
-        "value": "Deine Anwesenheit ist das größte Geschenk! Wenn du trotzdem etwas schenken möchtest, freue ich mich über eine kleine <a class=\"underline\" href=\"https://donate.schaut.dev\">Spende</a> für die Getränke und das Essen. Ich freue natürlich trotzdem über kreative Geschenke :D"
+        "value": "Deine Anwesenheit ist das größte Geschenk! Wenn du mir trotzdem etwas schenken möchtest, freue ich mich über eine kleine <a class=\"underline\" href=\"https://donate.schaut.dev\">Spende</a> für die Getränke und das Essen. Ich freue mich natürlich trotzdem über kreative Geschenke :D"
       },
       "2": {
         "title": "Kann man übernachten?",
-        "value": "Es gibt leider nur sehr begrenzt Schlafplätze und auch nur für Menschen außerhalb von Karlsruhe. Wenn du einen Schlafplatz benötigst, gibt dies bei der Anmeldung an und tritt der <a class=\"underline\" href=\"https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1\">Bettbörse</a> bei."
+        "value": "Es gibt leider nur sehr begrenzt Schlafplätze und auch nur für Menschen außerhalb von Karlsruhe. Wenn du einen Schlafplatz benötigst, gib dies bei der Anmeldung an und tritt der <a class=\"underline\" href=\"https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1\">Bettbörse</a> bei."
       },
       "3": {
         "title": "Kann ich ein Bett zum Übernachten anbieten?",
@@ -89,7 +89,7 @@
       },
       "6": {
         "title": "Werde ich Spaß haben?",
-        "value": "JA! Du wirst den besten Abend deines Lebens haben! Egal ob alt oder jung, groß oder klein, nerdy oder party, du wirst deinen Spaß haben!JA! Du wirst den besten Abend deines Lebens haben! Egal ob alt oder jung, groß oder klein, nerdy oder party, du wirst deinen Spaß haben!"
+        "value": "JA! Du wirst den besten Abend deines Lebens haben! Egal, ob alt oder jung, groß oder klein, nerdy oder party, du wirst deinen Spaß haben!"
       }
     },
     "location": {
@@ -304,8 +304,8 @@
         "label": "Ich brauche ein Bett"
       },
       "nerd": {
-        "desc": "Du hast Interesse an einer nerdigen Schnitzeljagt während des Bdays",
-        "label": "Teilnahme Schnitzeljagt"
+        "desc": "Du hast Interesse an einer nerdigen Schnitzeljagd während des Bdays",
+        "label": "Teilnahme Schnitzeljagd"
       },
       "newsletter": {
         "desc": "Damit stimmst du zu, eine Einladung zum Bday-Newsletter per Mail zu erhalten",
@@ -316,6 +316,7 @@
         "label": "Sichtbar in der Gästeliste"
       },
       "submit": "Bestätigen",
+      "success": "Account wurde erfolgreich erstellt",
       "tos": {
         "desc": "Du hast die Datenschutzbestimmungen (siehe unten) gelesen und akzeptierst diese",
         "label": "Terms of Service"
