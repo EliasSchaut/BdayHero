@@ -11,17 +11,16 @@
       :duration="1200"
       >{{ $t('guestlist.countup.head') }}</span
     >
-    <CountUp
+    <Countup
+      id="guestlist_countup"
       class="m-auto w-min text-4xl font-bold opacity-0"
       v-motion
       :initial="{ opacity: 0, scale: 0 }"
       :enter="{ opacity: 1, scale: 3 }"
       :hovered="{ scale: 3.5 }"
-      :startVal="0"
-      :endVal="0"
-      :delay="1"
-      :duration="3"
-      @init="onInit"
+      :delay="1000"
+      :duration="3000"
+      ref="count_up"
     />
     <span
       class="text-nowrap text-3xl font-semibold opacity-0"
@@ -38,20 +37,23 @@
   <TableGuestlist class="text-md m-auto mt-2 xs:w-[20em]" />
 </template>
 
-<script setup lang="ts">
-import CountUp from 'vue-countup-v3';
-import type { ICountUp } from 'vue-countup-v3';
-
-const query_guests_count = gql`
-  query {
-    users_count
-  }
-`;
-const { result: result_guest_count } = useQuery(query_guests_count, null, {
-  prefetch: true,
+<script lang="ts">
+export default defineComponent({
+  created() {
+    const query_guests_count = gql`
+      query {
+        users_count
+      }
+    `;
+    useAsyncQuery(query_guests_count)
+      .then((data) => {
+        if (data.data && data.data.value) {
+          this.$refs.count_up.start(data.data.value.users_count);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
 });
-
-const onInit = (countUp: ICountUp) => {
-  countUp.update(result_guest_count?.value?.users_count);
-};
 </script>
