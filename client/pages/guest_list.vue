@@ -18,6 +18,8 @@
       :initial="{ opacity: 0, scale: 0 }"
       :enter="{ opacity: 1, scale: 3 }"
       :hovered="{ scale: 3.5 }"
+      :startVal="0"
+      :endVal="0"
       :delay="1000"
       :duration="3000"
       ref="count_up"
@@ -38,7 +40,11 @@
 </template>
 
 <script lang="ts">
+import CountUp from 'vue-countup-v3'
 export default defineComponent({
+  components: {
+    CountUp
+  },
   created() {
     const query_guests_count = gql`
       query {
@@ -48,7 +54,7 @@ export default defineComponent({
     useAsyncQuery(query_guests_count)
       .then((data) => {
         if (data.data && data.data.value) {
-          this.$refs.count_up.start(data.data.value.users_count);
+          this.$refs.count_up.update(data.data.value.users_count);
         }
       })
       .catch((e) => {
