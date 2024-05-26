@@ -20,6 +20,9 @@ export default defineNuxtConfig({
   devServer: {
     port: Number(process.env.PORT_FRONTEND),
   },
+  build: {
+    transpile: ['vue-countup-v3'],
+  },
 
   router: {
     options: {
