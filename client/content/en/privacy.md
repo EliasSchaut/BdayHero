@@ -4,6 +4,9 @@
 When you sign up for the mailing list, your email address will be sent to the mail server behind schaut.dev. This mail server is managed by IONOS SE (Montabaur, Germany). Your e-mail will then be added to the mailing list bday@schaut.dev if you confirm your registration. Only the operator of this website and IONOS SE have access to the mailing list. Your e-mail address will not be passed on to third parties and will only be used to send e-mails containing news about the Bday.
 You can unsubscribe from the mailing list at any time by clicking on the unsubscribe link in one of the emails or by sending an email to the website operator.
 
+## What happens to the data I enter when I register?
+When you register as a guest, the data you enter is transferred to a database on the server behind schaut.dev. The server is managed by IONOS SE (Montabaur, Germany) and is located in Frankfurt, Germany. Only the operator of this website has access to the database. Your data will not be passed on to third parties and will only be used to estimate the planning effort for Bdays and the public guest list. If you are added to the guest list, your first name and surname will be publicly visible. You can delete or view your data at any time via your profile. You can also send an e-mail to the website operator to have your data deleted. Your data (not mailing list) will be automatically and irretrievably deleted shortly after Bday.
+
 ## What other data is collected by this website?
 This website does not collect any other data from you. The operator stated in the legal notice will only find out about you if you email him or add yourself to the mailing list. The operator will then receive your e-mail address and possibly your name. This data will only be used to answer your enquiry and will not be passed on to third parties.
 
