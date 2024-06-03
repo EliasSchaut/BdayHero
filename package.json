@@ -72,7 +72,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.12",
     "@types/supertest": "^6.0.2",
-    "@vueuse/motion": "^2.1.0",
+    "@vueuse/motion": "^2.2.3",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
     "countup.js": "^2.8.0",
