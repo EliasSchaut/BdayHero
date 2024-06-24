@@ -58,7 +58,7 @@
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.8",
     "@nuxt/content": "^2.12.1",
-    "@nuxt/devtools": "^1.3.1",
+    "@nuxt/devtools": "^1.3.6",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
     "@nuxtjs/color-mode": "^3.4.1",
