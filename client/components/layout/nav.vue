@@ -111,29 +111,31 @@ export default defineComponent({
               title: t('pages.guest_list'),
               href: '/guest_list',
               matches: /^\/guest_list$/,
+              hide: true,
             },
             {
               title: t('pages.shifts'),
               href: '/shifts',
               matches: /^\/shifts$/,
+              hide: true,
             },
             {
               title: t('pages.login'),
               href: '/login',
               matches: /^\/login$/,
-              hide: auth.logged_in,
+              hide: true, //auth.logged_in,
             },
             {
               title: t('pages.sign_up'),
               href: '/sign_up',
               matches: /^\/sign_up$/,
-              hide: auth.logged_in,
+              hide: true, //auth.logged_in,
             },
             {
               title: t('pages.profile'),
               href: '/profile',
               matches: /^\/profile$/,
-              hide: !auth.logged_in,
+              hide: true, //!auth.logged_in,
             },
           ] as Array<{
             title: string;

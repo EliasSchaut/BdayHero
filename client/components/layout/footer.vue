@@ -36,7 +36,7 @@ const navigation = {
     { name: t('pages.resources'), href: '/resources' },
     {
       name: t('pages.source'),
-      href: 'https://github.com/EliasSchaut/BdayHero',
+      href: 'https://github.com/EliasSchaut/BdayHero/tree/carmenBD50',
     },
   ],
 };
