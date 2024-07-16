@@ -1,17 +1,18 @@
 <template>
-  <div class="mx-auto my-24 flex justify-around space-x-4 px-4 align-middle">
-    <img
-      v-if="swapped"
-      :class="[img_rounded_full ? 'rounded-full' : 'rounded-md', 'shadow-md']"
-      :src="img_src"
-      :alt="title"
-    />
-    <LayoutBlocktext :title="title">
+  <div
+    :class="[
+      swapped ? 'lg:flex-row-reverse' : '',
+      'mx-auto my-24 flex flex-wrap-reverse justify-around space-y-3 px-4 align-middle lg:flex-nowrap',
+    ]"
+  >
+    <LayoutBlocktext :title="title" class="lg:mx-2">
       <slot />
     </LayoutBlocktext>
     <img
-      v-if="!swapped"
-      :class="[img_rounded_full ? 'rounded-full' : 'rounded-md', 'shadow-md']"
+      :class="[
+        img_rounded_full ? 'rounded-full' : 'rounded-md',
+        'w-max-1/2 object-contain shadow-md lg:mx-2',
+      ]"
       :src="img_src"
       :alt="title"
     />

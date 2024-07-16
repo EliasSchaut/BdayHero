@@ -38,7 +38,7 @@
 
   <LayoutHeading>Programm</LayoutHeading>
 
-  <ImgText title="Dorfführung mit Lunch" img_src="/svg/600x400.svg" swapped>
+  <ImgText title="Dorfführung mit Lunch" img_src="/img/Dorfführung.jpg" swapped>
     Wir beginnen wahlweise den Tag mit einer historischen Dorfführung durch das
     Burg- und Weindorf Neuleiningen - Heimat meiner väterlichen Groß- und
     Urgroßeltern. Die Dorfführung wird von meiner Grundschullehrerin der 1. und
