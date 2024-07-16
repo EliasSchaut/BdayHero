@@ -4,58 +4,78 @@
     :subtitle="$t('detail.subtitle')"
   >
     <ListDescriptionElement :title="$t('detail.begin.title')"
-      >{{ $t('detail.begin.value') }}
+      >Samstag, 05.10.2024 von 11:00 bzw. 15:30 Uhr bis open end
     </ListDescriptionElement>
-    <ListDescriptionElement :title="$t('detail.location.title')"
-      ><span>{{ $t('detail.location.value') }}</span>
-      <LinkUnderlined
-        value="GoogleMaps"
-        href="https://maps.app.goo.gl/ARw5YZphkyWSiqEi8"
-      />
-      <LinkUnderlined
-        value="Apple&nbsp;Karten"
-        href="https://maps.apple.com/?address=Klosterweg%2030,%2076131%20Karlsruhe,%20Deutschland&auid=13013047162473329048&ll=49.020084,8.422487&lsp=9902&q=Hans%20Dickmann%20Kolleg%20-%20K2&t=m"
-      />
-      <LinkUnderlined
-        value="OpenStreetMap"
-        href="https://www.openstreetmap.org/?mlat=49.02014&mlon=8.42261#map=19/49.02014/8.42261&layers=N"
-      />
+    <ListDescriptionElement :title="$t('detail.location.title')">
+      <ul>
+        <li><b>Dorfführung (11 Uhr)</b>: Neuleiningen, Kirchengasse 6</li>
+        <li>
+          <b>Weinprobe (14 Uhr)</b>: Grünstadt-Sausenheim, Bärenbrunnenstraße 15
+        </li>
+        <li>
+          <b>Geburtstagsfeier (ab 15:30 Uhr)</b>: Grünstadt, Richard - Wagner –
+          Straße 1
+        </li>
+      </ul>
     </ListDescriptionElement>
     <ListDescriptionElement :title="$t('detail.arrival.title')">
       <ul>
         <li>
-          {{ $t('detail.arrival.value.car') }}
-          <LinkUnderlined
-            :value="$t('detail.arrival.value.car_sharing')"
-            href="https://chat.whatsapp.com/Ei50VQfokLnLWbKz1Ygi5a"
-          />
+          <b>Über A61/A6</b>: Am Frankenthaler Kreuz auf die A6 Richtung
+          Kaiserslautern fahren und die Abfahrt Grünstadt nehmen. Nach dem
+          Bahnübergang und den Tankstellen von der Kirchheimerstraße aus links
+          abbiegen in den Südring:
         </li>
         <li>
-          {{ $t('detail.arrival.value.public') }}:
-          <LinkUnderlined
-            :value="$t('detail.arrival.value.public_central_station')"
-            href="https://www.kvv.de/fahrplan/fahrplanauskunft.html?itdLPxx_formAction=%2Ffahrplan%2Ffahrplanauskunft.html&language=de&std3_suggestMacro=std3_suggest&std3_commonMacro=trip&itdLPxx_contractor=&std3_contractorMacro=&useRealtime=1&name_origin=Karlsruhe%2C+Karlsruhe+Hauptbahnhof&name_destination=Karlsruhe%2C+Klosterweg+28&nameInfo_origin=7000090%3A%2409&type_origin=any&nameInfo_destination=streetID%3A1500000943%3A28%3A8212000%3A15%3AKlosterweg%3AKarlsruhe%3AKlosterweg%3A%3AKlosterweg%3A76131%3AANY%3ADIVA_SINGLEHOUSE%3A937541%3A5721815%3AMRCV%3AB_W%3A0&type_destination=any&itdDateDayMonthYear=08.06.2024&itdTime=19%3A00&itdTripDateTimeDepArr=arr&includedMeans=checkbox&itdLPxx_ptActive=on&useRealtime=1&std3_inclMOT_0Macro=true&std3_inclMOT_1Macro=true&std3_inclMOT_4Macro=true&std3_inclMOT_5Macro=true&routeType=LEASTTIME&trITMOTvalue100=10&maxChanges=9&imparedOptionsActive=1&name_via=&nameInfo_via=invalid&type_via=any&dwellTimeMinutes=&sessionID=0&requestID=0&itdLPxx_directRequest=1&coordOutputFormat=WGS84[dd.ddddd]"
-          />
-          <LinkUnderlined
-            :value="$t('detail.arrival.value.public_hagsfeld')"
-            href="https://www.kvv.de/fahrplan/fahrplanauskunft.html?itdLPxx_formAction=%2Ffahrplan%2Ffahrplanauskunft.html&language=de&std3_suggestMacro=std3_suggest&std3_commonMacro=trip&itdLPxx_contractor=&std3_contractorMacro=&useRealtime=1&name_origin=Hagsfeld%2C+Hagsfeld+Bahnhof&name_destination=Karlsruhe%2C+Klosterweg+28&nameInfo_origin=7003102&type_origin=any&nameInfo_destination=streetID%3A1500000943%3A28%3A8212000%3A15%3AKlosterweg%3AKarlsruhe%3AKlosterweg%3A%3AKlosterweg%3A76131%3AANY%3ADIVA_SINGLEHOUSE%3A937541%3A5721815%3AMRCV%3AB_W%3A0&type_destination=any&itdDateDayMonthYear=08.06.2024&itdTime=19%3A00&itdTripDateTimeDepArr=arr&includedMeans=checkbox&itdLPxx_ptActive=on&useRealtime=1&std3_inclMOT_0Macro=true&std3_inclMOT_1Macro=true&std3_inclMOT_4Macro=true&std3_inclMOT_5Macro=true&routeType=LEASTTIME&trITMOTvalue100=10&maxChanges=9&imparedOptionsActive=1&name_via=&nameInfo_via=invalid&type_via=any&dwellTimeMinutes=&sessionID=0&requestID=0&itdLPxx_directRequest=1&coordOutputFormat=WGS84[dd.ddddd]"
-          />
+          <b>Zur Dorfführung in Neuleiningen</b>: Vom Südrinng aus Richtung
+          Sausenheim fahren und von dort aus nach Neuleiningen. Parkmöglichkeit
+          gibt es auf dem Berghohl, 67271 Neuleiningen.
+        </li>
+        <li>
+          <b>Zur Weinprobe</b>: Richtung Neuleiningen/Sausenheim fahren, kurz
+          vor dem Ortsausgang rechts in die Bärenbrunnenstraße abbiegen (Von
+          Neuleiningen aus 1. Straße nach dem Ortseingang links!), Hausnummer 15
+          auf der linken Seite, 67269 Grünstadt-Sausenheim.
+        </li>
+        <li>
+          <b>Zur Geburtstagsfeier in der Richard-Wagner-Straße</b>: Vom Südring
+          die 2. Querstraße links nehmen in die Philipp-Rüttger-Straße, dann
+          links abbiegen in die Richard-Wagner-Straße, Hausnummer 1, 67269
+          Grünstadt (Parkplätze befinden sich in der Mozartstraße, nach dem Haus
+          rechts abbiegen).
         </li>
       </ul>
     </ListDescriptionElement>
     <ListDescriptionElement :title="$t('detail.program.title')">
       <ul>
-        <li v-for="i in 10" :key="i">
-          {{ $t(`detail.program.value.${i - 1}`) }}
+        <li>
+          11:00 - Begrüßung und historische Ortsführung Neuleiningen mit Essen
         </li>
+        <li>14:00 - Weinprobe im Weingut Gaul</li>
+        <li>16:00 - Kennenlernspiel</li>
+        <li>17:00 - Zeremonie zum Weltlehrer/-innentag</li>
+        <li>19:30 - Quizshow „50 Jahre Carmen“</li>
+        <li>20:00 - Bildershow „50 Jahre Carmen“</li>
+        <li>21:30 - Party im Keller & Karaoke im Zelt</li>
+        <li>danach - Open End</li>
       </ul>
     </ListDescriptionElement>
     <ListDescriptionElement :title="$t('detail.catering.title')">
-      {{ $t('detail.catering.value') }}
+      Für Essen und Trinken ist gesorgt! Es gibt Grillgut
+      (vegan/vegetarisch/fleisch), Salate, Kuchen, alkoholische und alkoholfreie
+      Getränke und erlesenen Wein.
     </ListDescriptionElement>
   </ListDescription>
-  <HeadingItalic class="my-10" title="FAQ" />
-  <Faq :faqs="faqs" class="rounded-2xl" />
+  <div class="mt-10 flex justify-center">
+    <ButtonGoto
+      class="inline-block"
+      button_label="Melde dich jetzt an!"
+      button_link="/sign_up"
+    />
+  </div>
+
+  <!--<HeadingItalic class="my-10" title="FAQ" />
+  <Faq :faqs="faqs" class="rounded-2xl" />-->
 </template>
 
 <script setup lang="ts">
