@@ -8,7 +8,7 @@
       </div>
 
       <div class="absolute right-5 top-5 hidden gap-4 sm:flex">
-        <SettingLang />
+        <!--<SettingLang />-->
         <SettingTheme />
       </div>
 

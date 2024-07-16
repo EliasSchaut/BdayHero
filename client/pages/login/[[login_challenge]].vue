@@ -67,8 +67,8 @@
         <NuxtLink
           to="sign_up"
           class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
-          >{{ $t('login.sign_up') }}</NuxtLink
-        >
+          >{{ $t('login.sign_up') }}
+        </NuxtLink>
       </p>
     </div>
   </div>

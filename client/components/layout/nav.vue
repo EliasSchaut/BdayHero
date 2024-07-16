@@ -72,7 +72,7 @@
           'mt-5 flex flex-row justify-stretch space-x-4',
         ]"
       >
-        <SettingLang class="w-full" />
+        <!--<SettingLang class="w-full" />-->
         <SettingTheme class="w-full" />
       </div>
     </nav>
@@ -129,13 +129,13 @@ export default defineComponent({
               title: t('pages.sign_up'),
               href: '/sign_up',
               matches: /^\/sign_up$/,
-              hide: true, //auth.logged_in,
+              hide: auth.logged_in,
             },
             {
               title: t('pages.profile'),
               href: '/profile',
               matches: /^\/profile$/,
-              hide: true, //!auth.logged_in,
+              hide: !auth.logged_in,
             },
           ] as Array<{
             title: string;

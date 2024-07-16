@@ -8,6 +8,11 @@
       >
         {{ $t('sign_up.title') }}
       </h2>
+      <div class="mt-3 text-gray-600 dark:text-gray-400">
+        Bitte meldet euch bis 15.09.2024 über die Anmeldefunktion an, damit ich
+        entsprechend planen kann. Für die „Dorfführung mit Lunch“ und die
+        „Weinprobe“ müsst Ihr euch separat anmelden!
+      </div>
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-2xl">
@@ -45,24 +50,14 @@
               :desc="$t('sign_up.form.public.desc')"
             />
             <FormCheckbox
-              id="has_bed"
-              :label="$t('sign_up.form.has_bed.label')"
-              :desc="$t('sign_up.form.has_bed.desc')"
+              id="dorffuehrung"
+              label="Dorfführung mit Lunch"
+              desc="Ich möchte and der historischen Ortsführung Neuleiningen mit Lunch im Bistro Backhaus teilnehmen"
             />
             <FormCheckbox
-              id="need_bed"
-              :label="$t('sign_up.form.need_bed.label')"
-              :desc="$t('sign_up.form.need_bed.desc')"
-            />
-            <FormCheckbox
-              id="nerd"
-              :label="$t('sign_up.form.nerd.label')"
-              :desc="$t('sign_up.form.nerd.desc')"
-            />
-            <FormCheckbox
-              id="vegan"
-              :label="$t('sign_up.form.vegan.label')"
-              :desc="$t('sign_up.form.vegan.desc')"
+              id="weinprobe"
+              label="Weinprobe"
+              desc="Ich möchte and der Weinprobe im Weingut Gaul teilnehmen"
             />
             <FormCheckbox
               id="terms"
