@@ -111,7 +111,7 @@ export default defineComponent({
               title: t('pages.guest_list'),
               href: '/guest_list',
               matches: /^\/guest_list$/,
-              hide: true,
+              hide: false,
             },
             {
               title: t('pages.shifts'),
@@ -123,7 +123,7 @@ export default defineComponent({
               title: t('pages.login'),
               href: '/login',
               matches: /^\/login$/,
-              hide: true, //auth.logged_in,
+              hide: auth.logged_in,
             },
             {
               title: t('pages.sign_up'),

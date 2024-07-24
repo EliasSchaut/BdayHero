@@ -9,10 +9,8 @@ export class UserModel {
     this.first_name = user.first_name;
     this.last_name = user.last_name;
     this.public = user.public;
-    this.has_bed = user.has_bed;
-    this.need_bed = user.need_bed;
-    this.nerd = user.nerd;
-    this.vegan = user.vegan;
+    this.dorffuehrung = user.dorffuehrung;
+    this.weinprobe = user.weinprobe;
     this.is_admin = user.is_admin;
     this.mail_verified = user.mail_verified;
     this.login_challenge = user.login_challenge;
@@ -52,29 +50,17 @@ export class UserModel {
 
   @Field(() => Boolean, {
     description:
-      'Indicates whether the user has a bed to offer for other guests',
+      'Indicates whether the user wants to participate in a village tour',
     nullable: true,
   })
-  has_bed?: boolean;
-
-  @Field(() => Boolean, {
-    description: 'Indicates whether the user needs a bed for their stay',
-    nullable: true,
-  })
-  need_bed?: boolean;
+  dorffuehrung?: boolean;
 
   @Field(() => Boolean, {
     description:
-      'Indicates whether the user is a nerd who likes to play the nerd game',
+      'Indicates whether the user wants to participate in a wine tasting',
     nullable: true,
   })
-  nerd?: boolean;
-
-  @Field(() => Boolean, {
-    description: 'Indicates whether the user eats vegan food only',
-    nullable: true,
-  })
-  vegan?: boolean;
+  weinprobe?: boolean;
 
   @Field(() => Boolean, {
     description: 'Indicates whether the user is an admin',
@@ -120,9 +106,7 @@ export class UserModel {
     this.mail_challenge = undefined;
     this.login_challenge = undefined;
     this.mail_verified = undefined;
-    this.has_bed = undefined;
-    this.need_bed = undefined;
-    this.nerd = undefined;
-    this.vegan = undefined;
+    this.dorffuehrung = undefined;
+    this.weinprobe = undefined;
   }
 }

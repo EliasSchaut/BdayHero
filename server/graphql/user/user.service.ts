@@ -45,8 +45,6 @@ export class UserService {
       data: user_update_input_data,
     });
     Logger.log(user);
-    //if () await this.update__email_if_present(user_update_input_data, ctx);
-
     return new UserModel(user);
   }
 
@@ -64,16 +62,6 @@ export class UserService {
 
   async unsubscribe(email: string, ctx: CtxType): Promise<boolean> {
     return await this.newsletter_service.unsubscribe(email);
-  }
-
-  private async update__email_if_present(
-    user_update_input_data: UserUpdateInputModel,
-    ctx: CtxType,
-  ): Promise<void> {
-    if (user_update_input_data.email) {
-      await this.email_update_request(user_update_input_data.email, ctx);
-      user_update_input_data.email = undefined;
-    }
   }
 
   private async email_update_request(

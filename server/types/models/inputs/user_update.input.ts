@@ -5,11 +5,6 @@ import { IsEmail, IsOptional } from 'class-validator';
 @InputType()
 export class UserUpdateInputModel {
   @IsOptional()
-  @IsEmail()
-  @Field(() => String, { nullable: true })
-  email?: string;
-
-  @IsOptional()
   @IsName()
   @Field(() => String, { nullable: true })
   first_name?: string;
@@ -25,17 +20,9 @@ export class UserUpdateInputModel {
 
   @IsOptional()
   @Field(() => Boolean, { nullable: true, defaultValue: false })
-  has_bed?: boolean;
+  dorffuehrung?: boolean;
 
   @IsOptional()
   @Field(() => Boolean, { nullable: true, defaultValue: false })
-  need_bed?: boolean;
-
-  @IsOptional()
-  @Field(() => Boolean, { nullable: true, defaultValue: false })
-  nerd?: boolean;
-
-  @IsOptional()
-  @Field(() => Boolean, { nullable: true, defaultValue: false })
-  vegan?: boolean;
+  weinprobe?: boolean;
 }

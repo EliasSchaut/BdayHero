@@ -15,12 +15,10 @@ model User {
   first_name      String
   last_name       String
   public          Boolean @default(false)
-  has_bed         Boolean @default(false)
-  need_bed        Boolean @default(false)
-  nerd            Boolean @default(false)
-  vegan           Boolean @default(false)
-  is_admin        Boolean @default(false)
+  dorffuehrung    Boolean @default(false)
+  weinprobe       Boolean @default(false)
   mail_verified   Boolean @default(false)
+  is_admin        Boolean @default(false)
   email           String?
   mail_challenge  String  @unique @default(cuid())
   login_challenge String  @unique @default(cuid())

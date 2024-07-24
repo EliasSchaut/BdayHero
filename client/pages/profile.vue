@@ -49,28 +49,16 @@
               :checked="user?.public"
             />
             <FormCheckbox
-              id="has_bed"
-              :label="$t('sign_up.form.has_bed.label')"
-              :desc="$t('sign_up.form.has_bed.desc')"
-              :checked="user?.has_bed"
+              id="dorffuehrung"
+              label="Dorfführung mit Lunch"
+              desc="Ich möchte and der historischen Ortsführung Neuleiningen mit Lunch im Bistro Backhaus teilnehmen"
+              :checked="user?.dorffuehrung"
             />
             <FormCheckbox
-              id="need_bed"
-              :label="$t('sign_up.form.need_bed.label')"
-              :desc="$t('sign_up.form.need_bed.desc')"
-              :checked="user?.need_bed"
-            />
-            <FormCheckbox
-              id="nerd"
-              :label="$t('sign_up.form.nerd.label')"
-              :desc="$t('sign_up.form.nerd.desc')"
-              :checked="user?.nerd"
-            />
-            <FormCheckbox
-              id="vegan"
-              :label="$t('sign_up.form.vegan.label')"
-              :desc="$t('sign_up.form.vegan.desc')"
-              :checked="user?.vegan"
+              id="weinprobe"
+              label="Weinprobe"
+              desc="Ich möchte and der Weinprobe im Weingut Gaul teilnehmen"
+              :checked="user?.weinprobe"
             />
           </div>
           <FormSubmit
@@ -174,10 +162,8 @@ export default defineComponent({
           first_name
           last_name
           public
-          has_bed
-          need_bed
-          nerd
-          vegan
+          dorffuehrung
+          weinprobe
           is_admin
           mail_verified
           login_challenge
@@ -201,18 +187,15 @@ export default defineComponent({
       btn.set_loading();
       const variables = {
         user_update_input_data: {
-          email: form_data.get('email'),
           first_name: form_data.get('first_name'),
           last_name: form_data.get('last_name'),
           public: form_data.get('public') === 'on',
-          has_bed: form_data.get('has_bed') === 'on',
-          need_bed: form_data.get('need_bed') === 'on',
-          nerd: form_data.get('nerd') === 'on',
-          vegan: form_data.get('vegan') === 'on',
+          dorffuehrung: form_data.get('dorffuehrung') === 'on',
+          weinprobe: form_data.get('weinprobe') === 'on',
         },
       };
       this.user_update({ ...variables }).then((data) => {
-        if (data?.data && data?.data?.value) {
+        if (data?.data && data?.data?.user_update) {
           this.alert.show('User updated successfully', 'success');
         } else {
           this.alert.show('Something went wrong', 'warn');

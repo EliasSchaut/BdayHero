@@ -163,10 +163,8 @@ export default defineComponent({
           first_name: form_data.get('first_name'),
           last_name: form_data.get('last_name'),
           public: form_data.get('public') === 'on',
-          has_bed: form_data.get('has_bed') === 'on',
-          need_bed: form_data.get('need_bed') === 'on',
-          nerd: form_data.get('nerd') === 'on',
-          vegan: form_data.get('vegan') === 'on',
+          weinprobe: form_data.get('weinprobe') === 'on',
+          dorffuehrung: form_data.get('dorffuehrung') === 'on',
         },
       };
       this.mutate_user(variables)

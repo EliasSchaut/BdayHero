@@ -52,7 +52,7 @@
     </div>
   </ImgText>
 
-  <ImgText title="Weinprobe" img_src="/svg/600x400.svg">
+  <ImgText title="Weinprobe" img_src="/img/Weinprobe.jpg">
     Gemütlich geht es ab 14:00 Uhr mit einer Auswahl an erlesenen Weinen im
     Weingut Karl-Heinz Gaul in Sausenheim weiter. Frau Rosemarie Gaul, die das
     Weingut mit ihren Töchtern betreibt, war gut mit meinen Eltern befreundet.
@@ -64,13 +64,13 @@
     </div>
   </ImgText>
 
-  <ImgText title="Geburtstagsfeier" img_src="/svg/600x400.svg" swapped>
+  <ImgText title="Geburtstagsfeier" img_src="/img/Feier.jpg" swapped>
     Natürlich darf auch die traditionelle Geburtstagsfeier nicht fehlen. Sie
     startet ab 15:30 Uhr im hauseigenen Garten. Es gibt Kaffee und Kuchen, viele
     weitere Leckereien und gute Gesellschaft zu elektronischer Musik.
   </ImgText>
 
-  <ImgText title="Weltlehrer/-innentag" img_src="/svg/600x400.svg">
+  <ImgText title="Weltlehrer/-innentag" img_src="/img/weltlehrertag.jpg">
     Zu Ehren aller Lehrer/-innen unter uns werden wir eine kleine Zeremonie
     abhalten, in der wir die Bedeutung und den Einfluss von Lehrkräften
     würdigen. ;o)
@@ -88,7 +88,7 @@
 
   <ImgText
     title="Weinfest mit Geburtstagsprogramm"
-    img_src="/svg/600x400.svg"
+    img_src="/img/weinfest.jpg"
     swapped
   >
     Am Abend gibt es Pfälzer Köstlichkeiten mit Ausschank und weitere
@@ -96,7 +96,7 @@
     geplant.
   </ImgText>
 
-  <ImgText title="Musik und Karaoke" img_src="/svg/600x400.svg">
+  <ImgText title="Musik und Karaoke" img_src="/img/karaoke.jpg">
     Den Abend lassen wir bei groovigen Rhythmen im Partykeller und Karaoke in
     den Zelten ausklingen. Dazu gibt es eine Playlist zur Songauswahl.
   </ImgText>

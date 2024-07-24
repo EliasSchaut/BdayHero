@@ -105,7 +105,6 @@ export default defineComponent({
     useAsyncQuery(query_login, {
       login_challenge: this.$route.params.login_challenge,
     }).then((data) => {
-      console.log(data);
       if (data?.data && data?.data?.value?.auth_sign_in) {
         this.alert.show('Successfully logged in', 'success');
         this.auth.login(
