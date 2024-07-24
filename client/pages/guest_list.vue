@@ -8,7 +8,7 @@
       :initial="{ opacity: 0, y: -20 }"
       :enter="{ opacity: 1, y: 0 }"
       :delay="600"
-      :duration="1200"
+      :duration="200"
       >{{ $t('guestlist.countup.head') }}</span
     >
     <Countup
@@ -19,7 +19,7 @@
       :enter="{ opacity: 1, scale: 3 }"
       :hovered="{ scale: 3.5 }"
       :delay="1000"
-      :duration="3000"
+      :duration="200"
       ref="count_up"
     />
     <span
@@ -27,8 +27,8 @@
       v-motion
       :initial="{ opacity: 0, y: 20 }"
       :enter="{ opacity: 1, y: 0 }"
-      :delay="1200"
-      :duration="1200"
+      :delay="800"
+      :duration="200"
       >{{ $t('guestlist.countup.tail') }}!</span
     >
   </div>
