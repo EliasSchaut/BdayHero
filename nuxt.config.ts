@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   workspaceDir: '.',
   srcDir: './client',
+
   modules: [
     '@nuxt/content',
     '@nuxtjs/i18n',
@@ -17,9 +18,11 @@ export default defineNuxtConfig({
     'nuxt-particles',
     'nuxt-security',
   ],
+
   devServer: {
     port: Number(process.env.PORT_FRONTEND),
   },
+
   build: {
     transpile: ['vue-countup-v3'],
   },
@@ -110,4 +113,6 @@ export default defineNuxtConfig({
       maxAge: 60 * 60 * 24 * 30,
     },
   },
+
+  compatibilityDate: '2024-07-16',
 });
