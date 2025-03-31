@@ -50,7 +50,6 @@ import * as process from 'node:process';
       subscriptions: {
         'graphql-ws': true,
       },
-      playground: true,
       autoSchemaFile: join(__dirname, 'types', 'generated', 'schema.gql'),
     }),
     JwtModule.register({
