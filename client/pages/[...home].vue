@@ -3,13 +3,13 @@
   <Sparkles>
     <section class="z-10 px-6 py-20 pb-16 text-center lg:py-32">
       <h1
-        class="font-display mx-auto max-w-4xl text-5xl font-medium tracking-tight text-second-900 dark:text-second-100 sm:text-7xl"
+        class="font-display text-second-900 dark:text-second-100 mx-auto max-w-4xl text-5xl font-medium tracking-tight sm:text-7xl"
       >
         <span>Save </span>
         <Underline>the DATE</Underline>
       </h1>
       <p
-        class="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-second-700 dark:text-second-300"
+        class="text-second-700 dark:text-second-300 mx-auto mt-6 max-w-2xl text-lg tracking-tight"
       >
         <span>{{ $t('home.hero.1') }}</span>
         <Accent>{{ $t('home.hero.date') }}</Accent>
@@ -85,7 +85,7 @@
         </Dropdown>
         <a
           href="#community"
-          class="text-sm/6 font-semibold text-second-900 dark:text-second-100"
+          class="text-second-900 dark:text-second-100 text-sm/6 font-semibold"
           >{{ $t('home.hero.join_community') }}
           <span aria-hidden="true">→</span></a
         >
@@ -267,18 +267,18 @@
   <section id="community" class="py-16 sm:py-24">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div
-        class="relative isolate overflow-hidden bg-second-950 px-6 py-24 shadow-2xl dark:bg-second-900 sm:rounded-3xl sm:px-24 xl:py-32"
+        class="bg-second-950 dark:bg-second-900 relative isolate overflow-hidden px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32"
       >
         <h2
           class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl"
         >
           {{ $t('home.community.head') }}
         </h2>
-        <p class="mx-auto mt-6 max-w-lg text-center text-lg text-second-300">
+        <p class="text-second-300 mx-auto mt-6 max-w-lg text-center text-lg">
           {{ $t('home.community.content') }}
         </p>
         <a
-          class="shadow-xs mx-auto mt-10 flex w-min items-center justify-center gap-x-2 rounded-md bg-white px-12 py-2.5 text-sm font-semibold text-second-900 hover:bg-second-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white xs:w-fit"
+          class="text-second-900 hover:bg-second-100 xs:w-fit mx-auto mt-10 flex w-min items-center justify-center gap-x-2 rounded-md bg-white px-12 py-2.5 text-sm font-semibold shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           type="button"
           href="https://chat.whatsapp.com/HF1UyLxp5Yc33L8s5rHFGi"
           target="_blank"
@@ -293,7 +293,7 @@
         </a>
         <svg
           viewBox="0 0 1024 1024"
-          class="absolute left-1/2 top-1/2 -z-10 size-[64rem] -translate-x-1/2"
+          class="absolute top-1/2 left-1/2 -z-10 size-[64rem] -translate-x-1/2"
           aria-hidden="true"
         >
           <circle
@@ -328,7 +328,6 @@ import { CalendarDaysIcon } from '@heroicons/vue/16/solid';
 const testimonials: Array<{
   cite: string;
   author?: {
-
     name?: string;
     handle?: string;
     avatar_url?: string;
