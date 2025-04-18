@@ -9,7 +9,7 @@ import { Role } from '@/common/decorators/role.decorator';
 import { RoleEnum } from '@/types/enum/role.enum';
 
 @Resolver(() => GuestModel)
-export class UserResolver {
+export class GuestResolver {
   constructor(private readonly userService: UserService) {}
 
   @Role(RoleEnum.USER)

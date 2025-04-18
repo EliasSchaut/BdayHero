@@ -5,7 +5,7 @@ import { SignedInModel } from '@/types/models/signed_in.model';
 import { CtxType } from '@/types/common/ctx.type';
 import { EmailService } from '@/common/services/email.service';
 import { WarningException } from '@/common/exceptions/warning.exception';
-import { SignInInput } from '@/types/models/inputs/sign_in.input';
+import { SignInInputModel } from '@/types/models/inputs/sign_in.input';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +16,7 @@ export class AuthService {
   ) {}
 
   async sign_in(
-    sign_in_input: SignInInput,
+    sign_in_input: SignInInputModel,
     ctx: CtxType,
   ): Promise<SignedInModel> {
     const user = await this.prisma.guest.findUnique({
@@ -35,5 +35,9 @@ export class AuthService {
       sub: { id: user.id },
     };
     return new SignedInModel(await this.jwtService.signAsync(payload));
+  }
+
+  async query_challenge(email: string, ctx: CtxType): Promise<boolean> {
+    return false;
   }
 }

@@ -6,4 +6,4 @@ import { EmailService } from '@/common/services/email.service';
 @Module({
   providers: [UserService, UserResolver, EmailService],
 })
-export class UserModule {}
+export class GuestModule {}

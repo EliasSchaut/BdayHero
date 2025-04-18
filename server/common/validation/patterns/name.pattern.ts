@@ -1,1 +1,1 @@
-export const NamePattern = /^[A-Z].{1,20}$/;
+export const NamePattern = /^[A-ZÖÄÜ].{1,30}$/;

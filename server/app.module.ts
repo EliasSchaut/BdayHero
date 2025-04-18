@@ -12,6 +12,7 @@ import { UserModule } from '@/graphql/user/user.module';
 import { loggingMiddleware, PrismaModule } from 'nestjs-prisma';
 import { JwtModule } from '@nestjs/jwt';
 import * as process from 'node:process';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
@@ -47,11 +48,13 @@ import * as process from 'node:process';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      path: '/',
       subscriptions: {
         'graphql-ws': true,
       },
       autoSchemaFile: join(__dirname, 'types', 'generated', 'schema.gql'),
     }),
+    PassportModule,
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET as string,

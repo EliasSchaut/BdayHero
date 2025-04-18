@@ -7,7 +7,7 @@ import { WarningException } from '@/common/exceptions/warning.exception';
 import { EmailService } from '@/common/services/email.service';
 
 @Injectable()
-export class UserService {
+export class GuestService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly emailService: EmailService,
@@ -16,6 +16,16 @@ export class UserService {
   async find_by_id(ctx: CtxType): Promise<GuestModel> {
     const user = await this.prisma.guest.findUnique({
       where: { id: ctx.user_id },
+    });
+    if (user === null) {
+      throw new WarningException(ctx.i18n.t('user.exception.not_found'));
+    }
+    return new GuestModel(user);
+  }
+
+  async find_by_email(ctx: CtxType): Promise<GuestModel> {
+    const user = await this.prisma.guest.findUnique({
+      where: { email: ctx.user_id },
     });
     if (user === null) {
       throw new WarningException(ctx.i18n.t('user.exception.not_found'));

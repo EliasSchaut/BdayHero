@@ -11,7 +11,7 @@ export async function createApp(): Promise<INestApplication> {
     snapshot: true,
   });
   app.enableShutdownHooks();
-  app.setGlobalPrefix('/graphql');
+  app.setGlobalPrefix('//');
   app.use(
     helmet({
       contentSecurityPolicy: {
