@@ -19,11 +19,11 @@ export class GuestInputModel {
 
   @IsName()
   @Field(() => String, {})
-  first_name!: string;
+  first_name?: string;
 
   @IsName()
   @Field(() => String, {})
-  last_name!: string;
+  last_name?: string;
 
   @IsOptional()
   @IsNumber()
@@ -33,7 +33,7 @@ export class GuestInputModel {
     nullable: true,
     defaultValue: AttendanceStatusEnum.NOT_RESPONDED,
   })
-  attendanceStatus?: AttendanceStatusEnum;
+  attendance_status?: AttendanceStatusEnum;
 
   @IsOptional()
   @Length(1, 4000)

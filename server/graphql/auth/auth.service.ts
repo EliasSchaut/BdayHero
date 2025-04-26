@@ -3,41 +3,38 @@ import { PrismaService } from 'nestjs-prisma';
 import { JwtService } from '@nestjs/jwt';
 import { SignedInModel } from '@/types/models/signed_in.model';
 import { CtxType } from '@/types/common/ctx.type';
-import { EmailService } from '@/common/services/email.service';
-import { WarningException } from '@/common/exceptions/warning.exception';
-import { SignInInputModel } from '@/types/models/inputs/sign_in.input';
+import { UserPayloadType } from '@/types/common/user_payload.type';
+import { UserService } from '@/graphql/user/user.service';
+import { GuestInputModel } from '@/types/models/inputs/guest.input';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
-    private readonly emailService: EmailService,
+    private readonly userService: UserService,
   ) {}
 
-  async sign_in(
-    sign_in_input: SignInInputModel,
-    ctx: CtxType,
+  async sign_in_local(
+    email: string,
+    ctx: CtxType = new CtxType(),
   ): Promise<SignedInModel> {
-    const user = await this.prisma.guest.findUnique({
+    let user = await this.prisma.guest.findUnique({
       select: {
         id: true,
         email: true,
       },
-      where: { email: sign_in_input.email },
+      where: { email: email },
     });
 
-    if (user === null)
-      throw new WarningException(ctx.i18n.t('auth.exception.forbidden_login'));
+    if (user === null) {
+      user = await this.userService.create({ email } as GuestInputModel);
+    }
 
     const payload = {
       username: user.email,
       sub: { id: user.id },
-    };
+    } as UserPayloadType;
     return new SignedInModel(await this.jwtService.signAsync(payload));
-  }
-
-  async query_challenge(email: string, ctx: CtxType): Promise<boolean> {
-    return false;
   }
 }

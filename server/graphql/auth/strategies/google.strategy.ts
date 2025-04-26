@@ -2,16 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy as GoogleStategy } from 'passport-google-oauth20';
 import { DangerException } from '@/common/exceptions/danger.exception';
-import { GuestService } from '@/graphql/guest/guest.service';
+import { UserService } from '@/graphql/user/user.service';
 import { GuestModel } from '@/types/models/guest.model';
-import { AuthStrategyInterface } from '@/common/interfaces/auth_strategy.interface';
 
 @Injectable()
-export class GoogleAuthStrategy
-  extends PassportStrategy(GoogleStategy)
-  implements AuthStrategyInterface
-{
-  constructor(private readonly guestService: GuestService) {
+export class GoogleAuthStrategy extends PassportStrategy(GoogleStategy) {
+  constructor(private readonly guestService: UserService) {
     super({
       clientID: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,

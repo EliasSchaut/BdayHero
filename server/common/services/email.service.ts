@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import nodemailer, { TransportOptions } from 'nodemailer';
-import * as process from 'node:process';
+import nodemailer, { SentMessageInfo, TransportOptions } from 'nodemailer';
+import { DangerException } from '@/common/exceptions/danger.exception';
 
 @Injectable()
 export class EmailService {
@@ -26,12 +26,16 @@ export class EmailService {
     text: string;
     dest_mail: string;
     subject?: string;
-  }) {
-    await this.transporter.sendMail({
-      from: `"${process.env.PROJ_TITLE}" <${process.env.EMAIL_HOST_USER}>`,
-      to: dest_mail,
-      subject: `[${process.env.PROJ_TITLE}]` + subject ? ` ${subject}` : '',
-      text,
-    });
+  }): Promise<SentMessageInfo> {
+    try {
+      return await this.transporter.sendMail({
+        from: `"${process.env.PROJ_TITLE}" <${process.env.EMAIL_HOST_USER}>`,
+        to: dest_mail,
+        subject: `[${process.env.PROJ_TITLE}]` + subject ? ` ${subject}` : '',
+        text,
+      });
+    } catch (e) {
+      throw new DangerException("Can't send email", e);
+    }
   }
 }

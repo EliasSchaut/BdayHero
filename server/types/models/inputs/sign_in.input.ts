@@ -8,9 +8,4 @@ export class SignInInputModel {
   @IsEmail()
   @Field(() => String)
   email!: string;
-
-  @IsString()
-  @Length(6, 6)
-  @Field(() => String)
-  challenge!: string;
 }

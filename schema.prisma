@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "node_modules/.prisma/client"
 }
 
 datasource db {
@@ -14,11 +15,11 @@ model Guest {
   id    String @id @default(uuid())
   email String @unique
 
-  first_name       String
-  last_name        String
+  first_name       String?
+  last_name        String?
   avatar_url       String?
   bio              String?
-  attendanceStatus Int     @default(-1)
+  attendance_status Int     @default(-1)
 
   created_at     DateTime @default(now())
   profile_public Boolean  @default(true)

@@ -3,31 +3,32 @@ import { UserService } from '@/graphql/user/user.service';
 import { I18n, I18nContext } from 'nestjs-i18n';
 import { I18nTranslations } from '@/types/generated/i18n.generated';
 import { GuestModel } from '@/types/models/guest.model';
-import { UserID } from '@/common/decorators/user_id.decorator';
 import { GuestUpdateInputModel } from '@/types/models/inputs/guest_update.input';
-import { Role } from '@/common/decorators/role.decorator';
-import { RoleEnum } from '@/types/enum/role.enum';
+import { UseGuards } from '@nestjs/common';
+import { UserAuthGuard } from '@/graphql/auth/guards/user_auth.guard';
+import { UserID } from '@/common/decorators/user_id.decorator';
+import { UserId } from '@/types/common/ids.type';
 
 @Resolver(() => GuestModel)
-export class GuestResolver {
+export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
-  @Role(RoleEnum.USER)
+  @UseGuards(UserAuthGuard)
   @Query(() => GuestModel, {
     name: 'user',
   })
-  async user(
+  async user_find_by_id(
     @I18n() i18n: I18nContext<I18nTranslations>,
-    @UserID() user_id: string,
+    @UserID() user_id: UserId,
   ): Promise<GuestModel | null> {
     return this.userService.find_by_id({ i18n, user_id });
   }
 
-  @Role(RoleEnum.USER)
+  @UseGuards(UserAuthGuard)
   @Mutation(() => GuestModel, { name: 'user_update' })
   async user_update(
     @I18n() i18n: I18nContext<I18nTranslations>,
-    @UserID() user_id: string,
+    @UserID() user_id: UserId,
     @Args({
       name: 'user_update_input_data',
       type: () => GuestUpdateInputModel,
@@ -40,11 +41,11 @@ export class GuestResolver {
     });
   }
 
-  @Role(RoleEnum.USER)
+  @UseGuards(UserAuthGuard)
   @Mutation(() => GuestModel, { name: 'user_delete' })
   async user_delete(
     @I18n() i18n: I18nContext<I18nTranslations>,
-    @UserID() user_id: string,
+    @UserID() user_id: UserId,
   ): Promise<GuestModel | null> {
     return this.userService.delete({ i18n, user_id });
   }

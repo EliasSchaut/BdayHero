@@ -1,6 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Guest } from '@prisma/client';
 import { AttendanceStatusEnum } from '@/types/enum/attendanceStatus.enum';
+import { CompanionModel } from '@/types/models/companion.model';
 
 @ObjectType()
 export class GuestModel {
@@ -34,18 +35,20 @@ export class GuestModel {
   })
   bio?: string;
 
-  @Field(() => AttendanceStatusEnum, {})
-  attendanceStatus: AttendanceStatusEnum = AttendanceStatusEnum.NOT_RESPONDED;
+  @Field(() => AttendanceStatusEnum, {
+    nullable: true,
+  })
+  attendance_status?: AttendanceStatusEnum;
 
   @Field(() => Boolean, {
     nullable: true,
   })
   profile_public?: boolean;
 
-  @Field(() => [GuestModel], {
+  @Field(() => [CompanionModel], {
     nullable: true,
   })
-  companions?: GuestModel[];
+  companions?: CompanionModel[];
 
   public clear_user_profile(): this {
     delete this.first_name;

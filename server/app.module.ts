@@ -6,13 +6,13 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 
 import { EnvValidationSchema } from '@/common/validation/env.validation';
-import { I18nLangResolver } from '@/common/middleware/i18n.resolver';
+import { I18nGqlResolver } from '@/common/middleware/i18n.resolver';
+import { GlobalModule } from '@/common/modules/global.module';
 import { AuthModule } from '@/graphql/auth/auth.module';
-import { UserModule } from '@/graphql/user/user.module';
 import { loggingMiddleware, PrismaModule } from 'nestjs-prisma';
 import { JwtModule } from '@nestjs/jwt';
 import * as process from 'node:process';
-import { PassportModule } from '@nestjs/passport';
+import { UserModule } from '@/graphql/user/user.module';
 
 @Module({
   imports: [
@@ -31,6 +31,15 @@ import { PassportModule } from '@nestjs/passport';
         ],
       },
     }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      path: '/',
+      subscriptions: {
+        'graphql-ws': true,
+      },
+      context: (ctx: any) => ctx,
+      autoSchemaFile: join(__dirname, 'types', 'generated', 'schema.gql'),
+    }),
     I18nModule.forRoot({
       fallbackLanguage: process.env.DEFAULT_LANGUAGE as string,
       loaderOptions: {
@@ -38,7 +47,7 @@ import { PassportModule } from '@nestjs/passport';
         watch: process.env.NODE_ENV !== 'production',
       },
       loader: I18nJsonLoader,
-      resolvers: [I18nLangResolver],
+      resolvers: [I18nGqlResolver],
       typesOutputPath: join(
         __dirname,
         'types',
@@ -46,20 +55,12 @@ import { PassportModule } from '@nestjs/passport';
         'i18n.generated.ts',
       ),
     }),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      path: '/',
-      subscriptions: {
-        'graphql-ws': true,
-      },
-      autoSchemaFile: join(__dirname, 'types', 'generated', 'schema.gql'),
-    }),
-    PassportModule,
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET as string,
       signOptions: { expiresIn: process.env.JWT_EXPIRATION as string },
     }),
+    GlobalModule,
     AuthModule,
     UserModule,
   ],

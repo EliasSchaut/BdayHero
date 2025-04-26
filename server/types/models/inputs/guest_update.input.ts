@@ -1,22 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { IsName } from '@/common/validation/decorators/IsName.validation';
-import {
-  IsEmail,
-  IsNumber,
-  IsOptional,
-  IsUrl,
-  Length,
-  Max,
-  Min,
-} from 'class-validator';
+import { IsNumber, IsOptional, IsUrl, Length, Max, Min } from 'class-validator';
 import { AttendanceStatusEnum } from '@/types/enum/attendanceStatus.enum';
 
 @InputType()
 export class GuestUpdateInputModel {
-  @IsEmail()
-  @Field(() => String, { nullable: true })
-  email?: string;
-
   @IsName()
   @Field(() => String, { nullable: true })
   first_name?: string;
@@ -30,7 +18,7 @@ export class GuestUpdateInputModel {
   @Min(AttendanceStatusEnum.NOT_RESPONDED)
   @Max(AttendanceStatusEnum.MAYBE_ATTENDING)
   @Field(() => Number, { nullable: true })
-  attendanceStatus?: AttendanceStatusEnum;
+  attendance_status?: AttendanceStatusEnum;
 
   @IsOptional()
   @IsUrl()

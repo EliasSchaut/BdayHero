@@ -1,8 +1,8 @@
-schema: ./types/generated/schema.gql
+schema: ./server/types/generated/schema.gql
 extensions:
   endpoints:
     Local GraphQL Endpoint:
-      url: http://localhost:3001/graphql
+      url: http://localhost:3001
       headers:
         user-agent: JS GraphQL
-      introspect: false
+      introspect: true
