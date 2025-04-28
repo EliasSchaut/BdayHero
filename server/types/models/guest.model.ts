@@ -51,10 +51,12 @@ export class GuestModel {
   companions?: CompanionModel[];
 
   public clear_user_profile(): this {
+    this.email = 'anonym@schaut.dev';
     delete this.first_name;
     delete this.last_name;
     delete this.avatar_url;
     delete this.bio;
+    delete this.companions;
     return this;
   }
 }

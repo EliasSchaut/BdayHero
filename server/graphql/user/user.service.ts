@@ -4,15 +4,24 @@ import { CtxType } from '@/types/common/ctx.type';
 import { GuestModel } from '@/types/models/guest.model';
 import { GuestUpdateInputModel } from '@/types/models/inputs/guest_update.input';
 import { WarningException } from '@/common/exceptions/warning.exception';
-import { EmailService } from '@/common/services/email.service';
 import { GuestInputModel } from '@/types/models/inputs/guest.input';
 
 @Injectable()
 export class UserService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly emailService: EmailService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
+
+  async find_many(): Promise<GuestModel[]> {
+    return (await this.prisma.guest.findMany()).map((user) => {
+      const guest = new GuestModel(user);
+      return guest.profile_public ? guest : guest.clear_user_profile();
+    });
+  }
+
+  async count(): Promise<number> {
+    const users = await this.prisma.guest.count();
+    const companions = await this.prisma.companion.count();
+    return users + companions;
+  }
 
   async find_by_id(ctx: CtxType): Promise<GuestModel> {
     const user = await this.prisma.guest.findUnique({
