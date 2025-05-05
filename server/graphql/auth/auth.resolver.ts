@@ -9,7 +9,6 @@ import { UseGuards } from '@nestjs/common';
 import { LocalAuthStrategy } from '@/graphql/auth/strategies/local.strategy';
 import { LocalAuthGuard } from '@/graphql/auth/guards/local_auth.guard';
 import { UserPayloadType } from '@/types/common/user_payload.type';
-import { GithubAuthGuard } from '@/graphql/auth/guards/github_auth.guard';
 
 @Resolver(() => SignedInModel)
 export class AuthResolver {
@@ -33,14 +32,5 @@ export class AuthResolver {
   ): Promise<boolean> {
     await this.emailAuthStrategy.authenticate(user_email_input.email);
     return true;
-  }
-
-  @UseGuards(GithubAuthGuard)
-  @Query(() => SignedInModel, { name: 'auth_sign_in_via_github' })
-  async sign_in_github(
-    @User() user: UserPayloadType,
-    @I18n() i18n: I18nContext<I18nTranslations>,
-  ): Promise<SignedInModel> {
-    return await this.authService.sign_in_github(user as any, { i18n });
   }
 }

@@ -6,7 +6,6 @@ import { CtxType } from '@/types/common/ctx.type';
 import { UserPayloadType } from '@/types/common/user_payload.type';
 import { UserService } from '@/graphql/user/user.service';
 import { GuestInputModel } from '@/types/models/inputs/guest.input';
-import { GuestModel } from '@/types/models/guest.model';
 
 @Injectable()
 export class AuthService {
@@ -32,17 +31,6 @@ export class AuthService {
       user = await this.userService.create({ email } as GuestInputModel);
     }
 
-    const payload = {
-      username: user.email,
-      sub: { id: user.id },
-    } as UserPayloadType;
-    return new SignedInModel(await this.jwtService.signAsync(payload));
-  }
-
-  async sign_in_github(
-    user: GuestModel,
-    ctx: CtxType = new CtxType(),
-  ): Promise<SignedInModel> {
     const payload = {
       username: user.email,
       sub: { id: user.id },
