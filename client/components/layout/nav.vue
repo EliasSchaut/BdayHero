@@ -11,22 +11,22 @@
           </div>
 
           <div
-            class="text-md flex items-center space-x-12 font-medium text-second-700 dark:text-second-300"
+            class="text-md text-second-700 dark:text-second-300 flex items-center space-x-12 font-medium"
           >
             <a
-              class="hidden rounded-md px-2 py-1 hover:bg-prime-50 dark:hover:bg-prime-950 sm:inline"
-              href="/#features"
-              >{{ $t('nav.features') }}</a
+              class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 sm:inline"
+              href="/"
+              >{{ $t('nav.home') }}</a
             >
             <a
-              class="hidden rounded-md px-2 py-1 hover:bg-prime-50 dark:hover:bg-prime-950 sm:inline"
-              href="/#blog"
-              >{{ $t('nav.blog') }}</a
+              class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 sm:inline"
+              href="/details"
+              >{{ $t('nav.details') }}</a
             >
             <a
-              class="hidden rounded-md px-2 py-1 hover:bg-prime-50 dark:hover:bg-prime-950 md:inline"
-              href="/#community"
-              >{{ $t('nav.community') }}</a
+              class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 md:inline"
+              href="/guests"
+              >{{ $t('nav.guests') }}</a
             >
           </div>
         </div>

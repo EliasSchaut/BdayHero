@@ -36,59 +36,10 @@
         <span>{{ $t('home.hero.3') }}</span>
       </p>
       <div class="mt-10 flex items-center justify-center gap-x-6">
-        <Dropdown>
-          <DropdownButton>{{ $t('home.hero.add_to_calendar') }}</DropdownButton>
-          <DropdownMenu>
-            <DropdownMenuItem>
-              <DropdownMenuItemLink
-                href="https://calendar.google.com/calendar/u/0/r/eventedit?dates=20250607T180000/20250608T040000&ctz=Europe/Berlin&text=Kids+Bday&location=Klosterweg+28+(Haus+K2),+76131+Karlsruhe&details=Am+07.+Juni+2025+steigt+die+Geburtstagsparty+des+Jahres!+Halte+den+Termin+frei+und+sei+dabei!&crm=BUSY&trp=true"
-                target="_blank"
-              >
-                <NuxtImg
-                  src="/icon/google_calendar.png"
-                  alt="Google Calendar Logo"
-                  class="h-[16px] w-[16px]"
-                />
-                <span>Google</span>
-              </DropdownMenuItemLink>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <DropdownMenuItemLink href="/ical/kids_bday.ics">
-                <NuxtImg
-                  src="/icon/apple.png"
-                  alt="Apple Logo"
-                  class="h-[16px] w-[16px]"
-                />
-                <span>Apple</span>
-              </DropdownMenuItemLink>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <DropdownMenuItemLink
-                href="https://outlook.live.com/calendar/deeplink/compose/?rru=addevent&startdt=2025-06-07T16%3a00%3a00Z&enddt=2025-06-08T02%3a00%3a00Z&subject=Kids+Bday&location=Klosterweg+28+(Haus+K2)%2c+76131+Karlsruhe&body=Am+07.+Juni+2025+steigt+die+Geburtstagsparty+des+Jahres!+Halte+den+Termin+frei+und+sei+dabei!"
-                target="_blank"
-              >
-                <NuxtImg
-                  src="/icon/outlook.png"
-                  alt="Outlook Logo"
-                  class="h-[16px] w-[16px]"
-                />
-                <span>Outlook</span>
-              </DropdownMenuItemLink>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <DropdownMenuItemLink href="/ical/kids_bday.ics">
-                <CalendarDaysIcon class="h-[16px] w-[16px]" />
-                <span>iCal&nbsp;{{ $t('common.file') }}</span>
-              </DropdownMenuItemLink>
-            </DropdownMenuItem>
-          </DropdownMenu>
-        </Dropdown>
-        <a
-          href="#community"
-          class="text-second-900 dark:text-second-100 text-sm/6 font-semibold"
-          >{{ $t('home.hero.join_community') }}
-          <span aria-hidden="true">→</span></a
-        >
+        <DropdownCalendar />
+        <ButtonArrow href="#community">{{
+          $t('home.hero.join_community')
+        }}</ButtonArrow>
       </div>
     </section>
   </Sparkles>
@@ -323,8 +274,6 @@
 </template>
 
 <script setup lang="ts">
-import { CalendarDaysIcon } from '@heroicons/vue/16/solid';
-
 const testimonials: Array<{
   cite: string;
   author?: {

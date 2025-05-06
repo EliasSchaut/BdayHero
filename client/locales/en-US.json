@@ -24,6 +24,77 @@
       "person": "Anonymous"
     }
   },
+  "detail": {
+    "arrival": {
+      "title": "Arrival",
+      "value": {
+        "car": "Car/motorbike: Free parking on the entire Klosterweg",
+        "car_sharing": "Carsharing Exchange",
+        "public": "Public transport",
+        "public_central_station": "From the main station",
+        "public_hagsfeld": "From Hagsfeld railway station"
+      }
+    },
+    "begin": {
+      "title": "Start date",
+      "value": "Sat. 07.06.25 - 6:30 pm (6:00 pm admission) "
+    },
+    "catering": {
+      "title": "Catering",
+      "value": "Food and drink will be supplied! There will be barbecue food (vegan/vegetarian/meat), salads, cakes, alcoholic and non-alcoholic cocktails and draught beer."
+    },
+    "faq": {
+      "0": {
+        "title": "What can I bring along?",
+        "value": "You are very welcome to bring food. Barbecues, salads and cakes are very welcome. Everything is available in terms of drinks. If you have an interesting game or something similar, you are also welcome to bring it along!"
+      },
+      "1": {
+        "title": "What can I gift you?",
+        "value": "Your presence is the greatest gift! If you still want to give a gift, I would be happy about a <a class=\"underline\" href=\"https://donate.schaut.dev\">donation</a> for the drinks and food. Of course, I am still happy to receive creative gifts :D"
+      },
+      "2": {
+        "title": "Is it possible to stay overnight?",
+        "value": "Unfortunately, there are only very limited places to sleep and only for people outside Karlsruhe. If you need a place to sleep, please let me know when you register and join the <a class=\"underline\" href=\"https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1\">Bettbörse</a>."
+      },
+      "3": {
+        "title": "Can I offer a bed for the night?",
+        "value": "As long as you live within Karlsruhe, this is possible. Please indicate this when you register and join the <a class=\"underline\" href=\"https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1\">Bettbörse</a>."
+      },
+      "4": {
+        "title": "Is there a place where you can plan to travel together by car?",
+        "value": "Yes, there is a group for this where you can exchange ideas: <a class=\"underline\" href=\"https://chat.whatsapp.com/Ei50VQfokLnLWbKz1Ygi5a\">Carpooling</a>"
+      },
+      "5": {
+        "title": "How does the team battle work?",
+        "value": "Each guest receives a team membership (red/blue) and 5 tokens when registering. These can be bet for various games. The more tokens a team has in proportion to the opposing team at the end, the more the team wins from the prize."
+      },
+      "6": {
+        "title": "Will I have fun?",
+        "value": "YES! You will have the best night of your life! Whether old or young, big or small, nerdy or party, you will have fun!"
+      }
+    },
+    "location": {
+      "title": "Location",
+      "value": "Klosterweg 28, House K2 Basement (K2-Bar) - 76131 Karlsruhe"
+    },
+    "program": {
+      "title": "Schedule",
+      "value": {
+        "0": "06:00pm - Admission",
+        "1": "06:30pm - Official start",
+        "2": "07:00pm - Welcome",
+        "3": "07:15pm - Speed-Friending",
+        "4": "09:00pm - Olympia",
+        "5": "09:30pm - Opening discotheque (roof top)",
+        "6": "10:00pm - Billiard tournament",
+        "7": "11:00pm - Kahoot!",
+        "8": "01:00am - Resolution of the team fight + speech",
+        "9": "Afterwards - OpenEnd"
+      }
+    },
+    "subtitle": "Everything you need to know about the Bday",
+    "title": "Details"
+  },
   "footer": {
     "home": "Home",
     "imprint": "Imprint",
@@ -31,6 +102,12 @@
     "resources": "Resources",
     "source": "Source Code",
     "title": "Footer"
+  },
+  "guestlist": {
+    "countup": {
+      "head": "Already",
+      "tail": "are in"
+    }
   },
   "home": {
     "blog": {

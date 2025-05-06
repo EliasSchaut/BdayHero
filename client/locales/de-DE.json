@@ -24,6 +24,77 @@
       "person": "Anonym"
     }
   },
+  "detail": {
+    "arrival": {
+      "title": "Anfahrt",
+      "value": {
+        "car": "Auto/Motorrad: Freies Parken auf dem ganzen Klosterweg",
+        "car_sharing": "Fahrgemeinschaften Börse",
+        "public": "Öffentlich",
+        "public_central_station": "Vom Hauptbahnhof",
+        "public_hagsfeld": "Von Hagsfeld Bahnhof"
+      }
+    },
+    "begin": {
+      "title": "Beginn",
+      "value": "Sa. 07.06.25 - 18:30 Uhr (18:00 Uhr Einlass) "
+    },
+    "catering": {
+      "title": "Verpflegung",
+      "value": "Für Essen und Trinken ist gesorgt! Es gibt Grillgut (vegan/vegetarisch/fleisch), Salate, Kuchen, alkoholische und alkoholfreie Cocktails und Bier vom Fass."
+    },
+    "faq": {
+      "0": {
+        "title": "Was kann ich mitbringen?",
+        "value": "Sehr gerne kannst du Essen mitbringen. Grillgut, Salate und Kuchen sind sehr gerne gesehen. Getränketechnisch ist alles vorhanden. Wenn du ein interessantes Spiel oder ähnliches hast, kannst du das auch gerne mitbringen!"
+      },
+      "1": {
+        "title": "Was kann ich dir schenken?",
+        "value": "Deine Anwesenheit ist das größte Geschenk! Wenn du mir trotzdem etwas schenken möchtest, freue ich mich über eine <a class=\"underline\" href=\"https://donate.schaut.dev\">Spende</a> für die Getränke und das Essen. Ich freue mich natürlich trotzdem über kreative Geschenke :D"
+      },
+      "2": {
+        "title": "Kann man übernachten?",
+        "value": "Es gibt leider nur sehr begrenzt Schlafplätze und auch nur für Menschen außerhalb von Karlsruhe. Wenn du einen Schlafplatz benötigst, gib dies bei der Anmeldung an und tritt der <a class=\"underline\" href=\"https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1\">Bettbörse</a> bei."
+      },
+      "3": {
+        "title": "Kann ich ein Bett zum Übernachten anbieten?",
+        "value": "Solange du innerhalb von Karlsruhe wohnst, ist das gerne möglich. Gib dies bei der Anmeldung an und tritt der <a class=\"underline\" href=\"https://chat.whatsapp.com/CTAQ6wYi3HH3E3yHNvIFT1\">Bettbörse</a> bei."
+      },
+      "4": {
+        "title": "Kann man irgendwo planen, zusammen mit einem Auto anzureisen?",
+        "value": "Ja, es gibt eine Gruppe dafür, in der du dich austauschen kannst: <a class=\"underline\" href=\"https://chat.whatsapp.com/Ei50VQfokLnLWbKz1Ygi5a\">Fahrgemeinschaften</a>"
+      },
+      "5": {
+        "title": "Wie funktioniert der Mannschaftskampf?",
+        "value": "Jeder Gast erhält bei der Anmeldung eine Teamzugehörigkeit (Rot/Blau) und 5 Tokens. Jene können für verschiedene Aktionen gesetzt oder gewonnen werden. Je mehr ein Team Tokens anteilig zum Gegnerteam bei der Auflösung besitzt, desto mehr gewinnt das Team vom Preis."
+      },
+      "6": {
+        "title": "Werde ich Spaß haben?",
+        "value": "JA! Du wirst den besten Abend deines Lebens haben! Egal, ob alt oder jung, groß oder klein, nerdy oder party, du wirst deinen Spaß haben!"
+      }
+    },
+    "location": {
+      "title": "Ort",
+      "value": "Klosterweg 28, Haus K2 Keller (K2-Bar) - 76131 Karlsruhe"
+    },
+    "program": {
+      "title": "Programm",
+      "value": {
+        "0": "18:00 - Einlass",
+        "1": "18:30 - Offizieller Beginn",
+        "2": "19:00 - Begrüßung",
+        "3": "19:15 - Speed-Friending",
+        "4": "21:00 - Olympia",
+        "5": "21:30 - Eröffnung Diskothek (Dachterrasse)",
+        "6": "22:00 - Billardturnier",
+        "7": "23:00 - Kahoot!",
+        "8": "01:00 - Auflösung Mannschaftskampf + Rede",
+        "9": "Danach - OpenEnd"
+      }
+    },
+    "subtitle": "Alles Wissenswerte rund um den Bday",
+    "title": "Details"
+  },
   "footer": {
     "home": "Startseite",
     "imprint": "Impressum",
@@ -31,6 +102,12 @@
     "resources": "Ressourcen",
     "source": "Quellcode",
     "title": "Footer"
+  },
+  "guestlist": {
+    "countup": {
+      "head": "Schon",
+      "tail": "sind dabei"
+    }
   },
   "home": {
     "blog": {

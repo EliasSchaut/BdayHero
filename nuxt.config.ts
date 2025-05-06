@@ -4,14 +4,15 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   workspaceDir: '.',
-  srcDir: './client',
-  compatibilityDate: '2025-03-20',
+  srcDir: 'client',
+  compatibilityDate: '2025-05-05',
   css: ['~/assets/css/main.css'],
   modules: [
-    '@nuxt/fonts',
-    '@nuxt/image',
+    '@nuxtjs/apollo',
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
+    '@nuxt/image',
+    '@nuxt/fonts',
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
     '@vueuse/motion/nuxt',
@@ -27,6 +28,20 @@ export default defineNuxtConfig({
   site: {
     url: 'https://bday.schaut.dev',
     name: "Kid's Bday",
+  },
+
+  apollo: {
+    autoImports: true,
+    proxyCookies: true,
+    clients: {
+      default: {
+        tokenName: 'token',
+        tokenStorage: 'cookie',
+        authType: 'Bearer',
+        authHeader: 'Authorization',
+        httpEndpoint: `${process.env.URL_BACKEND}/graphql`,
+      },
+    },
   },
 
   fonts: {
@@ -69,6 +84,10 @@ export default defineNuxtConfig({
       fallbackLocale: 'en',
     },
     lazy: true,
+    compilation: {
+      strictMessage: false,
+      escapeHtml: false,
+    },
   },
 
   colorMode: {
