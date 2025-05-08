@@ -3,7 +3,6 @@ import { PrismaService } from 'nestjs-prisma';
 import { CtxType } from '@/types/common/ctx.type';
 import { GuestModel } from '@/types/models/guest.model';
 import { GuestUpdateInputModel } from '@/types/models/inputs/guest_update.input';
-import { WarningException } from '@/common/exceptions/warning.exception';
 import { GuestInputModel } from '@/types/models/inputs/guest.input';
 
 @Injectable()
@@ -23,27 +22,21 @@ export class UserService {
     return users + companions;
   }
 
-  async find_by_id(ctx: CtxType): Promise<GuestModel> {
+  async find_by_id(ctx: CtxType): Promise<GuestModel | null> {
     const user = await this.prisma.guest.findUnique({
       where: { id: ctx.user_id },
     });
-    if (user === null) {
-      throw new WarningException(ctx.i18n.t('user.exception.not_found'));
-    }
-    return new GuestModel(user);
+    return user ? new GuestModel(user) : null;
   }
 
   async find_by_email(
     email: string,
     ctx: CtxType = new CtxType(),
-  ): Promise<GuestModel> {
+  ): Promise<GuestModel | null> {
     const user = await this.prisma.guest.findUnique({
       where: { email },
     });
-    if (user === null) {
-      throw new WarningException(ctx.i18n.t('user.exception.not_found'));
-    }
-    return new GuestModel(user);
+    return user ? new GuestModel(user) : null;
   }
 
   async create(user_input_data: GuestInputModel) {

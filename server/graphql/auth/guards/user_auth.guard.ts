@@ -7,10 +7,10 @@ import { UserPayloadType } from '@/types/common/user_payload.type';
 export class UserAuthGuard extends AuthGuard implements CanActivate {
   async validate(
     payload: UserPayloadType,
-    { req }: ValidationCtxType,
+    { req }: ValidationCtxType & { req: { user: UserPayloadType } },
   ): Promise<boolean> {
     if (!payload.username || !payload.sub?.id) return false;
-    req['user'] = payload.username;
+    req['user'] = { username: payload.username } as UserPayloadType;
     return true;
   }
 }

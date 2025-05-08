@@ -38,7 +38,10 @@ export class LocalAuthStrategy implements AuthStrategyInterface {
     const { email } = await this.jwtService.verifyAsync(payload);
     if (!email)
       throw new DangerException(this.i18n.t('auth.exception.invalid_token'));
-    return await this.guestService.find_by_email(email);
+    const user = await this.guestService.find_by_email(email);
+    if (!user)
+      throw new DangerException(this.i18n.t('auth.exception.invalid_token'));
+    return user;
   }
 
   private async send_magic_link(

@@ -30,6 +30,12 @@ export default defineNuxtConfig({
     name: "Kid's Bday",
   },
 
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth',
+    },
+  },
+
   apollo: {
     autoImports: true,
     proxyCookies: true,
@@ -39,7 +45,7 @@ export default defineNuxtConfig({
         tokenStorage: 'cookie',
         authType: 'Bearer',
         authHeader: 'Authorization',
-        httpEndpoint: `${process.env.URL_BACKEND}/graphql`,
+        httpEndpoint: `${process.env.BACKEND_URL}`,
       },
     },
   },

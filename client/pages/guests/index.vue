@@ -27,9 +27,9 @@
     <div
       class="bg-second-50 mx-12 flex min-h-96 min-w-96 items-center justify-center rounded-4xl p-8 inset-shadow-sm"
     >
-      <FormVal v-if="auth.logged_in" :submit="() => {}">
+      <FormVal v-if="!auth.logged_in" :submit="on_submit_sign_in">
         <h3 class="text-center font-semibold">Sign in to join!</h3>
-        <FormInputEmail id="mail" class="my-4" />
+        <FormInputEmail id="email" class="my-4" required />
         <FormSubmit>Sign in</FormSubmit>
       </FormVal>
 
@@ -144,6 +144,7 @@
 <script lang="ts">
 import { authStore } from '~/store/auth';
 import { Bars3Icon } from '@heroicons/vue/24/outline';
+import { alertStore } from '~/store/alert';
 
 enum AttendanceStatus {
   NOT_RESPONDED = -1,
@@ -152,18 +153,39 @@ enum AttendanceStatus {
   MAYBE_ATTENDING = 2,
 }
 
+const sign_in_request_query = gql`
+  mutation sign_in_request($email: String!) {
+    auth_sign_request_local(user_mail_input: { email: $email })
+  }
+`;
+
 export default defineComponent({
   components: { Bars3Icon },
   setup() {
+    const { mutate: sign_in_request } = useMutation(sign_in_request_query);
+
     return {
       AttendanceStatus,
       selected_attendance_status: ref(AttendanceStatus.NOT_RESPONDED),
       num_companions: ref<number>(0),
       auth: authStore(),
+      alert: alertStore(),
+      sign_in_request,
     };
   },
   mounted() {
     this.$refs.count_up.start(99);
+  },
+  methods: {
+    async on_submit_sign_in(e: Event, form_data: FormData) {
+      const email = form_data.get('email');
+      try {
+        const data = await this.sign_in_request({ email });
+        console.log(data);
+      } catch (e) {
+        console.error(e);
+      }
+    },
   },
 });
 </script>

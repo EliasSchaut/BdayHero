@@ -55,7 +55,7 @@ export const EnvValidationSchema = Joi.object({
 
   EMAIL_HOST: Joi.string()
     .optional()
-    .domain()
+    .hostname()
     .description('The host of the SMTP server used to send emails'),
 
   EMAIL_PORT: Joi.number()

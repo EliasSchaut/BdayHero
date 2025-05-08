@@ -6,6 +6,7 @@ import { CtxType } from '@/types/common/ctx.type';
 import { UserPayloadType } from '@/types/common/user_payload.type';
 import { UserService } from '@/graphql/user/user.service';
 import { GuestInputModel } from '@/types/models/inputs/guest.input';
+import { WarningException } from '@/common/exceptions/warning.exception';
 
 @Injectable()
 export class AuthService {
@@ -16,25 +17,36 @@ export class AuthService {
   ) {}
 
   async sign_in_local(
-    email: string,
+    token: string,
     ctx: CtxType = new CtxType(),
   ): Promise<SignedInModel> {
-    let user = await this.prisma.guest.findUnique({
-      select: {
-        id: true,
-        email: true,
-      },
-      where: { email: email },
-    });
+    let user_payload = await this.validate_user_token(token);
+    const email = user_payload.username;
+
+    if (!user_payload) {
+      throw new WarningException('Invalid token');
+    }
+
+    let user = await this.userService.find_by_email(email, ctx);
 
     if (user === null) {
       user = await this.userService.create({ email } as GuestInputModel);
     }
 
-    const payload = {
+    user_payload = {
       username: user.email,
       sub: { id: user.id },
     } as UserPayloadType;
+    return await this.sign_user_payload(user_payload);
+  }
+
+  private async validate_user_token(token: string): Promise<UserPayloadType> {
+    return (await this.jwtService.verifyAsync(token)) as UserPayloadType;
+  }
+
+  private async sign_user_payload(
+    payload: UserPayloadType,
+  ): Promise<SignedInModel> {
     return new SignedInModel(await this.jwtService.signAsync(payload));
   }
 }
