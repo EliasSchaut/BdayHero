@@ -1,0 +1,13 @@
+{
+  "name": "@bdayhero/shared",
+  "dependencies": {
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.3",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11"
+  }
+}

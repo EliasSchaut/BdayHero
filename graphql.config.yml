@@ -1,4 +1,4 @@
-schema: ./server/types/generated/schema.gql
+schema: ./apps/server/types/generated/schema.gql
 extensions:
   endpoints:
     Local GraphQL Endpoint:

@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Guest {
+  id    String @id @default(uuid())
+  email String @unique
+
+  first_name       String?
+  last_name        String?
+  avatar_url       String?
+  bio              String?
+  attendance_status Int     @default(-1)
+
+  created_at     DateTime @default(now())
+  profile_public Boolean  @default(true)
+
+  companion Companion[]
+}
+
+model Companion {
+  id                  String   @id @default(uuid())
+  created_at          DateTime @default(now())
+  name                String
+  associated_guest_id String
+  associated_guest    Guest    @relation(fields: [associated_guest_id], references: [id], onDelete: Cascade)
+}

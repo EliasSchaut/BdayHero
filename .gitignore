@@ -110,7 +110,7 @@ dist
 .tern-port
 
 # compiled output
-/.nest
+.nest
 /dist
 /node_modules
 migrations
