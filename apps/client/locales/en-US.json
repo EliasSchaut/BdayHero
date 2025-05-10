@@ -274,6 +274,9 @@
     "title": "Imprint"
   },
   "nav": {
+    "home": "Home",
+    "details": "Details",
+    "guests": "Guests",
     "blog": "Blog",
     "community": "Community",
     "features": "Features"

@@ -274,6 +274,9 @@
     "title": "Impressum"
   },
   "nav": {
+    "home": "Start",
+    "details": "Details",
+    "guests": "Gäste",
     "blog": "Blog",
     "community": "Community",
     "features": "Vorgestellt"

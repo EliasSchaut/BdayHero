@@ -19,7 +19,7 @@ export class LocalAuthStrategy implements AuthStrategyInterface {
   ) {}
 
   name = "magic-login";
-  callback_base = process.env.AUTH_CALLBACK_BASE as string;
+  callback_base: string = process.env.AUTH_CALLBACK_BASE!;
 
   async authenticate(email: string): Promise<void> {
     const payload = await this.jwtService.signAsync(
@@ -30,7 +30,7 @@ export class LocalAuthStrategy implements AuthStrategyInterface {
         privateKey: process.env.JWT_SECRET,
       },
     );
-    const magic_link = new URL(payload, this.callback_base).toString();
+    const magic_link = `${this.callback_base}/${payload}`;
     await this.send_magic_link(email, magic_link);
   }
 

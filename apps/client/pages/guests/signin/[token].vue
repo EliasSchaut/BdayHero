@@ -8,10 +8,11 @@
 </template>
 
 <script lang="ts">
+import type { ISignedInModel } from "@bdayhero/shared";
 import { authStore } from "~/store/auth";
 import { alertStore } from "~/store/alert";
 
-type SignInResult = { auth_sign_in_via_email: { barrier_token: string } };
+type SignInResult = { auth_sign_in_via_email: ISignedInModel };
 
 const sign_in_query = gql`
   query sign_in_query($token: String!) {
@@ -27,24 +28,15 @@ export default defineComponent({
     const token = route.params.token;
     const auth = authStore();
     const alert = alertStore();
-    alert.show(
-      "You are being redirected to the sign-in page. Please wait a moment.",
-      "info",
-    );
 
-    useAsyncQuery<SignInResult>(sign_in_query, { token })
-      .then(({ data }) => {
-        if (data.value?.auth_sign_in_via_email) {
-          auth.login(data.value.auth_sign_in_via_email.barrier_token);
-        }
-      })
-      .catch((error) => {
-        console.error("Error during sign-in:", error);
-        alert.show(
-          "An error occurred during sign-in. Please try again.",
-          "danger",
-        );
-      });
+    useAsyncQuery<SignInResult>(sign_in_query, { token }).then(({ data }) => {
+      console.log(data.value);
+      if (data.value?.auth_sign_in_via_email) {
+        auth.login(data.value.auth_sign_in_via_email.barrier_token);
+        alert.show("You have successfully signed in.", "success");
+        useRouter().push("/guests");
+      }
+    });
   },
 });
 </script>

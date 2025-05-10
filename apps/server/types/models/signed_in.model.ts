@@ -1,7 +1,8 @@
+import type { ISignedInModel } from "@bdayhero/shared";
 import { Field, ObjectType } from "@nestjs/graphql";
 
 @ObjectType()
-export class SignedInModel {
+export class SignedInModel implements ISignedInModel {
   constructor(barrier_token: string) {
     this.barrier_token = barrier_token;
   }
