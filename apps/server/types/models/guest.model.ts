@@ -1,13 +1,14 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { Guest } from "@prisma/client";
+import { Companion, Guest } from "@prisma/client";
 import { AttendanceStatusEnum } from "@/types/enum/attendance_status.enum";
 import { CompanionModel } from "@/types/models/companion.model";
 import { GuestModel as IGuestModel } from "@bdayhero/shared/types/models/guest.model";
 
 @ObjectType()
 export class GuestModel implements IGuestModel {
-  constructor(guest: Guest) {
+  constructor(guest: Guest & { companion?: Companion[] }) {
     Object.assign(this, guest);
+    this.companions = guest.companion;
   }
 
   @Field(() => ID, {})
@@ -36,7 +37,7 @@ export class GuestModel implements IGuestModel {
   })
   bio?: string;
 
-  @Field(() => AttendanceStatusEnum, {
+  @Field(() => Number, {
     nullable: true,
   })
   attendance_status?: AttendanceStatusEnum;

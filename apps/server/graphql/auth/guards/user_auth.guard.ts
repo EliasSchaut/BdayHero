@@ -10,7 +10,10 @@ export class UserAuthGuard extends AuthGuard implements CanActivate {
     { req }: ValidationCtxType & { req: { user: UserPayloadType } },
   ): Promise<boolean> {
     if (!payload.username || !payload.sub?.id) return false;
-    req["user"] = { username: payload.username } as UserPayloadType;
+    req["user"] = {
+      username: payload.username,
+      sub: { id: payload.sub?.id },
+    } as UserPayloadType;
     return true;
   }
 }

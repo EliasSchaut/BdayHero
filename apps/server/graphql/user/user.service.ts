@@ -25,6 +25,7 @@ export class UserService {
   async find_by_id(ctx: CtxType): Promise<GuestModel | null> {
     const user = await this.prisma.guest.findUnique({
       where: { id: ctx.user_id },
+      include: { companion: true },
     });
     return user ? new GuestModel(user) : null;
   }

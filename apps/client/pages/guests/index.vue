@@ -33,7 +33,11 @@
         <FormSubmit>Sign in</FormSubmit>
       </FormVal>
 
-      <FormVal v-else class="flex flex-col gap-y-6" :submit="() => {}">
+      <FormVal
+        v-else-if="user"
+        class="flex flex-col gap-y-6"
+        :submit="() => {}"
+      >
         <div class="flex justify-end">
           <button class="hover:bg-second-100 rounded-md p-2">
             <Bars3Icon class="h-6 w-6" />
@@ -84,18 +88,20 @@
             <FormInputEmail
               class="w-full opacity-80"
               id="email"
-              value="elias@schaut.dev"
+              :value="user.email"
               disabled
             />
           </div>
           <FormInputName
             id="first_name"
             label="Vorname"
+            :value="user.first_name"
             placeholder="Alexander"
           />
           <FormInputName
             id="last_name"
             label="Nachname"
+            :value="user.last_name"
             placeholder="Hamilton"
           />
           <DividerPlus class="mt-2" />
@@ -109,20 +115,26 @@
                 }
               "
             >
-              <option :value="0">+0</option>
-              <option :value="1">+1</option>
+              <option :value="0" :selected="num_companions == 0">+0</option>
+              <option :value="1" :selected="num_companions == 1">+1</option>
             </FormSelect>
           </div>
           <FormInputName
             v-for="i in num_companions"
             :key="i"
-            :id="'companion' + i"
+            :id="`companion-${i}`"
+            :value="i - 1 < companions.length ? companions[i - 1].name : ''"
             placeholder="Max Mustermann"
-            label="+1 Name"
+            :label="`${i}. Companion Name`"
             required
           />
           <Divider class="my-2" />
-          <FormInput id="note" placeholder="Nachricht hinzufügen (optional)" />
+          <FormInput
+            id="bio"
+            type="text"
+            placeholder="Nachricht hinzufügen (optional)"
+            :value="user.bio"
+          />
         </div>
 
         <FormSubmit>Aktualisieren</FormSubmit>
@@ -142,6 +154,7 @@
 </template>
 
 <script lang="ts">
+import type { CompanionModel, GuestModel } from "@bdayhero/shared";
 import { AttendanceStatus } from "@bdayhero/shared";
 import { authStore } from "~/store/auth";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
@@ -171,23 +184,40 @@ const user_query = gql`
   }
 `;
 
+type UserResult = { user: GuestModel };
+
 export default defineComponent({
   components: { Bars3Icon },
   setup() {
     const { mutate: sign_in_request } = useMutation(sign_in_request_query);
     const auth = authStore();
-    const user: any | null = null;
+    let user: Ref<GuestModel | null> = ref(null);
+    let companions: Ref<CompanionModel[]> = ref([]);
+    let num_companions: Ref<number> = ref(0);
+    let selected_attendance_status: Ref<AttendanceStatus> = ref(
+      AttendanceStatus.NOT_RESPONDED,
+    );
 
     if (auth.logged_in) {
+      useAsyncQuery<UserResult>(user_query).then(({ data }) => {
+        user.value = data.value?.user ?? null;
+        num_companions.value = user.value?.companions?.length ?? 0;
+        companions.value = user.value?.companions ?? [];
+        selected_attendance_status.value =
+          user.value?.attendance_status ?? AttendanceStatus.NOT_RESPONDED;
+        console.log(user.value);
+      });
+    } else {
     }
 
     return {
+      num_companions,
+      companions,
+      selected_attendance_status,
       AttendanceStatus,
-      selected_attendance_status: ref(AttendanceStatus.NOT_RESPONDED),
-      num_companions: ref<number>(0),
-      auth,
       alert: alertStore(),
       sign_in_request,
+      auth,
       user,
     };
   },

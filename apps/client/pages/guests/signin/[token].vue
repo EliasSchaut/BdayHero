@@ -30,8 +30,7 @@ export default defineComponent({
     const alert = alertStore();
 
     useAsyncQuery<SignInResult>(sign_in_query, { token }).then(({ data }) => {
-      console.log(data.value);
-      if (data.value?.auth_sign_in_via_email) {
+      if (data.value?.auth_sign_in_via_email?.barrier_token) {
         auth.login(data.value.auth_sign_in_via_email.barrier_token);
         alert.show("You have successfully signed in.", "success");
         useRouter().push("/guests");

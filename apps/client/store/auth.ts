@@ -1,8 +1,8 @@
-export const authStore = defineStore('auth', {
+export const authStore = defineStore("auth", {
   state: (): AuthType => {
     return {
-      logged_in: false,
-      token: '',
+      logged_in: ref(false),
+      token: "",
     };
   },
   actions: {
@@ -12,13 +12,13 @@ export const authStore = defineStore('auth', {
     },
     logout() {
       this.logged_in = false;
-      this.token = '';
+      this.token = "";
     },
   },
   persist: true,
 });
 
 class AuthType {
-  logged_in!: boolean;
+  logged_in!: Ref<boolean>;
   token!: string;
 }
