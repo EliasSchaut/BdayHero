@@ -122,7 +122,7 @@
             required
           />
           <Divider class="my-2" />
-          <FormInput placeholder="Nachricht hinzufügen (optional)" />
+          <FormInput id="note" placeholder="Nachricht hinzufügen (optional)" />
         </div>
 
         <FormSubmit>Aktualisieren</FormSubmit>
@@ -142,16 +142,10 @@
 </template>
 
 <script lang="ts">
+import { AttendanceStatus } from "@bdayhero/shared";
 import { authStore } from "~/store/auth";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import { alertStore } from "~/store/alert";
-
-enum AttendanceStatus {
-  NOT_RESPONDED = -1,
-  ATTENDING = 0,
-  NOT_ATTENDING = 1,
-  MAYBE_ATTENDING = 2,
-}
 
 const sign_in_request_query = gql`
   mutation sign_in_request($email: String!) {
@@ -159,18 +153,42 @@ const sign_in_request_query = gql`
   }
 `;
 
+const user_query = gql`
+  query {
+    user {
+      id
+      email
+      first_name
+      last_name
+      bio
+      avatar_url
+      profile_public
+      attendance_status
+      companions {
+        name
+      }
+    }
+  }
+`;
+
 export default defineComponent({
   components: { Bars3Icon },
   setup() {
     const { mutate: sign_in_request } = useMutation(sign_in_request_query);
+    const auth = authStore();
+    const user: any | null = null;
+
+    if (auth.logged_in) {
+    }
 
     return {
       AttendanceStatus,
       selected_attendance_status: ref(AttendanceStatus.NOT_RESPONDED),
       num_companions: ref<number>(0),
-      auth: authStore(),
+      auth,
       alert: alertStore(),
       sign_in_request,
+      user,
     };
   },
   mounted() {

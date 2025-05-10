@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import type { ISignedInModel } from "@bdayhero/shared";
+import type { SignedInModel } from "@bdayhero/shared";
 import { authStore } from "~/store/auth";
 import { alertStore } from "~/store/alert";
 
-type SignInResult = { auth_sign_in_via_email: ISignedInModel };
+type SignInResult = { auth_sign_in_via_email: SignedInModel };
 
 const sign_in_query = gql`
   query sign_in_query($token: String!) {

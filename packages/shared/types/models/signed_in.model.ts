@@ -1,3 +1,3 @@
-export interface ISignedInModel {
+export interface SignedInModel {
   barrier_token?: string;
 }

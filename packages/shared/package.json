@@ -1,11 +1,18 @@
 {
   "name": "@bdayhero/shared",
+  "version": "1.0.0",
+  "main": "index.d.ts",
+  "types": "index.d.ts",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "typescript": "^5.8.3"
   },
   "devDependencies": {
     "eslint": "^9.26.0",
-    "eslint-config-prettier": "^10.1.3",
+    "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11"

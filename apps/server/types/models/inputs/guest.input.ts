@@ -9,7 +9,7 @@ import {
 } from "class-validator";
 import { IsName } from "@/common/validation/decorators/IsName.validation";
 import { CompanionInputModel } from "@/types/models/inputs/companion.input";
-import { AttendanceStatusEnum } from "@/types/enum/attendanceStatus.enum";
+import { AttendanceStatusEnum } from "@/types/enum/attendance_status.enum";
 
 @InputType()
 export class GuestInputModel {

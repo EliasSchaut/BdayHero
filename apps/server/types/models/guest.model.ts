@@ -1,10 +1,11 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
 import { Guest } from "@prisma/client";
-import { AttendanceStatusEnum } from "@/types/enum/attendanceStatus.enum";
+import { AttendanceStatusEnum } from "@/types/enum/attendance_status.enum";
 import { CompanionModel } from "@/types/models/companion.model";
+import { GuestModel as IGuestModel } from "@bdayhero/shared/types/models/guest.model";
 
 @ObjectType()
-export class GuestModel {
+export class GuestModel implements IGuestModel {
   constructor(guest: Guest) {
     Object.assign(this, guest);
   }

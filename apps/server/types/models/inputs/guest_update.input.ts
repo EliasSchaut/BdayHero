@@ -1,7 +1,7 @@
 import { Field, InputType } from "@nestjs/graphql";
 import { IsName } from "@/common/validation/decorators/IsName.validation";
 import { IsNumber, IsOptional, IsUrl, Length, Max, Min } from "class-validator";
-import { AttendanceStatusEnum } from "@/types/enum/attendanceStatus.enum";
+import { AttendanceStatusEnum } from "@/types/enum/attendance_status.enum";
 
 @InputType()
 export class GuestUpdateInputModel {

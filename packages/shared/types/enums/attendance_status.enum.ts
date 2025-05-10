@@ -1,6 +1,4 @@
-import { registerEnumType } from "@nestjs/graphql";
-
-export enum AttendanceStatusEnum {
+export enum AttendanceStatus {
   /// User has not responded to the event
   NOT_RESPONDED = -1,
 
@@ -13,7 +11,3 @@ export enum AttendanceStatusEnum {
   /// User is maybe attending the event
   MAYBE_ATTENDING = 2,
 }
-
-registerEnumType(AttendanceStatusEnum, {
-  name: "AttendanceStatusEnum",
-});
