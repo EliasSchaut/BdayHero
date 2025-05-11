@@ -36,7 +36,7 @@
       <FormVal
         v-else-if="user"
         class="flex flex-col gap-y-6"
-        :submit="() => {}"
+        :submit="on_submit_user_update"
       >
         <div class="flex justify-end">
           <button class="hover:bg-second-100 rounded-md p-2">
@@ -154,7 +154,11 @@
 </template>
 
 <script lang="ts">
-import type { CompanionModel, GuestModel } from "@bdayhero/shared";
+import type {
+  CompanionModel,
+  GuestModel,
+  GuestUpdateInputModel,
+} from "@bdayhero/shared";
 import { AttendanceStatus } from "@bdayhero/shared";
 import { authStore } from "~/store/auth";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
@@ -183,13 +187,32 @@ const user_query = gql`
     }
   }
 `;
-
 type UserResult = { user: GuestModel };
+
+const user_update_mutation = gql`
+  mutation user_update($user_update_input_data: GuestUpdateInputModel!) {
+    user_update(user_update_input_data: $user_update_input_data) {
+      id
+      first_name
+      last_name
+      bio
+      avatar_url
+      profile_public
+      attendance_status
+      companions {
+        name
+      }
+    }
+  }
+`;
+type UserUpdateResult = { user_update: GuestModel };
 
 export default defineComponent({
   components: { Bars3Icon },
   setup() {
     const { mutate: sign_in_request } = useMutation(sign_in_request_query);
+    const { mutate: user_update } =
+      useMutation<UserUpdateResult>(user_update_mutation);
     const auth = authStore();
     let user: Ref<GuestModel | null> = ref(null);
     let companions: Ref<CompanionModel[]> = ref([]);
@@ -205,7 +228,6 @@ export default defineComponent({
         companions.value = user.value?.companions ?? [];
         selected_attendance_status.value =
           user.value?.attendance_status ?? AttendanceStatus.NOT_RESPONDED;
-        console.log(user.value);
       });
     } else {
     }
@@ -217,6 +239,7 @@ export default defineComponent({
       AttendanceStatus,
       alert: alertStore(),
       sign_in_request,
+      user_update,
       auth,
       user,
     };
@@ -232,6 +255,21 @@ export default defineComponent({
         console.log(data);
       } catch (e) {
         console.error(e);
+      }
+    },
+    async on_submit_user_update(e: Event, form_data: FormData) {
+      const user_update_payload = {
+        first_name: form_data.get("first_name")! as string,
+        last_name: form_data.get("last_name")! as string,
+        attendance_status: this.selected_attendance_status,
+        bio: form_data.get("bio")! as string,
+        profile_public: true,
+      } as GuestUpdateInputModel;
+      const data = await this.user_update({
+        user_update_input_data: user_update_payload,
+      });
+      if (data?.data?.user_update) {
+        this.alert.show("Update successfull", "success");
       }
     },
   },
