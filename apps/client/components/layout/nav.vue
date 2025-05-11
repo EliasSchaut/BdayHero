@@ -4,29 +4,29 @@
       <div class="flex w-full items-center justify-between gap-x-12 p-6">
         <div class="flex gap-x-12">
           <div class="flex items-center justify-center gap-x-2">
-            <a class="text-2xl font-bold" href="/">
+            <nuxt-link class="text-2xl font-bold" href="/">
               <span>Kids</span>
               <Accent>Bday</Accent>
-            </a>
+            </nuxt-link>
           </div>
 
           <div
             class="text-md text-second-700 dark:text-second-300 flex items-center space-x-12 font-medium"
           >
-            <a
+            <nuxt-link
               class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 sm:inline"
               href="/"
-              >{{ $t('nav.home') }}</a
+              >{{ $t("nav.home") }}</nuxt-link
             >
-            <a
+            <nuxt-link
               class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 sm:inline"
               href="/details"
-              >{{ $t('nav.details') }}</a
+              >{{ $t("nav.details") }}</nuxt-link
             >
-            <a
+            <nuxt-link
               class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 md:inline"
               href="/guests"
-              >{{ $t('nav.guests') }}</a
+              >{{ $t("nav.guests") }}</nuxt-link
             >
           </div>
         </div>
@@ -40,4 +40,3 @@
     </nav>
   </header>
 </template>
-<script setup lang="ts"></script>

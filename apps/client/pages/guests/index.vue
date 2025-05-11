@@ -25,7 +25,7 @@
 
   <div class="flex justify-center">
     <div
-      class="bg-second-50 mx-12 flex min-h-96 min-w-96 items-center justify-center rounded-4xl p-8 inset-shadow-sm"
+      class="bg-second-50 xs:mx-12 flex w-full xs:w-fit min-h-96 xs:min-w-96 items-center justify-center xs:rounded-4xl p-8 inset-shadow-sm"
     >
       <FormVal v-if="!auth.logged_in" :submit="on_submit_sign_in">
         <h3 class="text-center font-semibold">Sign in to join!</h3>
@@ -83,11 +83,11 @@
         <div
           class="bg-second-100 flex flex-col gap-y-2 rounded-lg p-4 inset-shadow-sm"
         >
-          <div class="flex gap-x-4 justify-between">
+          <div class="flex gap-x-4 justify-between w-full">
             <Avatar
               :href="user.avatar_url"
               :initials="user.initials!"
-              class="hover:cursor-not-allowed"
+              class="hover:cursor-not-allowed xs:size-9 size-10"
             />
             <FormInputEmail
               class="opacity-80 hover:cursor-not-allowed"
@@ -112,6 +112,18 @@
             :minlength="2"
             :maxlength="20"
           />
+          <DividerText>Optionen</DividerText>
+          <div class="flex flex-col gap-y-2 text-second-800 font-italic">
+            <div class="flex justify-between">
+              <span>Öffentlich in Gästeliste?</span>
+              <FormSwitch />
+            </div>
+            <div class="flex justify-between">
+              <span>Ich esse vegan?</span>
+              <FormSwitch />
+            </div>
+          </div>
+
           <DividerPlus class="mt-2" />
           <div class="flex items-center justify-between">
             <span>Weitere Gäste</span>
