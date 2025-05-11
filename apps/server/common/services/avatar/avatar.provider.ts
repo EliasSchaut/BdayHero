@@ -8,7 +8,7 @@ export const AvatarServiceProvider: Provider = {
   provide: AvatarService,
   useClass: (() => {
     switch (process.env.AVATAR_TYPE) {
-      case AvatarTypeEnum.GRAVATAR:
+      case AvatarTypeEnum.GRAVATAR.toString():
         return GravatarService;
       default:
         throw new DangerException("Unsupported AVATAR_TYPE");

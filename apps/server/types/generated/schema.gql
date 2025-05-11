@@ -13,13 +13,14 @@ type CompanionModel {
 }
 
 type GuestModel {
-    attendance_status: AttendanceStatusEnum
+    attendance_status: Float
     avatar_url: String
     bio: String
     companions: [CompanionModel!]
     email: String!
     first_name: String
     id: ID!
+    initials: String
     last_name: String
     profile_public: Boolean
 }
@@ -39,13 +40,6 @@ type Query {
 
 type SignedInModel {
     barrier_token: String
-}
-
-enum AttendanceStatusEnum {
-    ATTENDING
-    MAYBE_ATTENDING
-    NOT_ATTENDING
-    NOT_RESPONDED
 }
 
 input EmailInputModel {

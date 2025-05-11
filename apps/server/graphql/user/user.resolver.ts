@@ -8,6 +8,8 @@ import { UseGuards } from "@nestjs/common";
 import { UserAuthGuard } from "@/graphql/auth/guards/user_auth.guard";
 import { UserID } from "@/common/decorators/user_id.decorator";
 import { UserId } from "@/types/common/ids.type";
+import { UserPayloadType } from "@/types/common/user_payload.type";
+import { User } from "@/common/decorators/user.decorator";
 
 @Resolver(() => GuestModel)
 export class UserResolver {
@@ -38,17 +40,24 @@ export class UserResolver {
   @Mutation(() => GuestModel, { name: "user_update" })
   async update(
     @I18n() i18n: I18nContext<I18nTranslations>,
-    @UserID() user_id: UserId,
+    @User() user: UserPayloadType,
     @Args({
       name: "user_update_input_data",
       type: () => GuestUpdateInputModel,
     })
     user_update_input_data: GuestUpdateInputModel,
   ): Promise<GuestModel | null> {
-    return this.userService.update(user_update_input_data, {
-      i18n,
-      user_id,
-    });
+    return this.userService.update(
+      {
+        id: user.sub!.id!,
+        email: user.username,
+        ...user_update_input_data,
+      } as GuestModel,
+      {
+        i18n,
+        user_id: user.sub!.id,
+      },
+    );
   }
 
   @UseGuards(UserAuthGuard)

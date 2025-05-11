@@ -35,3 +35,6 @@
     --color-second-950: var(--color-gray-950);
 }
 
+button {
+    @apply hover:cursor-pointer;
+}

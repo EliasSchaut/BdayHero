@@ -1,39 +1,29 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { GravatarService } from "./gravatar.service";
-import { PrismaService } from "nestjs-prisma";
 import { DangerException } from "@/common/exceptions/danger.exception";
+import { GuestModel } from "@/types/models/guest.model";
+import { CryptoService } from "@/common/services/crypto.service";
 
 describe("GravatarService", () => {
   let service: GravatarService;
-  let prisma: PrismaService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [GravatarService, PrismaService],
+      providers: [GravatarService, CryptoService],
     }).compile();
 
     service = module.get<GravatarService>(GravatarService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   it("get_avatar returns gravatar URL if email exists", async () => {
-    const user_id = "1";
-    const email = "test@example.com";
+    const user = {
+      id: "1",
+      email: "test@example.com",
+    } as GuestModel;
     const hash = "55502f40dc8b7c769880b10874abc9d0";
-    prisma.guest.findUnique = jest.fn().mockResolvedValue({ email });
-
-    const result = await service.get_avatar(user_id);
+    const result = await service.get_avatar_href(user);
 
     expect(result).toBe(`https://www.gravatar.com/avatar/${hash}`);
-  });
-
-  it("get_avatar returns null if email does not exist", async () => {
-    const user_id = "1";
-    prisma.guest.findUnique = jest.fn().mockResolvedValue(null);
-
-    const result = await service.get_avatar(user_id);
-
-    expect(result).toBeNull();
   });
 
   it("upload_avatar throws DangerException", async () => {

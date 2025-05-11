@@ -27,7 +27,7 @@ export class GuestUpdateInputModel implements IGuestUpdateInputModel {
   avatar?: string;
 
   @IsOptional()
-  @Length(1, 4000)
+  @Length(1, 20)
   @Field(() => String, { nullable: true })
   bio?: string;
 

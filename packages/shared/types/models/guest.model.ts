@@ -6,6 +6,7 @@ export interface GuestModel {
   email: string;
   first_name?: string;
   last_name?: string;
+  initials?: string;
   avatar_url?: string;
   bio?: string;
   attendance_status?: AttendanceStatus;

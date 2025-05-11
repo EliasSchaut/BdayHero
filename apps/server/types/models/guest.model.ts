@@ -30,6 +30,11 @@ export class GuestModel implements IGuestModel {
   @Field(() => String, {
     nullable: true,
   })
+  initials?: string;
+
+  @Field(() => String, {
+    nullable: true,
+  })
   avatar_url?: string;
 
   @Field(() => String, {

@@ -18,10 +18,12 @@ export class GuestInputModel {
   email!: string;
 
   @IsName()
+  @Length(1, 20)
   @Field(() => String, {})
   first_name?: string;
 
   @IsName()
+  @Length(1, 20)
   @Field(() => String, {})
   last_name?: string;
 
@@ -36,7 +38,7 @@ export class GuestInputModel {
   attendance_status?: AttendanceStatusEnum;
 
   @IsOptional()
-  @Length(1, 4000)
+  @Length(1, 20)
   @Field(() => String, { nullable: true })
   bio?: string | null;
 

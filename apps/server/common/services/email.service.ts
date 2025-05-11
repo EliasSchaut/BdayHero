@@ -31,7 +31,7 @@ export class EmailService {
       return await this.transporter.sendMail({
         from: `"${process.env.PROJ_TITLE}" <${process.env.EMAIL_HOST_USER}>`,
         to: dest_mail,
-        subject: `[${process.env.PROJ_TITLE}]` + subject ? ` ${subject}` : "",
+        subject: `[${process.env.PROJ_TITLE}]` + (subject ? ` ${subject}` : ""),
         text,
       });
     } catch (e) {

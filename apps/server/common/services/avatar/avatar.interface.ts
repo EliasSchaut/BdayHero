@@ -1,9 +1,9 @@
-import { UserId } from "@/types/common/ids.type";
+import { GuestModel } from "@/types/models/guest.model";
 
 export interface Avatar {
-  get_avatar(user_id: UserId): Promise<string | null>;
+  get_avatar_href(user: GuestModel): Promise<string | null>;
 
-  upload_avatar(file: any, user_id: UserId): Promise<string | null>;
+  upload_avatar(file: any, user: GuestModel): Promise<string | null>;
 
-  delete_avatar(user_id: UserId): Promise<string | null>;
+  delete_avatar(user: GuestModel): Promise<string | null>;
 }

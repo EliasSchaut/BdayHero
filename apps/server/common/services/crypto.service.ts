@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import crypto from "crypto";
 
 @Injectable()
-export class PasswordService {
+export class CryptoService {
   public static readonly CHALLENGE_LENGTH = 20;
   private static readonly SALT_ROUNDS = 10;
 
@@ -13,7 +13,7 @@ export class PasswordService {
   }
 
   public static async hash(password: string): Promise<string> {
-    return bcrypt.hash(password, PasswordService.SALT_ROUNDS);
+    return bcrypt.hash(password, CryptoService.SALT_ROUNDS);
   }
 
   public static async compare(
@@ -25,7 +25,7 @@ export class PasswordService {
 
   public static generate_challenge(): string {
     return generator.generate({
-      length: PasswordService.CHALLENGE_LENGTH,
+      length: CryptoService.CHALLENGE_LENGTH,
       strict: true,
     });
   }

@@ -39,7 +39,7 @@
         :submit="on_submit_user_update"
       >
         <div class="flex justify-end">
-          <button class="hover:bg-second-100 rounded-md p-2">
+          <button class="hover:bg-second-100 rounded-md p-2" type="button">
             <Bars3Icon class="h-6 w-6" />
           </button>
         </div>
@@ -83,10 +83,14 @@
         <div
           class="bg-second-100 flex flex-col gap-y-2 rounded-lg p-4 inset-shadow-sm"
         >
-          <div class="flex gap-x-4">
-            <Avatar initials="ES" />
+          <div class="flex gap-x-4 justify-between">
+            <Avatar
+              :href="user.avatar_url"
+              :initials="user.initials!"
+              class="hover:cursor-not-allowed"
+            />
             <FormInputEmail
-              class="w-full opacity-80"
+              class="opacity-80 hover:cursor-not-allowed"
               id="email"
               :value="user.email"
               disabled
@@ -95,14 +99,18 @@
           <FormInputName
             id="first_name"
             label="Vorname"
-            :value="user.first_name"
+            :value="user?.first_name"
             placeholder="Alexander"
+            :minlength="2"
+            :maxlength="20"
           />
           <FormInputName
             id="last_name"
             label="Nachname"
-            :value="user.last_name"
+            :value="user?.last_name"
             placeholder="Hamilton"
+            :minlength="2"
+            :maxlength="20"
           />
           <DividerPlus class="mt-2" />
           <div class="flex items-center justify-between">
@@ -126,6 +134,8 @@
             :value="i - 1 < companions.length ? companions[i - 1].name : ''"
             placeholder="Max Mustermann"
             :label="`${i}. Companion Name`"
+            :minlength="2"
+            :maxlength="20"
             required
           />
           <Divider class="my-2" />
@@ -133,6 +143,7 @@
             id="bio"
             type="text"
             placeholder="Nachricht hinzufügen (optional)"
+            :maxlength="20"
             :value="user.bio"
           />
         </div>
@@ -142,13 +153,14 @@
     </div>
   </div>
 
-  <AvatarCloud class="mt-16">
+  <HeadingItalic class="my-10" title="Gästeliste" />
+  <AvatarCloud>
     <AvatarProfile
-      v-for="i in Array(99).fill(0)"
-      initials="ES"
-      full_name="Elias Schaut"
-      note="Yoooo lets goo!"
-      href=""
+      v-for="guest in guests"
+      :initials="guest.initials!"
+      :full_name="`${guest.first_name} ${guest.last_name}`"
+      :note="guest.bio"
+      :href="guest.avatar_url"
     />
   </AvatarCloud>
 </template>
@@ -164,6 +176,25 @@ import { authStore } from "~/store/auth";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import { alertStore } from "~/store/alert";
 
+const guest_list_query = gql`
+  query {
+    users {
+      email
+      first_name
+      last_name
+      initials
+      bio
+      avatar_url
+      profile_public
+      attendance_status
+      companions {
+        name
+      }
+    }
+  }
+`;
+type GuestsResult = { users: GuestModel[] };
+
 const sign_in_request_query = gql`
   mutation sign_in_request($email: String!) {
     auth_sign_request_local(user_mail_input: { email: $email })
@@ -173,10 +204,10 @@ const sign_in_request_query = gql`
 const user_query = gql`
   query {
     user {
-      id
       email
       first_name
       last_name
+      initials
       bio
       avatar_url
       profile_public
@@ -192,9 +223,9 @@ type UserResult = { user: GuestModel };
 const user_update_mutation = gql`
   mutation user_update($user_update_input_data: GuestUpdateInputModel!) {
     user_update(user_update_input_data: $user_update_input_data) {
-      id
       first_name
       last_name
+      initials
       bio
       avatar_url
       profile_public
@@ -214,12 +245,17 @@ export default defineComponent({
     const { mutate: user_update } =
       useMutation<UserUpdateResult>(user_update_mutation);
     const auth = authStore();
+    let guests: Ref<Array<GuestModel>> = ref([]);
     let user: Ref<GuestModel | null> = ref(null);
     let companions: Ref<CompanionModel[]> = ref([]);
     let num_companions: Ref<number> = ref(0);
     let selected_attendance_status: Ref<AttendanceStatus> = ref(
       AttendanceStatus.NOT_RESPONDED,
     );
+
+    useAsyncQuery<GuestsResult>(guest_list_query).then(({ data }) => {
+      guests.value = data?.value?.users ?? [];
+    });
 
     if (auth.logged_in) {
       useAsyncQuery<UserResult>(user_query).then(({ data }) => {
@@ -229,7 +265,6 @@ export default defineComponent({
         selected_attendance_status.value =
           user.value?.attendance_status ?? AttendanceStatus.NOT_RESPONDED;
       });
-    } else {
     }
 
     return {
@@ -240,6 +275,7 @@ export default defineComponent({
       alert: alertStore(),
       sign_in_request,
       user_update,
+      guests,
       auth,
       user,
     };
@@ -269,6 +305,8 @@ export default defineComponent({
         user_update_input_data: user_update_payload,
       });
       if (data?.data?.user_update) {
+        this.user!.avatar_url = data?.data?.user_update?.avatar_url;
+        this.user!.initials = data?.data?.user_update?.initials;
         this.alert.show("Update successfull", "success");
       }
     },

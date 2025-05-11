@@ -13,6 +13,8 @@ describe("EmailService", () => {
       sendMail: sendMailMock,
     });
     emailService = new EmailService();
+    process.env.PROJ_TITLE = "TestServer";
+    process.env.EMAIL_HOST_USER = "noreply@example.com";
   });
 
   describe("send_verify", () => {
@@ -23,7 +25,7 @@ describe("EmailService", () => {
         text: "Hello testuser,\n\nplease confirm your email by clicking the following link:\nhttp://example.com/verify\n\nDear\nTestServer Team\n",
       });
       expect(sendMailMock).toHaveBeenCalledWith({
-        from: '"TestServer" <noreply@schaut.dev>',
+        from: '"TestServer" <noreply@example.com>',
         to: "test@example.com",
         subject: "[TestServer] Confirm your email!",
         text: "Hello testuser,\n\nplease confirm your email by clicking the following link:\nhttp://example.com/verify\n\nDear\nTestServer Team\n",
