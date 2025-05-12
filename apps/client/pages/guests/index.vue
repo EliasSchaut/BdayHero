@@ -197,6 +197,13 @@ import { authStore } from "~/store/auth";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import { alertStore } from "~/store/alert";
 
+const guests_count_query = gql`
+  query {
+    users_count
+  }
+`;
+type GuestsCountResult = { users_count: number };
+
 const guest_list_query = gql`
   query {
     users {
@@ -275,6 +282,7 @@ export default defineComponent({
     const { mutate: user_update } =
       useMutation<UserUpdateResult>(user_update_mutation);
     const auth = authStore();
+    let guests_count: Ref<number> = ref(0);
     let guests: Ref<Array<GuestModel>> = ref([]);
     let user: Ref<GuestModel | null> = ref(null);
     let companions: Ref<CompanionModel[]> = ref([]);
@@ -283,6 +291,9 @@ export default defineComponent({
       AttendanceStatus.NOT_RESPONDED,
     );
 
+    useAsyncQuery<GuestsCountResult>(guests_count_query).then(({ data }) => {
+      guests_count.value = data?.value?.users_count ?? 0;
+    });
     useAsyncQuery<GuestsResult>(guest_list_query).then(({ data }) => {
       guests.value = data?.value?.users ?? [];
     });
@@ -300,6 +311,7 @@ export default defineComponent({
     return {
       alert: alertStore(),
       AttendanceStatus,
+      guests_count,
       num_companions,
       companions,
       selected_attendance_status,
@@ -311,7 +323,12 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.$refs.count_up.start(99);
+    watch(
+      () => this.guests_count,
+      (value) => {
+        this.$refs.count_up.start(value);
+      },
+    );
   },
   methods: {
     async on_submit_sign_in(e: Event, form_data: FormData) {
