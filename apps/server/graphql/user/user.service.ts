@@ -56,10 +56,21 @@ export class UserService {
     ctx: CtxType = new CtxType(),
   ): Promise<GuestModel> {
     await this.update_user_fields(user_update_data);
+    const companions = user_update_data.companions;
+    delete user_update_data.companions;
     return new GuestModel(
       await this.prisma.guest.update({
         where: { id: ctx.user_id },
-        data: user_update_data,
+        include: { companion: true },
+        data: {
+          ...user_update_data,
+          companion: companions
+            ? {
+                deleteMany: {},
+                create: companions,
+              }
+            : undefined,
+        },
       }),
     );
   }

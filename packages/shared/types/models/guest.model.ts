@@ -11,5 +11,8 @@ export interface GuestModel {
   bio?: string;
   attendance_status?: AttendanceStatus;
   profile_public?: boolean;
+  need_bed?: boolean;
+  has_bed?: boolean;
+  is_vegan?: boolean;
   companions?: CompanionModel[];
 }

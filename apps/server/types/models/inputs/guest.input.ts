@@ -1,5 +1,6 @@
 import { Field, InputType } from "@nestjs/graphql";
 import {
+  ArrayMaxSize,
   IsEmail,
   IsNumber,
   IsOptional,
@@ -47,6 +48,25 @@ export class GuestInputModel {
   profile_public?: boolean;
 
   @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  need_bed?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  has_bed?: boolean;
+
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  is_vegan?: boolean;
+
+  @IsOptional()
+  @ArrayMaxSize(Number(process.env.MAX_COMPANIONS_PER_GUEST))
   @Field(() => [CompanionInputModel], { nullable: true, defaultValue: [] })
   companions?: CompanionInputModel[];
 }

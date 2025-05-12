@@ -52,18 +52,37 @@ export class GuestModel implements IGuestModel {
   })
   profile_public?: boolean;
 
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  need_bed?: boolean;
+
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  has_bed?: boolean;
+
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  is_vegan?: boolean;
+
   @Field(() => [CompanionModel], {
     nullable: true,
   })
   companions?: CompanionModel[];
 
   public clear_user_profile(): this {
-    this.email = "anonym@schaut.dev";
+    this.email = "anonym@example.com";
     delete this.first_name;
     delete this.last_name;
     delete this.avatar_url;
     delete this.bio;
     delete this.companions;
+    delete this.initials;
+    delete this.need_bed;
+    delete this.has_bed;
+    delete this.is_vegan;
     return this;
   }
 }

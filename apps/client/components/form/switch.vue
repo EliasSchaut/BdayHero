@@ -7,6 +7,13 @@
     ]"
   >
     <span class="sr-only">Use setting</span>
+    <input
+      class="hidden"
+      type="checkbox"
+      :id="id"
+      :name="id"
+      :checked="enabled"
+    />
     <span
       :class="[
         enabled ? 'translate-x-5' : 'translate-x-0',
@@ -58,5 +65,16 @@
 <script setup>
 import { Switch } from "@headlessui/vue";
 
-const enabled = ref(false);
+const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
+  enabled: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const enabled = ref(props.enabled);
 </script>

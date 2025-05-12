@@ -113,14 +113,22 @@
             :maxlength="20"
           />
           <DividerText>Optionen</DividerText>
-          <div class="flex flex-col gap-y-2 text-second-800 font-italic">
+          <div class="flex flex-col gap-y-2 text-second-800 font-medium">
             <div class="flex justify-between">
-              <span>Öffentlich in Gästeliste?</span>
-              <FormSwitch />
+              <span>Öffentlich in Gästeliste</span>
+              <FormSwitch id="profile_public" :enabled="user.profile_public" />
             </div>
             <div class="flex justify-between">
-              <span>Ich esse vegan?</span>
-              <FormSwitch />
+              <span>Brauche Schlafplatz</span>
+              <FormSwitch id="need_bed" :enabled="user.need_bed" />
+            </div>
+            <div class="flex justify-between">
+              <span>Biete Schlafplatz</span>
+              <FormSwitch id="has_bed" :enabled="user.has_bed" />
+            </div>
+            <div class="flex justify-between">
+              <span>Ich esse vegan</span>
+              <FormSwitch id="is_vegan" :enabled="user.is_vegan" />
             </div>
           </div>
 
@@ -142,7 +150,7 @@
           <FormInputName
             v-for="i in num_companions"
             :key="i"
-            :id="`companion-${i}`"
+            id="companions"
             :value="i - 1 < companions.length ? companions[i - 1].name : ''"
             placeholder="Max Mustermann"
             :label="`${i}. Companion Name`"
@@ -173,6 +181,7 @@
       :full_name="`${guest.first_name} ${guest.last_name}`"
       :note="guest.bio"
       :href="guest.avatar_url"
+      :class="{ hidden: !guest.profile_public }"
     />
   </AvatarCloud>
 </template>
@@ -198,6 +207,9 @@ const guest_list_query = gql`
       bio
       avatar_url
       profile_public
+      has_bed
+      need_bed
+      is_vegan
       attendance_status
       companions {
         name
@@ -223,6 +235,9 @@ const user_query = gql`
       bio
       avatar_url
       profile_public
+      has_bed
+      need_bed
+      is_vegan
       attendance_status
       companions {
         name
@@ -241,6 +256,9 @@ const user_update_mutation = gql`
       bio
       avatar_url
       profile_public
+      has_bed
+      need_bed
+      is_vegan
       attendance_status
       companions {
         name
@@ -280,11 +298,11 @@ export default defineComponent({
     }
 
     return {
+      alert: alertStore(),
+      AttendanceStatus,
       num_companions,
       companions,
       selected_attendance_status,
-      AttendanceStatus,
-      alert: alertStore(),
       sign_in_request,
       user_update,
       guests,
@@ -310,9 +328,16 @@ export default defineComponent({
         first_name: form_data.get("first_name")! as string,
         last_name: form_data.get("last_name")! as string,
         attendance_status: this.selected_attendance_status,
+        companions: form_data.getAll("companions").map((comp) => {
+          return { name: comp };
+        }),
         bio: form_data.get("bio")! as string,
-        profile_public: true,
+        profile_public: form_data.get("profile_public")! == "on",
+        has_bed: form_data.get("has_bed")! == "on",
+        need_bed: form_data.get("need_bed")! == "on",
+        is_vegan: form_data.get("is_vegan")! == "on",
       } as GuestUpdateInputModel;
+      console.log(user_update_payload);
       const data = await this.user_update({
         user_update_input_data: user_update_payload,
       });

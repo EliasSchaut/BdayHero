@@ -19,9 +19,12 @@ type GuestModel {
     companions: [CompanionModel!]
     email: String!
     first_name: String
+    has_bed: Boolean
     id: ID!
     initials: String
+    is_vegan: Boolean
     last_name: String
+    need_bed: Boolean
     profile_public: Boolean
 }
 
@@ -42,6 +45,10 @@ type SignedInModel {
     barrier_token: String
 }
 
+input CompanionInputModel {
+    name: String!
+}
+
 input EmailInputModel {
     email: String!
 }
@@ -50,8 +57,12 @@ input GuestUpdateInputModel {
     attendance_status: Float
     avatar: String
     bio: String
+    companions: [CompanionInputModel!] = []
     first_name: String
+    has_bed: Boolean
+    is_vegan: Boolean
     last_name: String
+    need_bed: Boolean
     profile_public: Boolean
 }
 
