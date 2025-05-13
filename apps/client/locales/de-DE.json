@@ -32,6 +32,7 @@
         "car_sharing": "Fahrgemeinschaften Börse",
         "public": "Öffentlich",
         "public_central_station": "Vom Hauptbahnhof",
+        "public_durlach": "Von Durlach Bahnhof",
         "public_hagsfeld": "Von Hagsfeld Bahnhof"
       }
     },
@@ -69,6 +70,10 @@
         "value": "Jeder Gast erhält bei der Anmeldung eine Teamzugehörigkeit (Rot/Blau) und 5 Tokens. Jene können für verschiedene Aktionen gesetzt oder gewonnen werden. Je mehr ein Team Tokens anteilig zum Gegnerteam bei der Auflösung besitzt, desto mehr gewinnt das Team vom Preis."
       },
       "6": {
+        "title": "Gibt es vegetarisches/veganes Essen und wie sieht es mit Allergenen aus?",
+        "value": "Vegetarisches Essen ist neben fleischhaltigen Gerichten ausreichend eingeplant. Auch vegane Optionen wird es geben. Bitte gib bei der Anmeldung an, wenn du dich vegan ernährst, damit wir besser planen können. Falls du Unverträglichkeiten oder Allergien hast, melde dich gerne bei mir – dann kann ich dir sagen, was du bedenkenlos essen kannst."
+      },
+      "7": {
         "title": "Werde ich Spaß haben?",
         "value": "JA! Du wirst den besten Abend deines Lebens haben! Egal, ob alt oder jung, groß oder klein, nerdy oder party, du wirst deinen Spaß haben!"
       }
@@ -93,6 +98,10 @@
       }
     },
     "subtitle": "Alles Wissenswerte rund um den Bday",
+    "theme": {
+      "title": "Motto",
+      "value": "Es gibt ein freiwilliges Motto. Wer möchte, kann als etwas kommen, das mit dem gleichen Anfangsbuchstaben beginnt wie der eigene Vor- oder Nachname. Beispiel: Wenn dein Name 'Alexander Hamilton' wäre, könntest du als 'Aal im Anzug' oder 'Hipster-Hai' kommen."
+    },
     "title": "Details"
   },
   "footer": {
@@ -274,12 +283,12 @@
     "title": "Impressum"
   },
   "nav": {
-    "home": "Start",
-    "details": "Details",
-    "guests": "Gäste",
     "blog": "Blog",
     "community": "Community",
-    "features": "Vorgestellt"
+    "details": "Details",
+    "features": "Vorgestellt",
+    "guests": "Gäste",
+    "home": "Start"
   },
   "privacy": {
     "cookies": {

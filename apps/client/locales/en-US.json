@@ -32,6 +32,7 @@
         "car_sharing": "Carsharing Exchange",
         "public": "Public transport",
         "public_central_station": "From the main station",
+        "public_durlach": "From Durlach railway station",
         "public_hagsfeld": "From Hagsfeld railway station"
       }
     },
@@ -69,6 +70,10 @@
         "value": "Each guest receives a team membership (red/blue) and 5 tokens when registering. These can be bet for various games. The more tokens a team has in proportion to the opposing team at the end, the more the team wins from the prize."
       },
       "6": {
+        "title": "Is there vegatarian food and what about allergens?",
+        "value": "Vegetarian food is planned alongside meat dishes. There will also be vegan options. Please let me know when you register if you have a vegan lifestyle so that we can plan better. If you have any intolerances or allergies, please let me know - then I can tell you what you can eat without hesitation."
+      },
+      "7": {
         "title": "Will I have fun?",
         "value": "YES! You will have the best night of your life! Whether old or young, big or small, nerdy or party, you will have fun!"
       }
@@ -93,6 +98,10 @@
       }
     },
     "subtitle": "Everything you need to know about the Bday",
+    "theme": {
+      "title": "Theme",
+      "value": "There is a voluntary motto. If you wish, you can come as something that begins with the same letter as your first name or surname."
+    },
     "title": "Details"
   },
   "footer": {
@@ -274,12 +283,12 @@
     "title": "Imprint"
   },
   "nav": {
-    "home": "Home",
-    "details": "Details",
-    "guests": "Guests",
     "blog": "Blog",
     "community": "Community",
-    "features": "Features"
+    "details": "Details",
+    "features": "Features",
+    "guests": "Guests",
+    "home": "Home"
   },
   "privacy": {
     "cookies": {
