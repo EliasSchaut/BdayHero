@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="min-w-fit">
     <img
       v-if="href"
       class="inline-block size-9 rounded-full"
@@ -8,7 +8,7 @@
     />
     <span
       v-else
-      class="inline-flex size-9 items-center justify-center rounded-full bg-gray-500"
+      class="inline-flex size-9 items-center justify-center rounded-full bg-second-500"
     >
       <span class="font-medium text-white">{{ initials }}</span>
     </span>

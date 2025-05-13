@@ -3,10 +3,15 @@
     <div class="flex items-center">
       <Avatar :href="href" :initials="initials" />
       <div class="ml-3">
-        <p class="text-sm font-medium text-gray-700">
-          {{ full_name }}
-        </p>
-        <p v-if="note" class="text-xs font-medium text-gray-500">
+        <div class="flex flex-col xs:flex-row flex-wrap gap-x-1">
+          <span class="text-sm font-medium text-second-700">
+            {{ first_name }}
+          </span>
+          <span class="text-sm font-medium text-second-700">
+            {{ last_name }}
+          </span>
+        </div>
+        <p v-if="note" class="text-xs font-medium text-second-500">
           {{ note }}
         </p>
       </div>
@@ -20,7 +25,11 @@ defineProps({
     type: String,
     required: true,
   },
-  full_name: {
+  first_name: {
+    type: String,
+    required: true,
+  },
+  last_name: {
     type: String,
     required: true,
   },

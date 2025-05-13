@@ -178,7 +178,8 @@
     <AvatarProfile
       v-for="guest in guests"
       :initials="guest.initials!"
-      :full_name="`${guest.first_name} ${guest.last_name}`"
+      :first_name="guest.first_name"
+      :last_name="guest.last_name"
       :note="guest.bio"
       :href="guest.avatar_url"
       :class="{ hidden: !guest.profile_public }"
