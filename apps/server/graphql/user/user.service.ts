@@ -48,9 +48,10 @@ export class UserService {
   }
 
   async create(user_input_data: GuestInputModel) {
+    const initials = this.generate_initials(user_input_data);
     return new GuestModel(
       await this.prisma.guest.create({
-        data: user_input_data,
+        data: { ...user_input_data, initials },
       }),
     );
   }
@@ -89,7 +90,7 @@ export class UserService {
 
   async update_user_fields(user: GuestModel): Promise<void> {
     await this.update_avatar(user);
-    this.update_initials(user);
+    user.initials = this.generate_initials(user);
   }
 
   private async update_avatar(user: GuestModel): Promise<void> {
@@ -97,13 +98,18 @@ export class UserService {
       (await this.avatarService.get_avatar_href(user)) ?? undefined;
   }
 
-  private update_initials(user: GuestModel): void {
+  private generate_initials(user: {
+    last_name?: string;
+    first_name?: string;
+    email: string;
+  }): string {
     if (user.first_name && user.last_name) {
-      user.initials =
+      return (
         user.first_name.charAt(0).toUpperCase() +
-        user.last_name.charAt(0).toUpperCase();
+        user.last_name.charAt(0).toUpperCase()
+      );
     } else {
-      user.initials = user.email.charAt(0).toUpperCase();
+      return user.email.charAt(0).toUpperCase();
     }
   }
 }

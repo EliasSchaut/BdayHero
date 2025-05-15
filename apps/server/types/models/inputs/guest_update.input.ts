@@ -1,25 +1,21 @@
 import { Field, InputType } from "@nestjs/graphql";
 import { IsName } from "@/common/validation/decorators/IsName.validation";
-import {
-  ArrayMaxSize,
-  IsNumber,
-  IsOptional,
-  IsUrl,
-  Length,
-  Max,
-  Min,
-} from "class-validator";
+import { IsNumber, IsOptional, IsUrl, Length, Max, Min } from "class-validator";
 import { AttendanceStatusEnum } from "@/types/enum/attendance_status.enum";
 import type { GuestUpdateInputModel as IGuestUpdateInputModel } from "@bdayhero/shared";
 import { CompanionInputModel } from "@/types/models/inputs/companion.input";
 
 @InputType()
 export class GuestUpdateInputModel implements IGuestUpdateInputModel {
+  @IsOptional()
   @IsName()
+  @Length(1, 20)
   @Field(() => String, { nullable: true })
   first_name?: string;
 
+  @IsOptional()
   @IsName()
+  @Length(1, 20)
   @Field(() => String, { nullable: true })
   last_name?: string;
 
@@ -63,7 +59,7 @@ export class GuestUpdateInputModel implements IGuestUpdateInputModel {
   is_vegan?: boolean;
 
   @IsOptional()
-  @ArrayMaxSize(Number(process.env.MAX_COMPANIONS_PER_GUEST))
+  //@ArrayMaxSize(Number(process.env.MAX_COMPANIONS_PER_GUEST))
   @Field(() => [CompanionInputModel], { nullable: true, defaultValue: [] })
   companions?: CompanionInputModel[];
 }

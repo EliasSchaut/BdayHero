@@ -11,7 +11,8 @@ export function IsName(validationOptions?: ValidationOptions) {
       validator: {
         validate(value: any) {
           return (
-            typeof value === "undefined" ||
+            typeof value === undefined ||
+            typeof value === null ||
             (typeof value === "string" && NamePattern.test(value))
           );
         },

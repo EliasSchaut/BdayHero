@@ -6,7 +6,7 @@
         success,
       '!bg-red-500 hover:!bg-red-600 focus-visible:!outline-red-400 dark:!bg-red-600 dark:focus-visible:!outline-red-600':
         failure,
-      'opacity-50 hover:!cursor-not-allowed !bg-gray-500': loading,
+      'opacity-50 hover:!cursor-progress !bg-gray-500': loading,
       'flex w-full justify-center transition duration-200 ease-in-out': true,
     }"
     :disabled="loading"

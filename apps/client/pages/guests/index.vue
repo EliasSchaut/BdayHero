@@ -39,9 +39,19 @@
         :submit="on_submit_user_update"
       >
         <div class="flex justify-end">
-          <button class="hover:bg-second-100 rounded-md p-2" type="button">
-            <Bars3Icon class="h-6 w-6" />
-          </button>
+          <Dropdown class="hover:bg-second-100 rounded-md p-2" type="button">
+            <DropdownButton>
+              <Bars3Icon class="h-6 w-6" />
+            </DropdownButton>
+            <DropdownMenu>
+              <DropdownMenuItem @click="user_delete"
+                >Account löschen
+              </DropdownMenuItem>
+              <DropdownMenuItem @click="user_logout"
+                >Ausloggen
+              </DropdownMenuItem>
+            </DropdownMenu>
+          </Dropdown>
         </div>
         <FormRadioGroup v-model="selected_attendance_status" required>
           <FormRadioGroupOption
@@ -274,6 +284,14 @@ const user_update_mutation = gql`
 `;
 type UserUpdateResult = { user_update: GuestModel };
 
+const user_delete_mutation = gql`
+  mutation {
+    user_delete {
+      id
+    }
+  }
+`;
+
 export default defineComponent({
   components: { Bars3Icon },
   setup() {
@@ -341,13 +359,13 @@ export default defineComponent({
     },
     async on_submit_user_update(e: Event, form_data: FormData) {
       const user_update_payload = {
-        first_name: form_data.get("first_name")! as string,
-        last_name: form_data.get("last_name")! as string,
+        first_name: get_field_value_or_undefined(form_data, "first_name"),
+        last_name: get_field_value_or_undefined(form_data, "last_name"),
         attendance_status: this.selected_attendance_status,
         companions: form_data.getAll("companions").map((comp) => {
           return { name: comp };
         }),
-        bio: form_data.get("bio")! as string,
+        bio: get_field_value_or_undefined(form_data, "bio"),
         profile_public: form_data.get("profile_public")! == "on",
         has_bed: form_data.get("has_bed")! == "on",
         need_bed: form_data.get("need_bed")! == "on",
@@ -361,6 +379,20 @@ export default defineComponent({
         this.user!.avatar_url = data?.data?.user_update?.avatar_url;
         this.user!.initials = data?.data?.user_update?.initials;
         this.alert.show("Update successfull", "success");
+      }
+    },
+    user_logout() {
+      this.auth.logout();
+    },
+    async user_delete() {
+      if (
+        confirm(
+          "Bist du dir sicher, dass du deinen Account unwiderruflich löschen möchtest",
+        )
+      ) {
+        const { mutate: delete_user } = useMutation(user_delete_mutation);
+        await delete_user();
+        this.user_logout();
       }
     },
   },
