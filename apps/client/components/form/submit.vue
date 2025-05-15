@@ -1,31 +1,29 @@
 <template>
   <ButtonPrime
-    ref="button"
     type="submit"
-    class="flex w-full justify-center text-sm leading-6 font-semibold text-white shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+    :class="{
+      '!bg-green-500 hover:!bg-green-600 focus-visible:!outline-green-400 dark:!bg-green-600 dark:focus-visible:!outline-green-600':
+        success,
+      '!bg-red-500 hover:!bg-red-600 focus-visible:!outline-red-400 dark:!bg-red-600 dark:focus-visible:!outline-red-600':
+        failure,
+      'opacity-50 hover:!cursor-not-allowed !bg-gray-500': loading,
+      'flex w-full justify-center transition duration-200 ease-in-out': true,
+    }"
+    :disabled="loading"
   >
-    <slot />
+    <Spinner v-if="loading" />
+    <CheckCircleIcon class="size-6" v-else-if="success" />
+    <XCircleIcon class="size-6" v-else-if="failure" />
+    <slot v-else />
   </ButtonPrime>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { loadingStore } from "~/store/loading";
+import { CheckCircleIcon, XCircleIcon } from "@heroicons/vue/24/solid";
 
-export default defineComponent({
-  name: "FormSubmit",
-  methods: {
-    set_loading() {
-      this.$refs.button.set_loading();
-    },
-    set_default() {
-      this.$refs.button.set_default();
-    },
-    set_success() {
-      this.$refs.button.set_success();
-    },
-    set_success_then_default() {
-      this.$refs.button.set_success_then_default();
-    },
-  },
-});
+const loading_state = loadingStore();
+const loading = computed(() => loading_state.loading);
+const success = computed(() => loading_state.success);
+const failure = computed(() => loading_state.failure);
 </script>
