@@ -15,6 +15,13 @@
           {{ note }}
         </p>
       </div>
+      <Badge
+        class="mx-2"
+        :title="companions.map((comp) => comp.name).join(', ')"
+        v-if="companions.length > 0"
+      >
+        +{{ companions.length }}
+      </Badge>
     </div>
   </div>
 </template>
@@ -40,6 +47,10 @@ defineProps({
   href: {
     type: String,
     default: null,
+  },
+  companions: {
+    type: Array<{ name: string }>,
+    default: [],
   },
 });
 </script>

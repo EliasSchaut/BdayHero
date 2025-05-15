@@ -13,7 +13,11 @@ export class UserService {
   ) {}
 
   async find_many(): Promise<GuestModel[]> {
-    return (await this.prisma.guest.findMany()).map((user) => {
+    return (
+      await this.prisma.guest.findMany({
+        include: { companion: true },
+      })
+    ).map((user) => {
       const guest = new GuestModel(user);
       return guest.profile_public ? guest : guest.clear_user_profile();
     });

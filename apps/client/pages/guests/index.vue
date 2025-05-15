@@ -177,12 +177,13 @@
   <AvatarCloud>
     <AvatarProfile
       v-for="guest in guests"
+      :class="{ hidden: !guest.profile_public }"
       :initials="guest.initials!"
       :first_name="guest.first_name"
       :last_name="guest.last_name"
       :note="guest.bio"
       :href="guest.avatar_url"
-      :class="{ hidden: !guest.profile_public }"
+      :companions="guest.companions ?? []"
     />
   </AvatarCloud>
 </template>
@@ -215,9 +216,6 @@ const guest_list_query = gql`
       bio
       avatar_url
       profile_public
-      has_bed
-      need_bed
-      is_vegan
       attendance_status
       companions {
         name
