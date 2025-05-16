@@ -4,7 +4,10 @@
   >
     <Countup
       id="guestlist_countup"
-      class="m-auto my-16 w-min text-4xl font-bold opacity-0"
+      :class="{
+        hidden: guests_count == 0,
+        'm-auto my-16 w-min text-4xl font-bold opacity-0': true,
+      }"
       v-motion
       :initial="{ opacity: 0, scale: 0 }"
       :enter="{ opacity: 1, scale: 3 }"
@@ -13,8 +16,9 @@
       :duration="3000"
       ref="count_up"
     />
+    <Spinner v-if="guests_count == 0" class="mx-auto my-16" />
     <span
-      class="mb-20 text-3xl font-semibold text-nowrap opacity-0"
+      class="text-3xl font-semibold text-nowrap opacity-0"
       v-motion
       :initial="{ opacity: 0, y: 20 }"
       :enter="{ opacity: 1, y: 0 }"
@@ -23,7 +27,7 @@
     >
   </div>
 
-  <div class="flex justify-center">
+  <div class="flex justify-center mt-20">
     <div
       class="bg-second-50 xs:mx-12 flex w-full xs:w-fit min-h-96 xs:min-w-96 items-center justify-center xs:rounded-4xl p-8 inset-shadow-sm"
     >
@@ -32,7 +36,6 @@
         <FormInputEmail id="email" class="my-4" required />
         <FormSubmit>Sign in</FormSubmit>
       </FormVal>
-
       <FormVal
         v-else-if="user"
         class="flex flex-col gap-y-6"
@@ -180,22 +183,26 @@
 
         <FormSubmit>Aktualisieren</FormSubmit>
       </FormVal>
+      <Spinner v-else class="h-12 w-12" />
     </div>
   </div>
 
   <HeadingItalic class="my-10" title="Gästeliste" />
-  <AvatarCloud>
+  <AvatarCloud v-if="guests.length">
     <AvatarProfile
       v-for="guest in guests"
       :class="{ hidden: !guest.profile_public }"
       :initials="guest.initials!"
+      :email="guest.email"
       :first_name="guest.first_name"
       :last_name="guest.last_name"
       :note="guest.bio"
       :href="guest.avatar_url"
+      :attendance_status="guest.attendance_status"
       :companions="guest.companions ?? []"
     />
   </AvatarCloud>
+  <Spinner v-else class="mx-auto" />
 </template>
 
 <script lang="ts">
@@ -299,12 +306,12 @@ export default defineComponent({
     const { mutate: user_update } =
       useMutation<UserUpdateResult>(user_update_mutation);
     const auth = authStore();
-    let guests_count: Ref<number> = ref(0);
-    let guests: Ref<Array<GuestModel>> = ref([]);
-    let user: Ref<GuestModel | null> = ref(null);
-    let companions: Ref<CompanionModel[]> = ref([]);
-    let num_companions: Ref<number> = ref(0);
-    let selected_attendance_status: Ref<AttendanceStatus> = ref(
+    const guests_count: Ref<number> = ref(0);
+    const guests: Ref<Array<GuestModel>> = ref([]);
+    const user: Ref<GuestModel | null> = ref(null);
+    const companions: Ref<CompanionModel[]> = ref([]);
+    const num_companions: Ref<number> = ref(0);
+    const selected_attendance_status: Ref<AttendanceStatus> = ref(
       AttendanceStatus.NOT_RESPONDED,
     );
 
