@@ -35,6 +35,13 @@
         <h3 class="text-center font-semibold">Sign in to join!</h3>
         <div class="flex flex-col w-full my-4 gap-y-1">
           <button
+            @click="on_google_sign_in"
+            type="button"
+            class="bg-gray-100 rounded-md"
+          >
+            via google
+          </button>
+          <button
             @click="on_github_sign_in"
             type="button"
             class="bg-gray-100 rounded-md"
@@ -229,6 +236,7 @@ import { AttendanceStatus } from "@bdayhero/shared";
 import { authStore } from "~/store/auth";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import { alertStore } from "~/store/alert";
+import generate_oauth_uri from "~/utils/generate_oauth_uri";
 
 const guests_count_query = gql`
   query {
@@ -389,23 +397,24 @@ export default defineComponent({
       }
     },
     async on_github_sign_in() {
-      const { github_client_id, frontend_url } = this.config.public;
-      const github_auth_url = new URL(
-        "https://github.com/login/oauth/authorize",
-      );
-      github_auth_url.searchParams.append(
-        "client_id",
-        github_client_id as string,
-      );
-      github_auth_url.searchParams.append(
-        "redirect_uri",
-        frontend_url + "/guests/github",
-      );
-      github_auth_url.searchParams.append(
-        "scope",
-        encodeURIComponent("[read:user, user:email]"),
-      );
-      window.location.href = github_auth_url.toString();
+      const { github_client_id } = this.config.public;
+      const github_auth_uri = generate_oauth_uri({
+        name: "github",
+        client_id: github_client_id,
+        endpoint: "https://github.com/login/oauth/authorize",
+        scope: "[read:user, user:email]",
+      });
+      window.location.href = github_auth_uri;
+    },
+    async on_google_sign_in() {
+      const { google_client_id } = this.config.public;
+      const google_auth_uri = generate_oauth_uri({
+        name: "google",
+        client_id: google_client_id,
+        endpoint: "https://accounts.google.com/o/oauth2/auth",
+        scope: "email",
+      });
+      window.location.href = google_auth_uri;
     },
     async on_submit_user_update(e: Event, form_data: FormData) {
       const user_update_payload = {
