@@ -10,13 +10,18 @@ export default defineNuxtPlugin(({ hook }) => {
   const { clients } = useApollo();
   const default_client: ApolloClient<any> = (clients as any).default;
 
+  const alert = alertStore();
+  const auth = authStore();
+
   const alert_link = new ApolloLink((operation, forward) => {
     return forward(operation).map((data) => {
       if (data.errors && data.errors.length) {
-        const alert = alertStore();
         const error_code = data.errors[0]?.extensions?.code ?? "danger";
         const error_msg = data.errors[0].message;
         alert.show(error_msg, error_code as AlertType["type"]);
+        if (error_code === "FORBIDDEN") {
+          auth.logout();
+        }
       }
       return data;
     });

@@ -3,14 +3,13 @@ import { AvatarService } from "@/common/services/avatar/avatar.service";
 import { Avatar } from "@/common/services/avatar/avatar.interface";
 import { DangerException } from "@/common/exceptions/danger.exception";
 import { CryptoService } from "@/common/services/crypto.service";
-import { GuestModel } from "@/types/models/guest.model";
 
 @Injectable()
 export class GravatarService extends AvatarService implements Avatar {
   private readonly GRAVATAR_BASE = "https://www.gravatar.com/avatar/";
 
-  public async get_avatar_href(user: GuestModel): Promise<string | null> {
-    const user_hash = await this.hash_email(user.email);
+  public async get_avatar_href(email: string): Promise<string | null> {
+    const user_hash = await this.hash_email(email);
     return this.get_gravatar_url(user_hash);
   }
 

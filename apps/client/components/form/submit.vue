@@ -21,8 +21,8 @@
       class="font-light text-xs flex mt-1 justify-center gap-x-1 text-center"
     >
       <span>Durch Klicken bestätigst du die </span>
-      <a href="/privacy" class="text-prime-500 underline"
-        >Datenschutzerklärung</a
+      <nuxt-link href="/privacy" class="text-prime-500 underline"
+        >Datenschutzerklärung</nuxt-link
       >
     </span>
   </div>

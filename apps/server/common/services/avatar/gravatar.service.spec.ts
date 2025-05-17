@@ -1,7 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { GravatarService } from "./gravatar.service";
 import { DangerException } from "@/common/exceptions/danger.exception";
-import { GuestModel } from "@/types/models/guest.model";
 import { CryptoService } from "@/common/services/crypto.service";
 
 describe("GravatarService", () => {
@@ -16,12 +15,9 @@ describe("GravatarService", () => {
   });
 
   it("get_avatar returns gravatar URL if email exists", async () => {
-    const user = {
-      id: "1",
-      email: "test@example.com",
-    } as GuestModel;
+    const user_email = "test@example.com";
     const hash = "55502f40dc8b7c769880b10874abc9d0";
-    const result = await service.get_avatar_href(user);
+    const result = await service.get_avatar_href(user_email);
 
     expect(result).toBe(`https://www.gravatar.com/avatar/${hash}`);
   });

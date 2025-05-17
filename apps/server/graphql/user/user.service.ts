@@ -49,9 +49,12 @@ export class UserService {
 
   async create(user_input_data: GuestInputModel) {
     const initials = this.generate_initials(user_input_data);
+    const avatar_url = await this.avatarService.get_avatar_href(
+      user_input_data.email,
+    );
     return new GuestModel(
       await this.prisma.guest.create({
-        data: { ...user_input_data, initials },
+        data: { ...user_input_data, initials, avatar_url },
       }),
     );
   }
@@ -88,14 +91,16 @@ export class UserService {
     );
   }
 
-  async update_user_fields(user: GuestModel): Promise<void> {
-    await this.update_avatar(user);
-    user.initials = this.generate_initials(user);
-  }
-
-  private async update_avatar(user: GuestModel): Promise<void> {
+  async update_user_fields(user: {
+    last_name?: string;
+    first_name?: string;
+    email: string;
+    avatar_url?: string;
+    initials?: string;
+  }): Promise<void> {
     user.avatar_url =
-      (await this.avatarService.get_avatar_href(user)) ?? undefined;
+      (await this.avatarService.get_avatar_href(user.email)) ?? undefined;
+    user.initials = this.generate_initials(user);
   }
 
   private generate_initials(user: {

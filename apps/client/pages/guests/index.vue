@@ -33,7 +33,16 @@
     >
       <FormVal v-if="!auth.logged_in" :submit="on_submit_sign_in">
         <h3 class="text-center font-semibold">Sign in to join!</h3>
-        <FormInputEmail id="email" class="my-4" required />
+        <div class="flex flex-col w-full my-4 gap-y-1">
+          <button
+            @click="on_github_sign_in"
+            type="button"
+            class="bg-gray-100 rounded-md"
+          >
+            via github
+          </button>
+          <FormInputEmail id="email" placeholder="via email" required />
+        </div>
         <FormSubmit>Sign in</FormSubmit>
       </FormVal>
       <FormVal
@@ -156,8 +165,13 @@
                 }
               "
             >
-              <option :value="0" :selected="num_companions == 0">+0</option>
-              <option :value="1" :selected="num_companions == 1">+1</option>
+              <option
+                v-for="i in max_companions_per_guest + 1"
+                :value="i - 1"
+                :selected="num_companions == i - 1"
+              >
+                +{{ i - 1 }}
+              </option>
             </FormSelect>
           </div>
           <FormInputName
@@ -305,7 +319,9 @@ export default defineComponent({
     const { mutate: sign_in_request } = useMutation(sign_in_request_query);
     const { mutate: user_update } =
       useMutation<UserUpdateResult>(user_update_mutation);
+    const config = useRuntimeConfig();
     const auth = authStore();
+    const alert = alertStore();
     const guests_count: Ref<number> = ref(0);
     const guests: Ref<Array<GuestModel>> = ref([]);
     const user: Ref<GuestModel | null> = ref(null);
@@ -333,7 +349,7 @@ export default defineComponent({
     }
 
     return {
-      alert: alertStore(),
+      alert,
       AttendanceStatus,
       guests_count,
       num_companions,
@@ -344,6 +360,8 @@ export default defineComponent({
       guests,
       auth,
       user,
+      config,
+      max_companions_per_guest: Number(config.public.max_companions_per_guest),
     };
   },
   mounted() {
@@ -358,11 +376,36 @@ export default defineComponent({
     async on_submit_sign_in(e: Event, form_data: FormData) {
       const email = form_data.get("email");
       try {
-        const data = await this.sign_in_request({ email });
-        console.log(data);
+        await this.sign_in_request({ email });
+        this.alert.show(
+          "Du hast eine Mail bekommen. Klicke auf den Link in dieser um dich zu verifizieren",
+          "success",
+        );
       } catch (e) {
-        console.error(e);
+        this.alert.show(
+          "Etwas hat nicht funktioniert! versuche es später noch einmal",
+          "danger",
+        );
       }
+    },
+    async on_github_sign_in() {
+      const { github_client_id, frontend_url } = this.config.public;
+      const github_auth_url = new URL(
+        "https://github.com/login/oauth/authorize",
+      );
+      github_auth_url.searchParams.append(
+        "client_id",
+        github_client_id as string,
+      );
+      github_auth_url.searchParams.append(
+        "redirect_uri",
+        frontend_url + "/guests/github",
+      );
+      github_auth_url.searchParams.append(
+        "scope",
+        encodeURIComponent("[read:user, user:email]"),
+      );
+      window.location.href = github_auth_url.toString();
     },
     async on_submit_user_update(e: Event, form_data: FormData) {
       const user_update_payload = {
@@ -378,7 +421,6 @@ export default defineComponent({
         need_bed: form_data.get("need_bed")! == "on",
         is_vegan: form_data.get("is_vegan")! == "on",
       } as GuestUpdateInputModel;
-      console.log(user_update_payload);
       const data = await this.user_update({
         user_update_input_data: user_update_payload,
       });

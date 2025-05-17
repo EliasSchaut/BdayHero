@@ -10,6 +10,7 @@ import { UserID } from "@/common/decorators/user_id.decorator";
 import { UserId } from "@/types/common/ids.type";
 import { UserPayloadType } from "@/types/common/user_payload.type";
 import { User } from "@/common/decorators/user.decorator";
+import { ForbiddenException } from "@/common/exceptions/forbidden.exception";
 
 @Resolver(() => GuestModel)
 export class UserResolver {
@@ -32,8 +33,11 @@ export class UserResolver {
   async find_by_id(
     @I18n() i18n: I18nContext<I18nTranslations>,
     @UserID() user_id: UserId,
-  ): Promise<GuestModel | null> {
-    return this.userService.find_by_id({ i18n, user_id });
+  ): Promise<GuestModel> {
+    const user = await this.userService.find_by_id({ i18n, user_id });
+    if (user === null)
+      throw new ForbiddenException(i18n.t("auth.exception.invalid_token"));
+    else return user;
   }
 
   @UseGuards(UserAuthGuard)
