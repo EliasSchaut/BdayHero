@@ -1,4 +1,15 @@
-export default function generate_oauth_uri(options: {
+export async function call_oauth_endpoint(provider: string, code: string) {
+  const res = await fetch(`/api/auth/${provider}?code=${code}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const { jwt_token, user } = await res.json();
+  return { jwt_token, user };
+}
+
+export function generate_oauth_uri(options: {
   name: string;
   client_id: string;
   endpoint: string;

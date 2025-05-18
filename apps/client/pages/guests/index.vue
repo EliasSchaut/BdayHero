@@ -242,7 +242,7 @@ import { AttendanceStatus } from "@bdayhero/shared";
 import { authStore } from "~/store/auth";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import { alertStore } from "~/store/alert";
-import generate_oauth_uri from "~/utils/generate_oauth_uri";
+import { generate_oauth_uri } from "~/utils/oauth";
 
 const guests_count_query = gql`
   query {
