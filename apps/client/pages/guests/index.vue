@@ -11,7 +11,6 @@
       v-motion
       :initial="{ opacity: 0, scale: 0 }"
       :enter="{ opacity: 1, scale: 3 }"
-      :hovered="{ scale: 3.5 }"
       :delay="1000"
       :duration="3000"
       ref="count_up"
@@ -34,27 +33,10 @@
       <FormVal v-if="!auth.logged_in" :submit="on_submit_sign_in">
         <h3 class="text-center font-semibold">Sign in to join!</h3>
         <div class="flex flex-col w-full my-4 gap-y-1">
-          <button
-            @click="on_google_sign_in"
-            type="button"
-            class="bg-gray-100 rounded-md"
-          >
-            via google
-          </button>
-          <button
-            @click="on_github_sign_in"
-            type="button"
-            class="bg-gray-100 rounded-md"
-          >
-            via github</button
-          ><button
-            @click="on_discord_sign_in"
-            type="button"
-            class="bg-gray-100 rounded-md"
-          >
-            via discord
-          </button>
-          <FormInputEmail id="email" placeholder="via email" required />
+          <ButtonSigninGoogle @click="on_google_sign_in" type="button" />
+          <ButtonSigninGithub @click="on_github_sign_in" type="button" />
+          <ButtonSigninDiscord @click="on_discord_sign_in" type="button" />
+          <FormInputEmail id="email" placeholder="local via email" required />
         </div>
         <FormSubmit>Sign in</FormSubmit>
       </FormVal>
