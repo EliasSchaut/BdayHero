@@ -11,7 +11,7 @@ export default function generate_oauth_uri(options: {
     "redirect_uri",
     `${frontend_url}/guests/${options.name}`,
   );
-  auth_uri.searchParams.append("scope", encodeURIComponent(options.scope));
+  auth_uri.searchParams.append("scope", options.scope);
   auth_uri.searchParams.append("response_type", "code");
   return auth_uri.toString();
 }

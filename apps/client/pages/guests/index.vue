@@ -46,7 +46,13 @@
             type="button"
             class="bg-gray-100 rounded-md"
           >
-            via github
+            via github</button
+          ><button
+            @click="on_discord_sign_in"
+            type="button"
+            class="bg-gray-100 rounded-md"
+          >
+            via discord
           </button>
           <FormInputEmail id="email" placeholder="via email" required />
         </div>
@@ -396,16 +402,6 @@ export default defineComponent({
         );
       }
     },
-    async on_github_sign_in() {
-      const { github_client_id } = this.config.public;
-      const github_auth_uri = generate_oauth_uri({
-        name: "github",
-        client_id: github_client_id,
-        endpoint: "https://github.com/login/oauth/authorize",
-        scope: "[read:user, user:email]",
-      });
-      window.location.href = github_auth_uri;
-    },
     async on_google_sign_in() {
       const { google_client_id } = this.config.public;
       const google_auth_uri = generate_oauth_uri({
@@ -415,6 +411,26 @@ export default defineComponent({
         scope: "email",
       });
       window.location.href = google_auth_uri;
+    },
+    async on_github_sign_in() {
+      const { github_client_id } = this.config.public;
+      const github_auth_uri = generate_oauth_uri({
+        name: "github",
+        client_id: github_client_id,
+        endpoint: "https://github.com/login/oauth/authorize",
+        scope: "[read:user,user:email]",
+      });
+      window.location.href = github_auth_uri;
+    },
+    async on_discord_sign_in() {
+      const { discord_client_id } = this.config.public;
+      const discord_auth_uri = generate_oauth_uri({
+        name: "discord",
+        client_id: discord_client_id,
+        endpoint: "https://discord.com/oauth2/authorize",
+        scope: "identify email",
+      });
+      window.location.href = discord_auth_uri;
     },
     async on_submit_user_update(e: Event, form_data: FormData) {
       const user_update_payload = {
