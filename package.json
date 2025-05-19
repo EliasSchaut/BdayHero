@@ -22,7 +22,7 @@
     "build:server": "npm run build -w @bdayhero/server",
     "build:client": "npm run build -w @bdayhero/client",
     "build:shared": "npm run build -w @bdayhero/shared",
-    "build:db": "prisma migrate dev --schema=./schema.prisma"
+    "build:db": "npx prisma migrate dev --schema=./schema.prisma --name dev"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
