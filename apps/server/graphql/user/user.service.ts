@@ -1,9 +1,9 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "nestjs-prisma";
-import { CtxType } from "@/types/common/ctx.type";
-import { GuestModel } from "@/types/models/guest.model";
-import { GuestInputModel } from "@/types/models/inputs/guest.input";
-import { AvatarService } from "@/common/services/avatar/avatar.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'nestjs-prisma';
+import { CtxType } from '@/types/common/ctx.type';
+import { GuestModel } from '@/types/models/guest.model';
+import { GuestInputModel } from '@/types/models/inputs/guest.input';
+import { AvatarService } from '@/common/services/avatar/avatar.service';
 
 @Injectable()
 export class UserService {
@@ -16,6 +16,12 @@ export class UserService {
     return (
       await this.prisma.guest.findMany({
         include: { companion: true },
+        orderBy: [
+          {
+            first_name: 'asc',
+          },
+          { last_name: 'asc' },
+        ],
       })
     ).map((user) => {
       const guest = new GuestModel(user);
