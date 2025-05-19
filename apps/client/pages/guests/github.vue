@@ -3,15 +3,17 @@
 </template>
 
 <script setup lang="ts">
-import { call_oauth_endpoint } from "~/utils/oauth";
+import { call_oauth_endpoint } from '~/utils/oauth';
 
 const router = useRouter();
 const route = useRoute();
 const code = route.query.code;
 
 if (code) {
-  call_oauth_endpoint("github", code as string).then(({ jwt_token, user }) => {
+  call_oauth_endpoint('github', code as string).then(({ jwt_token, user }) => {
     router.push(`/guests/local/${jwt_token}`);
   });
+} else {
+  router.push('/guests');
 }
 </script>

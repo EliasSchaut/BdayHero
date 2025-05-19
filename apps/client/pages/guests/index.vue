@@ -298,6 +298,7 @@ type UserResult = { user: GuestModel };
 const user_update_mutation = gql`
   mutation user_update($user_update_input_data: GuestUpdateInputModel!) {
     user_update(user_update_input_data: $user_update_input_data) {
+      email
       first_name
       last_name
       initials
@@ -444,9 +445,12 @@ export default defineComponent({
         user_update_input_data: user_update_payload,
       });
       if (data?.data?.user_update) {
-        this.user!.avatar_url = data?.data?.user_update?.avatar_url;
-        this.user!.initials = data?.data?.user_update?.initials;
-        this.alert.show('Update successfull', 'success');
+        this.user = data.data.user_update;
+        this.num_companions = data.data.user_update.companions?.length ?? 0;
+        this.companions = data.data.user_update.companions ?? [];
+        this.selected_attendance_status =
+          data.data.user_update.attendance_status ??
+          AttendanceStatus.NOT_RESPONDED;
       }
     },
     user_logout() {

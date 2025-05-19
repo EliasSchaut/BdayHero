@@ -53,13 +53,13 @@
 import { AttendanceStatus } from '@bdayhero/shared';
 
 defineProps({
-  initials: {
-    type: String,
-    required: true,
-  },
   email: {
     type: String,
     required: true,
+  },
+  initials: {
+    type: String,
+    default: '',
   },
   first_name: {
     type: String,
