@@ -1,11 +1,8 @@
 <template>
   <div>
-    <label
-      v-if="label"
-      :for="id"
-      class="text-second-900 block text-sm/6 font-medium"
-      >{{ label }}</label
-    >
+    <label v-if="label" :for="id" class="block text-sm/6 font-medium">{{
+      label
+    }}</label>
     <div class="grid grid-cols-1">
       <select
         :id="id"
@@ -15,7 +12,7 @@
             $emit('update', Number(e.target.value));
           }
         "
-        class="text-second-900 outline-second-300 focus:outline-prime-600 col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6"
+        class="outline-second-300 dark:outline-second-600 focus:outline-prime-600 dark:bg-second-700 col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6"
       >
         <slot />
       </select>

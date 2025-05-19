@@ -1,3 +1,5 @@
 <template>
-  <ButtonSignin provider="github"> Sign in with GitHub </ButtonSignin>
+  <ButtonSignin provider="github">
+    {{ $t('common.signin.github') }}
+  </ButtonSignin>
 </template>

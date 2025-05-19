@@ -1,6 +1,6 @@
 <template>
   <button
-    class="bg-white border-1 border-solid border-second-400 py-1.5 rounded-md"
+    class="bg-white dark:bg-second-950 border-1 border-solid dark:border-second-800 border-second-400 py-1.5 rounded-md"
   >
     <div class="flex justify-center gap-x-5">
       <img

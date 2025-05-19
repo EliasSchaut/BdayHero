@@ -1,3 +1,5 @@
 <template>
-  <ButtonSignin provider="discord"> Sign in with Discord </ButtonSignin>
+  <ButtonSignin provider="discord">
+    {{ $t('common.signin.discord') }}
+  </ButtonSignin>
 </template>

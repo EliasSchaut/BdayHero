@@ -2,8 +2,8 @@
   <Switch
     v-model="enabled"
     :class="[
-      enabled ? 'bg-prime-600' : 'bg-second-200',
-      'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-prime-600 focus:ring-offset-2 focus:outline-hidden',
+      enabled ? 'bg-prime-600' : 'bg-second-200 dark:bg-second-700',
+      'focus:ring-prime-600 relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
     ]"
   >
     <span class="sr-only">Use setting</span>
@@ -29,7 +29,11 @@
         ]"
         aria-hidden="true"
       >
-        <svg class="size-3 text-second-400" fill="none" viewBox="0 0 12 12">
+        <svg
+          class="text-second-400 dark:text-second-600 size-3"
+          fill="none"
+          viewBox="0 0 12 12"
+        >
           <path
             d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2"
             stroke="currentColor"
@@ -49,7 +53,7 @@
         aria-hidden="true"
       >
         <svg
-          class="size-3 text-prime-600"
+          class="text-prime-600 dark:text-prime-500 size-3"
           fill="currentColor"
           viewBox="0 0 12 12"
         >
@@ -63,7 +67,7 @@
 </template>
 
 <script setup>
-import { Switch } from "@headlessui/vue";
+import { Switch } from '@headlessui/vue';
 
 const props = defineProps({
   id: {

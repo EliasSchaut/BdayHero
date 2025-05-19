@@ -21,10 +21,10 @@
     "build": "npm run build:db && concurrently \"npm run build:server\" \"npm run build:client\"",
     "build:server": "npm run build -w @bdayhero/server",
     "build:client": "npm run build -w @bdayhero/client",
-    "build:db": "prisma migrate dev --schema=./configs/schema.prisma"
+    "build:db": "prisma migrate dev --schema=./schema.prisma"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
-    "prisma": "^6.7.0"
+    "prisma": "^6.8.2"
   }
 }

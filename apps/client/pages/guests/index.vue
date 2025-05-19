@@ -22,23 +22,33 @@
       :initial="{ opacity: 0, y: 20 }"
       :enter="{ opacity: 1, y: 0 }"
       :duration="1200"
-      >{{ $t("guestlist.countup.tail") }}!</span
+      >{{ $t('guests.countup.tail') }}!</span
     >
   </div>
 
-  <div class="flex justify-center mt-20">
+  <div class="mt-20 flex justify-center">
     <div
-      class="bg-second-50 xs:mx-12 flex w-full xs:w-fit min-h-96 xs:min-w-96 items-center justify-center xs:rounded-4xl p-8 inset-shadow-sm"
+      class="bg-second-50 dark:bg-second-900 xs:mx-12 xs:w-fit xs:min-w-96 xs:rounded-4xl flex min-h-96 w-full items-center justify-center p-8 inset-shadow-sm"
     >
-      <FormVal v-if="!auth.logged_in" :submit="on_submit_sign_in">
-        <h3 class="text-center font-semibold">Sign in to join!</h3>
-        <div class="flex flex-col w-full my-4 gap-y-1">
+      <FormVal
+        class="mx-4 w-full"
+        v-if="!auth.logged_in"
+        :submit="on_submit_sign_in"
+      >
+        <h3 class="text-center font-semibold">
+          {{ $t('guests.signin.title') }}
+        </h3>
+        <div class="my-4 flex w-full flex-col gap-y-1">
           <ButtonSigninGoogle @click="on_google_sign_in" type="button" />
           <ButtonSigninGithub @click="on_github_sign_in" type="button" />
           <ButtonSigninDiscord @click="on_discord_sign_in" type="button" />
-          <FormInputEmail id="email" placeholder="local via email" required />
+          <FormInputEmail
+            id="email"
+            :placeholder="$t('guests.signin.via_local')"
+            required
+          />
         </div>
-        <FormSubmit>Sign in</FormSubmit>
+        <FormSubmit>{{ $t('guests.signin.submit') }}</FormSubmit>
       </FormVal>
       <FormVal
         v-else-if="user"
@@ -46,16 +56,19 @@
         :submit="on_submit_user_update"
       >
         <div class="flex justify-end">
-          <Dropdown class="hover:bg-second-100 rounded-md p-2" type="button">
+          <Dropdown
+            class="hover:bg-second-100 dark:hover:bg-second-800 rounded-md p-2"
+            type="button"
+          >
             <DropdownButton>
               <Bars3Icon class="h-6 w-6" />
             </DropdownButton>
             <DropdownMenu>
               <DropdownMenuItem @click="user_delete"
-                >Account löschen
+                >{{ $t('guests.profile.delete_account') }}
               </DropdownMenuItem>
               <DropdownMenuItem @click="user_logout"
-                >Ausloggen
+                >{{ $t('guests.profile.logout') }}
               </DropdownMenuItem>
             </DropdownMenu>
           </Dropdown>
@@ -67,7 +80,7 @@
           >
             <ButtonCheck
               :solid="selected_attendance_status == AttendanceStatus.ATTENDING"
-              >Zusage
+              >{{ $t('guests.profile.attendance.attending') }}
             </ButtonCheck>
           </FormRadioGroupOption>
           <FormRadioGroupOption
@@ -80,7 +93,7 @@
               :solid="
                 selected_attendance_status == AttendanceStatus.MAYBE_ATTENDING
               "
-              >Vielleicht
+              >{{ $t('guests.profile.attendance.maybe') }}
             </ButtonQuestion>
           </FormRadioGroupOption>
           <FormRadioGroupOption
@@ -93,18 +106,18 @@
               :solid="
                 selected_attendance_status == AttendanceStatus.NOT_ATTENDING
               "
-              >Absage
+              >{{ $t('guests.profile.attendance.not_attending') }}
             </ButtonX>
           </FormRadioGroupOption>
         </FormRadioGroup>
         <div
-          class="bg-second-100 flex flex-col gap-y-2 rounded-lg p-4 inset-shadow-sm"
+          class="bg-second-100 dark:bg-second-800 flex flex-col gap-y-2 rounded-lg p-4 inset-shadow-sm"
         >
-          <div class="flex gap-x-4 justify-between w-full">
+          <div class="flex w-full justify-between gap-x-4">
             <Avatar
               :href="user.avatar_url"
               :initials="user.initials!"
-              class="hover:cursor-not-allowed xs:size-9 size-10"
+              class="xs:size-9 size-10 hover:cursor-not-allowed"
             />
             <FormInputEmail
               class="opacity-80 hover:cursor-not-allowed"
@@ -115,7 +128,7 @@
           </div>
           <FormInputName
             id="first_name"
-            label="Vorname"
+            :label="$t('common.form.labels.first_name')"
             :value="user?.first_name"
             placeholder="Alexander"
             :minlength="2"
@@ -123,35 +136,37 @@
           />
           <FormInputName
             id="last_name"
-            label="Nachname"
+            :label="$t('common.form.labels.last_name')"
             :value="user?.last_name"
             placeholder="Hamilton"
             :minlength="2"
             :maxlength="20"
           />
-          <DividerText>Optionen</DividerText>
-          <div class="flex flex-col gap-y-2 text-second-800 font-medium">
+          <DividerText>{{ $t('guests.profile.options.title') }}</DividerText>
+          <div
+            class="text-second-800 dark:text-second-300 flex flex-col gap-y-2 font-medium"
+          >
             <div class="flex justify-between">
-              <span>Öffentlich in Gästeliste</span>
+              <span>{{ $t('guests.profile.options.public') }}</span>
               <FormSwitch id="profile_public" :enabled="user.profile_public" />
             </div>
             <div class="flex justify-between">
-              <span>Brauche Schlafplatz</span>
+              <span>{{ $t('guests.profile.options.needs_bed') }}</span>
               <FormSwitch id="need_bed" :enabled="user.need_bed" />
             </div>
             <div class="flex justify-between">
-              <span>Biete Schlafplatz</span>
+              <span>{{ $t('guests.profile.options.has_bed') }}</span>
               <FormSwitch id="has_bed" :enabled="user.has_bed" />
             </div>
             <div class="flex justify-between">
-              <span>Ich esse vegan</span>
+              <span>{{ $t('guests.profile.options.vegan') }}</span>
               <FormSwitch id="is_vegan" :enabled="user.is_vegan" />
             </div>
           </div>
 
           <DividerPlus class="mt-2" />
           <div class="flex items-center justify-between">
-            <span>Weitere Gäste</span>
+            <span>{{ $t('guests.profile.companions.title') }}</span>
             <FormSelect
               id="guests"
               @update="
@@ -174,8 +189,8 @@
             :key="i"
             id="companions"
             :value="i - 1 < companions.length ? companions[i - 1].name : ''"
-            placeholder="Max Mustermann"
-            :label="`${i}. Companion Name`"
+            placeholder="Alexander Hamilton"
+            :label="`${i}. ${$t('guests.profile.companions.name')}`"
             :minlength="2"
             :maxlength="20"
             required
@@ -184,19 +199,19 @@
           <FormInput
             id="bio"
             type="text"
-            placeholder="Nachricht hinzufügen (optional)"
+            :placeholder="$t('guests.profile.note')"
             :maxlength="20"
             :value="user.bio"
           />
         </div>
 
-        <FormSubmit>Aktualisieren</FormSubmit>
+        <FormSubmit>{{ $t('guests.profile.update') }}</FormSubmit>
       </FormVal>
       <Spinner v-else class="h-12 w-12" />
     </div>
   </div>
 
-  <HeadingItalic class="my-10" title="Gästeliste" />
+  <HeadingItalic class="my-10" :title="$t('guests.list.title')" />
   <AvatarCloud v-if="guests.length">
     <AvatarProfile
       v-for="guest in guests"
@@ -219,12 +234,12 @@ import type {
   CompanionModel,
   GuestModel,
   GuestUpdateInputModel,
-} from "@bdayhero/shared";
-import { AttendanceStatus } from "@bdayhero/shared";
-import { authStore } from "~/store/auth";
-import { Bars3Icon } from "@heroicons/vue/24/outline";
-import { alertStore } from "~/store/alert";
-import { generate_oauth_uri } from "~/utils/oauth";
+} from '@bdayhero/shared';
+import { AttendanceStatus } from '@bdayhero/shared';
+import { authStore } from '~/store/auth';
+import { Bars3Icon } from '@heroicons/vue/24/outline';
+import { alertStore } from '~/store/alert';
+import { generate_oauth_uri } from '~/utils/oauth';
 
 const guests_count_query = gql`
   query {
@@ -370,63 +385,60 @@ export default defineComponent({
   },
   methods: {
     async on_submit_sign_in(e: Event, form_data: FormData) {
-      const email = form_data.get("email");
+      const email = form_data.get('email');
       try {
         await this.sign_in_request({ email });
         this.alert.show(
-          "Du hast eine Mail bekommen. Klicke auf den Link in dieser um dich zu verifizieren",
-          "success",
+          'Du hast eine Mail bekommen. Klicke auf den Link in dieser um dich zu verifizieren',
+          'success',
         );
       } catch (e) {
         this.alert.show(
-          "Etwas hat nicht funktioniert! versuche es später noch einmal",
-          "danger",
+          'Etwas hat nicht funktioniert! versuche es später noch einmal',
+          'danger',
         );
       }
     },
     async on_google_sign_in() {
       const { google_client_id } = this.config.public;
-      const google_auth_uri = generate_oauth_uri({
-        name: "google",
+      window.location.href = generate_oauth_uri({
+        name: 'google',
         client_id: google_client_id,
-        endpoint: "https://accounts.google.com/o/oauth2/auth",
-        scope: "email",
+        endpoint: 'https://accounts.google.com/o/oauth2/auth',
+        scope: 'email',
       });
-      window.location.href = google_auth_uri;
     },
     async on_github_sign_in() {
       const { github_client_id } = this.config.public;
-      const github_auth_uri = generate_oauth_uri({
-        name: "github",
+      window.location.href = generate_oauth_uri({
+        name: 'github',
         client_id: github_client_id,
-        endpoint: "https://github.com/login/oauth/authorize",
-        scope: "[read:user,user:email]",
+        endpoint: 'https://github.com/login/oauth/authorize',
+        scope: '[read:user,user:email]',
       });
-      window.location.href = github_auth_uri;
     },
     async on_discord_sign_in() {
       const { discord_client_id } = this.config.public;
-      const discord_auth_uri = generate_oauth_uri({
-        name: "discord",
+      window.location.href = generate_oauth_uri({
+        name: 'discord',
         client_id: discord_client_id,
-        endpoint: "https://discord.com/oauth2/authorize",
-        scope: "identify email",
+        endpoint: 'https://discord.com/oauth2/authorize',
+        scope: 'identify email',
       });
-      window.location.href = discord_auth_uri;
     },
     async on_submit_user_update(e: Event, form_data: FormData) {
       const user_update_payload = {
-        first_name: get_field_value_or_undefined(form_data, "first_name"),
-        last_name: get_field_value_or_undefined(form_data, "last_name"),
+        first_name: get_field_value_or_undefined(form_data, 'first_name'),
+        last_name: get_field_value_or_undefined(form_data, 'last_name'),
         attendance_status: this.selected_attendance_status,
-        companions: form_data.getAll("companions").map((comp) => {
+        companions: form_data.getAll('companions').map((comp) => {
           return { name: comp };
         }),
-        bio: get_field_value_or_undefined(form_data, "bio"),
-        profile_public: form_data.get("profile_public")! == "on",
-        has_bed: form_data.get("has_bed")! == "on",
-        need_bed: form_data.get("need_bed")! == "on",
-        is_vegan: form_data.get("is_vegan")! == "on",
+        bio: get_field_value_or_undefined(form_data, 'bio'),
+        profile_public: form_data.get('profile_public')! == 'on',
+        has_bed: form_data.get('has_bed')! == 'on',
+        need_bed: form_data.get('need_bed')! == 'on',
+        is_vegan: form_data.get('is_vegan')! == 'on',
       } as GuestUpdateInputModel;
       const data = await this.user_update({
         user_update_input_data: user_update_payload,
@@ -434,7 +446,7 @@ export default defineComponent({
       if (data?.data?.user_update) {
         this.user!.avatar_url = data?.data?.user_update?.avatar_url;
         this.user!.initials = data?.data?.user_update?.initials;
-        this.alert.show("Update successfull", "success");
+        this.alert.show('Update successfull', 'success');
       }
     },
     user_logout() {
@@ -443,7 +455,7 @@ export default defineComponent({
     async user_delete() {
       if (
         confirm(
-          "Bist du dir sicher, dass du deinen Account unwiderruflich löschen möchtest",
+          'Bist du dir sicher, dass du deinen Account unwiderruflich löschen möchtest',
         )
       ) {
         const { mutate: delete_user } = useMutation(user_delete_mutation);

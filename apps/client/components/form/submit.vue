@@ -7,7 +7,7 @@
           success,
         '!bg-red-500 hover:!bg-red-600 focus-visible:!outline-red-400 dark:!bg-red-600 dark:focus-visible:!outline-red-600':
           failure,
-        'opacity-50 hover:!cursor-progress !bg-gray-500': loading,
+        '!bg-gray-500 opacity-50 hover:!cursor-progress': loading,
         'flex w-full justify-center transition duration-200 ease-in-out': true,
       }"
       :disabled="loading"
@@ -18,19 +18,19 @@
       <slot v-else />
     </ButtonPrime>
     <span
-      class="font-light text-xs flex mt-1 justify-center gap-x-1 text-center"
+      class="mt-1 flex justify-center gap-x-1 text-center text-xs font-light"
     >
-      <span>Durch Klicken bestätigst du die </span>
-      <nuxt-link href="/privacy" class="text-prime-500 underline"
-        >Datenschutzerklärung</nuxt-link
-      >
+      <span>{{ $t('common.form.privacy.pre') }}</span>
+      <nuxt-link href="/privacy" class="text-prime-500 underline">{{
+        $t('common.form.privacy.post')
+      }}</nuxt-link>
     </span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { loadingStore } from "~/store/loading";
-import { CheckCircleIcon, XCircleIcon } from "@heroicons/vue/24/solid";
+import { loadingStore } from '~/store/loading';
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/solid';
 
 const loading_state = loadingStore();
 const loading = computed(() => loading_state.loading);

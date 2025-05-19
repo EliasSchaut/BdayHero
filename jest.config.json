@@ -1,6 +1,6 @@
 {
   "moduleFileExtensions": ["js", "json", "ts"],
-  "rootDir": "../apps/server",
+  "rootDir": "./apps/server",
   "testEnvironment": "node",
   "preset": "ts-jest",
   "testMatch": ["<rootDir>/**/*spec.ts"],

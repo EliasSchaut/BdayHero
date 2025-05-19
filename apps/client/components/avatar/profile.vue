@@ -1,10 +1,13 @@
 <template>
   <div
     :class="{
-      'm-2 block shrink-0 p-2 rounded-xl': true,
-      'bg-green-50': attendance_status === AttendanceStatus.ATTENDING,
-      'bg-amber-50': attendance_status === AttendanceStatus.MAYBE_ATTENDING,
-      'bg-red-50': attendance_status === AttendanceStatus.NOT_ATTENDING,
+      'm-2 block shrink-0 rounded-xl p-2': true,
+      'bg-green-50 dark:bg-green-950':
+        attendance_status === AttendanceStatus.ATTENDING,
+      'bg-yellow-50 dark:bg-yellow-950':
+        attendance_status === AttendanceStatus.MAYBE_ATTENDING,
+      'bg-red-50 dark:bg-red-950':
+        attendance_status === AttendanceStatus.NOT_ATTENDING,
     }"
   >
     <div class="flex items-center">
@@ -12,19 +15,26 @@
       <div class="ml-3">
         <div
           v-if="first_name && last_name"
-          class="flex flex-col xs:flex-row flex-wrap gap-x-1"
+          class="xs:flex-row flex flex-col flex-wrap gap-x-1"
         >
-          <span class="text-sm font-medium text-second-700">
+          <span
+            class="text-second-700 dark:text-second-300 text-sm font-medium"
+          >
             {{ first_name }}
           </span>
-          <span class="text-sm font-medium text-second-700">
+          <span
+            class="text-second-700 dark:text-second-300 text-sm font-medium"
+          >
             {{ last_name }}
           </span>
         </div>
-        <div v-else class="text-sm font-medium text-second-700">
+        <div
+          v-else
+          class="text-second-700 dark:text-second-300 text-sm font-medium"
+        >
           {{ email }}
         </div>
-        <p v-if="note" class="text-xs font-medium text-second-500">
+        <p v-if="note" class="text-second-500 text-xs font-medium">
           {{ note }}
         </p>
       </div>
@@ -40,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { AttendanceStatus } from "@bdayhero/shared";
+import { AttendanceStatus } from '@bdayhero/shared';
 
 defineProps({
   initials: {

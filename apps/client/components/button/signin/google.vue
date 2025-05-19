@@ -1,3 +1,5 @@
 <template>
-  <ButtonSignin provider="google"> Sign in with Google </ButtonSignin>
+  <ButtonSignin provider="google">
+    {{ $t('common.signin.google') }}
+  </ButtonSignin>
 </template>

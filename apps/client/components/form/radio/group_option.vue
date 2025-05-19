@@ -3,9 +3,9 @@
     <div
       :class="[
         checked
-          ? 'bg-indigo-600 text-white ring-0 hover:bg-indigo-500'
-          : 'bg-white text-gray-900 ring-1 ring-gray-300 hover:bg-gray-50',
-        'flex cursor-pointer items-center justify-center rounded-md px-3 py-3 text-sm font-semibold uppercase focus:outline-hidden active:ring-2 active:ring-indigo-600 active:ring-offset-2 sm:flex-1',
+          ? 'bg-prime-600 hover:bg-prime-500 text-white ring-0'
+          : 'dark:bg-second-900 ring-second-300 hover:bg-second-50 dark:hover:bg-second-950 dark:ring-second-700 bg-white ring-1',
+        'active:ring-prime-600 flex cursor-pointer items-center justify-center rounded-md px-3 py-3 text-sm font-semibold uppercase focus:outline-hidden active:ring-2 active:ring-offset-2 sm:flex-1',
       ]"
     >
       <slot />
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { RadioGroupOption } from "@headlessui/vue";
+import { RadioGroupOption } from '@headlessui/vue';
 
 defineProps({
   checked: {

@@ -1,6 +1,16 @@
 {
   "common": {
     "file": "Datei",
+    "form": {
+      "labels": {
+        "first_name": "Vorname",
+        "last_name": "Nachname"
+      },
+      "privacy": {
+        "post": "Datenschutzerklärung",
+        "pre": "Durch Klicken bestätigst du die "
+      }
+    },
     "lang": {
       "de": "Deutsch",
       "en": "Englisch"
@@ -8,6 +18,11 @@
     "modal": {
       "close": "Schließen",
       "go_back": "Gehe zurück"
+    },
+    "signin": {
+      "discord": "Mit Discord anmelden",
+      "github": "Mit GitHub anmelden",
+      "google": "Mit Google anmelden"
     },
     "sr": {
       "dismiss": "Schließen",
@@ -112,10 +127,40 @@
     "source": "Quellcode",
     "title": "Footer"
   },
-  "guestlist": {
+  "guests": {
     "countup": {
       "head": "Schon",
       "tail": "sind dabei"
+    },
+    "list": {
+      "title": "Gästeliste"
+    },
+    "profile": {
+      "attendance": {
+        "attending": "Zusage",
+        "maybe": "Vielleicht",
+        "not_attending": "Absage"
+      },
+      "companions": {
+        "name": "Begleiter Name",
+        "title": "Begleitpersonen"
+      },
+      "delete_account": "Account löschen",
+      "logout": "Ausloggen",
+      "note": "Nachricht hinzufügen (optional)",
+      "options": {
+        "has_bed": "Biete Schlafplatz",
+        "needs_bed": "Brauche Schlafplatz",
+        "public": "Öffentlich in Gästeliste",
+        "title": "Optionen",
+        "vegan": "Ich esse nur vegan"
+      },
+      "update": "Aktualisieren"
+    },
+    "signin": {
+      "submit": "Anmelden",
+      "title": "Zum Teilnehmen anmelden!",
+      "via_local": "lokale Anmeldung via E-Mail"
     }
   },
   "home": {
@@ -147,7 +192,9 @@
       "3": "Halte den Termin frei und sei dabei!",
       "add_to_calendar": "Zum Kalender hinzufügen",
       "date": "07. Juni 2025 ",
+      "details": "Alle Details ",
       "join_community": "Community beitreten",
+      "join_now": "JETZT ANMELDEN",
       "learn_more": "Mehr erfahren"
     },
     "newsletter": {
