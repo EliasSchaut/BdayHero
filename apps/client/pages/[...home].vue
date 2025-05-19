@@ -11,9 +11,9 @@
       <p
         class="text-second-700 dark:text-second-300 mx-auto mt-6 max-w-2xl text-lg tracking-tight"
       >
-        <span>{{ $t("home.hero.1") }}</span>
-        <Accent>{{ $t("home.hero.date") }}</Accent>
-        <span>{{ $t("home.hero.2") }}</span>
+        <span>{{ $t('home.hero.1') }}</span>
+        <Accent>{{ $t('home.hero.date') }}</Accent>
+        <span>{{ $t('home.hero.2') }}</span>
         <Typewriter
           :strings="[
             $t('home.typewriter.suffix.0'),
@@ -33,13 +33,13 @@
           ]"
         />
         <br />
-        <span>{{ $t("home.hero.3") }}</span>
+        <span>{{ $t('home.hero.3') }}</span>
       </p>
       <div class="mt-10 flex items-center justify-center gap-x-6">
-        <DropdownCalendar />
-        <ButtonArrow href="#community">{{
-          $t("home.hero.join_community")
-        }}</ButtonArrow>
+        <nuxt-link href="/guests">
+          <ButtonPrime>{{ $t('home.hero.join_now') }}</ButtonPrime>
+        </nuxt-link>
+        <ButtonArrow href="/details">{{ $t('home.hero.details') }}</ButtonArrow>
       </div>
     </section>
   </Sparkles>
@@ -47,7 +47,7 @@
   <!-- features -->
   <NuxtLayout name="grid" id="features">
     <LayoutHeadingTag class="pt-40">Features</LayoutHeadingTag>
-    <LayoutHeadingGradient>{{ $t("home.tabs.title") }}</LayoutHeadingGradient>
+    <LayoutHeadingGradient>{{ $t('home.tabs.title') }}</LayoutHeadingGradient>
     <Tabs>
       <TabsItem :title="$t('home.tabs.featured.title')">
         <Card3d
@@ -159,9 +159,9 @@
 
   <!-- testimonials -->
   <LayoutSection>
-    <LayoutHeadingTag>{{ $t("home.testimonials.tag") }}</LayoutHeadingTag>
+    <LayoutHeadingTag>{{ $t('home.testimonials.tag') }}</LayoutHeadingTag>
     <LayoutHeadingGradient
-      >{{ $t("home.testimonials.title") }}
+      >{{ $t('home.testimonials.title') }}
     </LayoutHeadingGradient>
     <TestimonialGrid>
       <div
@@ -181,8 +181,8 @@
 
   <!-- blog -->
   <NuxtLayout name="dots" id="blog">
-    <LayoutHeadingTag class="pt-40">{{ $t("home.blog.tag") }}</LayoutHeadingTag>
-    <LayoutHeadingGradient>{{ $t("home.blog.title") }}</LayoutHeadingGradient>
+    <LayoutHeadingTag class="pt-40">{{ $t('home.blog.tag') }}</LayoutHeadingTag>
+    <LayoutHeadingGradient>{{ $t('home.blog.title') }}</LayoutHeadingGradient>
     <ArticleOverview
       :title="$t('home.blog.title')"
       :articles="[
@@ -223,10 +223,10 @@
         <h2
           class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl"
         >
-          {{ $t("home.community.head") }}
+          {{ $t('home.community.head') }}
         </h2>
         <p class="text-second-300 mx-auto mt-6 max-w-lg text-center text-lg">
-          {{ $t("home.community.content") }}
+          {{ $t('home.community.content') }}
         </p>
         <a
           class="text-second-900 hover:bg-second-100 xs:w-fit mx-auto mt-10 flex w-min items-center justify-center gap-x-2 rounded-md bg-white px-12 py-2.5 text-sm font-semibold shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -240,7 +240,7 @@
             width="20"
             alt="WhatsApp Logo"
           />
-          <span>{{ $t("home.community.join") }}</span>
+          <span>{{ $t('home.community.join') }}</span>
         </a>
         <svg
           viewBox="0 0 1024 1024"
@@ -283,49 +283,49 @@ const testimonials: Array<{
   };
 }> = [
   {
-    cite: "Ein Vierteljahrhundert mit Elias ist ein aufregendes Abenteuer voller Lachen, guter Laune und unvergesslicher Momente, die das Leben bunt und lebendig machen. - Dies gilt nicht nur für seine Geburtstagsfeiern!",
+    cite: 'Ein Vierteljahrhundert mit Elias ist ein aufregendes Abenteuer voller Lachen, guter Laune und unvergesslicher Momente, die das Leben bunt und lebendig machen. - Dies gilt nicht nur für seine Geburtstagsfeiern!',
     author: {
-      name: "Carmen Schaut",
-      handle: "Familie",
-      avatar_url: "/img/testimonials/carmen_schaut.jpg",
+      name: 'Carmen Schaut',
+      handle: 'Familie',
+      avatar_url: '/img/testimonials/carmen_schaut.jpg',
     },
   },
   {
-    cite: "Wenn Elias so viel Aufwand in sein Studium stecken würde, wie er in seine Geburtstagsfeiern steckt, hätte er schon längst einen Doktor.",
+    cite: 'Wenn Elias so viel Aufwand in sein Studium stecken würde, wie er in seine Geburtstagsfeiern steckt, hätte er schon längst einen Doktor.',
     author: {
-      name: "Niklas Kniep",
-      handle: "Lila Pause",
-      avatar_url: "/img/testimonials/niklas_kniep.jpg",
+      name: 'Niklas Kniep',
+      handle: 'Lila Pause',
+      avatar_url: '/img/testimonials/niklas_kniep.jpg',
     },
   },
   {
     cite: "Elias' Geburtstag ist nicht irgendein Geburtstag. Livemusik, Geschicklichkeitsspiele, geheime Missionen, kollaborative kreative Projekte, aber natürlich auch Grillen und Getränke in der Bar machen machen den Tag zu einem besonderen Wiedertreffen für alle, die sich Freunde und Verwandte von Elias nennen dürfen.",
     author: {
-      name: "Valentin Quapil",
-      handle: "KIT",
-      avatar_url: "/img/testimonials/valentin_quapil.jpg",
+      name: 'Valentin Quapil',
+      handle: 'KIT',
+      avatar_url: '/img/testimonials/valentin_quapil.jpg',
     },
   },
   {
-    cite: "Wer Elias nicht kennt und seine Geburtstage, hat echt was im Leben verpasst!",
+    cite: 'Wer Elias nicht kennt und seine Geburtstage, hat echt was im Leben verpasst!',
     author: {
-      name: "Sean Ireland",
-      handle: "Mannheim",
-      avatar_url: "/img/testimonials/sean_ireland.jpg",
+      name: 'Sean Ireland',
+      handle: 'Mannheim',
+      avatar_url: '/img/testimonials/sean_ireland.jpg',
     },
   },
   {
-    cite: "Letztes Jahr konnte ich hautnah erleben wie viel Liebe und Energie Elias in seinen Geburtstag steckt. Dieser Tag ist für ihn sehr besonders und deshalb versucht er sein Bestes zu geben, dass es für jeden einzelnen ein unvergessliches Event wird",
+    cite: 'Letztes Jahr konnte ich hautnah erleben wie viel Liebe und Energie Elias in seinen Geburtstag steckt. Dieser Tag ist für ihn sehr besonders und deshalb versucht er sein Bestes zu geben, dass es für jeden einzelnen ein unvergessliches Event wird',
     author: {
-      name: "Laura Blechschmidt",
-      handle: "Freundin",
-      avatar_url: "/img/testimonials/laura_blechschmidt.jpg",
+      name: 'Laura Blechschmidt',
+      handle: 'Freundin',
+      avatar_url: '/img/testimonials/laura_blechschmidt.jpg',
     },
   },
   {
-    cite: "Wer braucht Tinder, wenn man bei Elias Geburtstag heiße Singles aus der Umgebung von Mannheim kennenlernen kann?",
+    cite: 'Wer braucht Tinder, wenn man bei Elias Geburtstag heiße Singles aus der Umgebung von Mannheim kennenlernen kann?',
     author: {
-      handle: "Lila Pause",
+      handle: 'Lila Pause',
     },
   },
 ];
