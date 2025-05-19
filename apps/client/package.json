@@ -1,7 +1,7 @@
 {
   "name": "@bdayhero/client",
   "scripts": {
-    "start": "nuxt start",
+    "start": "node .output/server/index.mjs",
     "dev": "nuxt dev --dotenv ../../.env",
     "build": "nuxt build",
     "preview": "nuxt preview",
