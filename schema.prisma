@@ -28,7 +28,8 @@ model Guest {
   has_bed        Boolean  @default(false)
   is_vegan       Boolean  @default(false)
 
-  companion Companion[]
+  companion    Companion[]
+  guest_shifts GuestShift[]
 }
 
 model Companion {
@@ -37,4 +38,42 @@ model Companion {
   name                String
   associated_guest_id String
   associated_guest    Guest    @relation(fields: [associated_guest_id], references: [id], onDelete: Cascade)
+}
+
+model Shift {
+  id          Int         @id @default(autoincrement())
+  order       Int         @default(autoincrement())
+  shift_info  ShiftInfo[]
+  shift_slots ShiftSlot[]
+}
+
+model ShiftInfo {
+  shift_id Int
+  shift    Shift  @relation(fields: [shift_id], references: [id], onDelete: Cascade)
+  lang     String
+  name     String
+  desc     String
+
+  @@unique([shift_id, lang])
+}
+
+model ShiftSlot {
+  id                  Int          @id @default(autoincrement())
+  shift_id            Int
+  shift               Shift        @relation(fields: [shift_id], references: [id], onDelete: Cascade)
+  start               DateTime
+  end                 DateTime
+  num_of_participants Int
+  acquired_shifts        GuestShift[]
+
+  @@unique([shift_id, start, end])
+}
+
+model GuestShift {
+  guest_id      String
+  guest         Guest     @relation(fields: [guest_id], references: [id], onDelete: Cascade)
+  shift_slot_id Int
+  shift_slot    ShiftSlot @relation(fields: [shift_slot_id], references: [id], onDelete: Cascade)
+
+  @@unique([guest_id, shift_slot_id])
 }

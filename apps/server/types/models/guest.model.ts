@@ -1,8 +1,8 @@
-import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { Companion, Guest } from "@prisma/client";
-import { AttendanceStatusEnum } from "@/types/enum/attendance_status.enum";
-import { CompanionModel } from "@/types/models/companion.model";
-import { GuestModel as IGuestModel } from "@bdayhero/shared/types/models/guest.model";
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Companion, Guest } from '@prisma/client';
+import { AttendanceStatusEnum } from '@/types/enum/attendance_status.enum';
+import { CompanionModel } from '@/types/models/companion.model';
+import { GuestModel as IGuestModel } from '@bdayhero/shared/types/models/guest.model';
 
 @ObjectType()
 export class GuestModel implements IGuestModel {
@@ -73,7 +73,7 @@ export class GuestModel implements IGuestModel {
   companions?: CompanionModel[];
 
   public clear_user_profile(): this {
-    this.email = "anonym@example.com";
+    this.email = 'anonym@example.com';
     delete this.first_name;
     delete this.last_name;
     delete this.avatar_url;
