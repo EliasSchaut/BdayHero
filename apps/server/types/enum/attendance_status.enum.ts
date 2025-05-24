@@ -1,3 +1,3 @@
-import { AttendanceStatus as AttendanceStatusEnum } from "@bdayhero/shared/types/enums/attendance_status.enum";
+import { AttendanceStatus as AttendanceStatusEnum } from '@bdayhero/shared';
 
 export { AttendanceStatusEnum };

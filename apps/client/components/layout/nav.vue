@@ -15,7 +15,7 @@
           >
             <nuxt-link
               v-for="link in navigation"
-              class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 sm:inline"
+              class="hover:bg-prime-50 dark:hover:bg-prime-950 hidden rounded-md px-2 py-1 md:inline"
               :href="link.href"
               >{{ link.name }}
             </nuxt-link>
@@ -23,14 +23,14 @@
         </div>
 
         <div class="flex gap-x-6">
-          <SettingLang class="hidden sm:block" />
-          <SettingTheme class="hidden sm:block" />
-          <div class="-mr-2 flex items-center sm:hidden">
+          <SettingLang class="hidden md:block" />
+          <SettingTheme class="hidden md:block" />
+          <div class="-mr-2 flex items-center md:hidden">
             <!-- Mobile menu button -->
             <DisclosureButton
-              class="-ml-2.5 mr-2.5 inline-flex items-center justify-center rounded-md p-2 text-second-600 hover:bg-second-100 hover:text-second-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-prime-500 dark:hover:bg-second-700 dark:focus:ring-white dark:hover:text-white"
+              class="text-second-600 hover:bg-second-100 hover:text-second-900 focus:ring-prime-500 dark:hover:bg-second-700 mr-2.5 -ml-2.5 inline-flex items-center justify-center rounded-md p-2 focus:ring-2 focus:outline-none focus:ring-inset dark:hover:text-white dark:focus:ring-white"
             >
-              <span class="sr-only">{{ $t("common.sr.open_main_menu") }}</span>
+              <span class="sr-only">{{ $t('common.sr.open_main_menu') }}</span>
               <Bars3Icon
                 v-if="!open"
                 class="block h-6 w-6"
@@ -43,23 +43,23 @@
       </div>
 
       <!-- NavBar Panel mobile -->
-      <DisclosurePanel class="sm:hidden shadow-sm">
-        <div class="space-y-1 pb-3 pt-2">
+      <DisclosurePanel class="shadow-sm md:hidden">
+        <div class="space-y-1 pt-2 pb-3">
           <template v-for="link in navigation">
             <NuxtLink
               :to="link.href"
               :class="[
                 $route.path.split('/')[1] === link.href.split('/')[1]
                   ? 'border-prime-500 bg-prime-50 text-prime-700 dark:bg-second-900 dark:text-white'
-                  : 'border-transparent text-second-500 hover:border-second-300 hover:bg-second-50 hover:text-second-700 dark:text-second-300 dark:hover:bg-second-700 dark:hover:text-white',
-                'block border-l-4 py-2 pl-3 pr-4 text-base font-medium',
+                  : 'text-second-500 hover:border-second-300 hover:bg-second-50 hover:text-second-700 dark:text-second-300 dark:hover:bg-second-700 border-transparent dark:hover:text-white',
+                'block border-l-4 py-2 pr-4 pl-3 text-base font-medium',
               ]"
               >{{ link.name }}
             </NuxtLink>
           </template>
         </div>
         <div
-          class="flex justify-end gap-x-4 border-t border-second-200 px-4 pb-3 pt-4 dark:border-second-700"
+          class="border-second-200 dark:border-second-700 flex justify-end gap-x-4 border-t px-4 pt-4 pb-3"
         >
           <SettingLang />
           <SettingTheme />
@@ -70,7 +70,7 @@
 </template>
 
 <script lang="ts">
-import { authStore } from "~/store/auth";
+import { authStore } from '~/store/auth';
 import {
   Disclosure,
   DisclosureButton,
@@ -79,8 +79,8 @@ import {
   MenuButton,
   MenuItem,
   MenuItems,
-} from "@headlessui/vue";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+} from '@headlessui/vue';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
 type NavigationType = Array<{
   name: string;
@@ -93,16 +93,20 @@ export default defineComponent({
     const { t } = useI18n();
     const navigation: ComputedRef<NavigationType> = computed(() => [
       {
-        name: t("nav.home"),
-        href: "/",
+        name: t('nav.home'),
+        href: '/',
       },
       {
-        name: t("nav.details"),
-        href: "/details",
+        name: t('nav.details'),
+        href: '/details',
       },
       {
-        name: t("nav.guests"),
-        href: "/guests",
+        name: t('nav.guests'),
+        href: '/guests',
+      },
+      {
+        name: t('nav.shifts'),
+        href: '/shifts',
       },
     ]);
 

@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts">
-import type { SignedInModel } from "@bdayhero/shared";
-import { authStore } from "~/store/auth";
-import { alertStore } from "~/store/alert";
+import type { SignedInModel } from '@bdayhero/shared/index';
+import { authStore } from '~/store/auth';
+import { alertStore } from '~/store/alert';
 
 type SignInResult = { auth_sign_in_via_email: SignedInModel };
 
@@ -32,8 +32,8 @@ export default defineComponent({
     useAsyncQuery<SignInResult>(sign_in_query, { token }).then(({ data }) => {
       if (data.value?.auth_sign_in_via_email?.barrier_token) {
         auth.login(data.value.auth_sign_in_via_email.barrier_token);
-        alert.show("You have successfully signed in.", "success");
-        useRouter().push("/guests");
+        alert.show('You have successfully signed in.', 'success');
+        useRouter().push('/guests');
       }
     });
   },

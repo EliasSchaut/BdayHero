@@ -1,9 +1,9 @@
-import { Field, InputType } from "@nestjs/graphql";
-import { IsName } from "@/common/validation/decorators/IsName.validation";
-import { IsNumber, IsOptional, IsUrl, Length, Max, Min } from "class-validator";
-import { AttendanceStatusEnum } from "@/types/enum/attendance_status.enum";
-import type { GuestUpdateInputModel as IGuestUpdateInputModel } from "@bdayhero/shared";
-import { CompanionInputModel } from "@/types/models/inputs/companion.input";
+import { Field, InputType } from '@nestjs/graphql';
+import { IsName } from '@/common/validation/decorators/IsName.validation';
+import { IsNumber, IsOptional, IsUrl, Length, Max, Min } from 'class-validator';
+import { AttendanceStatusEnum } from '@/types/enum/attendance_status.enum';
+import type { GuestUpdateInputModel as IGuestUpdateInputModel } from '@bdayhero/shared';
+import { CompanionInputModel } from '@/types/models/inputs/companion.input';
 
 @InputType()
 export class GuestUpdateInputModel implements IGuestUpdateInputModel {

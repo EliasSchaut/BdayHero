@@ -87,6 +87,9 @@ typings/
 .output
 .nuxt
 dist
+/packages/**/*.js
+/packages/**/*.map
+/packages/**/*.d.ts
 
 # Gatsby files
 .cache/

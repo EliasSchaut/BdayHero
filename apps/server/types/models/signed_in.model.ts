@@ -1,5 +1,5 @@
-import type { SignedInModel as ISignedInModel } from "@bdayhero/shared/types/models/signed_in.model";
-import { Field, ObjectType } from "@nestjs/graphql";
+import { Field, ObjectType } from '@nestjs/graphql';
+import type { SignedInModel as ISignedInModel } from '@bdayhero/shared';
 
 @ObjectType()
 export class SignedInModel implements ISignedInModel {

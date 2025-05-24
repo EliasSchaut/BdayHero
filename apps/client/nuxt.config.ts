@@ -1,24 +1,25 @@
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  workspaceDir: "../../",
-  srcDir: ".",
-  compatibilityDate: "2025-05-05",
-  css: ["~/assets/css/main.css"],
+  workspaceDir: '../../',
+  srcDir: '.',
+  compatibilityDate: '2025-05-05',
+  css: ['~/assets/css/main.css'],
   modules: [
-    "@nuxtjs/apollo",
-    "@nuxtjs/color-mode",
-    "@nuxtjs/i18n",
-    "@nuxt/image",
-    "@nuxt/fonts",
-    "@nuxtjs/sitemap",
-    "@pinia/nuxt",
-    "@vueuse/motion/nuxt",
-    "@vueuse/nuxt",
-    "nuxt-particles",
-    "pinia-plugin-persistedstate/nuxt",
+    '@nuxtjs/apollo',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/i18n',
+    '@nuxt/image',
+    '@nuxt/fonts',
+    '@nuxtjs/sitemap',
+    '@pinia/nuxt',
+    '@vueuse/motion/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-particles',
+    'pinia-plugin-persistedstate/nuxt',
+    'dayjs-nuxt',
   ],
 
   runtimeConfig: {
@@ -41,13 +42,13 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://bday.schaut.dev",
+    url: 'https://bday.schaut.dev',
     name: "Kid's Bday",
   },
 
   router: {
     options: {
-      scrollBehaviorType: "smooth",
+      scrollBehaviorType: 'smooth',
     },
   },
 
@@ -56,10 +57,10 @@ export default defineNuxtConfig({
     proxyCookies: true,
     clients: {
       default: {
-        tokenName: "token",
-        tokenStorage: "cookie",
-        authType: "Bearer",
-        authHeader: "Authorization",
+        tokenName: 'token',
+        tokenStorage: 'cookie',
+        authType: 'Bearer',
+        authHeader: 'Authorization',
         httpEndpoint: `${process.env.BACKEND_URL}`,
       },
     },
@@ -68,41 +69,41 @@ export default defineNuxtConfig({
   fonts: {
     defaults: {
       weights: [400, 500, 600, 700],
-      styles: ["normal", "italic"],
+      styles: ['normal', 'italic'],
     },
     families: [
       {
-        name: "Nunito",
-        provider: "local",
+        name: 'Nunito',
+        provider: 'local',
       },
     ],
   },
 
   i18n: {
-    langDir: "locales",
+    langDir: 'locales',
     restructureDir: false,
     locales: [
       {
-        code: "en",
-        iso: "en-US",
-        name: "English",
+        code: 'en',
+        iso: 'en-US',
+        name: 'English',
         isCatchallLocale: true,
-        file: "en-US.json",
+        file: 'en-US.json',
       },
       {
-        code: "de",
-        iso: "de-DE",
-        name: "Deutsch",
-        file: "de-DE.json",
+        code: 'de',
+        iso: 'de-DE',
+        name: 'Deutsch',
+        file: 'de-DE.json',
       },
     ],
-    defaultLocale: "en",
-    strategy: "no_prefix",
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: "i18n_redirected",
-      redirectOn: "root",
-      fallbackLocale: "en",
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      fallbackLocale: 'en',
     },
     lazy: true,
     compilation: {
@@ -112,21 +113,28 @@ export default defineNuxtConfig({
   },
 
   colorMode: {
-    preference: "system",
-    fallback: "dark",
-    classSuffix: "",
-    storageKey: "nuxt-color-mode",
+    preference: 'system',
+    fallback: 'dark',
+    classSuffix: '',
+    storageKey: 'nuxt-color-mode',
+  },
+
+  dayjs: {
+    plugins: ['timezone'],
+    locales: ['de'],
+    defaultLocale: 'de',
+    defaultTimezone: 'Europe/Berlin',
   },
 
   piniaPluginPersistedstate: {
-    storage: "cookies",
+    storage: 'cookies',
     cookieOptions: {
       maxAge: 365 * 60 * 24 * 30,
     },
   },
 
   particles: {
-    mode: "slim",
+    mode: 'slim',
     lazy: true,
   },
 });

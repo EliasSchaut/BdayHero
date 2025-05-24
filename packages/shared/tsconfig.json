@@ -1,11 +1,23 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ESNext",
-    "baseUrl": "./",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
     "strict": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    "module": "NodeNext",
+    "rootDir": ".",
+    "sourceMap": true,
+
+    "declaration": true,
+    "declarationMap": true,
   },
 }

@@ -63,13 +63,13 @@ model ShiftInfo {
 }
 
 model ShiftSlot {
-  id                  Int          @id @default(autoincrement())
-  shift_id            Int
-  shift               Shift        @relation(fields: [shift_id], references: [id], onDelete: Cascade)
-  start               DateTime
-  end                 DateTime
-  capacity  Int
-  assigned_guests     GuestShift[]
+  id              Int          @id @default(autoincrement())
+  shift_id        Int
+  shift           Shift        @relation(fields: [shift_id], references: [id], onDelete: Cascade)
+  start           DateTime
+  end             DateTime
+  capacity        Int
+  assigned_guests GuestShift[]
 
   @@unique([shift_id, start, end])
 }

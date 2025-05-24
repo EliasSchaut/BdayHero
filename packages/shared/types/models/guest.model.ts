@@ -1,5 +1,5 @@
-import { AttendanceStatus } from "../enums/attendance_status.enum";
-import { CompanionModel } from "./companion.model";
+import { AttendanceStatus } from '../enums/attendance_status.enum.js';
+import type { CompanionModel } from './companion.model.js';
 
 export interface GuestModel {
   id: string;

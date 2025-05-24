@@ -30,20 +30,43 @@ type GuestModel {
 
 type Mutation {
     auth_sign_request_local(user_mail_input: EmailInputModel!): Boolean!
+    slot_assign(slot_id_input: IdInputModel!): SlotModel!
+    slot_unassign(slot_id_input: IdInputModel!): SlotModel!
     user_delete: GuestModel!
     user_update(user_update_input_data: GuestUpdateInputModel!): GuestModel!
 }
 
 type Query {
     auth_sign_in_via_email(token_input: TokenInputModel!): SignedInModel!
+    shifts: [ShiftModel!]!
     user: GuestModel!
     users: [GuestModel!]!
     users_count: Int!
 }
 
+"Represents a shift on a server, which holds multiple slots for participants to acquire."
+type ShiftModel {
+    desc: String!
+    id: Float!
+    name: String!
+    slots: [SlotModel!]!
+}
+
 type SignedInModel {
     barrier_token: String
 }
+
+"Represents a time slot for a shift, which can be acquired by multiple participants."
+type SlotModel {
+    assigned_guests: [GuestModel!]
+    capacity: Float
+    end: DateTime!
+    id: String!
+    start: DateTime!
+}
+
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime
 
 input CompanionInputModel {
     name: String!
@@ -64,6 +87,10 @@ input GuestUpdateInputModel {
     last_name: String
     need_bed: Boolean
     profile_public: Boolean
+}
+
+input IdInputModel {
+    id: Int!
 }
 
 input TokenInputModel {

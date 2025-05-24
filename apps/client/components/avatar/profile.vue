@@ -11,8 +11,12 @@
     }"
   >
     <div class="flex items-center">
-      <Avatar :href="href" :initials="initials" />
-      <div class="ml-3">
+      <Avatar
+        :href="href"
+        :initials="initials"
+        :title="first_name && last_name ? `${first_name} ${last_name}` : email"
+      />
+      <div v-if="!only_avatar" class="ml-3">
         <div
           v-if="first_name && last_name"
           class="xs:flex-row flex flex-col flex-wrap gap-x-1"
@@ -52,7 +56,7 @@
 <script setup lang="ts">
 import { AttendanceStatus } from '@bdayhero/shared';
 
-defineProps({
+const { email, first_name, last_name } = defineProps({
   email: {
     type: String,
     required: true,
@@ -84,6 +88,10 @@ defineProps({
   companions: {
     type: Array<{ name: string }>,
     default: [],
+  },
+  only_avatar: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>

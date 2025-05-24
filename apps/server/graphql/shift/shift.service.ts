@@ -3,7 +3,7 @@ import { CtxType } from '@/types/common/ctx.type';
 import { ShiftModel } from '@/types/models/shift.model';
 import { SlotModel } from '@/types/models/slot.model';
 import { PrismaService } from 'nestjs-prisma';
-import { Lang } from '@bdayhero/shared/types/enums/lang.enum';
+import { Lang } from '@bdayhero/shared';
 import { UserId } from '@/types/common/ids.type';
 import { DangerException } from '@/common/exceptions/danger.exception';
 import { WarningException } from '@/common/exceptions/warning.exception';

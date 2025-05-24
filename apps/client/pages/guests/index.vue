@@ -234,8 +234,8 @@ import type {
   CompanionModel,
   GuestModel,
   GuestUpdateInputModel,
-} from '@bdayhero/shared';
-import { AttendanceStatus } from '@bdayhero/shared';
+} from '@bdayhero/shared/index';
+import { AttendanceStatus } from '@bdayhero/shared/index';
 import { authStore } from '~/store/auth';
 import { Bars3Icon } from '@heroicons/vue/24/outline';
 import { alertStore } from '~/store/alert';

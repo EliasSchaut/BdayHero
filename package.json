@@ -9,7 +9,10 @@
     "type": "git",
     "url": "https://github.com/EliasSchaut/BdayHero.git"
   },
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
     "start:server": "npm run start -w @bdayhero/server",
@@ -26,6 +29,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
-    "prisma": "^6.8.2"
+    "prisma": "^6.8.2",
+    "tsup": "^8.5.0"
   }
 }
