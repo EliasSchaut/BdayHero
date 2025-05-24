@@ -11,6 +11,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Language {
+  en_US
+  de_DE
+}
+
 model Guest {
   id    String @id @default(uuid())
   email String @unique
@@ -49,8 +54,8 @@ model Shift {
 
 model ShiftInfo {
   shift_id Int
-  shift    Shift  @relation(fields: [shift_id], references: [id], onDelete: Cascade)
-  lang     String
+  shift    Shift    @relation(fields: [shift_id], references: [id], onDelete: Cascade)
+  lang     Language
   name     String
   desc     String
 
@@ -63,8 +68,8 @@ model ShiftSlot {
   shift               Shift        @relation(fields: [shift_id], references: [id], onDelete: Cascade)
   start               DateTime
   end                 DateTime
-  num_of_participants Int
-  acquired_shifts        GuestShift[]
+  capacity  Int
+  assigned_guests     GuestShift[]
 
   @@unique([shift_id, start, end])
 }

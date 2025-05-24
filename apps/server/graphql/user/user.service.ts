@@ -23,10 +23,7 @@ export class UserService {
           { last_name: 'asc' },
         ],
       })
-    ).map((user) => {
-      const guest = new GuestModel(user);
-      return guest.profile_public ? guest : guest.clear_user_profile();
-    });
+    ).map((user) => new GuestModel(user));
   }
 
   async count(): Promise<number> {

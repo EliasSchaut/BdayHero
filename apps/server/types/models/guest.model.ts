@@ -9,6 +9,9 @@ export class GuestModel implements IGuestModel {
   constructor(guest: Guest & { companion?: Companion[] }) {
     Object.assign(this, guest);
     this.companions = guest.companion;
+    if (!this.profile_public) {
+      this.clear_user_profile();
+    }
   }
 
   @Field(() => ID, {})

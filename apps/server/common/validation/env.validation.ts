@@ -22,8 +22,8 @@ export const EnvValidationSchema = Joi.object({
     .description('The URL of the backend server'),
 
   DEFAULT_LANGUAGE: Joi.string()
-    .valid('en-US', 'de-DE')
-    .default('en-US')
+    .valid('en_US', 'de_DE')
+    .default('en_US')
     .description('The default language of the application'),
 
   AVATAR_TYPE: Joi.string()
