@@ -1,0 +1,13 @@
+{
+  "exception": {
+    "shift_not_found": "Shift not found",
+    "slot_not_found": "Slot not found",
+    "slot_already_assigned": "Slot is already assigned to another guest",
+    "guest_not_assigned": "Guest is not assigned to this slot",
+    "invalid_assignment": "Invalid slot assignment"
+  },
+  "success": {
+    "slot_assigned": "Slot successfully assigned",
+    "slot_unassigned": "Slot successfully unassigned"
+  }
+}

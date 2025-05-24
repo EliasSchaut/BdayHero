@@ -2,7 +2,7 @@
 
 /* eslint-disable */
 /* prettier-ignore */
-import { Path } from "nestjs-i18n";
+import { Path } from 'nestjs-i18n';
 /* prettier-ignore */
 export type I18nTranslations = {
   "auth": {
@@ -25,6 +25,12 @@ export type I18nTranslations = {
     };
   };
   "common": {
+    "mail": {
+      "auth_local": {
+        "subject": string;
+        "text": string;
+      };
+    };
     "exception": {
       "api_fetch": string;
       "api_timeout": string;
@@ -53,6 +59,19 @@ export type I18nTranslations = {
       "password": string;
       "profile": string;
       "username": string;
+    };
+  };
+  "shift": {
+    "exception": {
+      "shift_not_found": string;
+      "slot_not_found": string;
+      "slot_already_assigned": string;
+      "guest_not_assigned": string;
+      "invalid_assignment": string;
+    };
+    "success": {
+      "slot_assigned": string;
+      "slot_unassigned": string;
     };
   };
 };

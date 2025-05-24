@@ -1,0 +1,13 @@
+{
+  "exception": {
+    "shift_not_found": "Schicht nicht gefunden",
+    "slot_not_found": "Zeitslot nicht gefunden",
+    "slot_already_assigned": "Zeitslot ist bereits einem anderen Gast zugewiesen",
+    "guest_not_assigned": "Gast ist diesem Zeitslot nicht zugewiesen",
+    "invalid_assignment": "Ungültige Zeitslotzuweisung"
+  },
+  "success": {
+    "slot_assigned": "Zeitslot erfolgreich zugewiesen",
+    "slot_unassigned": "Zeitslotzuweisung erfolgreich aufgehoben"
+  }
+}

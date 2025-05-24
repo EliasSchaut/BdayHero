@@ -29,13 +29,23 @@ export class ShiftResolver {
   }
 
   @UseGuards(UserAuthGuard)
-  @Mutation(() => SlotModel, { name: 'assign_slot' })
+  @Mutation(() => SlotModel, { name: 'slot_assign' })
   async assign_slot(
     @Args({ name: 'slot_id_input' }) id_input: IdInputModel,
     @I18n() i18n: I18nContext<I18nTranslations>,
     @UserID() user_id: UserId,
   ): Promise<SlotModel> {
     return this.shiftService.assign_slot(user_id, id_input.id, { i18n });
+  }
+
+  @UseGuards(UserAuthGuard)
+  @Mutation(() => SlotModel, { name: 'slot_unassign' })
+  async unassign_slot(
+    @Args({ name: 'slot_id_input' }) id_input: IdInputModel,
+    @I18n() i18n: I18nContext<I18nTranslations>,
+    @UserID() user_id: UserId,
+  ): Promise<SlotModel> {
+    return this.shiftService.unassign_slot(user_id, id_input.id, { i18n });
   }
 
   @ResolveField(() => [SlotModel], { name: 'slots' })

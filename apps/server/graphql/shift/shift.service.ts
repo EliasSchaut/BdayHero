@@ -5,6 +5,8 @@ import { SlotModel } from '@/types/models/slot.model';
 import { PrismaService } from 'nestjs-prisma';
 import { Lang } from '@bdayhero/shared/types/enums/lang.enum';
 import { UserId } from '@/types/common/ids.type';
+import { DangerException } from '@/common/exceptions/danger.exception';
+import { WarningException } from '@/common/exceptions/warning.exception';
 
 @Injectable()
 export class ShiftService {
@@ -28,23 +30,50 @@ export class ShiftService {
     slot_id: number,
     ctx: CtxType,
   ): Promise<SlotModel> {
-    await this.prisma.guestShift.upsert({
-      where: {
-        guest_id_shift_slot_id: {
-          guest_id,
+    try {
+      await this.prisma.guestShift.upsert({
+        where: {
+          guest_id_shift_slot_id: {
+            guest_id,
+            shift_slot_id: slot_id,
+          },
+        },
+        update: {},
+        create: {
+          guest_id: guest_id,
           shift_slot_id: slot_id,
         },
-      },
-      include: {
-        guest: true,
-      },
-      update: {},
-      create: {
-        guest_id: guest_id,
-        shift_slot_id: slot_id,
-      },
-    });
-    return this.find_slot(slot_id, ctx);
+      });
+      return this.find_slot(slot_id, ctx);
+    } catch (error) {
+      throw new DangerException(
+        ctx.i18n.t('shift.exception.invalid_assignment'),
+        error,
+      );
+    }
+  }
+
+  async unassign_slot(
+    guest_id: UserId,
+    slot_id: number,
+    ctx: CtxType,
+  ): Promise<SlotModel> {
+    try {
+      await this.prisma.guestShift.delete({
+        where: {
+          guest_id_shift_slot_id: {
+            guest_id,
+            shift_slot_id: slot_id,
+          },
+        },
+      });
+      return this.find_slot(slot_id, ctx);
+    } catch (error) {
+      throw new WarningException(
+        ctx.i18n.t('shift.exception.guest_not_assigned'),
+        error,
+      );
+    }
   }
 
   async find_shift_slots(shift_id: number, ctx: CtxType): Promise<SlotModel[]> {
@@ -64,7 +93,12 @@ export class ShiftService {
       },
       orderBy: { order: 'asc' },
     });
-    return shift!.shift_slots.map((slot) => new SlotModel(slot));
+
+    if (!shift) {
+      throw new DangerException(ctx.i18n.t('shift.exception.shift_not_found'));
+    }
+
+    return shift.shift_slots.map((slot) => new SlotModel(slot));
   }
 
   async find_slot(slot_id: number, ctx: CtxType): Promise<SlotModel> {
@@ -79,6 +113,11 @@ export class ShiftService {
         },
       },
     });
-    return new SlotModel(slot!);
+
+    if (!slot) {
+      throw new DangerException(ctx.i18n.t('shift.exception.slot_not_found'));
+    }
+
+    return new SlotModel(slot);
   }
 }
