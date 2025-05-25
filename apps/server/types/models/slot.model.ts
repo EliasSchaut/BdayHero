@@ -15,8 +15,8 @@ export class SlotModel implements ISlotModel {
   ) {
     Object.assign(this, slot);
     if (slot.assigned_guests) {
-      this.assigned_guests = slot.assigned_guests.map(
-        (shift_guest) => new GuestModel(shift_guest.guest),
+      this.assigned_guests = slot.assigned_guests.map((shift_guest) =>
+        new GuestModel(shift_guest.guest).anonymise_if_not_public(),
       );
     }
   }

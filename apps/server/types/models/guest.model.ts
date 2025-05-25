@@ -10,9 +10,6 @@ export class GuestModel implements IGuestModel {
   constructor(guest: Guest & { companion?: Companion[] }) {
     Object.assign(this, guest);
     this.companions = guest.companion;
-    if (!this.profile_public) {
-      this.clear_user_profile();
-    }
   }
 
   @Field(() => ID, {})
@@ -79,17 +76,20 @@ export class GuestModel implements IGuestModel {
   @Field(() => [SlotModel], { nullable: true })
   assigned_slots?: SlotModel[];
 
-  public clear_user_profile(): this {
-    this.email = 'Anonym';
-    this.initials = '?';
-    delete this.first_name;
-    delete this.last_name;
-    delete this.avatar_url;
-    delete this.bio;
-    delete this.companions;
-    delete this.need_bed;
-    delete this.has_bed;
-    delete this.is_vegan;
+  public anonymise_if_not_public(): this {
+    if (!this.profile_public) {
+      this.email = 'Anonym';
+      this.initials = '?';
+      delete this.first_name;
+      delete this.last_name;
+      delete this.avatar_url;
+      delete this.bio;
+      delete this.companions;
+      delete this.need_bed;
+      delete this.has_bed;
+      delete this.is_vegan;
+      return this;
+    }
     return this;
   }
 }

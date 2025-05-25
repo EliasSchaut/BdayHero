@@ -236,6 +236,9 @@ export default defineComponent({
       assigned_slots,
     };
   },
+  mounted() {
+    watch(() => this.$i18n.locale, this.refetch);
+  },
   methods: {
     async refetch() {
       this.$apollo

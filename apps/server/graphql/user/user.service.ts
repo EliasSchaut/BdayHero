@@ -23,7 +23,7 @@ export class UserService {
           { last_name: 'asc' },
         ],
       })
-    ).map((user) => new GuestModel(user));
+    ).map((user) => new GuestModel(user).anonymise_if_not_public());
   }
 
   async count(): Promise<number> {
