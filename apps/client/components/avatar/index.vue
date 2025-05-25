@@ -8,7 +8,7 @@
     />
     <span
       v-else
-      class="inline-flex size-9 items-center justify-center rounded-full bg-second-500"
+      class="bg-second-500 inline-flex size-9 items-center justify-center rounded-full"
     >
       <span class="font-medium text-white">{{ initials }}</span>
     </span>

@@ -13,6 +13,7 @@ type CompanionModel {
 }
 
 type GuestModel {
+    assigned_slots: [SlotModel!]!
     attendance_status: Float
     avatar_url: String
     bio: String
@@ -59,7 +60,7 @@ type SignedInModel {
 "Represents a time slot for a shift, which can be acquired by multiple participants."
 type SlotModel {
     assigned_guests: [GuestModel!]
-    capacity: Float
+    capacity: Float!
     end: DateTime!
     id: String!
     start: DateTime!

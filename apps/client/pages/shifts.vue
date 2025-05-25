@@ -52,6 +52,7 @@
                         <div class="text-second-900 text-sm/6 font-medium">
                           {{ index + 1 }}. Schicht
                         </div>
+                        <Badge v-if="has_slot(slot.id)">Übernommen</Badge>
                         <Badge
                           v-if="
                             slot.assigned_guests &&
@@ -72,28 +73,62 @@
                     </div>
                   </div>
                 </td>
-                <td v-if="slot.assigned_guests">
-                  <AvatarCloud>
-                    <AvatarProfile
+                <td v-if="slot.assigned_guests" class="xs:table-cell hidden">
+                  <AvatarCloudStacked>
+                    <AvatarStacked
                       v-for="guest in slot.assigned_guests"
                       :initials="guest.initials!"
-                      :email="guest.email"
-                      :first_name="guest.first_name"
-                      :last_name="guest.last_name"
+                      :title="
+                        guest.first_name && guest.last_name
+                          ? `${guest.first_name} ${guest.last_name}`
+                          : guest.email
+                      "
                       :href="guest.avatar_url"
-                      only_avatar
                     />
-                  </AvatarCloud>
+                  </AvatarCloudStacked>
                 </td>
                 <td class="py-5 text-right">
                   <div
-                    v-if="slot.assigned_guests"
-                    class="mt-1 text-xs/5 text-gray-500"
+                    class="xs:mb-0 mb-1 flex items-center justify-end gap-x-4"
                   >
-                    {{ `${slot.assigned_guests.length}/${slot.capacity}` }}
+                    <AvatarCloudStacked class="xs:hidden !-space-x-1">
+                      <AvatarStacked
+                        class="!size-6"
+                        v-for="guest in slot.assigned_guests"
+                        :initials="guest.initials!"
+                        :title="
+                          guest.first_name && guest.last_name
+                            ? `${guest.first_name} ${guest.last_name}`
+                            : guest.email
+                        "
+                        :href="guest.avatar_url"
+                      />
+                    </AvatarCloudStacked>
+                    <div
+                      v-if="slot.assigned_guests"
+                      class="bg-second-100 mt-1 rounded-xl px-2 py-0.5 text-xs/5 text-gray-600"
+                    >
+                      {{ `${slot.assigned_guests.length}/${slot.capacity}` }}
+                    </div>
                   </div>
                   <div class="flex justify-end">
+                    <nuxt-link
+                      v-if="!auth.logged_in"
+                      href="/guests"
+                      class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500 hover:underline"
+                    >
+                      Bitte anmelden
+                    </nuxt-link>
                     <button
+                      v-else-if="has_slot(slot.id)"
+                      @click="user_unassign_slot(Number(slot.id))"
+                      class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500"
+                    >
+                      Abgeben
+                    </button>
+                    <button
+                      v-else
+                      @click="user_assign_slot(Number(slot.id))"
                       class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500"
                     >
                       übernehmen
@@ -111,7 +146,7 @@
 
 <script lang="ts">
 import { authStore } from '~/store/auth';
-import type { ShiftModel, SlotModel } from '@bdayhero/shared';
+import type { GuestModel, ShiftModel, SlotModel } from '@bdayhero/shared';
 import { XCircleIcon } from '@heroicons/vue/24/outline';
 
 const shifts_query = gql`
@@ -121,6 +156,7 @@ const shifts_query = gql`
       name
       desc
       slots {
+        id
         start
         end
         capacity
@@ -132,6 +168,16 @@ const shifts_query = gql`
           initials
           avatar_url
         }
+      }
+    }
+  }
+`;
+
+const user_assigned_slots = gql`
+  query {
+    user {
+      assigned_slots {
+        id
       }
     }
   }
@@ -162,7 +208,9 @@ export default defineComponent({
     XCircleIcon,
   },
   setup() {
+    const auth = authStore();
     const shifts = ref<ShiftModel[]>([]);
+    const assigned_slots = ref<number[]>([]);
     const { mutate: assign_slot } = useMutation<SlotModel>(assign_slot_query);
     const { mutate: unassign_slot } =
       useMutation<SlotModel>(unassign_slot_query);
@@ -171,19 +219,46 @@ export default defineComponent({
       shifts.value = data.value?.shifts ?? [];
     });
 
+    if (auth.logged_in) {
+      useAsyncQuery<{ user: GuestModel }>(user_assigned_slots).then(
+        ({ data }) => {
+          assigned_slots.value =
+            data.value?.user?.assigned_slots?.map((slot) => slot.id) ?? [];
+        },
+      );
+    }
+
     return {
-      auth: authStore(),
+      auth,
       shifts,
       assign_slot,
       unassign_slot,
+      assigned_slots,
     };
   },
   methods: {
+    async refetch() {
+      useAsyncQuery<{ shifts: ShiftModel[] }>(shifts_query).then(({ data }) => {
+        shifts.value = data.value?.shifts ?? [];
+      });
+
+      if (auth.logged_in) {
+        useAsyncQuery<{ user: GuestModel }>(user_assigned_slots).then(
+          ({ data }) => {
+            assigned_slots.value =
+              data.value?.user?.assigned_slots?.map((slot) => slot.id) ?? [];
+          },
+        );
+      }
+    },
     async user_assign_slot(slot_id: number) {
-      this.assign_slot({ id: slot_id });
+      await this.assign_slot({ id: slot_id });
     },
     async user_unassign_slot(slot_id: number) {
-      this.unassign_slot({ id: slot_id });
+      await this.unassign_slot({ id: slot_id });
+    },
+    has_slot(slot_id: number): boolean {
+      return this.assigned_slots.includes(slot_id);
     },
   },
 });

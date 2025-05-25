@@ -84,20 +84,20 @@ export default defineNuxtConfig({
     restructureDir: false,
     locales: [
       {
-        code: 'en',
+        code: 'en_US',
         iso: 'en-US',
         name: 'English',
         isCatchallLocale: true,
-        file: 'en-US.json',
+        file: 'en_US.json',
       },
       {
-        code: 'de',
+        code: 'de_DE',
         iso: 'de-DE',
         name: 'Deutsch',
-        file: 'de-DE.json',
+        file: 'de_DE.json',
       },
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'en_US',
     strategy: 'no_prefix',
     detectBrowserLanguage: {
       useCookie: true,
