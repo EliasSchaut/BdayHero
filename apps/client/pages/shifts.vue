@@ -11,7 +11,9 @@
       Trage dich hier für Schichten ein
     </p>
   </div>
-  <div class="border-second-100 overflow-hidden border-t">
+  <div
+    class="border-second-100 dark:border-second-800 overflow-hidden border-t"
+  >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
         <table class="w-full text-left">
@@ -24,7 +26,7 @@
           </thead>
           <tbody>
             <template v-for="shift in shifts" :key="shift.id">
-              <tr class="text-second-900 text-sm/6">
+              <tr class="text-second-900 dark:text-second-200 text-sm/6">
                 <th
                   scope="colgroup"
                   colspan="3"
@@ -37,10 +39,10 @@
                     </span>
                   </span>
                   <div
-                    class="border-second-200 bg-second-50 absolute inset-y-0 right-full -z-10 w-screen border-b"
+                    class="border-second-200 dark:border-second-700 bg-second-50 dark:bg-second-900 absolute inset-y-0 right-full -z-10 w-screen border-b"
                   />
                   <div
-                    class="border-second-200 bg-second-50 absolute inset-y-0 left-0 -z-10 w-screen border-b"
+                    class="border-second-200 dark:border-second-700 bg-second-50 dark:bg-second-900 absolute inset-y-0 left-0 -z-10 w-screen border-b"
                   />
                 </th>
               </tr>
@@ -49,7 +51,9 @@
                   <div class="flex gap-x-6">
                     <div class="flex-auto">
                       <div class="flex items-start gap-x-3">
-                        <div class="text-second-900 text-sm/6 font-medium">
+                        <div
+                          class="text-second-900 dark:text-second-200 text-sm/6 font-medium"
+                        >
                           {{ index + 1 }}. Schicht
                         </div>
                         <Badge v-if="has_slot(slot.id)">Übernommen</Badge>
@@ -61,7 +65,9 @@
                           >Voll
                         </Badge>
                       </div>
-                      <div class="text-second-500 mt-1 text-xs/5">
+                      <div
+                        class="text-second-500 dark:text-second-400 mt-1 text-xs/5"
+                      >
                         <time :datetime="$dayjs(slot.start).toString()"
                           >{{ $dayjs(slot.start).format('HH:mm') }}
                         </time>
@@ -106,7 +112,7 @@
                     </AvatarCloudStacked>
                     <div
                       v-if="slot.assigned_guests"
-                      class="bg-second-100 mt-1 rounded-xl px-2 py-0.5 text-xs/5 text-gray-600"
+                      class="bg-second-100 dark:bg-second-800 mt-1 rounded-xl px-2 py-0.5 text-xs/5 text-gray-600 dark:text-gray-400"
                     >
                       {{ `${slot.assigned_guests.length}/${slot.capacity}` }}
                     </div>
@@ -115,21 +121,21 @@
                     <nuxt-link
                       v-if="!auth.logged_in"
                       href="/guests"
-                      class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500 hover:underline"
+                      class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium hover:underline"
                     >
                       Bitte anmelden
                     </nuxt-link>
                     <button
                       v-else-if="has_slot(slot.id)"
                       @click="user_unassign_slot(Number(slot.id))"
-                      class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500"
+                      class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
                       Abgeben
                     </button>
                     <button
                       v-else
                       @click="user_assign_slot(Number(slot.id))"
-                      class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500"
+                      class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
                       übernehmen
                     </button>
