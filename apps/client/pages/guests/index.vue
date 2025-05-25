@@ -385,6 +385,13 @@ export default defineComponent({
     );
   },
   methods: {
+    async refetch() {
+      this.$apollo
+        .query({ query: guest_list_query, fetchPolicy: 'no-cache' })
+        .then(({ data }: any) => {
+          this.guests = data?.users ?? [];
+        });
+    },
     async on_submit_sign_in(e: Event, form_data: FormData) {
       const email = form_data.get('email');
       try {
@@ -451,6 +458,7 @@ export default defineComponent({
         this.selected_attendance_status =
           data.data.user_update.attendance_status ??
           AttendanceStatus.NOT_RESPONDED;
+        this.refetch();
       }
     },
     user_logout() {

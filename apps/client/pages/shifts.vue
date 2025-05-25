@@ -238,24 +238,28 @@ export default defineComponent({
   },
   methods: {
     async refetch() {
-      useAsyncQuery<{ shifts: ShiftModel[] }>(shifts_query).then(({ data }) => {
-        shifts.value = data.value?.shifts ?? [];
-      });
+      this.$apollo
+        .query({ query: shifts_query, fetchPolicy: 'no-cache' })
+        .then(({ data }: any) => {
+          this.shifts = data?.shifts ?? [];
+        });
 
-      if (auth.logged_in) {
-        useAsyncQuery<{ user: GuestModel }>(user_assigned_slots).then(
-          ({ data }) => {
-            assigned_slots.value =
-              data.value?.user?.assigned_slots?.map((slot) => slot.id) ?? [];
-          },
-        );
+      if (this.auth.logged_in) {
+        this.$apollo
+          .query({ query: user_assigned_slots, fetchPolicy: 'no-cache' })
+          .then(({ data }: any) => {
+            this.assigned_slots =
+              data.user?.assigned_slots?.map((slot: any) => slot.id) ?? [];
+          });
       }
     },
     async user_assign_slot(slot_id: number) {
       await this.assign_slot({ id: slot_id });
+      await this.refetch();
     },
     async user_unassign_slot(slot_id: number) {
       await this.unassign_slot({ id: slot_id });
+      await this.refetch();
     },
     has_slot(slot_id: number): boolean {
       return this.assigned_slots.includes(slot_id);
