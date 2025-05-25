@@ -57,7 +57,7 @@
     },
     "catering": {
       "title": "Verpflegung",
-      "value": "Für Essen und Trinken ist gesorgt! Es gibt Grillgut (vegan/vegetarisch/fleisch), Salate, Kuchen, alkoholische und alkoholfreie Cocktails und Bier vom Fass."
+      "value": "Für Essen und Trinken ist gesorgt! Es gibt Grillgut (vegan/vegetarisch/fleisch), alkoholische und alkoholfreie Cocktails und Bier vom Fass. Salate und Kuchen sind als Mitbringsel gerne gesehen."
     },
     "faq": {
       "0": {
@@ -100,16 +100,13 @@
     "program": {
       "title": "Programm",
       "value": {
-        "0": "18:00 - Einlass",
-        "1": "18:30 - Offizieller Beginn",
-        "2": "19:00 - Begrüßung",
-        "3": "19:15 - Speed-Friending",
-        "4": "21:00 - Olympia",
-        "5": "21:30 - Eröffnung Diskothek (Dachterrasse)",
-        "6": "22:00 - Billardturnier",
-        "7": "23:00 - Kahoot!",
-        "8": "01:00 - Auflösung Mannschaftskampf + Rede",
-        "9": "Danach - OpenEnd"
+        "0": "18:00 - Einlass: Ankommen, Drinks schnappen, Leute treffen",
+        "1": "18:30 - Offizieller Startschuss: Kurze Begrüßung von Elias – dann geht’s los",
+        "2": "18:45 - Speed-Friending: Neue Freunde in 15 Minuten",
+        "3": "20:45 - Outdoor-Olympiade: Teamgeist, Action, Fun – wer holt die Tokens?",
+        "4": "21:30 - DJ paulstr legt auf: Feiern, tanzen, lachen – bis die Sonne untergeht ",
+        "5": "01:00 - Siegerehrung & Abschlussrede: Wer hat den Teamkampf gewonnen? Wer hat am meisten geglänzt? ",
+        "6": "Danach - OpenEnd – der Abend klingt aus wie du willst "
       }
     },
     "subtitle": "Alles Wissenswerte rund um den Bday",

@@ -189,7 +189,7 @@
             :key="i"
             id="companions"
             :value="i - 1 < companions.length ? companions[i - 1].name : ''"
-            placeholder="Alexander Hamilton"
+            placeholder="Eliza Hamilton"
             :label="`${i}. ${$t('guests.profile.companions.name')}`"
             :minlength="2"
             :maxlength="20"

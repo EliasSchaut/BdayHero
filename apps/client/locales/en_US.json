@@ -57,7 +57,7 @@
     },
     "catering": {
       "title": "Catering",
-      "value": "Food and drink will be supplied! There will be barbecue food (vegan/vegetarian/meat), salads, cakes, alcoholic and non-alcoholic cocktails and draught beer."
+      "value": "Food and drink will be provided! There will be barbecue food (vegan/vegetarian/meat), alcoholic and non-alcoholic cocktails and draught beer. Salads and cakes are welcome as bring-along item."
     },
     "faq": {
       "0": {
@@ -100,16 +100,13 @@
     "program": {
       "title": "Schedule",
       "value": {
-        "0": "06:00pm - Admission",
-        "1": "06:30pm - Official start",
-        "2": "07:00pm - Welcome",
-        "3": "07:15pm - Speed-Friending",
-        "4": "09:00pm - Olympia",
-        "5": "09:30pm - Opening discotheque (roof top)",
-        "6": "10:00pm - Billiard tournament",
-        "7": "11:00pm - Kahoot!",
-        "8": "01:00am - Resolution of the team fight + speech",
-        "9": "Afterwards - OpenEnd"
+        "0": "06:00pm - Admission: Arrive, grab a drink, meet people",
+        "1": "06:30pm - Official starting signal: short welcome from Elias - then off we go",
+        "2": "06:45pm - Speed-Friending: New friends in 15 minutes",
+        "3": "08:45pm - Outdoor Olympics: Team spirit, action, fun - who will get the tokens?",
+        "4": "09:30pm - DJ paulstr is spinning: Party, dance, laugh - until the sun goes down ",
+        "5": "01:00am - Award ceremony & closing speech: Who won the team battle? Who shone the brightest?",
+        "6": "Afterwards - OpenEnd - the evening ends as you like"
       }
     },
     "subtitle": "Everything you need to know about the Bday",
