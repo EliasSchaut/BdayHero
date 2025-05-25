@@ -335,7 +335,8 @@
     "details": "Details",
     "features": "Features",
     "guests": "Guests",
-    "home": "Home"
+    "home": "Home",
+    "shifts": "Shifts"
   },
   "privacy": {
     "cookies": {
@@ -355,5 +356,14 @@
       "title": "What are my rights?"
     },
     "title": "Privacy"
+  },
+  "shifts": {
+    "assign": "Take",
+    "assigned": "Acquired",
+    "full": "Full",
+    "please_log_in": "Please sign in",
+    "singular": "Shift",
+    "subtitle": "Sign up for shifts here",
+    "unassign": "Drop"
   }
 }

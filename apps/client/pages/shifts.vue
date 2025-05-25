@@ -3,12 +3,12 @@
     <h3
       class="text-second-900 text-base leading-7 font-semibold dark:text-white"
     >
-      Schichten
+      {{ $t('nav.shifts') }}
     </h3>
     <p
       class="text-second-500 dark:text-second-300 mt-1 max-w-2xl text-sm leading-6"
     >
-      Trage dich hier für Schichten ein
+      {{ $t('shifts.subtitle') }}
     </p>
   </div>
   <div
@@ -19,9 +19,9 @@
         <table class="w-full text-left">
           <thead class="sr-only">
             <tr>
-              <th>Description</th>
-              <th class="hidden sm:table-cell">Capacity</th>
-              <th>Übernehmen</th>
+              <th></th>
+              <th class="hidden sm:table-cell"></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -54,15 +54,17 @@
                         <div
                           class="text-second-900 dark:text-second-200 text-sm/6 font-medium"
                         >
-                          {{ index + 1 }}. Schicht
+                          {{ index + 1 }}.&nbsp;{{ $t('shifts.singular') }}
                         </div>
-                        <Badge v-if="has_slot(slot.id)">Übernommen</Badge>
+                        <Badge v-if="has_slot(slot.id)">{{
+                          $t('shifts.assigned')
+                        }}</Badge>
                         <Badge
                           v-if="
                             slot.assigned_guests &&
                             slot.assigned_guests.length >= slot.capacity
                           "
-                          >Voll
+                          >{{ $t('shifts.full') }}
                         </Badge>
                       </div>
                       <div
@@ -94,9 +96,7 @@
                   </AvatarCloudStacked>
                 </td>
                 <td class="py-5 text-right">
-                  <div
-                    class="xs:mb-0 mb-1 flex items-center justify-end gap-x-4"
-                  >
+                  <div class="mb-1 flex items-center justify-end gap-x-4">
                     <AvatarCloudStacked class="xs:hidden !-space-x-1">
                       <AvatarStacked
                         class="!size-6"
@@ -123,21 +123,21 @@
                       href="/guests"
                       class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium hover:underline"
                     >
-                      Bitte anmelden
+                      {{ $t('shifts.please_log_in') }}
                     </nuxt-link>
                     <button
                       v-else-if="has_slot(slot.id)"
                       @click="user_unassign_slot(Number(slot.id))"
                       class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
-                      Abgeben
+                      {{ $t('shifts.assign') }}
                     </button>
                     <button
                       v-else
                       @click="user_assign_slot(Number(slot.id))"
                       class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
-                      übernehmen
+                      {{ $t('shifts.unassign') }}
                     </button>
                   </div>
                 </td>
