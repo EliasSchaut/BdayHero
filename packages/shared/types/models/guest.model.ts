@@ -1,5 +1,6 @@
 import { AttendanceStatus } from '../enums/attendance_status.enum.js';
 import type { CompanionModel } from './companion.model.js';
+import type { SlotModel } from './slot.model.js';
 
 export interface GuestModel {
   id: string;
@@ -15,4 +16,5 @@ export interface GuestModel {
   has_bed?: boolean;
   is_vegan?: boolean;
   companions?: CompanionModel[];
+  assigned_slots?: SlotModel[];
 }

@@ -3,6 +3,7 @@ import { Companion, Guest } from '@prisma/client';
 import { AttendanceStatusEnum } from '@/types/enum/attendance_status.enum';
 import { CompanionModel } from '@/types/models/companion.model';
 import { GuestModel as IGuestModel } from '@bdayhero/shared';
+import { SlotModel } from '@/types/models/slot.model';
 
 @ObjectType()
 export class GuestModel implements IGuestModel {
@@ -74,6 +75,9 @@ export class GuestModel implements IGuestModel {
     nullable: true,
   })
   companions?: CompanionModel[];
+
+  @Field(() => [SlotModel], { nullable: true })
+  assigned_slots?: SlotModel[];
 
   public clear_user_profile(): this {
     this.email = 'Anonym';

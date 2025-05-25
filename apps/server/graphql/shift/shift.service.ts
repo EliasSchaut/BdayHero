@@ -25,6 +25,20 @@ export class ShiftService {
     ).map((shift) => new ShiftModel(shift));
   }
 
+  async find_many_from_user(
+    user_id: string,
+    ctx: CtxType,
+  ): Promise<SlotModel[]> {
+    return (
+      await this.prisma.guestShift.findMany({
+        where: { guest_id: user_id },
+        include: {
+          shift_slot: true,
+        },
+      })
+    ).map((guest_shift) => new SlotModel(guest_shift.shift_slot));
+  }
+
   async assign_slot(
     guest_id: UserId,
     slot_id: number,
