@@ -130,14 +130,14 @@
                       @click="user_unassign_slot(Number(slot.id))"
                       class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
-                      {{ $t('shifts.assign') }}
+                      {{ $t('shifts.unassign') }}
                     </button>
                     <button
                       v-else
                       @click="user_assign_slot(Number(slot.id))"
                       class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
-                      {{ $t('shifts.unassign') }}
+                      {{ $t('shifts.assign') }}
                     </button>
                   </div>
                 </td>
