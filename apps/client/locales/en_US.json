@@ -212,7 +212,7 @@
           "title": "Cocktails"
         },
         "soft": {
-          "subtitle": "Various types and brands",
+          "subtitle": "Various types",
           "title": "Softdrinks"
         },
         "title": "Drinks"
@@ -225,10 +225,6 @@
         "olympia": {
           "subtitle": "Beer crate run/pantomime/egg run",
           "title": "O-Lympia"
-        },
-        "pool": {
-          "subtitle": "+ Free play all night",
-          "title": "Pool tournament"
         },
         "title": "Events"
       },
@@ -265,11 +261,11 @@
       },
       "food": {
         "finger_food": {
-          "subtitle": "Cakes/pastries/snacks",
+          "subtitle": "Cakes/Salads/Snacks",
           "title": "Finger food"
         },
         "grill": {
-          "subtitle": "Salads & grilled (also veggie/vegan)",
+          "subtitle": "Barbecue (meat/veggie/vegan)",
           "title": "Grill"
         },
         "ice": {
@@ -280,16 +276,20 @@
       },
       "game": {
         "corner": {
-          "subtitle": "MarioKart/SmashBros/Unrailed!/...",
+          "subtitle": "MarioKart/Smash/...",
           "title": "Gaming corner"
         },
         "indoor": {
-          "subtitle": "Board games/cards/chess/go/...",
+          "subtitle": "cards/chess/go/...",
           "title": "Indoor games"
         },
         "outdoor": {
-          "subtitle": "Slackline/Viking chess/Frisbee/...",
+          "subtitle": "Volleyball/Viking chess/...",
           "title": "Outdoor games"
+        },
+        "pool": {
+          "subtitle": "Free play all night",
+          "title": "Pool"
         },
         "title": "Game"
       },

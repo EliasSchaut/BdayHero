@@ -88,22 +88,17 @@
           image_src="/img/speed_friending.jpg"
         />
         <Card3d
-          :title="$t('home.tabs.events.kahoot.title')"
-          :subtitle="$t('home.tabs.events.kahoot.subtitle')"
-          image_src="/img/kahoot.jpg"
-        />
-        <Card3d
           :title="$t('home.tabs.events.olympia.title')"
           :subtitle="$t('home.tabs.events.olympia.subtitle')"
           image_src="/img/olympia.jpg"
         />
-        <Card3d
-          :title="$t('home.tabs.events.pool.title')"
-          :subtitle="$t('home.tabs.events.pool.subtitle')"
-          image_src="/img/billard.jpg"
-        />
       </TabsItem>
       <TabsItem :title="$t('home.tabs.game.title')">
+        <Card3d
+          :title="$t('home.tabs.game.pool.title')"
+          :subtitle="$t('home.tabs.game.pool.subtitle')"
+          image_src="/img/billard.jpg"
+        />
         <Card3d
           :title="$t('home.tabs.game.corner.title')"
           :subtitle="$t('home.tabs.game.corner.subtitle')"
