@@ -56,9 +56,9 @@
                         >
                           {{ index + 1 }}.&nbsp;{{ $t('shifts.singular') }}
                         </div>
-                        <Badge v-if="has_slot(slot.id)">{{
-                          $t('shifts.assigned')
-                        }}</Badge>
+                        <Badge v-if="has_slot(slot.id)"
+                          >{{ $t('shifts.assigned') }}
+                        </Badge>
                         <Badge
                           v-if="
                             slot.assigned_guests &&
@@ -125,20 +125,22 @@
                     >
                       {{ $t('shifts.please_log_in') }}
                     </nuxt-link>
-                    <button
+                    <ButtonLoading
                       v-else-if="has_slot(slot.id)"
                       @click="user_unassign_slot(Number(slot.id))"
+                      :loading="loading"
                       class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
                       {{ $t('shifts.unassign') }}
-                    </button>
-                    <button
+                    </ButtonLoading>
+                    <ButtonLoading
                       v-else
                       @click="user_assign_slot(Number(slot.id))"
+                      :loading="loading"
                       class="text-prime-600 dark:text-prime-400 hover:text-prime-500 text-sm/6 font-medium"
                     >
                       {{ $t('shifts.assign') }}
-                    </button>
+                    </ButtonLoading>
                   </div>
                 </td>
               </tr>
@@ -240,6 +242,7 @@ export default defineComponent({
       assign_slot,
       unassign_slot,
       assigned_slots,
+      loading: ref(false),
     };
   },
   mounted() {
@@ -247,28 +250,32 @@ export default defineComponent({
   },
   methods: {
     async refetch() {
-      this.$apollo
-        .query({ query: shifts_query, fetchPolicy: 'no-cache' })
-        .then(({ data }: any) => {
-          this.shifts = data?.shifts ?? [];
-        });
+      const { data: shifts_data } = await this.$apollo.query({
+        query: shifts_query,
+        fetchPolicy: 'no-cache',
+      });
+      this.shifts = shifts_data?.shifts ?? [];
 
       if (this.auth.logged_in) {
-        this.$apollo
-          .query({ query: user_assigned_slots, fetchPolicy: 'no-cache' })
-          .then(({ data }: any) => {
-            this.assigned_slots =
-              data.user?.assigned_slots?.map((slot: any) => slot.id) ?? [];
-          });
+        const { data: assigned_data } = await this.$apollo.query({
+          query: user_assigned_slots,
+          fetchPolicy: 'no-cache',
+        });
+        this.assigned_slots =
+          assigned_data.user?.assigned_slots?.map((slot: any) => slot.id) ?? [];
       }
     },
     async user_assign_slot(slot_id: number) {
+      this.loading = true;
       await this.assign_slot({ id: slot_id });
       await this.refetch();
+      this.loading = false;
     },
     async user_unassign_slot(slot_id: number) {
+      this.loading = true;
       await this.unassign_slot({ id: slot_id });
       await this.refetch();
+      this.loading = false;
     },
     has_slot(slot_id: number): boolean {
       return this.assigned_slots.includes(slot_id);
