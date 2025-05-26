@@ -99,7 +99,6 @@
                   <div class="mb-1 flex items-center justify-end gap-x-4">
                     <AvatarCloudStacked class="xs:hidden !-space-x-1">
                       <AvatarStacked
-                        class="!size-6"
                         v-for="guest in slot.assigned_guests"
                         :initials="guest.initials!"
                         :title="
@@ -108,6 +107,7 @@
                             : guest.email
                         "
                         :href="guest.avatar_url"
+                        small
                       />
                     </AvatarCloudStacked>
                     <div
