@@ -35,11 +35,9 @@
         <br />
         <span>{{ $t('home.hero.3') }}</span>
       </p>
-      <div class="mt-10 flex items-center justify-center gap-x-6">
-        <nuxt-link href="/guests">
-          <ButtonPrime>{{ $t('home.hero.join_now') }}</ButtonPrime>
-        </nuxt-link>
-        <ButtonArrow href="/details">{{ $t('home.hero.details') }}</ButtonArrow>
+      <div class="mt-10 flex items-center justify-center gap-x-6 z-50">
+        <DropdownCalendar />
+        <ButtonArrow href="#community">{{ $t('home.hero.join_community') }}</ButtonArrow>
       </div>
     </section>
   </Sparkles>

@@ -4,7 +4,7 @@
     class="text-second-900 dark:text-second-100 text-sm/6 font-semibold"
   >
     <slot />
-    <span aria-hidden="true">→</span></nuxt-link
+    <span aria-hidden="true">&nbsp;→</span></nuxt-link
   >
 </template>
 

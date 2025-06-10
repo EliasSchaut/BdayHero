@@ -92,7 +92,7 @@ export default defineComponent({
     const auth = reactive(authStore());
     const { t } = useI18n();
     const navigation: ComputedRef<NavigationType> = computed(() => [
-      {
+      /*{
         name: t('nav.home'),
         href: '/',
       },
@@ -107,7 +107,7 @@ export default defineComponent({
       {
         name: t('nav.shifts'),
         href: '/shifts',
-      },
+      },*/
     ]);
 
     return {

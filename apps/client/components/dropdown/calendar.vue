@@ -3,9 +3,9 @@
     <DropdownButton>
       <ButtonPrime>{{ $t("home.hero.add_to_calendar") }}</ButtonPrime>
     </DropdownButton>
-    <DropdownMenu>
+    <DropdownMenu class="z-50">
       <DropdownMenuItemLink
-        href="https://calendar.google.com/calendar/u/0/r/eventedit?dates=20250607T180000/20250608T040000&ctz=Europe/Berlin&text=Kids+Bday&location=Klosterweg+28+(Haus+K2),+76131+Karlsruhe&details=Am+07.+Juni+2025+steigt+die+Geburtstagsparty+des+Jahres!+Halte+den+Termin+frei+und+sei+dabei!&crm=BUSY&trp=true"
+        href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20260606T180000/20260607T040000&ctz=Europe/Berlin&text=KidsBday26&location=Klosterweg+28+(Haus+K2),+76131+Karlsruhe&details=Am+06.+Juni+2026+steigt+die+Geburtstagsparty+des+Jahres!+Mehr+Infos+siehe+https://bday.schaut.dev"
         target="_blank"
       >
         <NuxtImg
@@ -24,7 +24,7 @@
         <span>Apple</span>
       </DropdownMenuItemLink>
       <DropdownMenuItemLink
-        href="https://outlook.live.com/calendar/deeplink/compose/?rru=addevent&startdt=2025-06-07T16%3a00%3a00Z&enddt=2025-06-08T02%3a00%3a00Z&subject=Kids+Bday&location=Klosterweg+28+(Haus+K2)%2c+76131+Karlsruhe&body=Am+07.+Juni+2025+steigt+die+Geburtstagsparty+des+Jahres!+Halte+den+Termin+frei+und+sei+dabei!"
+        href="https://outlook.live.com/calendar/0/action/compose?rru=addevent&startdt=2026-06-06T16:00:00Z&enddt=2026-06-07T02:00:00Z&subject=KidsBday26&location=Klosterweg%2028%20(Haus%20K2)%2C%2076131%20Karlsruhe&body=Am%2006.%20Juni%202026%20steigt%20die%20Geburtstagsparty%20des%20Jahres!%20Mehr%20Infos%20siehe%20https%3A%2F%2Fbday.schaut.dev"
         target="_blank"
       >
         <NuxtImg
