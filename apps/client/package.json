@@ -27,7 +27,7 @@
     "countup.js": "^2.8.2",
     "dayjs-nuxt": "^2.1.11",
     "jsonwebtoken": "^9.0.2",
-    "nuxt": "^3.17.4",
+    "nuxt": "^3.19.0",
     "nuxt-particles": "^0.3.0",
     "pinia": "^3.0.2",
     "pinia-plugin-persistedstate": "^4.3.0",
