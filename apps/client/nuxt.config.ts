@@ -1,12 +1,8 @@
-import tailwindcss from '@tailwindcss/vite';
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  workspaceDir: '../../',
-  srcDir: '.',
-  compatibilityDate: '2025-05-05',
-  css: ['~/assets/css/main.css'],
+  workspaceDir: '.',
+  compatibilityDate: '2026-04-15',
   modules: [
     '@nuxtjs/apollo',
     '@nuxtjs/color-mode',
@@ -16,9 +12,10 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
     '@vueuse/motion/nuxt',
+    '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
-    'nuxt-particles',
     'pinia-plugin-persistedstate/nuxt',
+    '@tsparticles/nuxt4',
     'dayjs-nuxt',
   ],
 
@@ -35,10 +32,6 @@ export default defineNuxtConfig({
     github_client_secret: process.env.GITHUB_CLIENT_SECRET,
     google_client_secret: process.env.GOOGLE_CLIENT_SECRET,
     discord_client_secret: process.env.DISCORD_CLIENT_SECRET,
-  },
-
-  vite: {
-    plugins: [tailwindcss()],
   },
 
   site: {
@@ -81,7 +74,7 @@ export default defineNuxtConfig({
 
   i18n: {
     langDir: 'locales',
-    restructureDir: false,
+    restructureDir: 'app',
     locales: [
       {
         code: 'en_US',
@@ -105,7 +98,6 @@ export default defineNuxtConfig({
       redirectOn: 'root',
       fallbackLocale: 'en_US',
     },
-    lazy: true,
     compilation: {
       strictMessage: false,
       escapeHtml: false,
@@ -136,5 +128,12 @@ export default defineNuxtConfig({
   particles: {
     mode: 'slim',
     lazy: true,
+  },
+
+  tailwindcss: {
+    cssPath: [`~/assets/css/tailwind.css`],
+    config: {},
+    viewer: true,
+    exposeConfig: false,
   },
 });

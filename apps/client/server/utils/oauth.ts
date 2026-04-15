@@ -1,4 +1,4 @@
-import { sign } from "~/server/utils/jwt";
+import { sign } from '~~/server/utils/jwt';
 
 export async function oauth(credentials: {
   name: string;
@@ -30,10 +30,10 @@ async function get_oauth_user(credentials: {
   bearer_token: string;
 }): Promise<any> {
   return await $fetch(credentials.endpoint, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      Accept: "application/json",
-      Authorization: "Bearer " + credentials.bearer_token,
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + credentials.bearer_token,
     },
   });
 }
@@ -48,16 +48,16 @@ async function get_oauth_bearer(credentials: {
   const config = useRuntimeConfig();
   const { frontend_url } = config.public;
   const { access_token } = (await $fetch(credentials.endpoint, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      Accept: "application/json",
-      ContentType: "application/x-www-form-urlencoded",
+      Accept: 'application/json',
+      ContentType: 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
       client_id: credentials.client_id,
       client_secret: credentials.client_secret,
       redirect_uri: `${frontend_url}/guests/${credentials.name}`,
-      grant_type: "authorization_code",
+      grant_type: 'authorization_code',
       code: credentials.code,
     }),
   })) as unknown as any;

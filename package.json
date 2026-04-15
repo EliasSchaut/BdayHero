@@ -4,32 +4,44 @@
   "private": true,
   "type": "commonjs",
   "license": "MIT",
+  "packageManager": "pnpm@10.33.0",
   "homepage": "https://github.com/EliasSchaut/BdayHero#README.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/EliasSchaut/BdayHero.git"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
-    "start:server": "npm run start -w @bdayhero/server",
-    "start:client": "npm run start -w @bdayhero/client",
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "npm run dev -w @bdayhero/server",
-    "dev:client": "npm run dev -w @bdayhero/client",
-    "test:server": "npm run test -w @bdayhero/server",
-    "build": "npm run build:db && concurrently \"npm run build:server\" \"npm run build:client\" \"npm run build:shared\"",
-    "build:server": "npm run build -w @bdayhero/server",
-    "build:client": "npm run build -w @bdayhero/client",
-    "build:shared": "npm run build -w @bdayhero/shared",
-    "build:db": "npx prisma migrate dev --schema=./schema.prisma --name dev"
+    "start": "concurrently \"pnpm start:server\" \"pnpm start:client\"",
+    "start:server": "pnpm --filter @bdayhero/server start",
+    "start:client": "pnpm --filter @bdayhero/client start",
+    "dev": "concurrently \"pnpm dev:server\" \"pnpm dev:client\"",
+    "dev:server": "pnpm --filter @bdayhero/server dev",
+    "dev:client": "pnpm --filter @bdayhero/client dev",
+    "test:server": "pnpm --filter @bdayhero/server test",
+    "build": "pnpm build:db && concurrently \"pnpm build:server\" \"pnpm build:client\" \"pnpm build:shared\"",
+    "build:server": "pnpm --filter @bdayhero/server build",
+    "build:client": "pnpm --filter @bdayhero/client build",
+    "build:shared": "pnpm --filter @bdayhero/shared build",
+    "build:db": "pnpm prisma migrate dev --schema=./schema.prisma --name dev"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@apollo/protobufjs",
+      "@nestjs/core",
+      "@parcel/watcher",
+      "@prisma/client",
+      "@prisma/engines",
+      "@tsparticles/engine",
+      "bcrypt",
+      "esbuild",
+      "prisma",
+      "sharp",
+      "vue-demi"
+    ]
   },
   "devDependencies": {
-    "concurrently": "^9.1.2",
-    "prisma": "^6.8.2",
-    "tsup": "^8.5.0"
+    "concurrently": "^9.2.1",
+    "prisma": "^7.7.0",
+    "tsup": "^8.5.1"
   }
 }

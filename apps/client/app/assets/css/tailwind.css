@@ -8,8 +8,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-nunito: 'Nunito', 'sans-serif';
     --breakpoint-xs: 475px;
+    --font-nunito: 'Nunito', 'sans-serif';
 
     --color-prime-50: var(--color-indigo-50);
     --color-prime-100: var(--color-indigo-100);
