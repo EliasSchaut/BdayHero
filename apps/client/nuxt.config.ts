@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  workspaceDir: '.',
   compatibilityDate: '2026-04-15',
   modules: [
     '@nuxtjs/apollo',

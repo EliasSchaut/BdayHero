@@ -16,7 +16,7 @@ export const tabsStore = defineStore('tabs', {
     },
     setTabs(tab_names: string[]) {
       this.tab_names = tab_names;
-      this.active = tab_names[0];
+      this.active = tab_names[0]!;
     },
     addTab(tab_name: string) {
       if (this.tab_names.includes(tab_name)) return;
@@ -37,7 +37,7 @@ export const tabsStore = defineStore('tabs', {
       const new_tabs = [...this.tab_names];
       const idx = this.getIndexOfTab(tab_name);
       const selected_tab = new_tabs.splice(idx, 1);
-      new_tabs.unshift(selected_tab[0]);
+      new_tabs.unshift(selected_tab[0]!);
       this.setTabs(new_tabs);
     },
   },
