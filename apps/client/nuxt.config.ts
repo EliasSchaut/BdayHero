@@ -1,3 +1,7 @@
+import * as dotenv from 'dotenv';
+import * as path from 'node:path';
+dotenv.config({ path: path.resolve(__dirname, '../../../.env'), quiet: true });
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
