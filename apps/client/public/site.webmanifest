@@ -1,7 +1,7 @@
 {
   "name": "Kid's Bday",
   "short_name": "KidsBday",
-  "start_url": "https://bday.schaut.dev",
+  "start_url": "/",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",

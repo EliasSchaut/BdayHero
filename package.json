@@ -25,6 +25,12 @@
     "build:db": "pnpm prisma migrate dev --schema=./schema.prisma --name dev"
   },
   "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "@apollo/server-plugin-landing-page-graphql-playground>@apollo/server": "^4 || ^5",
+        "@angular-devkit/core>chokidar": "^3 || ^4"
+      }
+    },
     "onlyBuiltDependencies": [
       "@apollo/protobufjs",
       "@nestjs/core",

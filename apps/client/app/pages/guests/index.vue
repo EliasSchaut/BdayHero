@@ -2,13 +2,12 @@
   <div
     class="m-auto flex h-min w-min flex-col justify-center space-y-12 text-center align-middle font-semibold"
   >
-    <Countup
+    <Motion.Countup
       id="guestlist_countup"
       :class="{
         hidden: guests_count == 0,
         'm-auto my-16 w-min text-4xl font-bold opacity-0': true,
       }"
-      v-motion
       :initial="{ opacity: 0, scale: 0 }"
       :enter="{ opacity: 1, scale: 3 }"
       :delay="1000"
@@ -16,13 +15,12 @@
       ref="count_up"
     />
     <Spinner v-if="guests_count == 0" class="mx-auto my-16" />
-    <span
+    <Motion.span
       class="text-3xl font-semibold text-nowrap opacity-0"
-      v-motion
       :initial="{ opacity: 0, y: 20 }"
       :enter="{ opacity: 1, y: 0 }"
       :duration="1200"
-      >{{ $t('guests.countup.tail') }}!</span
+      >{{ $t('guests.countup.tail') }}!</Motion.span
     >
   </div>
 

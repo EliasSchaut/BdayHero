@@ -11,11 +11,10 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
-    '@vueuse/motion/nuxt',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
+    'motion-v/nuxt',
     'pinia-plugin-persistedstate/nuxt',
-    '@tsparticles/nuxt4',
     'dayjs-nuxt',
   ],
 
@@ -123,11 +122,6 @@ export default defineNuxtConfig({
     cookieOptions: {
       maxAge: 365 * 60 * 24 * 30,
     },
-  },
-
-  particles: {
-    mode: 'slim',
-    lazy: true,
   },
 
   tailwindcss: {

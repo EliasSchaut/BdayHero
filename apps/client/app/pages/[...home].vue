@@ -1,46 +1,102 @@
 <template>
   <!-- hero -->
-  <Sparkles>
-    <section class="z-10 px-6 py-20 pb-16 text-center lg:py-32">
-      <h1
-        class="font-display text-second-900 dark:text-second-100 mx-auto max-w-4xl text-5xl font-medium tracking-tight sm:text-7xl"
-      >
-        <span>Save </span>
-        <Underline>the DATE</Underline>
-      </h1>
-      <p
-        class="text-second-700 dark:text-second-300 mx-auto mt-6 max-w-2xl text-lg tracking-tight"
-      >
-        <span>{{ $t('home.hero.1') }}</span>
-        <Accent>{{ $t('home.hero.date') }}</Accent>
-        <span>{{ $t('home.hero.2') }}</span>
-        <Typewriter
-          :strings="[
-            $t('home.typewriter.suffix.0'),
-            $t('home.typewriter.suffix.1'),
-            $t('home.typewriter.suffix.2'),
-            $t('home.typewriter.suffix.3'),
-            $t('home.typewriter.suffix.4'),
-            $t('home.typewriter.suffix.5'),
-            $t('home.typewriter.suffix.6'),
-            $t('home.typewriter.suffix.7'),
-            $t('home.typewriter.suffix.8'),
-            $t('home.typewriter.suffix.9'),
-            $t('home.typewriter.suffix.10'),
-            $t('home.typewriter.suffix.11'),
-            $t('home.typewriter.suffix.12'),
-            $t('home.typewriter.suffix.13'),
-          ]"
-        />
-        <br />
-        <span>{{ $t('home.hero.3') }}</span>
-      </p>
-      <div class="mt-10 flex items-center justify-center gap-x-6 z-50">
-        <DropdownCalendar />
-        <ButtonArrow href="#community">{{ $t('home.hero.join_community') }}</ButtonArrow>
-      </div>
-    </section>
-  </Sparkles>
+  <section class="z-10 px-6 py-20 pb-16 text-center lg:py-32">
+    <div
+      class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+      aria-hidden="true"
+    >
+      <div
+        class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
+        style="
+          clip-path: polygon(
+            74.1% 44.1%,
+            100% 61.6%,
+            97.5% 26.9%,
+            85.5% 0.1%,
+            80.7% 2%,
+            72.5% 32.5%,
+            60.2% 62.4%,
+            52.4% 68.1%,
+            47.5% 58.3%,
+            45.2% 34.5%,
+            27.5% 76.7%,
+            0.1% 64.9%,
+            17.9% 100%,
+            27.6% 76.8%,
+            76.1% 97.7%,
+            74.1% 44.1%
+          );
+        "
+      ></div>
+    </div>
+    <h1
+      class="font-display text-second-900 dark:text-second-100 mx-auto max-w-4xl text-5xl font-medium tracking-tight sm:text-7xl"
+    >
+      <span>Save </span>
+      <Underline>the DATE</Underline>
+    </h1>
+    <p
+      class="text-second-700 dark:text-second-300 mx-auto mt-6 max-w-2xl text-lg tracking-tight"
+    >
+      <span>{{ $t('home.hero.1') }}</span>
+      <Accent>{{ $t('home.hero.date') }}</Accent>
+      <span>{{ $t('home.hero.2') }}</span>
+      <Typewriter
+        :strings="[
+          $t('home.typewriter.suffix.0'),
+          $t('home.typewriter.suffix.1'),
+          $t('home.typewriter.suffix.2'),
+          $t('home.typewriter.suffix.3'),
+          $t('home.typewriter.suffix.4'),
+          $t('home.typewriter.suffix.5'),
+          $t('home.typewriter.suffix.6'),
+          $t('home.typewriter.suffix.7'),
+          $t('home.typewriter.suffix.8'),
+          $t('home.typewriter.suffix.9'),
+          $t('home.typewriter.suffix.10'),
+          $t('home.typewriter.suffix.11'),
+          $t('home.typewriter.suffix.12'),
+          $t('home.typewriter.suffix.13'),
+        ]"
+      />
+      <br />
+      <span>{{ $t('home.hero.3') }}</span>
+    </p>
+    <div class="z-50 mt-10 flex items-center justify-center gap-x-6">
+      <DropdownCalendar />
+      <ButtonArrow href="#community">{{
+        $t('home.hero.join_community')
+      }}</ButtonArrow>
+    </div>
+    <div
+      class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+      aria-hidden="true"
+    >
+      <div
+        class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+        style="
+          clip-path: polygon(
+            74.1% 44.1%,
+            100% 61.6%,
+            97.5% 26.9%,
+            85.5% 0.1%,
+            80.7% 2%,
+            72.5% 32.5%,
+            60.2% 62.4%,
+            52.4% 68.1%,
+            47.5% 58.3%,
+            45.2% 34.5%,
+            27.5% 76.7%,
+            0.1% 64.9%,
+            17.9% 100%,
+            27.6% 76.8%,
+            76.1% 97.7%,
+            74.1% 44.1%
+          );
+        "
+      ></div>
+    </div>
+  </section>
 
   <!-- features -->
   <NuxtLayout name="grid" id="features">
