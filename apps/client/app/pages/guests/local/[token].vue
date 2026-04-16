@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import type { SignedInModel } from '@bdayhero/shared/index';
+import type { SignedInModel } from '@bdayhero/shared';
 import { authStore } from '~/store/auth';
 import { alertStore } from '~/store/alert';
 

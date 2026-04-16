@@ -2,25 +2,25 @@
   <div
     class="m-auto flex h-min w-min flex-col justify-center space-y-12 text-center align-middle font-semibold"
   >
-    <Motion.Countup
-      id="guestlist_countup"
+    <Motion
       :class="{
         hidden: guests_count == 0,
-        'm-auto my-16 w-min text-4xl font-bold opacity-0': true,
+        'm-auto my-16 w-min text-4xl font-bold': true,
       }"
       :initial="{ opacity: 0, scale: 0 }"
-      :enter="{ opacity: 1, scale: 3 }"
-      :delay="1000"
-      :duration="3000"
-      ref="count_up"
-    />
+      :animate="{ opacity: 1, scale: 3 }"
+      :transition="{ delay: 1, duration: 3 }"
+    >
+      <Countup id="guestlist_countup" ref="count_up" />
+    </Motion>
     <Spinner v-if="guests_count == 0" class="mx-auto my-16" />
-    <Motion.span
-      class="text-3xl font-semibold text-nowrap opacity-0"
+    <Motion
+      as="span"
+      class="text-3xl font-semibold text-nowrap"
       :initial="{ opacity: 0, y: 20 }"
-      :enter="{ opacity: 1, y: 0 }"
-      :duration="1200"
-      >{{ $t('guests.countup.tail') }}!</Motion.span
+      :animate="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 1.2 }"
+      >{{ $t('guests.countup.tail') }}!</Motion
     >
   </div>
 
@@ -232,8 +232,8 @@ import type {
   CompanionModel,
   GuestModel,
   GuestUpdateInputModel,
-} from '@bdayhero/shared/index';
-import { AttendanceStatus } from '@bdayhero/shared/index';
+} from '@bdayhero/shared';
+import { AttendanceStatus } from '@bdayhero/shared';
 import { authStore } from '~/store/auth';
 import { Bars3Icon } from '@heroicons/vue/24/outline';
 import { alertStore } from '~/store/alert';
