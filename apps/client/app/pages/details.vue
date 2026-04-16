@@ -52,7 +52,7 @@
     </ListDescriptionElement>
     <ListDescriptionElement :title="$t('detail.program.title')">
       <ul>
-        <li v-for="i in 7" :key="i">
+        <li v-for="i in 6" :key="i">
           {{ $t(`detail.program.value.${i - 1}`) }}
         </li>
       </ul>

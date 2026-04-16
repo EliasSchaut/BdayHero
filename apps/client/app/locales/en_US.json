@@ -103,16 +103,15 @@
         "0": "06:00pm - Admission: Arrive, grab a drink, meet people",
         "1": "06:30pm - Official starting signal: short welcome from Elias - then off we go",
         "2": "06:45pm - Speed-Friending: New friends in 15 minutes",
-        "3": "08:45pm - Outdoor Olympics: Team spirit, action, fun - who will get the tokens?",
-        "4": "09:30pm - DJ paulstr is spinning: Party, dance, laugh - until the sun goes down ",
-        "5": "01:00am - Award ceremony & closing speech: Who won the team battle? Who shone the brightest?",
-        "6": "Afterwards - OpenEnd - the evening ends as you like"
+        "3": "from 07:00pm - Further programme will be announced soon",
+        "4": "01:00am - Award ceremony & closing speech: Who won the team battle? Who shone the brightest?",
+        "5": "Afterwards - OpenEnd - the evening ends as you like"
       }
     },
     "subtitle": "Everything you need to know about the Bday",
     "theme": {
       "title": "Theme",
-      "value": "There is a voluntary motto. If you wish, you can come as something that begins with the same letter as your first name or surname."
+      "value": "The theme will be announced soon."
     },
     "title": "Details"
   },
