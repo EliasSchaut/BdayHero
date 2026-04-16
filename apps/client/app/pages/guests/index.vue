@@ -9,9 +9,14 @@
       }"
       :initial="{ opacity: 0, scale: 0 }"
       :animate="{ opacity: 1, scale: 3 }"
-      :transition="{ delay: 1, duration: 3 }"
+      :transition="{ delay: 0.5, duration: 3 }"
     >
-      <Countup id="guestlist_countup" ref="count_up" />
+      <Countup
+        id="guestlist_countup"
+        ref="count_up"
+        :delay="1000"
+        :duration="3000"
+      />
     </Motion>
     <Spinner v-if="guests_count == 0" class="mx-auto my-16" />
     <Motion
