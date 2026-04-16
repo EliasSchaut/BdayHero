@@ -34,7 +34,13 @@ export default defineComponent({
         auth.login(data.value.auth_sign_in_via_email.barrier_token);
         alert.show('You have successfully signed in.', 'success');
         useRouter().push('/guests');
+      } else {
+        alert.show('Sign in failed. Please try again.', 'danger');
+        useRouter().push('/guests');
       }
+    }).catch(() => {
+      alert.show('Sign in failed. Please try again.', 'danger');
+      useRouter().push('/guests');
     });
   },
 });

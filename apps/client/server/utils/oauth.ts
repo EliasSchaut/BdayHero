@@ -47,19 +47,27 @@ async function get_oauth_bearer(credentials: {
 }): Promise<string> {
   const config = useRuntimeConfig();
   const { frontend_url } = config.public;
-  const { access_token } = (await $fetch(credentials.endpoint, {
+  const response = (await $fetch(credentials.endpoint, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      ContentType: 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
       client_id: credentials.client_id,
       client_secret: credentials.client_secret,
       redirect_uri: `${frontend_url}/guests/${credentials.name}`,
-      grant_type: 'authorization_code',
       code: credentials.code,
+      grant_type: 'authorization_code',
     }),
-  })) as unknown as any;
-  return access_token;
+  })) as any;
+
+  if (response.error || !response.access_token) {
+    throw createError({
+      statusCode: 401,
+      message: response.error_description ?? response.error ?? 'OAuth token exchange failed',
+    });
+  }
+
+  return response.access_token;
 }

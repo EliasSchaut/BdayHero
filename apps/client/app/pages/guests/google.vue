@@ -12,6 +12,8 @@ const code = route.query.code;
 if (code) {
   call_oauth_endpoint('google', code as string).then(({ jwt_token, user }) => {
     router.push(`/guests/local/${jwt_token}`);
+  }).catch(() => {
+    router.push('/guests');
   });
 } else {
   router.push('/guests');
