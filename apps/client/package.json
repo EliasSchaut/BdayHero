@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@bdayhero/shared": "workspace:*",
     "@apollo/server": "^5.5.0",
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",

@@ -1,8 +1,8 @@
-import { Provider } from "@nestjs/common";
-import { DangerException } from "@/common/exceptions/danger.exception";
-import { AvatarService } from "@/common/services/avatar/avatar.service";
-import { AvatarTypeEnum } from "@/types/enum/avatar_type.enum";
-import { GravatarService } from "@/common/services/avatar/gravatar.service";
+import { Provider } from '@nestjs/common';
+import { DangerException } from '@/common/exceptions/danger.exception';
+import { AvatarService } from '@/common/services/avatar/avatar.service';
+import { AvatarTypeEnum } from '@/types/enum/avatar_type.enum';
+import { GravatarService } from '@/common/services/avatar/gravatar.service';
 
 export const AvatarServiceProvider: Provider = {
   provide: AvatarService,
@@ -11,7 +11,9 @@ export const AvatarServiceProvider: Provider = {
       case AvatarTypeEnum.GRAVATAR.toString():
         return GravatarService;
       default:
-        throw new DangerException("Unsupported AVATAR_TYPE");
+        throw new DangerException(
+          'Unsupported AVATAR_TYPE' + process.env.AVATAR_TYPE,
+        );
     }
   })(),
 };

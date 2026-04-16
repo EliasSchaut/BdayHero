@@ -9,7 +9,8 @@ import { EnvValidationSchema } from '@/common/validation/env.validation';
 import { I18nGqlResolver } from '@/common/middleware/i18n.resolver';
 import { GlobalModule } from '@/common/modules/global.module';
 import { AuthModule } from '@/graphql/auth/auth.module';
-import { loggingMiddleware, PrismaModule } from 'nestjs-prisma';
+import { PrismaModule } from 'nestjs-prisma';
+import { PrismaPg } from '@prisma/adapter-pg';
 import { JwtModule } from '@nestjs/jwt';
 import * as process from 'node:process';
 import { UserModule } from '@/graphql/user/user.module';
@@ -21,16 +22,13 @@ import { ShiftModule } from '@/graphql/shift/shift.module';
       isGlobal: true,
       validationSchema: EnvValidationSchema,
     }),
-    PrismaModule.forRoot({
+    PrismaModule.forRootAsync({
       isGlobal: true,
-      prismaServiceOptions: {
-        middlewares: [
-          loggingMiddleware({
-            logger: new Logger('PrismaMiddleware'),
-            logLevel: 'debug',
-          }),
-        ],
-      },
+      useFactory: () => ({
+        prismaOptions: {
+          adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }),
+        },
+      }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -59,7 +57,7 @@ import { ShiftModule } from '@/graphql/shift/shift.module';
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET as string,
-      signOptions: { expiresIn: process.env.JWT_EXPIRATION as string },
+      signOptions: { expiresIn: process.env.JWT_EXPIRATION as any },
     }),
     GlobalModule,
     AuthModule,

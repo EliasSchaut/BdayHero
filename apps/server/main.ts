@@ -1,5 +1,9 @@
-import { createApp } from "@/nest";
-import { Logger } from "@nestjs/common";
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '../../../.env'), quiet: true });
+
+import { createApp } from '@/nest';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await createApp();
