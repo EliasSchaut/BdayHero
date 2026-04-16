@@ -5,7 +5,7 @@
     </DropdownButton>
     <DropdownMenu class="z-50">
       <DropdownMenuItemLink
-        href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20260606T180000/20260607T040000&ctz=Europe/Berlin&text=KidsBday26&location=Klosterweg+28+(Haus+K2),+76131+Karlsruhe&details=Am+06.+Juni+2026+steigt+die+Geburtstagsparty+des+Jahres!+Mehr+Infos+siehe+https://bday.schaut.dev"
+        href="https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20260404T180000/20260405T040000&ctz=Europe/Berlin&text=KidsBday26&location=Klosterweg+28+(Haus+K2),+76131+Karlsruhe&details=Am+04.+April+2026+steigt+die+Geburtstagsparty+des+Jahres!+Mehr+Infos+siehe+https://bday.schaut.dev"
         target="_blank"
       >
         <NuxtImg
@@ -24,7 +24,7 @@
         <span>Apple</span>
       </DropdownMenuItemLink>
       <DropdownMenuItemLink
-        href="https://outlook.live.com/calendar/0/action/compose?rru=addevent&startdt=2026-06-06T16:00:00Z&enddt=2026-06-07T02:00:00Z&subject=KidsBday26&location=Klosterweg%2028%20(Haus%20K2)%2C%2076131%20Karlsruhe&body=Am%2006.%20Juni%202026%20steigt%20die%20Geburtstagsparty%20des%20Jahres!%20Mehr%20Infos%20siehe%20https%3A%2F%2Fbday.schaut.dev"
+        href="https://outlook.live.com/calendar/0/action/compose?rru=addevent&startdt=2026-04-04T16:00:00Z&enddt=2026-04-05T02:00:00Z&subject=KidsBday26&location=Klosterweg%2028%20(Haus%20K2)%2C%2076131%20Karlsruhe&body=Am%2004.%20April%202026%20steigt%20die%20Geburtstagsparty%20des%20Jahres!%20Mehr%20Infos%20siehe%20https%3A%2F%2Fbday.schaut.dev"
         target="_blank"
       >
         <NuxtImg

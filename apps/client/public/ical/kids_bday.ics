@@ -25,15 +25,15 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:b3ae837e-db99-47df-8b1d-110b115db706
 DTSTAMP:20250610T190552Z
-DTSTART;TZID=Europe/Berlin:20260606T180000
-DTEND;TZID=Europe/Berlin:20260607T040000
+DTSTART;TZID=Europe/Berlin:20260404T180000
+DTEND;TZID=Europe/Berlin:20260405T040000
 SUMMARY:KidsBday26
-DESCRIPTION:Am 06. Juni 2026 steigt die Geburtstagsparty des Jahr
+DESCRIPTION:Am 04. April 2026 steigt die Geburtstagsparty des Jahr
  es! Mehr Infos siehe https://bday.schaut.dev
 X-ALT-DESC;FMTTYPE=text/html:
  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
  <HTML><BODY>
- Am 06. Juni 2026 steigt die Geburtstagsparty des Jahres! Mehr In
+ Am 04. April 2026 steigt die Geburtstagsparty des Jahres! Mehr In
  fos siehe https://bday.schaut.dev
  </BODY></HTML>
 LOCATION:Klosterweg 28 (Haus K2)\, 76131 Karlsruhe
