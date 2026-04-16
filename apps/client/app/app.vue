@@ -1,8 +1,8 @@
 <template>
-  <Title>Kids Bday 2025</Title>
+  <Title>Kids Bday 2026</Title>
   <Meta
     name="description"
-    content="Save the Date - Kids Bday is on June 7, 2025"
+    content="Save the Date - Kids Bday is on June 3, 2026"
   />
   <Meta
     name="keywords"
@@ -33,7 +33,7 @@
   <Link rel="manifest" href="/site.webmanifest" />
 
   <NuxtLayout>
-    <Alert class="relative flex justify-center w-full" />
+    <Alert class="relative flex w-full justify-center" />
     <NuxtPage />
   </NuxtLayout>
 </template>

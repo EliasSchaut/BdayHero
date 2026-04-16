@@ -36,10 +36,10 @@
       <span>{{ $t('home.hero.3') }}</span>
     </p>
     <div class="z-50 mt-10 flex items-center justify-center gap-x-6">
-      <DropdownCalendar />
-      <ButtonArrow href="#community">{{
-        $t('home.hero.join_community')
-      }}</ButtonArrow>
+      <NuxtLink href="/guests"
+        ><ButtonPrime>{{ $t('home.hero.join_now') }}</ButtonPrime></NuxtLink
+      >
+      <ButtonArrow href="/details">{{ $t('home.hero.details') }}</ButtonArrow>
     </div>
     <LayoutBackgroundTwo />
   </section>
