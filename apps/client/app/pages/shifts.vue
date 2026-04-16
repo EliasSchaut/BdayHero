@@ -70,12 +70,12 @@
                       <div
                         class="text-second-500 dark:text-second-400 mt-1 text-xs/5"
                       >
-                        <time :datetime="$dayjs(slot.start).toString()"
-                          >{{ $dayjs(slot.start).format('HH:mm') }}
+                        <time :datetime="new Date(slot.start).toString()"
+                          >{{ format_date(new Date(slot.start)) }}
                         </time>
                         <span>&nbsp;&#8209;&nbsp;</span>
-                        <time :datetime="$dayjs(slot.end).toString()"
-                          >{{ $dayjs(slot.end).format('HH:mm') }}
+                        <time :datetime="new Date(slot.end).toString()"
+                          >{{ format_date(new Date(slot.end)) }}
                         </time>
                       </div>
                     </div>
@@ -97,7 +97,7 @@
                 </td>
                 <td class="py-5 text-right">
                   <div class="mb-1 flex items-center justify-end gap-x-4">
-                    <AvatarCloudStacked class="xs:hidden !-space-x-1">
+                    <AvatarCloudStacked class="xs:hidden -space-x-1!">
                       <AvatarStacked
                         v-for="guest in slot.assigned_guests"
                         :initials="guest.initials!"
@@ -231,7 +231,9 @@ export default defineComponent({
       useAsyncQuery<{ user: GuestModel }>(user_assigned_slots).then(
         ({ data }) => {
           assigned_slots.value =
-            data.value?.user?.assigned_slots?.map((slot) => slot.id) ?? [];
+            data.value?.user?.assigned_slots?.map(
+              (slot: { id: any }) => slot.id,
+            ) ?? [];
         },
       );
     }
@@ -279,6 +281,13 @@ export default defineComponent({
     },
     has_slot(slot_id: number): boolean {
       return this.assigned_slots.includes(slot_id);
+    },
+    format_date(date: Date) {
+      return date.toLocaleTimeString('de-DE', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
     },
   },
 });

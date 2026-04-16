@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'motion-v/nuxt',
     'pinia-plugin-persistedstate/nuxt',
-    'dayjs-nuxt',
   ],
 
   runtimeConfig: {
@@ -107,13 +106,6 @@ export default defineNuxtConfig({
     fallback: 'dark',
     classSuffix: '',
     storageKey: 'nuxt-color-mode',
-  },
-
-  dayjs: {
-    plugins: ['timezone'],
-    locales: ['de'],
-    defaultLocale: 'de',
-    defaultTimezone: 'Europe/Berlin',
   },
 
   piniaPluginPersistedstate: {
