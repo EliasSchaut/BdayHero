@@ -104,10 +104,10 @@ export default defineComponent({
         name: t('nav.guests'),
         href: '/guests',
       },
-      /*{
+      {
         name: t('nav.shifts'),
         href: '/shifts',
-      },*/
+      },
     ]);
 
     return {
