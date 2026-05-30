@@ -20,19 +20,22 @@ export default defineNuxtConfig({
     'pinia-plugin-persistedstate/nuxt',
   ],
 
+  // Defaults bleiben leer – die Werte kommen zur Laufzeit aus den NUXT_*-Env-Vars.
+  // Die Keys sind in der .env bereits NUXT_-praefixiert, Nuxt mappt sie automatisch:
+  //   public.frontend_url <- NUXT_PUBLIC_FRONTEND_URL, jwt_secret <- NUXT_JWT_SECRET, ...
   runtimeConfig: {
     public: {
-      frontend_url: process.env.FRONTEND_URL,
-      max_companions_per_guest: process.env.MAX_COMPANIONS_PER_GUEST,
-      github_client_id: process.env.GITHUB_CLIENT_ID,
-      google_client_id: process.env.GOOGLE_CLIENT_ID,
-      discord_client_id: process.env.DISCORD_CLIENT_ID,
-      jwt_expiration: process.env.JWT_EXPIRATION,
+      frontend_url: '',
+      max_companions_per_guest: '',
+      github_client_id: '',
+      google_client_id: '',
+      discord_client_id: '',
+      jwt_expiration: '',
     },
-    jwt_secret: process.env.JWT_SECRET,
-    github_client_secret: process.env.GITHUB_CLIENT_SECRET,
-    google_client_secret: process.env.GOOGLE_CLIENT_SECRET,
-    discord_client_secret: process.env.DISCORD_CLIENT_SECRET,
+    jwt_secret: '',
+    github_client_secret: '',
+    google_client_secret: '',
+    discord_client_secret: '',
   },
 
   site: {

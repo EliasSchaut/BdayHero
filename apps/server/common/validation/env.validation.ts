@@ -11,7 +11,7 @@ export const EnvValidationSchema = Joi.object({
     .default('3001')
     .description('The port the backend server should listen on'),
 
-  FRONTEND_URL: Joi.string()
+  NUXT_PUBLIC_FRONTEND_URL: Joi.string()
     .uri()
     .default('http://localhost:3000')
     .description('The URL of the frontend server'),
@@ -31,7 +31,7 @@ export const EnvValidationSchema = Joi.object({
     .default('GRAVATAR')
     .description('The type of avatar service to use'),
 
-  MAX_COMPANIONS_PER_GUEST: Joi.number()
+  NUXT_PUBLIC_MAX_COMPANIONS_PER_GUEST: Joi.number()
     .min(1)
     .default(1)
     .description('The maximum number of companions per guest'),
@@ -42,14 +42,14 @@ export const EnvValidationSchema = Joi.object({
       'The URL of the database. Supports SQLite, MySQL, MariaDB, Postgres, and MSSQL',
     ),
 
-  JWT_SECRET: Joi.string()
+  NUXT_JWT_SECRET: Joi.string()
     .required()
     .disallow('secret')
     .description(
       'The secret used to sign the JWT tokens. The JWT tokens are used to authenticate the users. Should be a very long and random string.',
     ),
 
-  JWT_EXPIRATION: Joi.string()
+  NUXT_PUBLIC_JWT_EXPIRATION: Joi.string()
     .default('180d')
     .description('The expiration time of the JWT tokens'),
 
@@ -72,12 +72,12 @@ export const EnvValidationSchema = Joi.object({
     .optional()
     .description('The password of the SMTP server used to send emails'),
 
-  GITHUB_CLIENT_ID: Joi.string().required(),
-  GITHUB_CLIENT_SECRET: Joi.string().required(),
-  GOOGLE_CLIENT_ID: Joi.string().required(),
-  GOOGLE_CLIENT_SECRET: Joi.string().required(),
-  DISCORD_CLIENT_ID: Joi.string().required(),
-  DISCORD_CLIENT_SECRET: Joi.string().required(),
+  NUXT_PUBLIC_GITHUB_CLIENT_ID: Joi.string().required(),
+  NUXT_GITHUB_CLIENT_SECRET: Joi.string().required(),
+  NUXT_PUBLIC_GOOGLE_CLIENT_ID: Joi.string().required(),
+  NUXT_GOOGLE_CLIENT_SECRET: Joi.string().required(),
+  NUXT_PUBLIC_DISCORD_CLIENT_ID: Joi.string().required(),
+  NUXT_DISCORD_CLIENT_SECRET: Joi.string().required(),
 
   AUTH_CALLBACK_BASE: Joi.string()
     .required()

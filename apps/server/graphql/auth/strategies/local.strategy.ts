@@ -26,8 +26,8 @@ export class LocalAuthStrategy implements AuthStrategyInterface {
       { username: email } as UserPayloadType,
       {
         expiresIn: process.env.AUTH_TOKEN_EXPIRATION as any,
-        secret: process.env.JWT_SECRET,
-        privateKey: process.env.JWT_SECRET,
+        secret: process.env.NUXT_JWT_SECRET,
+        privateKey: process.env.NUXT_JWT_SECRET,
       },
     );
     const magic_link = `${this.callback_base}/${payload}`;

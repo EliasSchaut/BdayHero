@@ -29,8 +29,14 @@ services:
     build:
       context: .
       dockerfile: apps/client/Dockerfile
+      args:
+        # Apollo-GraphQL-Endpoint wird zur Build-Zeit eingebacken (s. Client-Dockerfile)
+        BACKEND_URL: "${BACKEND_URL:-http://localhost:3001}"
     image: kidilias/bdayhero-client:latest
     restart: unless-stopped
+    volumes:
+      # Selbe .env wie der Server; node laedt sie via --env-file (Keys sind NUXT_*-benannt)
+      - ./.env:/app/.env:ro
     environment:
       NITRO_HOST: 0.0.0.0
       NITRO_PORT: "${PORT_FRONTEND:-3000}"

@@ -66,7 +66,7 @@ export class GuestInputModel {
   is_vegan?: boolean;
 
   @IsOptional()
-  @ArrayMaxSize(Number(process.env.MAX_COMPANIONS_PER_GUEST))
+  @ArrayMaxSize(Number(process.env.NUXT_PUBLIC_MAX_COMPANIONS_PER_GUEST))
   @Field(() => [CompanionInputModel], { nullable: true, defaultValue: [] })
   companions?: CompanionInputModel[];
 }

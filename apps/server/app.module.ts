@@ -56,8 +56,8 @@ import { ShiftModule } from '@/graphql/shift/shift.module';
     }),
     JwtModule.register({
       global: true,
-      secret: process.env.JWT_SECRET as string,
-      signOptions: { expiresIn: process.env.JWT_EXPIRATION as any },
+      secret: process.env.NUXT_JWT_SECRET as string,
+      signOptions: { expiresIn: process.env.NUXT_PUBLIC_JWT_EXPIRATION as any },
     }),
     GlobalModule,
     AuthModule,
