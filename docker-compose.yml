@@ -4,11 +4,13 @@
 # Images bauen: docker compose build
 # Pushen:       docker login && docker compose push   (Images: kidilias/bdayhero-{server,client})
 #
-# Konfiguration kommt aus der .env im Repo-Root:
-#  - server: .env wird read-only ins Image gemountet; die App liest sie via dotenv.
-#            (Bewusst KEIN env_file: docker compose interpoliert $-Zeichen in env_file-
-#            Werten und wuerde DATABASE_URL/JWT_SECRET zerstoeren – dotenv tut das nicht.)
-#  - client: alle Werte werden beim Build aus der .env gebacken; zur Laufzeit reicht der Port.
+# Konfiguration kommt aus der .env im Repo-Root (read-only in beide Container gemountet):
+#  - server: liest die .env via dotenv.
+#  - client: node laedt die .env via --env-file; die Keys sind NUXT_*-benannt, sodass Nuxt
+#            sie in die runtimeConfig uebernimmt. Ausnahme: BACKEND_URL (Apollo-Endpoint)
+#            wird beim Build gebacken.
+#  Bewusst KEIN env_file: docker compose interpoliert $-Zeichen und wuerde NUXT_JWT_SECRET /
+#  DATABASE_URL zerstoeren. dotenv bzw. node --env-file tun das nicht.
 #
 # Die Datenbank (DATABASE_URL) ist extern und nicht Teil dieses Compose-Setups.
 # Bei Bedarf laesst sich ein lokaler Postgres-Service ergaenzen (siehe Kommentar unten).
