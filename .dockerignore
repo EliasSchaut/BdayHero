@@ -1,0 +1,33 @@
+# Abhängigkeiten werden im Image frisch installiert
+**/node_modules
+
+# Build-Artefakte (werden im Image neu erzeugt)
+**/.nest
+**/.output
+**/.nuxt
+**/.nitro
+**/dist
+*.tsbuildinfo
+
+# VCS / IDE / Tooling
+.git
+.gitignore
+.idea
+.vscode
+.claude
+.devcontainer
+.junie
+
+# Logs & Coverage
+**/*.log
+coverage
+.nyc_output
+
+# Sonstiges
+bun.lock
+README.md
+LICENSE
+
+# Hinweis: .env wird bewusst NICHT ignoriert.
+# Der Client-Build liest sie via `nuxt build --dotenv` ein (dotenv-sicher fuer $-Zeichen).
+# Im Server-Runtime-Image wird sie wieder entfernt; die Werte kommen dort ueber env_file.
