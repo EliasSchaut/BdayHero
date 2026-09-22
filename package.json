@@ -22,7 +22,7 @@
 		"format": "prettier --write .",
 		"test": "pnpm run test:unit -- --run && pnpm run test:e2e",
 		"test:unit": "vitest",
-		"test:e2e": "playwright test",
+		"test:e2e": "pnpm build && playwright test",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "node scripts/migrate.mjs",
 		"db:studio": "drizzle-kit studio",

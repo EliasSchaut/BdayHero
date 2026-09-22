@@ -27,7 +27,7 @@
 	const isActive = (href: string) => page.url.pathname.split('/')[1] === href.split('/')[1];
 </script>
 
-<header class="z-10">
+<header class="relative z-20">
 	<Collapsible.Root bind:open>
 		<nav class="flex w-full items-center justify-between gap-x-12 p-6" aria-label="Main">
 			<div class="flex gap-x-12">

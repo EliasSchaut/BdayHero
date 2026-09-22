@@ -33,3 +33,6 @@ vite.config.ts.timestamp-*
 /.claude
 *.log
 /.pglite
+/.mails
+/.pglite-e2e
+/.pglite-e2e-hero

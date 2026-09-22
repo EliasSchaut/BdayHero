@@ -5,7 +5,7 @@
 
 {#if position === 'top'}
 	<div
-		class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+		class="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
 		aria-hidden="true"
 	>
 		<div
@@ -14,7 +14,7 @@
 	</div>
 {:else}
 	<div
-		class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+		class="pointer-events-none absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
 		aria-hidden="true"
 	>
 		<div
