@@ -24,11 +24,14 @@ OAuth redirect URIs to register at the providers: `${BETTER_AUTH_URL}/api/auth/c
 
 ## Docker
 
+Released images are published to Docker Hub as `kidilias/bdayhero` (tag workflow, needs the
+repository secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`). Build locally with:
+
 ```sh
-docker build -t bdayhero .
+docker build -t kidilias/bdayhero .
 docker run --rm -p 3000:3000 \
   -e ORIGIN=http://localhost:3000 -e BETTER_AUTH_SECRET=... -e DATABASE_URL=postgres://... \
-  bdayhero
+  kidilias/bdayhero
 ```
 
 The image is non-root, exposes `:3000`, has a health check on `/api/health` and applies

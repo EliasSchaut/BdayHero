@@ -82,11 +82,13 @@
 			<div class="mx-4 w-full">
 				<h3 class="text-center font-semibold">{m.guests_signin_title()}</h3>
 				<div class="my-4 flex w-full flex-col gap-y-1">
-					<form method="POST" action="?/social" class="flex flex-col gap-y-1" use:enhance>
-						{#each ['google', 'github', 'discord'] as const as provider (provider)}
-							<SignInButton {provider} disabled={!data.providers.includes(provider)} />
-						{/each}
-					</form>
+					{#if data.providers.length > 0}
+						<form method="POST" action="?/social" class="flex flex-col gap-y-1" use:enhance>
+							{#each data.providers as provider (provider)}
+								<SignInButton {provider} />
+							{/each}
+						</form>
+					{/if}
 					<form
 						method="POST"
 						action="?/magicLink"

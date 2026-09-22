@@ -7,7 +7,7 @@ test('hero-only mode hides registration but keeps the legal pages', async ({ pag
 	await expect(page.getByRole('button', { name: 'Registration opens soon' })).toBeDisabled();
 	await expect(page.getByRole('link', { name: 'JOIN NOW' })).toHaveCount(0);
 	const nav = page.getByRole('navigation', { name: 'Main' });
-	await expect(nav.getByRole('link', { name: 'Home' })).toBeVisible();
+	await expect(nav.getByRole('link', { name: 'Home' })).toHaveCount(0);
 	await expect(nav.getByRole('link', { name: 'Guests' })).toHaveCount(0);
 
 	await page.goto('/guests');

@@ -6,26 +6,20 @@
 
 	let { class: className = '' }: { class?: string } = $props();
 	const locale = getLocale();
+	const next = locale === 'en' ? 'de' : 'en';
+	const label = locale === 'en' ? m.common_lang_de() : m.common_lang_en();
 </script>
 
-<div class={className}>
+<button
+	type="button"
+	onclick={() => setLocale(next)}
+	title={label}
+	aria-label={label}
+	class="flex items-center {className}"
+>
 	{#if locale === 'en'}
-		<button
-			type="button"
-			onclick={() => setLocale('de')}
-			title={m.common_lang_de()}
-			aria-label={m.common_lang_de()}
-		>
-			<FlagDe class="size-6" />
-		</button>
+		<FlagDe class="size-6" />
 	{:else}
-		<button
-			type="button"
-			onclick={() => setLocale('en')}
-			title={m.common_lang_en()}
-			aria-label={m.common_lang_en()}
-		>
-			<FlagUk class="size-6" />
-		</button>
+		<FlagUk class="size-6" />
 	{/if}
-</div>
+</button>

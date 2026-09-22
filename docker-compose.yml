@@ -13,7 +13,7 @@
 
 services:
   app:
-    image: ghcr.io/eliasschaut/bdayhero:latest
+    image: kidilias/bdayhero:latest
     build: .
     restart: unless-stopped
     ports:

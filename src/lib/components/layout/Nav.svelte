@@ -16,7 +16,7 @@
 
 	const links = $derived(
 		heroOnly
-			? [{ name: m.nav_home(), href: '/' }]
+			? []
 			: [
 					{ name: m.nav_home(), href: '/' },
 					{ name: m.nav_details(), href: '/details' },
@@ -46,9 +46,9 @@
 					{/each}
 				</div>
 			</div>
-			<div class="flex gap-x-6">
-				<LangToggle class="hidden md:block" />
-				<ThemeToggle bind:theme class="hidden md:block" />
+			<div class="flex items-center gap-x-6">
+				<LangToggle class="hidden md:flex" />
+				<ThemeToggle bind:theme class="hidden md:flex" />
 				<div class="-mr-2 flex items-center md:hidden">
 					<Collapsible.Trigger
 						class="mr-2.5 -ml-2.5 inline-flex items-center justify-center rounded-md p-2 text-second-600 hover:bg-second-100 hover:text-second-900 focus:ring-2 focus:ring-prime-500 focus:outline-none focus:ring-inset dark:hover:bg-second-700 dark:hover:text-white dark:focus:ring-white"

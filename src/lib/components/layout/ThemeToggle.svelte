@@ -27,7 +27,7 @@
 	onclick={cycle}
 	title={labels[theme]}
 	aria-label={labels[theme]}
-	class="text-second-600 hover:text-second-500 dark:text-second-400 {className}"
+	class="flex items-center text-second-600 hover:text-second-500 dark:text-second-400 {className}"
 >
 	{#if theme === 'light'}
 		<Sun class="size-6" aria-hidden="true" />
