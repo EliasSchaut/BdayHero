@@ -36,7 +36,7 @@ export interface Mail {
 export async function sendMail(mail: Mail): Promise<void> {
 	const title = env.PROJ_TITLE ?? 'BdayHero';
 	const info = await getTransporter().sendMail({
-		from: `"${title}" <${env.EMAIL_HOST_USER ?? 'noreply@localhost'}>`,
+		from: `"${title}" <${env.EMAIL_FROM || env.EMAIL_HOST_USER || 'noreply@localhost'}>`,
 		to: mail.to,
 		subject: `[${title}] ${mail.subject}`,
 		text: mail.text

@@ -62,9 +62,11 @@ The app retries the initial migration for about a minute while Postgres starts, 
 
 ```sh
 pnpm install
-cp .env.example .env         # DATABASE_URL="pglite://./.pglite" needs no Postgres
+cp .env.example .env
+docker compose -f docker-compose.dev.yml up -d   # Postgres + MailDev
 pnpm db:migrate && pnpm db:seed
 pnpm dev
 ```
 
-`EMAIL_TRANSPORT=json` prints magic-link mails to the terminal.
+Magic-link mails land in MailDev at <http://localhost:1080>. Without Docker use
+`DATABASE_URL="pglite://./.pglite"` and `EMAIL_TRANSPORT=json` (mails are printed to the terminal).

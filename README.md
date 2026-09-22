@@ -11,13 +11,15 @@ Better Auth (magic link, GitHub/Google/Discord) · Paraglide i18n (en/de) · Vit
 
 ```sh
 pnpm install
-cp .env.example .env            # DATABASE_URL="pglite://./.pglite" works without Postgres
-pnpm db:migrate                 # apply drizzle/ migrations
-pnpm db:seed                    # example shifts
+cp .env.example .env                              # dev defaults, see below
+docker compose -f docker-compose.dev.yml up -d   # Postgres 17 + MailDev
+pnpm db:migrate                                   # apply drizzle/ migrations
+pnpm db:seed                                      # example shifts
 pnpm dev
 ```
 
-Magic-link mails are printed to the terminal with `EMAIL_TRANSPORT=json`.
+Magic-link mails are caught by MailDev: <http://localhost:1080>. Without Docker set
+`DATABASE_URL="pglite://./.pglite"` and `EMAIL_TRANSPORT=json` in `.env` (mails go to the terminal).
 
 ## Scripts
 

@@ -1,0 +1,42 @@
+# Local development services (the app itself runs with `pnpm dev` on the host).
+#
+#   docker compose -f docker-compose.dev.yml up -d
+#   pnpm db:migrate && pnpm db:seed && pnpm dev
+#
+# - Postgres 17 on localhost:5432 (user/password/db: bdayhero)
+# - MailDev catches all magic-link mails: SMTP on localhost:1025, inbox UI on http://localhost:1080
+#
+# The defaults in .env.example point at these services.
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bdayhero
+      POSTGRES_USER: bdayhero
+      POSTGRES_PASSWORD: bdayhero
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U bdayhero -d bdayhero']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  maildev:
+    image: maildev/maildev:latest
+    restart: unless-stopped
+    ports:
+      - '1080:1080' # web inbox
+      - '1025:1025' # smtp
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://127.0.0.1:1080/api/healthz']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata-dev:
