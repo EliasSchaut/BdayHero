@@ -7,10 +7,11 @@ export const NAME_PATTERN = new RegExp(NAME_PATTERN_HTML);
 
 export const nameSchema = z.string().trim().min(2).max(20).regex(NAME_PATTERN);
 
-const optionalName = z.preprocess(
-	(v) => (typeof v === 'string' && v.trim() === '' ? undefined : v),
-	nameSchema.optional()
-);
+/** Treat missing fields and blank strings as "not provided". */
+const blankToUndefined = (v: unknown) =>
+	v == null || (typeof v === 'string' && v.trim() === '') ? undefined : v;
+
+const optionalName = z.preprocess(blankToUndefined, nameSchema.optional());
 
 const bool = z.preprocess((v) => v === true || v === 'true' || v === 'on', z.boolean());
 
@@ -30,10 +31,7 @@ export function guestUpdateSchema(maxCompanions: number) {
 	return z.object({
 		firstName: optionalName,
 		lastName: optionalName,
-		bio: z.preprocess(
-			(v) => (typeof v === 'string' && v.trim() === '' ? undefined : v),
-			z.string().trim().max(20).optional()
-		),
+		bio: z.preprocess(blankToUndefined, z.string().trim().max(20).optional()),
 		attendanceStatus: attendance,
 		profilePublic: bool.default(false),
 		needBed: bool.default(false),
