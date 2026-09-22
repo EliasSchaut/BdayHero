@@ -5,3 +5,7 @@ pnpm-lock.yaml
 /.svelte-kit/
 /build/
 /messages/
+
+# inlang generated files (only settings.json is source)
+/project.inlang/*
+!/project.inlang/settings.json
