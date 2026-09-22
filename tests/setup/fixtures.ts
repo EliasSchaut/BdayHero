@@ -27,7 +27,7 @@ export async function createShift(capacity = 1, slots = 1) {
 		{ shiftId: s.id, lang: 'en', name: 'Bar', description: 'Mix drinks' },
 		{ shiftId: s.id, lang: 'de', name: 'Theke', description: 'Getränke mixen' }
 	]);
-	const start = new Date('2026-06-03T16:00:00Z');
+	const start = new Date('2027-06-05T16:00:00Z');
 	const rows = await testDb
 		.insert(shiftSlot)
 		.values(

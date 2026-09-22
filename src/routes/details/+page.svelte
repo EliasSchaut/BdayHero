@@ -8,7 +8,7 @@
 	import Faq from '$lib/components/ui/Faq.svelte';
 
 	const KVV =
-		'https://www.kvv.de/fahrplan/fahrplanauskunft.html?itdLPxx_formAction=%2Ffahrplan%2Ffahrplanauskunft.html&language=de&std3_suggestMacro=std3_suggest&std3_commonMacro=trip&itdLPxx_contractor=&std3_contractorMacro=&useRealtime=1&name_destination=Karlsruhe%2C+Klosterweg+28&type_origin=any&nameInfo_destination=streetID%3A1500000943%3A28%3A8212000%3A15%3AKlosterweg%3AKarlsruhe%3AKlosterweg%3A%3AKlosterweg%3A76131%3AANY%3ADIVA_SINGLEHOUSE%3A937541%3A5721815%3AMRCV%3AB_W%3A0&type_destination=any&itdDateDayMonthYear=03.06.2026&itdTime=18%3A00&itdTripDateTimeDepArr=arr&includedMeans=checkbox&itdLPxx_ptActive=on&std3_inclMOT_0Macro=true&std3_inclMOT_1Macro=true&std3_inclMOT_4Macro=true&std3_inclMOT_5Macro=true&routeType=LEASTTIME&trITMOTvalue100=15&maxChanges=9&imparedOptionsActive=1&name_via=&nameInfo_via=invalid&type_via=any&dwellTimeMinutes=&sessionID=0&requestID=0&itdLPxx_directRequest=1&coordOutputFormat=WGS84[dd.ddddd]';
+		'https://www.kvv.de/fahrplan/fahrplanauskunft.html?itdLPxx_formAction=%2Ffahrplan%2Ffahrplanauskunft.html&language=de&std3_suggestMacro=std3_suggest&std3_commonMacro=trip&itdLPxx_contractor=&std3_contractorMacro=&useRealtime=1&name_destination=Karlsruhe%2C+Klosterweg+28&type_origin=any&nameInfo_destination=streetID%3A1500000943%3A28%3A8212000%3A15%3AKlosterweg%3AKarlsruhe%3AKlosterweg%3A%3AKlosterweg%3A76131%3AANY%3ADIVA_SINGLEHOUSE%3A937541%3A5721815%3AMRCV%3AB_W%3A0&type_destination=any&itdDateDayMonthYear=05.06.2027&itdTime=18%3A00&itdTripDateTimeDepArr=arr&includedMeans=checkbox&itdLPxx_ptActive=on&std3_inclMOT_0Macro=true&std3_inclMOT_1Macro=true&std3_inclMOT_4Macro=true&std3_inclMOT_5Macro=true&routeType=LEASTTIME&trITMOTvalue100=15&maxChanges=9&imparedOptionsActive=1&name_via=&nameInfo_via=invalid&type_via=any&dwellTimeMinutes=&sessionID=0&requestID=0&itdLPxx_directRequest=1&coordOutputFormat=WGS84[dd.ddddd]';
 	const kvvFrom = (name: string, id: string) =>
 		`${KVV}&name_origin=${encodeURIComponent(name)}&nameInfo_origin=${encodeURIComponent(id)}`;
 
@@ -42,7 +42,7 @@
 </script>
 
 <svelte:head>
-	<title>{m.detail_title()} · Kids Bday 2026</title>
+	<title>{m.detail_title()} · Kids Bday 2027</title>
 </svelte:head>
 
 <DescriptionList title={m.detail_title()} subtitle={m.detail_subtitle()}>

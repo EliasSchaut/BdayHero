@@ -1,13 +1,14 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//TextToCalendar//EN
+PRODID:-//BdayHero//EN
 BEGIN:VEVENT
-UID:77bcea0d-727d-4a59-8cbe-004b385d419b@texttocalendar.ai
-DTSTAMP:20260416T131358Z
-DTSTART:20260603T160000Z
-DTEND:20260604T020000Z
-SUMMARY:KidsBday26
-DESCRIPTION:Am 03. Juni 2026 steigt die Geburtstagsparty des Jahres! Mehr Infos siehe https://bday.schaut.dev
+UID:kidsbday27@bday.schaut.dev
+DTSTAMP:20260922T140000Z
+DTSTART:20270605T160000Z
+DTEND:20270606T020000Z
+SUMMARY:KidsBday27
+DESCRIPTION:Am 05. Juni 2027 steigt die Geburtstagsparty des Jahres! Mehr Infos siehe https://bday.schaut.dev
 LOCATION:Klosterweg 28 (Haus K2), 76131 Karlsruhe
+URL:https://bday.schaut.dev
 END:VEVENT
 END:VCALENDAR

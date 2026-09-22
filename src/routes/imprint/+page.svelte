@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>{m.imprint_title()} · Kids Bday 2026</title>
+	<title>{m.imprint_title()} · Kids Bday 2027</title>
 </svelte:head>
 
 <div class="mx-4 my-10 flex flex-row justify-center">

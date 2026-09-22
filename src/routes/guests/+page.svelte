@@ -53,7 +53,7 @@
 </script>
 
 <svelte:head>
-	<title>{m.nav_guests()} · Kids Bday 2026</title>
+	<title>{m.nav_guests()} · Kids Bday 2027</title>
 </svelte:head>
 
 <div

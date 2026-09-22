@@ -200,6 +200,7 @@
 	]);
 
 	const blogDescriptions = [
+		[26, m.home_blog_bday26_desc],
 		[25, m.home_blog_bday25_desc],
 		[24, m.home_blog_bday24_desc],
 		[23, m.home_blog_bday23_desc],

@@ -32,6 +32,6 @@ describe('isTheme', () => {
 
 describe('formatTime', () => {
 	it('formats in Europe/Berlin time', () => {
-		expect(formatTime('2026-06-03T16:00:00Z')).toBe('18:00');
+		expect(formatTime('2027-06-05T16:00:00Z')).toBe('18:00');
 	});
 });

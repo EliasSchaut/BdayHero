@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>{page.status === 404 ? m.not_found_title() : m.error_title()} · Kids Bday 2026</title>
+	<title>{page.status === 404 ? m.not_found_title() : m.error_title()} · Kids Bday 2027</title>
 </svelte:head>
 
 <section class="px-6 py-24 text-center sm:py-32">

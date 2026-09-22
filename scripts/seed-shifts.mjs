@@ -14,7 +14,7 @@ if (!url) {
 	process.exit(1);
 }
 
-const EVENT_DAY = '2026-06-03';
+const EVENT_DAY = '2027-06-05';
 /** @param {string} time */
 const at = (time) => new Date(`${EVENT_DAY}T${time}:00+02:00`);
 

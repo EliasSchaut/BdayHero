@@ -6,9 +6,9 @@
 	import CalendarDays from '~icons/heroicons/calendar-days-16-solid';
 
 	const GOOGLE =
-		'https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20260603T180000/20260604T040000&ctz=Europe/Berlin&text=KidsBday26&location=Klosterweg+28+(Haus+K2),+76131+Karlsruhe&details=Am+03.+Juni+2026+steigt+die+Geburtstagsparty+des+Jahres!+Mehr+Infos+siehe+https://bday.schaut.dev';
+		'https://calendar.google.com/calendar/u/0/r/eventedit?&dates=20270605T180000/20270606T040000&ctz=Europe/Berlin&text=KidsBday27&location=Klosterweg+28+(Haus+K2),+76131+Karlsruhe&details=Am+05.+Juni+2027+steigt+die+Geburtstagsparty+des+Jahres!+Mehr+Infos+siehe+https://bday.schaut.dev';
 	const OUTLOOK =
-		'https://outlook.live.com/calendar/0/action/compose?rru=addevent&startdt=2026-06-03T16:00:00Z&enddt=2026-06-04T02:00:00Z&subject=KidsBday26&location=Klosterweg%2028%20(Haus%20K2)%2C%2076131%20Karlsruhe&body=Am%2003.%20Juni%202026%20steigt%20die%20Geburtstagsparty%20des%20Jahres!%20Mehr%20Infos%20siehe%20https%3A%2F%2Fbday.schaut.dev';
+		'https://outlook.live.com/calendar/0/action/compose?rru=addevent&startdt=2027-06-05T16:00:00Z&enddt=2027-06-06T02:00:00Z&subject=KidsBday27&location=Klosterweg%2028%20(Haus%20K2)%2C%2076131%20Karlsruhe&body=Am%2005.%20Juni%202027%20steigt%20die%20Geburtstagsparty%20des%20Jahres!%20Mehr%20Infos%20siehe%20https%3A%2F%2Fbday.schaut.dev';
 	const ICAL = '/ical/kids_bday.ics';
 </script>
 

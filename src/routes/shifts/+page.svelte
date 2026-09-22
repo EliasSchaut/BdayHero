@@ -28,7 +28,7 @@
 </script>
 
 <svelte:head>
-	<title>{m.nav_shifts()} · Kids Bday 2026</title>
+	<title>{m.nav_shifts()} · Kids Bday 2027</title>
 </svelte:head>
 
 <div class="px-4 py-6 sm:px-6 lg:px-8">

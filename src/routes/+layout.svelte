@@ -15,11 +15,11 @@
 </script>
 
 <svelte:head>
-	<title>Kids Bday 2026</title>
-	<meta name="description" content="Save the Date - Kids Bday is on June 3, 2026" />
+	<title>Kids Bday 2027</title>
+	<meta name="description" content="Save the Date - Kids Bday is on June 5, 2027" />
 	<meta name="keywords" content="bday, meta, kid, elias, event, karlsruhe, hadiko" />
-	<meta property="og:title" content="Kids Bday 2026" />
-	<meta property="og:description" content="Save the Date - Kids Bday is on June 3, 2026" />
+	<meta property="og:title" content="Kids Bday 2027" />
+	<meta property="og:description" content="Save the Date - Kids Bday is on June 5, 2027" />
 	<meta property="og:image" content="/favicon/thumbnail.png" />
 </svelte:head>
 
