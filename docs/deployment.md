@@ -25,7 +25,7 @@ OAuth redirect URIs to register at the providers: `${BETTER_AUTH_URL}/api/auth/c
 ## Docker
 
 Released images are published to Docker Hub as `kidilias/bdayhero` (tag workflow, needs the
-repository secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`). Build locally with:
+repository variable `DOCKERHUB_USERNAME` and the secret `DOCKERHUB_TOKEN`). Build locally with:
 
 ```sh
 docker build -t kidilias/bdayhero .
