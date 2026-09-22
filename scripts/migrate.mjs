@@ -17,6 +17,9 @@ if (process.env.MIGRATE_ON_START === 'false') {
 }
 
 const migrationsFolder = resolve(import.meta.dirname, '../drizzle');
+// The database may still be starting (docker compose); retry for a while.
+const retries = Number(process.env.MIGRATE_RETRIES ?? 30);
+const retryDelayMs = Number(process.env.MIGRATE_RETRY_DELAY_MS ?? 2000);
 
 if (url.startsWith('pglite://')) {
 	const { drizzle } = await import('drizzle-orm/pglite');
@@ -31,7 +34,22 @@ if (url.startsWith('pglite://')) {
 	const { migrate } = await import('drizzle-orm/postgres-js/migrator');
 	const postgres = (await import('postgres')).default;
 	const client = postgres(url, { max: 1, onnotice: () => {} });
-	await migrate(drizzle(client), { migrationsFolder });
+	for (let attempt = 1; ; attempt++) {
+		try {
+			await migrate(drizzle(client), { migrationsFolder });
+			break;
+		} catch (e) {
+			const cause = /** @type {{ cause?: { code?: string }; code?: string }} */ (e);
+			const code = cause?.cause?.code ?? cause?.code;
+			const transient =
+				code === 'ECONNREFUSED' || code === 'ENOTFOUND' || code === 'EAI_AGAIN' || code === '57P03';
+			if (!transient || attempt >= retries) throw e;
+			console.log(
+				`[migrate] database not ready (${code}), retry ${attempt}/${retries} in ${retryDelayMs} ms`
+			);
+			await new Promise((r) => setTimeout(r, retryDelayMs));
+		}
+	}
 	await client.end();
 }
 console.log('[migrate] done');

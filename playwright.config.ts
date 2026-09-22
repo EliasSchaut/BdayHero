@@ -17,7 +17,7 @@ const common = {
 };
 
 const server = (port: number, dir: string, extra: Record<string, string>) => ({
-	command: `node scripts/migrate.mjs && node scripts/seed-shifts.ts && node build`,
+	command: `node scripts/migrate.mjs && node scripts/seed-shifts.mjs && node build`,
 	port,
 	reuseExistingServer: !process.env.CI,
 	env: {
