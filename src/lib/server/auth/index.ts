@@ -9,8 +9,7 @@ import * as schema from '$lib/server/db/schema';
 import { lookupGravatar } from '$lib/server/avatar/gravatar';
 import { sendMail } from '$lib/server/mail';
 import { generateInitials } from '$lib/utils/initials';
-import { m } from '$lib/paraglide/messages';
-import { getLocale } from '$lib/paraglide/runtime';
+import { t } from '$lib/server/i18n';
 
 const DAY = 60 * 60 * 24;
 
@@ -88,11 +87,10 @@ export const auth = betterAuth({
 			expiresIn: 15 * 60,
 			storeToken: 'hashed',
 			sendMagicLink: async ({ email, url }) => {
-				const locale = getLocale();
 				await sendMail({
 					to: email,
-					subject: m.api_mail_magic_link_subject({}, { locale }),
-					text: `${m.api_mail_magic_link_text({}, { locale })}\n${url}`
+					subject: t('api_mail_magic_link_subject'),
+					text: `${t('api_mail_magic_link_text')}\n${url}`
 				});
 			}
 		}),
