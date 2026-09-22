@@ -44,7 +44,7 @@
 </script>
 
 {#if alert.visible}
-	<div class="relative flex w-full justify-center px-4 pt-4 sm:px-0" transition:fly={{ y: -16 }}>
+	<div class="relative flex w-full justify-center px-4 pt-2 sm:px-0" transition:fly={{ y: -16 }}>
 		<div role="status" class="w-full p-4 ring-2 sm:w-2/3 sm:rounded-md {style.box}">
 			<div class="flex">
 				<div class="shrink-0"><Icon class="size-5 {style.icon}" aria-hidden="true" /></div>

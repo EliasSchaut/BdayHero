@@ -57,24 +57,24 @@
 </svelte:head>
 
 <div
-	class="m-auto flex w-min flex-col justify-center space-y-12 text-center align-middle font-semibold"
+	class="m-auto flex w-min flex-col justify-center space-y-8 pt-6 text-center align-middle font-semibold"
 >
 	{#if data.count > 0}
 		<div
-			class="m-auto my-16 w-min text-4xl font-bold"
+			class="m-auto mt-6 mb-10 w-min text-4xl font-bold"
 			in:scale={{ start: 0.3, duration: 1500, delay: 300 }}
 		>
 			<CountUp value={data.count} class="inline-block scale-[3] tabular-nums" />
 		</div>
 	{:else}
-		<Spinner class="mx-auto my-16 size-6" />
+		<Spinner class="mx-auto mt-6 mb-10 size-6" />
 	{/if}
 	<span class="text-3xl font-semibold text-nowrap" in:fly={{ y: 20, duration: 1200 }}>
 		{m.guests_countup_tail()}!
 	</span>
 </div>
 
-<div class="mt-20 flex justify-center">
+<div class="mt-14 flex justify-center">
 	<div
 		class="flex min-h-96 w-full items-center justify-center bg-second-50 p-8 inset-shadow-sm xs:mx-12 xs:w-fit xs:min-w-96 xs:rounded-4xl dark:bg-second-900"
 	>
