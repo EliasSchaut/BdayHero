@@ -1,9 +1,9 @@
 CREATE TYPE "public"."lang" AS ENUM('en', 'de');--> statement-breakpoint
 CREATE TABLE "account" (
-	"id" text PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"account_id" text NOT NULL,
 	"provider_id" text NOT NULL,
-	"user_id" text NOT NULL,
+	"user_id" uuid NOT NULL,
 	"access_token" text,
 	"refresh_token" text,
 	"id_token" text,
@@ -19,24 +19,24 @@ CREATE TABLE "account" (
 CREATE TABLE "companion" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(20) NOT NULL,
-	"guest_id" text NOT NULL,
+	"guest_id" uuid NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "guest_shift" (
-	"guest_id" text NOT NULL,
+	"guest_id" uuid NOT NULL,
 	"shift_slot_id" integer NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "guest_shift_guest_id_shift_slot_id_pk" PRIMARY KEY("guest_id","shift_slot_id")
 );
 --> statement-breakpoint
 CREATE TABLE "session" (
-	"id" text PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"expires_at" timestamp with time zone NOT NULL,
 	"token" text NOT NULL,
 	"ip_address" text,
 	"user_agent" text,
-	"user_id" text NOT NULL,
+	"user_id" uuid NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "session_token_unique" UNIQUE("token")
@@ -66,7 +66,7 @@ CREATE TABLE "shift_slot" (
 );
 --> statement-breakpoint
 CREATE TABLE "user" (
-	"id" text PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" text DEFAULT '' NOT NULL,
 	"email" text NOT NULL,
 	"email_verified" boolean DEFAULT false NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE "user" (
 );
 --> statement-breakpoint
 CREATE TABLE "verification" (
-	"id" text PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"identifier" text NOT NULL,
 	"value" text NOT NULL,
 	"expires_at" timestamp with time zone NOT NULL,

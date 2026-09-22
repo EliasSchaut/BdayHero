@@ -33,7 +33,7 @@ const timestamps = {
 export const user = pgTable(
 	'user',
 	{
-		id: text('id').primaryKey(),
+		id: uuid('id').primaryKey().defaultRandom(),
 		name: text('name').notNull().default(''),
 		email: text('email').notNull().unique(),
 		emailVerified: boolean('email_verified').notNull().default(false),
@@ -59,12 +59,12 @@ export const user = pgTable(
 export const session = pgTable(
 	'session',
 	{
-		id: text('id').primaryKey(),
+		id: uuid('id').primaryKey().defaultRandom(),
 		expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
 		token: text('token').notNull().unique(),
 		ipAddress: text('ip_address'),
 		userAgent: text('user_agent'),
-		userId: text('user_id')
+		userId: uuid('user_id')
 			.notNull()
 			.references(() => user.id, { onDelete: 'cascade' }),
 		...timestamps
@@ -75,10 +75,10 @@ export const session = pgTable(
 export const account = pgTable(
 	'account',
 	{
-		id: text('id').primaryKey(),
+		id: uuid('id').primaryKey().defaultRandom(),
 		accountId: text('account_id').notNull(),
 		providerId: text('provider_id').notNull(),
-		userId: text('user_id')
+		userId: uuid('user_id')
 			.notNull()
 			.references(() => user.id, { onDelete: 'cascade' }),
 		accessToken: text('access_token'),
@@ -99,7 +99,7 @@ export const account = pgTable(
 export const verification = pgTable(
 	'verification',
 	{
-		id: text('id').primaryKey(),
+		id: uuid('id').primaryKey().defaultRandom(),
 		identifier: text('identifier').notNull(),
 		value: text('value').notNull(),
 		expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
@@ -117,7 +117,7 @@ export const companion = pgTable(
 	{
 		id: uuid('id').primaryKey().defaultRandom(),
 		name: varchar('name', { length: 20 }).notNull(),
-		guestId: text('guest_id')
+		guestId: uuid('guest_id')
 			.notNull()
 			.references(() => user.id, { onDelete: 'cascade' }),
 		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow()
@@ -164,7 +164,7 @@ export const shiftSlot = pgTable(
 export const guestShift = pgTable(
 	'guest_shift',
 	{
-		guestId: text('guest_id')
+		guestId: uuid('guest_id')
 			.notNull()
 			.references(() => user.id, { onDelete: 'cascade' }),
 		shiftSlotId: integer('shift_slot_id')

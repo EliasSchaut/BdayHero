@@ -1,13 +1,11 @@
 import 'unplugin-icons/types/svelte';
-import type { auth } from '$lib/server/auth';
-
-type AuthSession = typeof auth.$Infer.Session;
+import type { Session, SessionUser } from '$lib/server/auth';
 
 declare global {
 	namespace App {
 		interface Locals {
-			user: AuthSession['user'] | null;
-			session: AuthSession['session'] | null;
+			user: SessionUser | null;
+			session: Session | null;
 		}
 		// interface Error {}
 		// interface PageData {}
