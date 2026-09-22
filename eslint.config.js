@@ -34,8 +34,10 @@ export default defineConfig(
 		}
 	},
 	{
-		// Override or add rule settings here, such as:
-		// 'svelte/button-has-type': 'error'
-		rules: {}
+		rules: {
+			'svelte/button-has-type': 'error',
+			// The app is served from the root (no base path) and links to many external sites.
+			'svelte/no-navigation-without-resolve': 'off'
+		}
 	}
 );
