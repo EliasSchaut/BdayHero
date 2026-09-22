@@ -1,57 +1,81 @@
 {
-  "description": "A 'Save the Date' and sign-up page for my bday",
-  "author": "EliasSchaut",
-  "private": true,
-  "type": "commonjs",
-  "license": "MIT",
-  "packageManager": "pnpm@10.33.0",
-  "homepage": "https://github.com/EliasSchaut/BdayHero#README.md",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/EliasSchaut/BdayHero.git"
-  },
-  "scripts": {
-    "start": "concurrently \"pnpm start:server\" \"pnpm start:client\"",
-    "start:server": "pnpm --filter @bdayhero/server start",
-    "start:client": "pnpm --filter @bdayhero/client start",
-    "dev": "concurrently \"pnpm dev:server\" \"pnpm dev:client\"",
-    "dev:server": "pnpm --filter @bdayhero/server dev",
-    "dev:client": "pnpm --filter @bdayhero/client dev",
-    "test:server": "pnpm --filter @bdayhero/server test",
-    "build": "pnpm build:db && concurrently \"pnpm build:server\" \"pnpm build:client\" \"pnpm build:shared\"",
-    "build:server": "pnpm --filter @bdayhero/server build",
-    "build:client": "pnpm --filter @bdayhero/client build",
-    "build:shared": "pnpm --filter @bdayhero/shared build",
-    "build:db": "pnpm prisma migrate dev --schema=./schema.prisma --name dev"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "allowedVersions": {
-        "@apollo/server-plugin-landing-page-graphql-playground>@apollo/server": "^4 || ^5",
-        "@angular-devkit/core>chokidar": "^3 || ^4"
-      }
-    },
-    "onlyBuiltDependencies": [
-      "@apollo/protobufjs",
-      "@nestjs/core",
-      "@parcel/watcher",
-      "@prisma/client",
-      "@prisma/engines",
-      "@tsparticles/engine",
-      "bcrypt",
-      "esbuild",
-      "prisma",
-      "sharp",
-      "vue-demi"
-    ]
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.1",
-    "dotenv": "^17.4.2",
-    "prisma": "^7.7.0",
-    "tsup": "^8.5.1"
-  },
-  "dependencies": {
-    "@prisma/client": "^7.7.0"
-  }
+	"name": "bdayhero",
+	"description": "A 'Save the Date' and sign-up page for my bday",
+	"author": "EliasSchaut",
+	"license": "MIT",
+	"private": true,
+	"version": "2.0.0",
+	"type": "module",
+	"packageManager": "pnpm@10.33.0",
+	"engines": {
+		"node": ">=24"
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"start": "node build",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"test": "pnpm run test:unit -- --run && pnpm run test:e2e",
+		"test:unit": "vitest",
+		"test:e2e": "playwright test",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "node scripts/migrate.mjs",
+		"db:studio": "drizzle-kit studio",
+		"db:seed": "node scripts/seed-shifts.ts",
+		"auth:schema": "auth generate --config src/lib/server/auth/index.ts --output src/lib/server/db/auth.schema.ts --yes"
+	},
+	"dependencies": {
+		"@fontsource-variable/nunito": "^5.3.0",
+		"better-auth": "^1.7.5",
+		"bits-ui": "^2.19.2",
+		"drizzle-orm": "^0.45.3",
+		"nodemailer": "^10.0.10",
+		"postgres": "^3.4.9",
+		"zod": "^4.6.5"
+	},
+	"devDependencies": {
+		"@electric-sql/pglite": "^0.5.8",
+		"@eslint/js": "^10.0.1",
+		"@iconify-json/heroicons": "^1.2.3",
+		"@inlang/paraglide-js": "^2.25.4",
+		"@playwright/test": "^1.63.0",
+		"@sveltejs/adapter-node": "^5.5.7",
+		"@sveltejs/enhanced-img": "^0.11.0",
+		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/vite-plugin-svelte": "^7.3.0",
+		"@tailwindcss/forms": "^0.5.11",
+		"@tailwindcss/vite": "^4.3.3",
+		"@types/node": "^24",
+		"@types/nodemailer": "^8.0.2",
+		"auth": "^1.7.5",
+		"drizzle-kit": "^0.31.11",
+		"eslint": "^10.11.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.23.0",
+		"globals": "^17.6.0",
+		"prettier": "^3.9.8",
+		"prettier-plugin-svelte": "^4.1.1",
+		"prettier-plugin-tailwindcss": "^0.8.1",
+		"svelte": "^5.57.1",
+		"svelte-check": "^4.7.6",
+		"tailwindcss": "^4.3.3",
+		"typescript": "^6.0.2",
+		"typescript-eslint": "^8.70.1",
+		"unplugin-icons": "^24.0.0",
+		"vite": "^8.3.0",
+		"vitest": "^5.0.1"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"sharp",
+			"@electric-sql/pglite",
+			"better-auth"
+		]
+	}
 }

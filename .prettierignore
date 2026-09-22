@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+/static/
+/drizzle/
+/src/lib/paraglide/
+/.svelte-kit/
+/build/
+/messages/
