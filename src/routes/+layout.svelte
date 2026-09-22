@@ -4,9 +4,14 @@
 	import Nav from '$lib/components/layout/Nav.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Alert from '$lib/components/ui/Alert.svelte';
+	import { alert } from '$lib/stores/alert.svelte';
 
 	let { data, children } = $props();
 	let theme = $state(untrack(() => data.theme));
+
+	$effect(() => {
+		if (data.flash) alert.feedback(data.flash);
+	});
 </script>
 
 <svelte:head>

@@ -1,5 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 import { isHeroOnly } from '$lib/config';
+import { takeFlash } from '$lib/server/flash';
 import { isTheme, THEME_COOKIE, type Theme } from '$lib/utils/theme';
 
 export const load: LayoutServerLoad = ({ locals, cookies }) => {
@@ -8,6 +9,7 @@ export const load: LayoutServerLoad = ({ locals, cookies }) => {
 	return {
 		user: locals.user,
 		heroOnly: isHeroOnly(),
-		theme
+		theme,
+		flash: takeFlash(cookies)
 	};
 };
