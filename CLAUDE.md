@@ -42,4 +42,4 @@ pnpm db:generate | db:migrate | db:seed          # drizzle migrations / example 
 
 ## Deployment
 
-Single Docker image (`Dockerfile`, migrations on start), `docker-compose.yml` (+ `--profile db`). Secrets are injected from the shell (Infisical), see `docs/deployment.md` and `docs/infisical.md`. Required in prod: `ORIGIN`, `BETTER_AUTH_SECRET`, `DATABASE_URL`, SMTP settings.
+Single Docker image (`Dockerfile`, migrations on start), `docker-compose.yml` (+ `--profile db`). Secrets are injected from the shell environment, see `docs/deployment.md`. Required in prod: `ORIGIN`, `BETTER_AUTH_SECRET`, `DATABASE_URL`, SMTP settings.

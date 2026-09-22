@@ -42,13 +42,13 @@ migrations before starting. `docker compose --profile db up -d` also starts Post
 
 `docker-compose.yml` uses `environment:` pass-throughs (`KEY: ${KEY}`), so values come from
 the shell that runs `docker compose` and are not interpolated again - a `$` inside a secret is
-safe. Recommended: `infisical run -- docker compose up -d` (see [infisical.md](./infisical.md)).
+safe. Export them from your secret manager or CI/CD before running `docker compose up -d`.
 If you must use a file, use `env_file: [{ path: .env, format: raw }]` (Compose ≥ 2.30) which
 disables interpolation.
 
 Note that Compose also reads a `.env` file **in the project directory** to substitute the
 `${VAR}` placeholders. Keep your local development `.env` out of the deploy host, or run
-compose with `--env-file /dev/null` when secrets come from Infisical.
+compose with `--env-file /dev/null` when secrets come from the shell environment.
 
 The app retries the initial migration for about a minute while Postgres starts, so no
 `depends_on` ordering is required.

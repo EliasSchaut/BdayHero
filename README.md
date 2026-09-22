@@ -46,5 +46,4 @@ Magic-link mails are caught by MailDev: <http://localhost:1080>. Without Docker 
 ## Deployment
 
 Single Docker image, migrations on start, Postgres 17 via `docker compose --profile db`.
-See [docs/deployment.md](docs/deployment.md) and [docs/infisical.md](docs/infisical.md) for
-environment variables and secret injection.
+See [docs/deployment.md](docs/deployment.md) for environment variables and secret injection.

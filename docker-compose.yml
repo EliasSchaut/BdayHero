@@ -4,7 +4,7 @@
 #   docker compose --profile db up -d         # app + bundled Postgres
 #
 # Secrets: values are taken from the *shell environment* that runs `docker compose`
-# (e.g. injected by `infisical run -- docker compose up -d`, see docs/infisical.md).
+# (e.g. exported by your CI/CD or secret manager, see docs/deployment.md).
 # They are passed through 1:1 with `environment:` and are NOT re-interpolated, so
 # secrets containing `$` are safe. If you prefer a .env file, use
 #   env_file: [{ path: .env, format: raw }]   (Compose >= 2.30, disables interpolation)
