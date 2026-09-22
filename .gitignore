@@ -32,3 +32,4 @@ vite.config.ts.timestamp-*
 /.vscode
 /.claude
 *.log
+/.pglite

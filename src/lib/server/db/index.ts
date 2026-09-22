@@ -1,10 +1,13 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
-import * as schema from './schema';
 import { env } from '$env/dynamic/private';
+import { createDb, type Database } from './client';
 
-if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
+/**
+ * Application database handle.
+ *
+ * `DATABASE_URL` may point to a Postgres server (`postgres://...`) or, for local
+ * development and end-to-end tests without Docker, to an embedded PGlite
+ * database (`pglite://./.pglite` or `pglite://memory`).
+ */
+export const db: Database = createDb(env.DATABASE_URL);
 
-const client = postgres(env.DATABASE_URL);
-
-export const db = drizzle(client, { schema });
+export * as schema from './schema';
