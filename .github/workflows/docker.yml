@@ -5,6 +5,7 @@ on:
     tags: ['v*']
   workflow_dispatch:
 
+# Versioned release images. `latest` follows main and is published by ci.yml.
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -24,7 +25,6 @@ jobs:
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
-            type=raw,value=latest
       - uses: docker/build-push-action@v7
         with:
           context: .

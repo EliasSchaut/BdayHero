@@ -24,8 +24,15 @@ OAuth redirect URIs to register at the providers: `${BETTER_AUTH_URL}/api/auth/c
 
 ## Docker
 
-Released images are published to Docker Hub as `kidilias/bdayhero` (tag workflow, needs the
-repository variable `DOCKERHUB_USERNAME` and the secret `DOCKERHUB_TOKEN`). Build locally with:
+Images are published to Docker Hub as `kidilias/bdayhero` (needs the repository variable
+`DOCKERHUB_USERNAME` and the secret `DOCKERHUB_TOKEN`):
+
+- every push to `main`, after lint, unit, e2e and the Docker build passed (`ci.yml`):
+  `latest`, `main` and `sha-<commit>`
+- release tags `v*` (`docker.yml`): `<version>` and `<major>.<minor>`
+
+`docker-compose.yml` uses `latest`, i.e. the current `main`; pin a version or `sha-…` tag to
+stay on a specific build. Build locally with:
 
 ```sh
 docker build -t kidilias/bdayhero .
