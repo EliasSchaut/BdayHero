@@ -1,0 +1,14 @@
+# Personal / machine-specific IDE state (everything else in .idea is shared)
+/workspace.xml
+/usage.statistics.xml
+/tasks.xml
+/shelf/
+/httpRequests/
+/queries/
+/dataSources/
+/dataSources.local.xml
+/markdown.xml
+/copilot*
+/AndroidProjectSystem.xml
+/material_theme_project_new.xml
+/discord.xml

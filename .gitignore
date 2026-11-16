@@ -27,8 +27,7 @@ vite.config.ts.timestamp-*
 /src/lib/paraglide
 /project.inlang/cache/
 
-# IDEs / AI
-/.idea
+# IDEs / AI (shared JetBrains settings live in .idea, personal ones are ignored in .idea/.gitignore)
 /.vscode
 /.claude
 *.log
