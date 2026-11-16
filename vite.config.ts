@@ -14,7 +14,10 @@ export default defineConfig({
 			outdir: './src/lib/paraglide',
 			strategy: ['cookie', 'preferredLanguage', 'baseLocale'],
 			cookieName: 'locale',
-			emitTsDeclarations: true
+			emitTsDeclarations: true,
+			// Paraglide 3 defaults to virtual modules in Vite; keep physical files so the
+			// output matches `pnpm i18n:compile` (used by svelte-check) in the same outdir.
+			outputStructure: 'message-modules'
 		}),
 		tailwindcss(),
 		Icons({ compiler: 'svelte' }),
