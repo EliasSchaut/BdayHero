@@ -4,16 +4,33 @@
 
 	let {
 		trigger,
+		triggerChild,
 		children,
 		class: className = '',
 		align = 'end'
-	}: { trigger: Snippet; children: Snippet; class?: string; align?: 'start' | 'end' } = $props();
+	}: {
+		/** Content of the default trigger button. */
+		trigger?: Snippet;
+		/** Render an own trigger element (e.g. a styled button); spread the given props onto it. */
+		triggerChild?: Snippet<[Record<string, unknown>]>;
+		children: Snippet;
+		class?: string;
+		align?: 'start' | 'end';
+	} = $props();
 </script>
 
 <DropdownMenu.Root>
-	<DropdownMenu.Trigger class="flex justify-center {className}">
-		{@render trigger()}
-	</DropdownMenu.Trigger>
+	{#if triggerChild}
+		<DropdownMenu.Trigger>
+			{#snippet child({ props })}
+				{@render triggerChild(props)}
+			{/snippet}
+		</DropdownMenu.Trigger>
+	{:else}
+		<DropdownMenu.Trigger class="flex justify-center {className}">
+			{@render trigger?.()}
+		</DropdownMenu.Trigger>
+	{/if}
 	<DropdownMenu.Portal>
 		<DropdownMenu.Content
 			{align}
