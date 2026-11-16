@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { getLocale, setLocale } from '$lib/paraglide/runtime';
-	import { m } from '$lib/paraglide/messages';
-	import FlagDe from '$lib/components/icons/FlagDe.svelte';
-	import FlagUk from '$lib/components/icons/FlagUk.svelte';
+	import { getLocale, setLocale } from '#lib/paraglide/runtime.js';
+	import { m } from '#lib/paraglide/messages.js';
+	import FlagDe from '#lib/components/icons/FlagDe.svelte';
+	import FlagUk from '#lib/components/icons/FlagUk.svelte';
 
 	let { class: className = '' }: { class?: string } = $props();
 	const locale = getLocale();

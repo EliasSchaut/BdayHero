@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { m } from '$lib/paraglide/messages';
-	import { alert } from '$lib/stores/alert.svelte';
-	import Badge from '$lib/components/ui/Badge.svelte';
-	import ButtonLoading from '$lib/components/ui/ButtonLoading.svelte';
-	import AvatarCloudStacked from '$lib/components/avatar/AvatarCloudStacked.svelte';
-	import AvatarStacked from '$lib/components/avatar/AvatarStacked.svelte';
-	import { formatTime } from '$lib/utils/date';
+	import { m } from '#lib/paraglide/messages.js';
+	import { alert } from '#lib/stores/alert.svelte.ts';
+	import Badge from '#lib/components/ui/Badge.svelte';
+	import ButtonLoading from '#lib/components/ui/ButtonLoading.svelte';
+	import AvatarCloudStacked from '#lib/components/avatar/AvatarCloudStacked.svelte';
+	import AvatarStacked from '#lib/components/avatar/AvatarStacked.svelte';
+	import { formatTime } from '#lib/utils/date.ts';
 
 	let { data, form } = $props();
 

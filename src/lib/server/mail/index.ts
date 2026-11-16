@@ -1,4 +1,15 @@
-import { env } from '$env/dynamic/private';
+import {
+	EMAIL_TRANSPORT,
+	EMAIL_HOST,
+	EMAIL_PORT,
+	EMAIL_SECURE,
+	EMAIL_HOST_USER,
+	EMAIL_HOST_PASSWORD,
+	PROJ_TITLE,
+	EMAIL_FROM,
+	EMAIL_FILE_DIR
+} from '$app/env/private';
+
 import nodemailer, { type Transporter } from 'nodemailer';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -8,20 +19,18 @@ let transporter: Transporter | undefined;
 
 function getTransporter(): Transporter {
 	if (transporter) return transporter;
-	if (env.EMAIL_TRANSPORT === 'json') {
+	if (EMAIL_TRANSPORT === 'json') {
 		// Development: mails are not sent but printed to stdout.
 		transporter = nodemailer.createTransport({ jsonTransport: true });
-	} else if (env.EMAIL_TRANSPORT === 'file') {
+	} else if (EMAIL_TRANSPORT === 'file') {
 		// End-to-end tests: mails are written as JSON files to EMAIL_FILE_DIR.
 		transporter = nodemailer.createTransport({ jsonTransport: true });
 	} else {
 		transporter = nodemailer.createTransport({
-			host: env.EMAIL_HOST,
-			port: Number(env.EMAIL_PORT ?? 587),
-			secure: env.EMAIL_SECURE === 'true',
-			auth: env.EMAIL_HOST_USER
-				? { user: env.EMAIL_HOST_USER, pass: env.EMAIL_HOST_PASSWORD }
-				: undefined
+			host: EMAIL_HOST,
+			port: Number(EMAIL_PORT ?? 587),
+			secure: EMAIL_SECURE === 'true',
+			auth: EMAIL_HOST_USER ? { user: EMAIL_HOST_USER, pass: EMAIL_HOST_PASSWORD } : undefined
 		});
 	}
 	return transporter;
@@ -34,17 +43,17 @@ export interface Mail {
 }
 
 export async function sendMail(mail: Mail): Promise<void> {
-	const title = env.PROJ_TITLE ?? 'BdayHero';
+	const title = PROJ_TITLE ?? 'BdayHero';
 	const info = await getTransporter().sendMail({
-		from: `"${title}" <${env.EMAIL_FROM || env.EMAIL_HOST_USER || 'noreply@localhost'}>`,
+		from: `"${title}" <${EMAIL_FROM || EMAIL_HOST_USER || 'noreply@localhost'}>`,
 		to: mail.to,
 		subject: `[${title}] ${mail.subject}`,
 		text: mail.text
 	});
-	if (env.EMAIL_TRANSPORT === 'json') {
+	if (EMAIL_TRANSPORT === 'json') {
 		console.log(`[mail] ${JSON.stringify(JSON.parse(String(info.message)))}`);
-	} else if (env.EMAIL_TRANSPORT === 'file') {
-		const dir = env.EMAIL_FILE_DIR ?? '.mails';
+	} else if (EMAIL_TRANSPORT === 'file') {
+		const dir = EMAIL_FILE_DIR ?? '.mails';
 		await mkdir(dir, { recursive: true });
 		await writeFile(join(dir, `${Date.now()}-${randomUUID()}.json`), String(info.message));
 	}

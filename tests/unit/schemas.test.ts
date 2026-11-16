@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { guestUpdateFromFormData, guestUpdateSchema, nameSchema } from '$lib/schemas/guest';
+import { guestUpdateFromFormData, guestUpdateSchema, nameSchema } from '#lib/schemas/guest.ts';
 
 describe('nameSchema', () => {
 	it('accepts capitalised names incl. umlauts and hyphens', () => {

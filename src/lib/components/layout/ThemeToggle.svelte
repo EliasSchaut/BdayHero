@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
-	import { applyTheme, THEME_COOKIE, type Theme } from '$lib/utils/theme';
+	import { m } from '#lib/paraglide/messages.js';
+	import { applyTheme, THEME_COOKIE, type Theme } from '#lib/utils/theme.ts';
 	import Sun from '~icons/heroicons/sun';
 	import Moon from '~icons/heroicons/moon';
 	import Desktop from '~icons/heroicons/computer-desktop';

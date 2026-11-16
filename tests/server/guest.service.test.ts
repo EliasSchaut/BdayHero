@@ -9,9 +9,9 @@ import {
 	getProfile,
 	listPublicGuests,
 	updateProfile
-} from '$lib/server/services/guest';
+} from '#lib/server/services/guest.ts';
 
-vi.mock('$lib/server/avatar/gravatar', () => ({ lookupGravatar: async () => null }));
+vi.mock('#lib/server/avatar/gravatar.ts', () => ({ lookupGravatar: async () => null }));
 
 beforeEach(resetDb);
 

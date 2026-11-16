@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { AttendanceStatus } from '$lib/types/guest';
+import { AttendanceStatus } from '#lib/types/guest.ts';
 
 /** Names start with a capital letter; used as HTML `pattern` and in zod. */
 export const NAME_PATTERN_HTML = '^[A-ZÖÄÜ][A-Za-zÖÄÜöäüß \\-]*$';

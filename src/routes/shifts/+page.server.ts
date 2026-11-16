@@ -1,11 +1,11 @@
 import { fail } from '@sveltejs/kit';
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
-import { getLocale } from '$lib/paraglide/runtime';
-import { ApiError } from '$lib/server/api/errors';
-import { t } from '$lib/server/i18n';
-import { assignSlot, listShifts, mySlotIds, unassignSlot } from '$lib/server/services/shift';
-import type { ActionFeedback } from '$lib/types/api';
+import { getLocale } from '#lib/paraglide/runtime.js';
+import { ApiError } from '#lib/server/api/errors.ts';
+import { t } from '#lib/server/i18n.ts';
+import { assignSlot, listShifts, mySlotIds, unassignSlot } from '#lib/server/services/shift.ts';
+import type { ActionFeedback } from '#lib/types/api.ts';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const [shifts, assigned] = await Promise.all([

@@ -1,6 +1,6 @@
 /**
  * Vitest setup for the `server` project: every test file gets a fresh
- * in-memory PGlite database with all migrations applied, and `$lib/server/db`
+ * in-memory PGlite database with all migrations applied, and `#lib/server/db/index.ts`
  * is redirected to it so services and API handlers run against it.
  */
 import { vi, afterAll } from 'vitest';
@@ -18,7 +18,7 @@ const client = new PGlite();
 export const testDb = drizzle(client, { schema, casing: 'snake_case' });
 await migrate(testDb, { migrationsFolder: 'drizzle' });
 
-vi.mock('$lib/server/db', () => ({ db: testDb, schema }));
+vi.mock('#lib/server/db/index.ts', () => ({ db: testDb, schema }));
 
 afterAll(async () => {
 	await client.close();

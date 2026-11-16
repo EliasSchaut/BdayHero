@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
-	import Card from '$lib/components/ui/Card.svelte';
+	import { m } from '#lib/paraglide/messages.js';
+	import Card from '#lib/components/ui/Card.svelte';
 	import Identification from '~icons/heroicons/identification';
 
 	const imprint = { name: 'Elias Lorenz Schaut', email: 'elias@schaut.dev' };

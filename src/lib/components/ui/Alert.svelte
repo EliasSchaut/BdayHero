@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { alert } from '$lib/stores/alert.svelte';
-	import { m } from '$lib/paraglide/messages';
+	import { alert } from '#lib/stores/alert.svelte.ts';
+	import { m } from '#lib/paraglide/messages.js';
 	import XCircle from '~icons/heroicons/x-circle-20-solid';
 	import CheckCircle from '~icons/heroicons/check-circle-20-solid';
 	import Warning from '~icons/heroicons/exclamation-triangle-20-solid';

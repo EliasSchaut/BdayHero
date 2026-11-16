@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { isHeroOnly } from '$lib/config';
+import { isHeroOnly } from '#lib/config.ts';
 
 const SITE = 'https://bday.schaut.dev';
 

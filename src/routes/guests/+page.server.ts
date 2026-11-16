@@ -1,19 +1,19 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { APIError } from 'better-auth/api';
 import type { Actions, PageServerLoad } from './$types';
-import { auth } from '$lib/server/auth';
-import { setFlash } from '$lib/server/flash';
-import { t } from '$lib/server/i18n';
-import { maxCompanionsPerGuest } from '$lib/config';
-import { emailSchema, guestUpdateFromFormData, guestUpdateSchema } from '$lib/schemas/guest';
+import { auth } from '#lib/server/auth/index.ts';
+import { setFlash } from '#lib/server/flash.ts';
+import { t } from '#lib/server/i18n.ts';
+import { maxCompanionsPerGuest } from '#lib/config.ts';
+import { emailSchema, guestUpdateFromFormData, guestUpdateSchema } from '#lib/schemas/guest.ts';
 import {
 	countGuests,
 	deleteProfile,
 	getProfile,
 	listPublicGuests,
 	updateProfile
-} from '$lib/server/services/guest';
-import type { ActionFeedback } from '$lib/types/api';
+} from '#lib/server/services/guest.ts';
+import type { ActionFeedback } from '#lib/types/api.ts';
 
 const PROVIDERS = ['github', 'google', 'discord'] as const;
 type Provider = (typeof PROVIDERS)[number];
@@ -41,6 +41,9 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 const feedback = (code: ActionFeedback['code'], message: string) => ({
 	feedback: { code, message }
 });
+
+/** Authorization endpoints of the social providers; SvelteKit 3 only redirects externally to allowlisted origins. */
+const OAUTH_ORIGINS = ['https://github.com', 'https://accounts.google.com', 'https://discord.com'];
 
 export const actions: Actions = {
 	magicLink: async ({ request }) => {
@@ -89,7 +92,7 @@ export const actions: Actions = {
 			return fail(500, feedback('DANGER', t('guests_signin_failed')));
 		}
 		if (!url) return fail(500, feedback('DANGER', t('guests_signin_failed')));
-		redirect(303, url);
+		redirect(303, url, { external: OAUTH_ORIGINS });
 	},
 
 	update: async ({ request, locals }) => {

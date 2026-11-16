@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { alertTypeFor } from '$lib/utils/alert-map';
-import { freePlaces } from '$lib/server/services/shift';
-import { isTheme } from '$lib/utils/theme';
-import { formatTime } from '$lib/utils/date';
+import { alertTypeFor } from '#lib/utils/alert-map.ts';
+import { freePlaces } from '#lib/server/services/shift.ts';
+import { isTheme } from '#lib/utils/theme.ts';
+import { formatTime } from '#lib/utils/date.ts';
 
 describe('alertTypeFor', () => {
 	it('maps response codes to alert variants', () => {

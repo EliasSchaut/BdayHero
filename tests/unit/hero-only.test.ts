@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isBlockedApi, isBlockedPage } from '$lib/hero-only';
+import { isBlockedApi, isBlockedPage } from '#lib/hero-only.ts';
 
 describe('hero-only path matching', () => {
 	it('blocks guest, shift and details pages', () => {

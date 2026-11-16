@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { m } from '$lib/paraglide/messages';
-	import ButtonPrime from '$lib/components/ui/ButtonPrime.svelte';
-	import Spinner from '$lib/components/ui/Spinner.svelte';
+	import { m } from '#lib/paraglide/messages.js';
+	import ButtonPrime from '#lib/components/ui/ButtonPrime.svelte';
+	import Spinner from '#lib/components/ui/Spinner.svelte';
 	import CheckCircle from '~icons/heroicons/check-circle-solid';
 	import XCircle from '~icons/heroicons/x-circle-solid';
 

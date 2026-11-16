@@ -2,7 +2,7 @@
 
 "Save the Date" and sign-up page for my birthday.
 
-**Stack:** SvelteKit 2 / Svelte 5 (adapter-node) · Tailwind 4 · Drizzle ORM on Postgres ·
+**Stack:** SvelteKit 3 / Svelte 5 (adapter-node) · Tailwind 4 · Drizzle ORM on Postgres ·
 Better Auth (magic link, GitHub/Google/Discord) · Paraglide i18n (en/de) · Vitest + Playwright.
 
 > Not intended to be hosted by anyone else, but feel free to borrow ideas.

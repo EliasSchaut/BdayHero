@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { m } from '$lib/paraglide/messages';
-	import ButtonPrime from '$lib/components/ui/ButtonPrime.svelte';
+	import { m } from '#lib/paraglide/messages.js';
+	import ButtonPrime from '#lib/components/ui/ButtonPrime.svelte';
 </script>
 
 <svelte:head>

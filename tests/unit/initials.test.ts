@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { generateInitials } from '$lib/utils/initials';
+import { generateInitials } from '#lib/utils/initials.ts';
 
 describe('generateInitials', () => {
 	it('uses first and last name', () => {

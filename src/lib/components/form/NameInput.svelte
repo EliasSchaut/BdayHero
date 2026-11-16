@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import Input from './Input.svelte';
-	import { m } from '$lib/paraglide/messages';
-	import { NAME_PATTERN_HTML } from '$lib/schemas/guest';
+	import { m } from '#lib/paraglide/messages.js';
+	import { NAME_PATTERN_HTML } from '#lib/schemas/guest.ts';
 
 	let {
 		id,

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
+	import { m } from '#lib/paraglide/messages.js';
 
 	type Provider = 'google' | 'github' | 'discord';
 	let { provider }: { provider: Provider } = $props();

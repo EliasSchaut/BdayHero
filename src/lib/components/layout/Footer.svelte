@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
+	import { m } from '#lib/paraglide/messages.js';
 	import Identification from '~icons/heroicons/identification';
 	import Clipboard from '~icons/heroicons/clipboard-document-check';
-	import GitHub from '$lib/components/icons/GitHub.svelte';
+	import GitHub from '#lib/components/icons/GitHub.svelte';
 </script>
 
 <footer class="z-10">

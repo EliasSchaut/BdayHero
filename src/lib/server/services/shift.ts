@@ -1,11 +1,11 @@
 import { and, asc, count, eq } from 'drizzle-orm';
-import { db as defaultDb } from '$lib/server/db';
-import type { Database } from '$lib/server/db/client';
-import { guestShift, shift, shiftSlot, type Lang } from '$lib/server/db/schema';
-import { ApiError } from '$lib/server/api/errors';
-import { t } from '$lib/server/i18n';
-import type { ShiftView, SlotGuest } from '$lib/types/shift';
-import { ANONYMOUS_INITIALS } from '$lib/utils/anonymise';
+import { db as defaultDb } from '#lib/server/db/index.ts';
+import type { Database } from '#lib/server/db/client.ts';
+import { guestShift, shift, shiftSlot, type Lang } from '#lib/server/db/schema.ts';
+import { ApiError } from '#lib/server/api/errors.ts';
+import { t } from '#lib/server/i18n.ts';
+import type { ShiftView, SlotGuest } from '#lib/types/shift.ts';
+import { ANONYMOUS_INITIALS } from '#lib/utils/anonymise.ts';
 
 /**
  * All shifts with their slots, localised to `lang` (falling back to English).

@@ -1,4 +1,4 @@
-import type { PublicGuest } from '$lib/types/guest';
+import type { PublicGuest } from '#lib/types/guest.ts';
 
 export const ANONYMOUS_EMAIL = 'Anonym';
 export const ANONYMOUS_INITIALS = '?';

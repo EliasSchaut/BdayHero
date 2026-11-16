@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { setFlash } from '$lib/server/flash';
-import { t } from '$lib/server/i18n';
+import { setFlash } from '#lib/server/flash.ts';
+import { t } from '#lib/server/i18n.ts';
 
 /** Landing page after a magic link was verified (or failed). Shows a flash and goes to /guests. */
 export const load: PageServerLoad = ({ url, cookies, locals }) => {

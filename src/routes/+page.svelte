@@ -1,26 +1,26 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
-	import { featureImage } from '$lib/assets/img';
-	import Accent from '$lib/components/ui/Accent.svelte';
-	import Underline from '$lib/components/ui/Underline.svelte';
-	import Typewriter from '$lib/components/ui/Typewriter.svelte';
-	import ButtonPrime from '$lib/components/ui/ButtonPrime.svelte';
-	import ButtonArrow from '$lib/components/ui/ButtonArrow.svelte';
-	import BackgroundBlob from '$lib/components/layout/BackgroundBlob.svelte';
-	import Section from '$lib/components/layout/Section.svelte';
-	import SectionTag from '$lib/components/layout/SectionTag.svelte';
-	import SectionHeading from '$lib/components/layout/SectionHeading.svelte';
-	import Tabs from '$lib/components/ui/Tabs.svelte';
-	import Card3d from '$lib/components/ui/Card3d.svelte';
-	import Testimonial from '$lib/components/ui/Testimonial.svelte';
-	import TestimonialGrid from '$lib/components/ui/TestimonialGrid.svelte';
-	import ArticleOverview from '$lib/components/ui/ArticleOverview.svelte';
-	import CalendarDropdown from '$lib/components/ui/CalendarDropdown.svelte';
-	import carmen from '$lib/assets/img/testimonials/carmen_schaut.jpg';
-	import niklas from '$lib/assets/img/testimonials/niklas_kniep.jpg';
-	import valentin from '$lib/assets/img/testimonials/valentin_quapil.jpg';
-	import sean from '$lib/assets/img/testimonials/sean_ireland.jpg';
-	import laura from '$lib/assets/img/testimonials/laura_blechschmidt.jpg';
+	import { m } from '#lib/paraglide/messages.js';
+	import { featureImage } from '#lib/assets/img/index.ts';
+	import Accent from '#lib/components/ui/Accent.svelte';
+	import Underline from '#lib/components/ui/Underline.svelte';
+	import Typewriter from '#lib/components/ui/Typewriter.svelte';
+	import ButtonPrime from '#lib/components/ui/ButtonPrime.svelte';
+	import ButtonArrow from '#lib/components/ui/ButtonArrow.svelte';
+	import BackgroundBlob from '#lib/components/layout/BackgroundBlob.svelte';
+	import Section from '#lib/components/layout/Section.svelte';
+	import SectionTag from '#lib/components/layout/SectionTag.svelte';
+	import SectionHeading from '#lib/components/layout/SectionHeading.svelte';
+	import Tabs from '#lib/components/ui/Tabs.svelte';
+	import Card3d from '#lib/components/ui/Card3d.svelte';
+	import Testimonial from '#lib/components/ui/Testimonial.svelte';
+	import TestimonialGrid from '#lib/components/ui/TestimonialGrid.svelte';
+	import ArticleOverview from '#lib/components/ui/ArticleOverview.svelte';
+	import CalendarDropdown from '#lib/components/ui/CalendarDropdown.svelte';
+	import carmen from '#lib/assets/img/testimonials/carmen_schaut.jpg';
+	import niklas from '#lib/assets/img/testimonials/niklas_kniep.jpg';
+	import valentin from '#lib/assets/img/testimonials/valentin_quapil.jpg';
+	import sean from '#lib/assets/img/testimonials/sean_ireland.jpg';
+	import laura from '#lib/assets/img/testimonials/laura_blechschmidt.jpg';
 
 	let { data } = $props();
 

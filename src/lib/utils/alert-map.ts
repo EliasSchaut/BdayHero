@@ -1,4 +1,4 @@
-import type { ResCode } from '$lib/types/api';
+import type { ResCode } from '#lib/types/api.ts';
 
 export type AlertType = 'success' | 'info' | 'warn' | 'danger';
 
