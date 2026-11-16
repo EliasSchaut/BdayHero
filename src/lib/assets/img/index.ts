@@ -1,4 +1,4 @@
-import type { Picture } from '$lib/types/image';
+import type { Picture } from '#lib/types/image.ts';
 
 /** All feature images, optimised by @sveltejs/enhanced-img, keyed by file name. */
 const modules = import.meta.glob<Picture>('./*.jpg', {

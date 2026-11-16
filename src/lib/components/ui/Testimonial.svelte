@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
+	import { m } from '#lib/paraglide/messages.js';
 	import UserCircle from '~icons/heroicons/user-circle-solid';
 
 	let {

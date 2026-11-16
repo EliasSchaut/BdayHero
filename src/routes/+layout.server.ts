@@ -1,7 +1,7 @@
 import type { LayoutServerLoad } from './$types';
-import { isHeroOnly } from '$lib/config';
-import { takeFlash } from '$lib/server/flash';
-import { isTheme, THEME_COOKIE, type Theme } from '$lib/utils/theme';
+import { isHeroOnly } from '#lib/config.ts';
+import { takeFlash } from '#lib/server/flash.ts';
+import { isTheme, THEME_COOKIE, type Theme } from '#lib/utils/theme.ts';
 
 export const load: LayoutServerLoad = ({ locals, cookies }) => {
 	const cookie = cookies.get(THEME_COOKIE);

@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createGuest, createShift, resetDb } from '../setup/fixtures';
-import { ApiError } from '$lib/server/api/errors';
-import { assignSlot, listShifts, mySlotIds, unassignSlot } from '$lib/server/services/shift';
+import { ApiError } from '#lib/server/api/errors.ts';
+import { assignSlot, listShifts, mySlotIds, unassignSlot } from '#lib/server/services/shift.ts';
 
 beforeEach(resetDb);
 

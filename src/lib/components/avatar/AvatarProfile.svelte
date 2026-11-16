@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { AttendanceStatus, type PublicGuest } from '$lib/types/guest';
+	import { AttendanceStatus, type PublicGuest } from '#lib/types/guest.ts';
 	import Avatar from './Avatar.svelte';
-	import Badge from '$lib/components/ui/Badge.svelte';
+	import Badge from '#lib/components/ui/Badge.svelte';
 
 	let { guest }: { guest: PublicGuest } = $props();
 

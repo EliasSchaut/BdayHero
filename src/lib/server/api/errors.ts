@@ -1,4 +1,4 @@
-import type { ApiErr } from '$lib/types/api';
+import type { ApiErr } from '#lib/types/api.ts';
 
 /** Error carrying an alert code and HTTP status; rendered by form actions and /api handlers. */
 export class ApiError extends Error {

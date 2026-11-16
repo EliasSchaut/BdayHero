@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Picture } from '$lib/types/image';
+	import type { Picture } from '#lib/types/image.ts';
 
 	let {
 		title,

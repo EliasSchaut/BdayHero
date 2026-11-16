@@ -1,12 +1,12 @@
 import { asc, count, eq } from 'drizzle-orm';
-import { db as defaultDb } from '$lib/server/db';
-import type { Database } from '$lib/server/db/client';
-import { companion, guestShift, user, type User } from '$lib/server/db/schema';
-import type { GuestUpdateInput } from '$lib/schemas/guest';
-import type { GuestProfile, PublicGuest } from '$lib/types/guest';
-import { anonymiseIfNotPublic } from '$lib/utils/anonymise';
-import { generateInitials } from '$lib/utils/initials';
-import { lookupGravatar } from '$lib/server/avatar/gravatar';
+import { db as defaultDb } from '#lib/server/db/index.ts';
+import type { Database } from '#lib/server/db/client.ts';
+import { companion, guestShift, user, type User } from '#lib/server/db/schema.ts';
+import type { GuestUpdateInput } from '#lib/schemas/guest.ts';
+import type { GuestProfile, PublicGuest } from '#lib/types/guest.ts';
+import { anonymiseIfNotPublic } from '#lib/utils/anonymise.ts';
+import { generateInitials } from '#lib/utils/initials.ts';
+import { lookupGravatar } from '#lib/server/avatar/gravatar.ts';
 
 type UserWithCompanions = User & { companions: { name: string }[] };
 

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import '../app.css';
 	import { untrack } from 'svelte';
-	import Nav from '$lib/components/layout/Nav.svelte';
-	import Footer from '$lib/components/layout/Footer.svelte';
-	import Alert from '$lib/components/ui/Alert.svelte';
-	import { alert } from '$lib/stores/alert.svelte';
+	import Nav from '#lib/components/layout/Nav.svelte';
+	import Footer from '#lib/components/layout/Footer.svelte';
+	import Alert from '#lib/components/ui/Alert.svelte';
+	import { alert } from '#lib/stores/alert.svelte.ts';
 
 	let { data, children } = $props();
 	let theme = $state(untrack(() => data.theme));

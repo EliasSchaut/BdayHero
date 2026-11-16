@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import type { RequestHandler } from './$types';
-import { requireUser } from '$lib/server/api/guard';
-import { handleApi, ok } from '$lib/server/api/respond';
-import { t } from '$lib/server/i18n';
-import { assignSlot, unassignSlot } from '$lib/server/services/shift';
+import { requireUser } from '#lib/server/api/guard.ts';
+import { handleApi, ok } from '#lib/server/api/respond.ts';
+import { t } from '#lib/server/i18n.ts';
+import { assignSlot, unassignSlot } from '#lib/server/services/shift.ts';
 
 const idSchema = z.coerce.number().int().positive();
 

@@ -1,4 +1,4 @@
-import type { SubmitFunction } from '@sveltejs/kit';
+import type { SubmitFunction } from '$app/forms';
 import type { SubmitState } from './Submit.svelte';
 
 type Result = Parameters<Exclude<Awaited<ReturnType<SubmitFunction>>, void>>[0];

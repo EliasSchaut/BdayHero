@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { anonymiseIfNotPublic } from '$lib/utils/anonymise';
-import type { PublicGuest } from '$lib/types/guest';
+import { anonymiseIfNotPublic } from '#lib/utils/anonymise.ts';
+import type { PublicGuest } from '#lib/types/guest.ts';
 
 const guest: PublicGuest = {
 	id: 'id-1',

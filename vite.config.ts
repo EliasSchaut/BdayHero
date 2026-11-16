@@ -27,12 +27,7 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter({ precompress: true }),
-			typescript: {
-				config: (config) => {
-					config.include.push('../drizzle.config.ts', '../scripts/**/*', '../tests/**/*');
-				}
-			}
+			adapter: adapter({ precompress: true })
 		})
 	],
 	test: {

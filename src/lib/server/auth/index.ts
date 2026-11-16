@@ -1,15 +1,27 @@
-import { env } from '$env/dynamic/private';
+import {
+	PROJ_TITLE,
+	BETTER_AUTH_URL,
+	ORIGIN,
+	BETTER_AUTH_SECRET,
+	GITHUB_CLIENT_ID,
+	GITHUB_CLIENT_SECRET,
+	GOOGLE_CLIENT_ID,
+	GOOGLE_CLIENT_SECRET,
+	DISCORD_CLIENT_ID,
+	DISCORD_CLIENT_SECRET
+} from '$app/env/private';
+
 import { getRequestEvent } from '$app/server';
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { magicLink } from 'better-auth/plugins/magic-link';
 import { sveltekitCookies } from 'better-auth/svelte-kit';
-import { db } from '$lib/server/db';
-import * as schema from '$lib/server/db/schema';
-import { lookupGravatar } from '$lib/server/avatar/gravatar';
-import { sendMail } from '$lib/server/mail';
-import { generateInitials } from '$lib/utils/initials';
-import { t } from '$lib/server/i18n';
+import { db } from '#lib/server/db/index.ts';
+import * as schema from '#lib/server/db/schema.ts';
+import { lookupGravatar } from '#lib/server/avatar/gravatar.ts';
+import { sendMail } from '#lib/server/mail/index.ts';
+import { generateInitials } from '#lib/utils/initials.ts';
+import { t } from '#lib/server/i18n.ts';
 
 const DAY = 60 * 60 * 24;
 
@@ -21,26 +33,26 @@ const guestField = <T extends 'string' | 'number' | 'boolean'>(
 
 function createAuth() {
 	return betterAuth({
-		appName: env.PROJ_TITLE ?? 'BdayHero',
-		baseURL: env.BETTER_AUTH_URL || env.ORIGIN || undefined,
-		secret: env.BETTER_AUTH_SECRET,
+		appName: PROJ_TITLE ?? 'BdayHero',
+		baseURL: BETTER_AUTH_URL || ORIGIN || undefined,
+		secret: BETTER_AUTH_SECRET,
 		database: drizzleAdapter(db, { provider: 'pg', schema }),
 		emailAndPassword: { enabled: false },
 		socialProviders: {
 			github: {
-				clientId: env.GITHUB_CLIENT_ID ?? '',
-				clientSecret: env.GITHUB_CLIENT_SECRET ?? '',
-				enabled: !!env.GITHUB_CLIENT_ID
+				clientId: GITHUB_CLIENT_ID ?? '',
+				clientSecret: GITHUB_CLIENT_SECRET ?? '',
+				enabled: !!GITHUB_CLIENT_ID
 			},
 			google: {
-				clientId: env.GOOGLE_CLIENT_ID ?? '',
-				clientSecret: env.GOOGLE_CLIENT_SECRET ?? '',
-				enabled: !!env.GOOGLE_CLIENT_ID
+				clientId: GOOGLE_CLIENT_ID ?? '',
+				clientSecret: GOOGLE_CLIENT_SECRET ?? '',
+				enabled: !!GOOGLE_CLIENT_ID
 			},
 			discord: {
-				clientId: env.DISCORD_CLIENT_ID ?? '',
-				clientSecret: env.DISCORD_CLIENT_SECRET ?? '',
-				enabled: !!env.DISCORD_CLIENT_ID
+				clientId: DISCORD_CLIENT_ID ?? '',
+				clientSecret: DISCORD_CLIENT_SECRET ?? '',
+				enabled: !!DISCORD_CLIENT_ID
 			}
 		},
 		user: {

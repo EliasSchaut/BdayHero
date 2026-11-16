@@ -1,13 +1,13 @@
 import { APIError } from 'better-auth/api';
 import type { RequestHandler } from './$types';
-import { auth } from '$lib/server/auth';
-import { ApiError } from '$lib/server/api/errors';
-import { requireUser } from '$lib/server/api/guard';
-import { handleApi, ok, readJson } from '$lib/server/api/respond';
-import { t } from '$lib/server/i18n';
-import { maxCompanionsPerGuest } from '$lib/config';
-import { guestUpdateSchema } from '$lib/schemas/guest';
-import { deleteProfile, getProfile, updateProfile } from '$lib/server/services/guest';
+import { auth } from '#lib/server/auth/index.ts';
+import { ApiError } from '#lib/server/api/errors.ts';
+import { requireUser } from '#lib/server/api/guard.ts';
+import { handleApi, ok, readJson } from '#lib/server/api/respond.ts';
+import { t } from '#lib/server/i18n.ts';
+import { maxCompanionsPerGuest } from '#lib/config.ts';
+import { guestUpdateSchema } from '#lib/schemas/guest.ts';
+import { deleteProfile, getProfile, updateProfile } from '#lib/server/services/guest.ts';
 
 export const GET: RequestHandler = handleApi(async ({ locals }) => {
 	const user = requireUser(locals);

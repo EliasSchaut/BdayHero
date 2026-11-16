@@ -1,5 +1,5 @@
-import type { ActionFeedback } from '$lib/types/api';
-import { alertTypeFor, type AlertType } from '$lib/utils/alert-map';
+import type { ActionFeedback } from '#lib/types/api.ts';
+import { alertTypeFor, type AlertType } from '#lib/utils/alert-map.ts';
 
 class AlertStore {
 	visible = $state(false);

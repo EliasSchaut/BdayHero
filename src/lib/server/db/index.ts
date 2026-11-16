@@ -1,4 +1,4 @@
-import { env } from '$env/dynamic/private';
+import { DATABASE_URL } from '$app/env/private';
 import { createDb, type Database } from './client';
 
 let instance: Database | undefined;
@@ -8,7 +8,7 @@ let instance: Database | undefined;
  * post-build analysis or in tests) does not require a database connection.
  */
 export function getDb(): Database {
-	instance ??= createDb(env.DATABASE_URL);
+	instance ??= createDb(DATABASE_URL);
 	return instance;
 }
 

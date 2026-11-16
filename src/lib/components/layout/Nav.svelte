@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { Collapsible } from 'bits-ui';
 	import { page } from '$app/state';
-	import { m } from '$lib/paraglide/messages';
-	import Accent from '$lib/components/ui/Accent.svelte';
+	import { m } from '#lib/paraglide/messages.js';
+	import Accent from '#lib/components/ui/Accent.svelte';
 	import LangToggle from './LangToggle.svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
 	import Bars3 from '~icons/heroicons/bars-3';
 	import XMark from '~icons/heroicons/x-mark';
-	import type { Theme } from '$lib/utils/theme';
+	import type { Theme } from '#lib/utils/theme.ts';
 
 	let { heroOnly = false, theme = $bindable('system') }: { heroOnly?: boolean; theme?: Theme } =
 		$props();

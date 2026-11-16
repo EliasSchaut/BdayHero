@@ -13,10 +13,10 @@ import {
 } from '../../src/routes/api/shifts/slots/[id]/assign/+server';
 import { GET as health } from '../../src/routes/api/health/+server';
 
-vi.mock('$lib/server/auth', () => ({
+vi.mock('#lib/server/auth/index.ts', () => ({
 	auth: { api: { signOut: vi.fn(async () => ({ success: true })) }, options: {} }
 }));
-vi.mock('$lib/server/avatar/gravatar', () => ({ lookupGravatar: async () => null }));
+vi.mock('#lib/server/avatar/gravatar.ts', () => ({ lookupGravatar: async () => null }));
 vi.mock('$env/dynamic/public', () => ({ env: { PUBLIC_MAX_COMPANIONS_PER_GUEST: '1' } }));
 
 beforeEach(resetDb);

@@ -1,5 +1,5 @@
 import 'unplugin-icons/types/svelte';
-import type { Session, SessionUser } from '$lib/server/auth';
+import type { Session, SessionUser } from '#lib/server/auth/index.ts';
 
 declare global {
 	namespace App {

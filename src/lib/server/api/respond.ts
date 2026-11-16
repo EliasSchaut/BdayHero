@@ -1,19 +1,19 @@
-import { json, type RequestEvent } from '@sveltejs/kit';
+import type { RequestEvent } from '@sveltejs/kit';
 import { ZodError } from 'zod';
-import type { ApiErr, ApiOk } from '$lib/types/api';
+import type { ApiErr, ApiOk } from '#lib/types/api.ts';
 import { ApiError } from './errors';
-import { t } from '$lib/server/i18n';
+import { t } from '#lib/server/i18n.ts';
 
 export function ok<T>(
 	data: T,
 	init?: { code?: ApiOk<T>['code']; message?: string; status?: number }
 ) {
 	const body: ApiOk<T> = { ok: true, code: init?.code ?? 'SUCCESS', message: init?.message, data };
-	return json(body, { status: init?.status ?? 200 });
+	return Response.json(body, { status: init?.status ?? 200 });
 }
 
 export function err(error: ApiError) {
-	return json(error.toJSON() satisfies ApiErr, { status: error.status });
+	return Response.json(error.toJSON() satisfies ApiErr, { status: error.status });
 }
 
 /**

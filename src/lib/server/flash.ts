@@ -1,5 +1,5 @@
 import type { Cookies } from '@sveltejs/kit';
-import type { ActionFeedback } from '$lib/types/api';
+import type { ActionFeedback } from '#lib/types/api.ts';
 
 const FLASH_COOKIE = 'flash';
 
