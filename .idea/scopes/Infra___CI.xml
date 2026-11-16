@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Infra &amp; CI" pattern="file:Dockerfile||file:docker-compose*.yml||file:.dockerignore||file:.github//*||file:docs/deployment.md" />
+</component>
