@@ -35,7 +35,7 @@
 		"better-auth": "^1.7.5",
 		"bits-ui": "^2.19.2",
 		"drizzle-orm": "^0.45.3",
-		"nodemailer": "^10.0.10",
+		"nodemailer": "^10.1.4",
 		"postgres": "^3.4.9",
 		"zod": "^4.6.5"
 	},
