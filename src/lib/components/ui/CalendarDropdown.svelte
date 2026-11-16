@@ -13,8 +13,8 @@
 </script>
 
 <Dropdown align="start">
-	{#snippet trigger()}
-		<ButtonPrime type="button">{m.home_hero_add_to_calendar()}</ButtonPrime>
+	{#snippet triggerChild(props)}
+		<ButtonPrime {...props} type="button">{m.home_hero_add_to_calendar()}</ButtonPrime>
 	{/snippet}
 	<DropdownItem href={GOOGLE} target="_blank">
 		<img src="/icon/google_calendar.png" alt="" width="16" height="16" class="size-4" />
