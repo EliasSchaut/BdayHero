@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SharedFileColors">
+    <fileColor scope="Generated" color="Gray" />
+    <fileColor scope="Tests" color="Green" />
+    <fileColor scope="Database" color="Orange" />
+    <fileColor scope="Server" color="Violet" />
+    <fileColor scope="Routes" color="Blue" />
+    <fileColor scope="i18n" color="Rose" />
+  </component>
+</project>

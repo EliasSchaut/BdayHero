@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Database" pattern="file:src/lib/server/db//*||file:drizzle//*||file:drizzle.config.ts||file:scripts/migrate.mjs||file:scripts/seed-shifts.mjs" />
+</component>

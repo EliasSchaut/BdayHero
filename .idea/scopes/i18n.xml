@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="i18n" pattern="file:messages//*||file:project.inlang//*" />
+</component>
