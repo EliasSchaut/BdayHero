@@ -40,7 +40,7 @@ pnpm db:generate | db:migrate | db:seed          # drizzle migrations / example 
 - pnpm settings (`allowBuilds`, `engineStrict`, …) live in `pnpm-workspace.yaml`, not in `package.json` or `.npmrc`.
 - Every DB change: edit schema → `pnpm db:generate` → commit the SQL.
 - Security headers, hero-only mode (`PUBLIC_HERO_ONLY`) and locale live in hooks; do not bypass with per-route hacks.
-- Run `pnpm format` before committing; CI runs lint, check, unit, e2e and a Docker build.
+- Run `pnpm format` before committing; CI runs lint, check, unit, e2e and a Docker build; pushes to `main` then publish `kidilias/bdayhero:latest`.
 - Commit messages: imperative subject with scope (`feat(guests): …`), body explains why.
 
 ## Deployment
